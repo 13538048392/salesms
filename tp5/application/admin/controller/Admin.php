@@ -1,7 +1,9 @@
 <?php
 namespace app\admin\controller;
 
-class Admin
+use think\Controller;
+
+class Admin extends Controller
 {
     public function lst()
     {

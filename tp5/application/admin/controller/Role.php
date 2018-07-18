@@ -3,7 +3,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Privilege extends Controller
+class Role extends Controller
 {
     public function lst()
     {
@@ -17,8 +17,7 @@ class Privilege extends Controller
     }
     public function add()
     {
-//        return view();
-        return $this->fetch('add2');
 
+      return view();
     }
 }

@@ -6505,3 +6505,2623 @@
 [ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\admin\edit.html [ array (
 ) ]
 [ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:05:17+08:00 ] 127.0.0.1 GET /index.php/admin/admin/lst.html
+[ info ] test.com/index.php/admin/admin/lst.html [运行时间：0.029438s][吞吐率：33.97req/s] [内存消耗：1,045.67kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'admin',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531903766',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Admin->lst[ E:\www\salesms\tp5\application\admin\controller\Admin.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\admin\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:07:47+08:00 ] 127.0.0.1 GET /index.php/admin/index/index
+[ info ] test.com/index.php/admin/index/index [运行时间：0.043433s][吞吐率：23.02req/s] [内存消耗：1,218.92kb] [文件加载：37]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531903766',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:07:48+08:00 ] 127.0.0.1 GET /index.php/admin/index/welcome.html
+[ info ] test.com/index.php/admin/index/welcome.html [运行时间：0.039916s][吞吐率：25.05req/s] [内存消耗：1,034.59kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'welcome',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531903766',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->welcome[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\welcome.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:07:50+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.035322s][吞吐率：28.31req/s] [内存消耗：1,165.52kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531904868',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:17:19+08:00 ] 127.0.0.1 GET /index.php/admin/index/index
+[ info ] test.com/index.php/admin/index/index [运行时间：0.042763s][吞吐率：23.38req/s] [内存消耗：1,218.95kb] [文件加载：37]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531904868',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:17:19+08:00 ] 127.0.0.1 GET /index.php/admin/index/welcome.html
+[ info ] test.com/index.php/admin/index/welcome.html [运行时间：0.040037s][吞吐率：24.98req/s] [内存消耗：1,034.59kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'welcome',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531904868',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->welcome[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\welcome.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:17:23+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.034173s][吞吐率：29.26req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:17:28+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.039797s][吞吐率：25.13req/s] [内存消耗：1,168.68kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:19:43+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.038335s][吞吐率：26.09req/s] [内存消耗：1,216.80kb] [文件加载：37]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:19:48+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.031790s][吞吐率：31.46req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:19:49+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.026346s][吞吐率：37.96req/s] [内存消耗：1,093.57kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:19:53+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.030922s][吞吐率：32.34req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:19:57+08:00 ] 127.0.0.1 GET /index.php/admin/admin/lst.html
+[ info ] test.com/index.php/admin/admin/lst.html [运行时间：0.032168s][吞吐率：31.09req/s] [内存消耗：1,045.67kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'admin',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Admin->lst[ E:\www\salesms\tp5\application\admin\controller\Admin.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\admin\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:19:59+08:00 ] 127.0.0.1 GET /index.php/admin/admin/add.html
+[ info ] test.com/index.php/admin/admin/add.html [运行时间：0.039143s][吞吐率：25.55req/s] [内存消耗：1,045.70kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'admin',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/admin/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Admin->add[ E:\www\salesms\tp5\application\admin\controller\Admin.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\admin\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:20:04+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.032062s][吞吐率：31.19req/s] [内存消耗：1,093.57kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:20:29+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.032085s][吞吐率：31.17req/s] [内存消耗：1,216.79kb] [文件加载：37]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:21:02+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.038092s][吞吐率：26.25req/s] [内存消耗：1,216.79kb] [文件加载：37]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:21:39+08:00 ] 127.0.0.1 GET /index.php/admin/role/add
+[ info ] test.com/index.php/admin/role/add [运行时间：0.044188s][吞吐率：22.63req/s] [内存消耗：1,172.79kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->add[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:21:56+08:00 ] 127.0.0.1 GET /index.php/admin/role/add
+[ info ] test.com/index.php/admin/role/add [运行时间：0.031249s][吞吐率：32.00req/s] [内存消耗：1,045.49kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->add[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:22:00+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.033854s][吞吐率：29.54req/s] [内存消耗：1,168.77kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:22:12+08:00 ] 127.0.0.1 GET /index.php/admin/index/index
+[ info ] test.com/index.php/admin/index/index [运行时间：0.029125s][吞吐率：34.33req/s] [内存消耗：1,092.94kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:22:12+08:00 ] 127.0.0.1 GET /index.php/admin/index/welcome.html
+[ info ] test.com/index.php/admin/index/welcome.html [运行时间：0.042925s][吞吐率：23.30req/s] [内存消耗：1,034.59kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'welcome',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905440',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->welcome[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\welcome.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:22:16+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.030837s][吞吐率：32.43req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:23:06+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.034920s][吞吐率：28.64req/s] [内存消耗：1,168.61kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:23:07+08:00 ] 127.0.0.1 GET /index.php/admin/role/add
+[ info ] test.com/index.php/admin/role/add [运行时间：0.038587s][吞吐率：25.92req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->add[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:24:58+08:00 ] 127.0.0.1 GET /index.php/admin/admin/lst.html
+[ info ] test.com/index.php/admin/admin/lst.html [运行时间：0.033557s][吞吐率：29.80req/s] [内存消耗：1,045.67kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'admin',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Admin->lst[ E:\www\salesms\tp5\application\admin\controller\Admin.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\admin\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:07+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.033760s][吞吐率：29.62req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:18+08:00 ] 127.0.0.1 POST /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.030555s][吞吐率：32.73req/s] [内存消耗：1,046.15kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://test.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:19+08:00 ] 127.0.0.1 POST /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.030147s][吞吐率：33.17req/s] [内存消耗：1,046.15kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://test.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:20+08:00 ] 127.0.0.1 POST /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.028729s][吞吐率：34.81req/s] [内存消耗：1,046.15kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://test.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:20+08:00 ] 127.0.0.1 POST /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.030653s][吞吐率：32.62req/s] [内存消耗：1,046.15kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://test.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:21+08:00 ] 127.0.0.1 POST /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.028361s][吞吐率：35.26req/s] [内存消耗：1,046.15kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://test.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:21+08:00 ] 127.0.0.1 POST /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.027688s][吞吐率：36.12req/s] [内存消耗：1,046.15kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'x-requested-with' => 'XMLHttpRequest',
+  'origin' => 'http://test.com',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'content-length' => '0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:35+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.030621s][吞吐率：32.66req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:27:41+08:00 ] 127.0.0.1 GET /index.php/admin/role/add
+[ info ] test.com/index.php/admin/role/add [运行时间：0.034816s][吞吐率：28.72req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->add[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:29:49+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.027855s][吞吐率：35.90req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:29:51+08:00 ] 127.0.0.1 GET /index.php/admin/role/add
+[ info ] test.com/index.php/admin/role/add [运行时间：0.036065s][吞吐率：27.73req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->add[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:30:10+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.031387s][吞吐率：31.86req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:30:17+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.025297s][吞吐率：39.53req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:30:26+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.029201s][吞吐率：34.25req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:30:28+08:00 ] 127.0.0.1 GET /index.php/admin/role/add
+[ info ] test.com/index.php/admin/role/add [运行时间：0.035523s][吞吐率：28.15req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/role/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->add[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T17:58:18+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.028623s][吞吐率：34.94req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:06:06+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.036008s][吞吐率：27.77req/s] [内存消耗：1,165.58kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:06:50+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.036717s][吞吐率：27.24req/s] [内存消耗：1,172.96kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:07:30+08:00 ] 127.0.0.1 GET /index.php/admin/index/index
+[ info ] test.com/index.php/admin/index/index [运行时间：0.031315s][吞吐率：31.93req/s] [内存消耗：1,092.94kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:07:30+08:00 ] 127.0.0.1 GET /index.php/admin/index/welcome.html
+[ info ] test.com/index.php/admin/index/welcome.html [运行时间：0.045125s][吞吐率：22.16req/s] [内存消耗：1,034.59kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'welcome',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531905732',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->welcome[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\welcome.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:07:32+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.031858s][吞吐率：31.39req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:08:49+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.034115s][吞吐率：29.31req/s] [内存消耗：1,165.44kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:08:50+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.037139s][吞吐率：26.93req/s] [内存消耗：1,045.82kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:09:36+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.039066s][吞吐率：25.60req/s] [内存消耗：1,165.41kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:09:37+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.037578s][吞吐率：26.61req/s] [内存消耗：1,045.82kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:10:20+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.034276s][吞吐率：29.17req/s] [内存消耗：1,165.41kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:10:21+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.036202s][吞吐率：27.62req/s] [内存消耗：1,045.82kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:18:34+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.029925s][吞吐率：33.42req/s] [内存消耗：1,045.59kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:19:07+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.034715s][吞吐率：28.81req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:19:18+08:00 ] 127.0.0.1 GET /index.php/admin/admin/lst.html
+[ info ] test.com/index.php/admin/admin/lst.html [运行时间：0.034784s][吞吐率：28.75req/s] [内存消耗：1,045.67kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'admin',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Admin->lst[ E:\www\salesms\tp5\application\admin\controller\Admin.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\admin\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:23:01+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.031060s][吞吐率：32.20req/s] [内存消耗：1,045.83kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:27:01+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.038806s][吞吐率：25.77req/s] [内存消耗：1,173.34kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:31:24+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.032929s][吞吐率：30.37req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:31:25+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.039609s][吞吐率：25.25req/s] [内存消耗：1,045.85kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:31:50+08:00 ] 127.0.0.1 GET /index.php/admin/index/index
+[ info ] test.com/index.php/admin/index/index [运行时间：0.034639s][吞吐率：28.87req/s] [内存消耗：1,092.94kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->index[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:31:50+08:00 ] 127.0.0.1 GET /index.php/admin/index/welcome.html
+[ info ] test.com/index.php/admin/index/welcome.html [运行时间：0.040587s][吞吐率：24.64req/s] [内存消耗：1,034.59kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'welcome',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531908451',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Index->welcome[ E:\www\salesms\tp5\application\admin\controller\Index.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\index\welcome.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:32:02+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.036786s][吞吐率：27.18req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:32:04+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.038644s][吞吐率：25.88req/s] [内存消耗：1,045.85kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:32:49+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.032252s][吞吐率：31.01req/s] [内存消耗：1,045.69kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:32:50+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.033073s][吞吐率：30.24req/s] [内存消耗：1,045.69kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:32:51+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.030792s][吞吐率：32.48req/s] [内存消耗：1,045.69kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:47:32+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.029638s][吞吐率：33.74req/s] [内存消耗：1,045.62kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:50:37+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.042579s][吞吐率：23.49req/s] [内存消耗：1,035.03kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:51:46+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.034356s][吞吐率：29.11req/s] [内存消耗：1,162.90kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add2.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:57:49+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.043736s][吞吐率：22.86req/s] [内存消耗：1,237.06kb] [文件加载：36]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531909911',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add2.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:58:44+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.028830s][吞吐率：34.69req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911470',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T18:58:45+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.038086s][吞吐率：26.26req/s] [内存消耗：1,099.10kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911470',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add2.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:00:33+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.033678s][吞吐率：29.69req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:00:34+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.037513s][吞吐率：26.66req/s] [内存消耗：1,035.16kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:01:34+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.034668s][吞吐率：28.85req/s] [内存消耗：1,035.16kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:05:30+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.031185s][吞吐率：32.07req/s] [内存消耗：1,035.12kb] [文件加载：33]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:07:34+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.032235s][吞吐率：31.02req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:08:08+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.028704s][吞吐率：34.84req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:10:35+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.028985s][吞吐率：34.50req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:11:11+08:00 ] 127.0.0.1 GET /index.php/admin/role/lst.html
+[ info ] test.com/index.php/admin/role/lst.html [运行时间：0.031592s][吞吐率：31.65req/s] [内存消耗：1,045.63kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'role',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Role->lst[ E:\www\salesms\tp5\application\admin\controller\Role.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\role\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:11:13+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.030976s][吞吐率：32.28req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:12:00+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.028888s][吞吐率：34.62req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:12:33+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.040468s][吞吐率：24.71req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:12:56+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/lst.html
+[ info ] test.com/index.php/admin/privilege/lst.html [运行时间：0.025169s][吞吐率：39.73req/s] [内存消耗：1,045.88kb] [文件加载：34]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'lst',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/index/index',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->lst[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\lst.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:12:57+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.042828s][吞吐率：23.35req/s] [内存消耗：1,162.83kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'referer' => 'http://test.com/index.php/admin/privilege/lst.html',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add.html [ array (
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-07-18T19:15:17+08:00 ] 127.0.0.1 GET /index.php/admin/privilege/add
+[ info ] test.com/index.php/admin/privilege/add [运行时间：0.030204s][吞吐率：33.11req/s] [内存消耗：1,148.29kb] [文件加载：35]
+[ info ] [ LANG ] E:\www\salesms\tp5\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'privilege',
+    2 => 'add',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'cookie' => 'pgv_pvi=7359710208; Hm_lvt_080836300300be57b7f34f4b3e97d911=1531816020,1531828728,1531874973; Hm_lpvt_080836300300be57b7f34f4b3e97d911=1531911526',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36',
+  'cache-control' => 'max-age=0',
+  'connection' => 'close',
+  'host' => 'test.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\admin\controller\Privilege->add[ E:\www\salesms\tp5\application\admin\controller\Privilege.php ]
+[ info ] [ VIEW ] E:\www\salesms\tp5\public/../application/admin\view\privilege\add2.html [ array (
+) ]
+[ info ] [ LOG ] INIT File

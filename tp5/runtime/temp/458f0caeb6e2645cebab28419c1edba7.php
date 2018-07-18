@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:68:"E:\www\salesms\tp5\public/../application/admin\view\index\index.html";i:1531894469;s:53:"E:\www\salesms\tp5\application\admin\view\layout.html";i:1531894469;s:43:"../application/admin/view/public/_meta.html";i:1531895463;s:45:"../application/admin/view/public/_header.html";i:1499160217;s:43:"../application/admin/view/public/_menu.html";i:1531894041;s:45:"../application/admin/view/public/_footer.html";i:1531879298;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:6:{s:68:"E:\www\salesms\tp5\public/../application/admin\view\index\index.html";i:1531894469;s:53:"E:\www\salesms\tp5\application\admin\view\layout.html";i:1531894469;s:43:"../application/admin/view/public/_meta.html";i:1531895463;s:45:"../application/admin/view/public/_header.html";i:1499160217;s:43:"../application/admin/view/public/_menu.html";i:1531905433;s:45:"../application/admin/view/public/_footer.html";i:1531879298;}*/ ?>
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
@@ -124,8 +124,8 @@
 			<dt><i class="Hui-iconfont">&#xe62d;</i> 管理员管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a data-href="admin-role.html" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
-					<li><a data-href="admin-permission.html" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
+					<li><a data-href="<?php echo url('role/lst');; ?>" data-title="角色管理" href="javascript:void(0)">角色管理</a></li>
+					<li><a data-href="<?php echo url('privilege/lst');; ?>" data-title="权限管理" href="javascript:void(0)">权限管理</a></li>
 					<li><a data-href="<?php echo url('admin/lst');; ?>" data-title="管理员列表" href="javascript:void(0)">管理员列表</a></li>
 			</ul>
 		</dd>

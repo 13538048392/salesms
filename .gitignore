@@ -1,1 +1,4 @@
+#！.gitignore
 salesms.git/
+.idea/
+runtime/

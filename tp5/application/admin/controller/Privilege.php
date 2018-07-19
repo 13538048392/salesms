@@ -17,7 +17,8 @@ class Privilege extends Controller
     }
     public function add()
     {
-//        return view();
+        $parentData =model('privilege')->getTree();
+        $this->assign('parentData',$parentData);
         return $this->fetch('add2');
 
     }

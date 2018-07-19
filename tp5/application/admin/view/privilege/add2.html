@@ -4,7 +4,8 @@
         <td>
             <select name="parent_id">
                 <option value="0">顶级权限</option>
-                <?php foreach ($parentData as $k => $v): ?>						<option value="<?php echo $v['id']; ?>"><?php echo str_repeat('-', 8*$v['level']).$v['pri_name']; ?></option>
+                <?php foreach ($parentData as $k => $v): ?>
+                <option value="<?php echo $v['id']; ?>"><?php echo str_repeat('-', 8*$v['level']).$v['pri_name']; ?></option>
                 <?php endforeach; ?>					</select>
         </td>
     </tr>

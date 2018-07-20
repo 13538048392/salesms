@@ -23,11 +23,10 @@
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3">角色：</label>
 		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" name="adminRole" size="1">
-				<option value="0">超级管理员</option>
-				<option value="1">总编</option>
-				<option value="2">栏目主辑</option>
-				<option value="3">栏目编辑</option>
+			<select class="select" name="adminRole" id="adminRole" size="1">
+				{volist name="role" id="vo"}
+				<option value="{$vo['id']}">{$vo['role_name']}</option>
+				{/volist}
 			</select>
 			</span> </div>
 	</div>
@@ -89,19 +88,44 @@ $(function(){
 		focusCleanup:true,
 		success:"valid",
 		submitHandler:function(form){
-			$(form).ajaxSubmit({
-				type: 'post',
-				url: "xxxxxxx" ,
-				success: function(data){
-					layer.msg('添加成功!',{icon:1,time:1000});
-				},
-                error: function(XmlHttpRequest, textStatus, errorThrown){
-					layer.msg('error!',{icon:1,time:1000});
+			var admin = $('#adminName').val();
+			var password = $('#password').val();
+			var password2 = $('#password2').val();
+			var role = $('#adminRole').val();
+
+			$.ajax({
+				url:'doAdd',
+				type:'post',
+				data:{'admin':admin,'password':password,'password2':password2,'role':role},
+				success:function(msg){
+					if (msg.status != 200) {
+						layer.alert(msg.msg,{icon:5,time:3000});
+					}
+					else{
+						layer.msg(msg.msg,{icon:6,time:3000});
+						location.href='lst';
+						// var index = parent.layer.getFrameIndex(window.name);
+						// parent.$('.btn-refresh').click();
+						// parent.layer.close(index);
+					}	
 				}
-			});
-			var index = parent.layer.getFrameIndex(window.name);
-			parent.$('.btn-refresh').click();
-			parent.layer.close(index);
+
+
+		    });
+			// $(form).ajaxSubmit({
+			// 	type: 'post',
+			// 	url: "doAdd" ,
+			// 	success: function(data){
+			// 		layer.msg('添加成功!',{icon:1,time:1000});
+			// 	},
+   //              error: function(XmlHttpRequest, textStatus, errorThrown){
+			// 		layer.msg('error!',{icon:1,time:1000});
+			// 	}
+			// });
+			// var index = parent.layer.getFrameIndex(window.name);
+			// parent.$('.btn-refresh').click();
+			// parent.layer.close(index);
+			
 		}
 	});
 });

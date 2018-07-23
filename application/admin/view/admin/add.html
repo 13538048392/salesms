@@ -99,11 +99,12 @@ $(function(){
 				data:{'admin':admin,'password':password,'password2':password2,'role':role},
 				success:function(msg){
 					if (msg.status != 200) {
-						layer.alert(msg.msg,{icon:5,time:3000});
+						layer.alert(msg.msg,{icon:5,time:2000});
 					}
 					else{
-						layer.msg(msg.msg,{icon:6,time:3000});
-						location.href='lst';
+						layer.msg(msg.msg,{icon:6,time:2000,end:function(){
+			              parent.location.reload();
+			            }});
 						// var index = parent.layer.getFrameIndex(window.name);
 						// parent.$('.btn-refresh').click();
 						// parent.layer.close(index);

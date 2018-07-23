@@ -5,6 +5,8 @@ use think\Controller;
 use app\admin\model\Admin as AdminModel;
 use app\admin\model\SalesRole as SalesRoleModel;
 use app\admin\model\SalesAdminRole as SalesAdminRoleModel;
+use app\admin\model\SalesChannel as SalesChannelModel;
+use think\Session;
 
 class Admin extends Common
 {
@@ -12,8 +14,9 @@ class Admin extends Common
     {
         $admin_model = new AdminModel();
         $data = $admin_model->getAdmin();
+        $count = $admin_model->adminCount();
         // dump($data);
-        return view('lst',['admin'=>$data]);
+        return view('lst',['admin'=>$data,'count'=>$count]);
     }
     public function edit()
     {//管理员修改页面
@@ -23,8 +26,9 @@ class Admin extends Common
                             ->find()
                             ->toArray();
         // dump($user);
-        $role = SalesRoleModel::where('id','<>',1)->select()->toArray();
-        return view('edit',['user'=>$user,'role'=>$role]);
+        $role_id = SalesAdminRoleModel::where('admin_id',$id)->value('role_id');
+        $role = SalesRoleModel::select()->toArray();
+        return view('edit',['user'=>$user,'role'=>$role,'role_id'=>$role_id]);
     }
     public function doEdit(){
         //管理员修改页面执行
@@ -34,22 +38,23 @@ class Admin extends Common
                 return json(['msg'=>'两次输入密码不一致！','status'=>1]);
             }
         }
-        else{
+        
             $newpassword = password_hash(input('post.newpassword'),PASSWORD_DEFAULT);
             $id = input('post.id');
             $res = AdminModel::where('id',$id)->update(['pass'=>$newpassword]);
             if (!$res) {
                 return json(['msg'=>'修改失败！','status'=>2]);
             }
-        }
         
             $re = SalesAdminRoleModel::where('admin_id',$id)->update(['role_id'=>input('post.role')]);
-            if ($re) {
+            if ($re !== false) {
                 return json(['msg'=>'修改成功！','status'=>200]);
             }
             else{
                 return json(['msg'=>'角色修改失败!','status'=>4]);
+                
             }
+        
 
     }
     public function add()
@@ -113,6 +118,37 @@ class Admin extends Common
         else{
             return json(['status'=>'0']);
         }
+    }
+
+    public function addChannel(){
+        //添加渠道
+        return view();
+    }
+
+    public function doAddChannel(){
+        //执行添加渠道
+        $channel = input('post.channel');
+        // if ($channel == '') {
+        //     return json(['msg'=>'渠道不能为空','status'=>1]);
+        // }
+        // $insert_data['channel_name'] = $channel;
+        // $insert_data['user_id'] = Session::get('uid');
+        // $find = SalesChannelModel::where($insert_data)->find();
+        // if ($find) {
+        //     return json(['msg'=>'渠道已经存在','status'=>2]);
+        // }
+        // $channel_id = SalesChannelModel::insertGetId($insert_data);
+        // if ($channel_id) {
+        //     $url = $_SERVER['SERVER_NAME'].'index.php/index/register?userid='.Session::get('uid').'&&channelid='.$channel_id;
+        //     return json(['msg'=>'添加成功，生成url!',
+        //                  'status'=>200,
+        //                  'url'=>$url]);
+        // }
+        // else{
+        //     return json(['msg'=>'添加失败！','status'=>0]);
+        // }
+        return doAddChannel($channel);
+
     }
 
 

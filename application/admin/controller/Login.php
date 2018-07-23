@@ -25,7 +25,8 @@ class Login extends Controller
     	if (empty($verify_code)) {
     		return json(['msg'=>'验证码不能为空！','status'=>3]);
     	}
-        $check_user = AdminModel::where('username',$username)->find();
+    	$admin_model = new AdminModel();
+        $check_user = $admin_model->where('username',$username)->find();
         if (!$check_user) {
         	return json(['msg'=>'用户名不存在！','status'=>5]);
         }
@@ -38,6 +39,9 @@ class Login extends Controller
             // 校验失败
             return json(['msg'=>'验证码错误！','status'=>4]);
         }else{
+        	// $where = 'id='.$check_user['id'];
+        	// $data = $admin_model->getAdmin($where);
+        	// dump($data);
         	Session::set('username',$check_user['username']);
         	Session::set('uid',$check_user['id']);
         	return json(['msg'=>'正在登陆！','status'=>200]);
@@ -46,5 +50,6 @@ class Login extends Controller
     public function loginOut(){
     	//退出登录
     	Session::clear();
+    	$this->redirect(url('admin/Login/login'));
     }
 }

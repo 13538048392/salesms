@@ -24,7 +24,7 @@ function doAddChannel($channel=''){
         }
         $channel_id = SalesChannelModel::insertGetId($insert_data);
         if ($channel_id) {
-            $url = $_SERVER['SERVER_NAME'].'/index.php/index/register?userid='.Session::get('uid').'&&channelid='.$channel_id;
+            $url = $_SERVER['SERVER_NAME'].'/index.php/index/register?userid='.base64_encode(Session::get('uid')).'&&channelid='.base64_encode($channel_id);
             return json(['msg'=>'添加成功，生成url!',
                          'status'=>200,
                          'url'=>$url]);

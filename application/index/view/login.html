@@ -2,25 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>User Login</title>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script src="/static/js/form.js"></script>
 </head>
 <body>
-<div>
-    <form name="loginForm" method="post" action="">
-        <div>
-            <label for="username">
-                <input type="text" name="username">
-            </label>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>User Login</h2>
+            <form role="form" method="post" id="reused_form" action="{:url('register/register')}">
+                <input type="hidden" name="__token__" value="{$Request.token}"/>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label for="username"></label>
+                        <input type="text" placeholder="username|email|phone：" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <label for="password"> </label>
+                        <input type="password" placeholder="password:" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <a class="btn btn-default" href="#" role="button">Forgot Password</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">提交</button>
+                    </div>
+                </div>
+            </form>
+            <div id="success_message" style="width:100%; height:100%; display:none; "><h3>Sent your message
+                successfully!</h3></div>
+            <div id="error_message" style="width:100%; height:100%; display:none; "><h3>Error</h3> Sorry there was an
+                error sending your form.
+            </div>
         </div>
-        <div>
-            <label for="pwd">
-                <input type="password" name="pwd">
-            </label>
-        </div>
-        <div>
-            <input type="submit" value="登陆">
-        </div>
-    </form>
+    </div>
 </div>
 
 </body>

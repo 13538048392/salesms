@@ -18,15 +18,7 @@ class Login extends Controller
     public function __construct(Request $request = null)
     {
         parent::__construct($request);
-        if(isset($_SESSION['username'])&& !empty($_SESSION['username'])){
-            $this->redirect('/index.php/index/index');
-        }elseif(isset($_COOKIE['username'])&&!empty($_COOKIE['username'])){
-            $username=$_COOKIE['username'];
-            $password=$_COOKIE['password'];
-            
-            $this->redirect('/index.php/index/index');
-        }
-
+        $this->redirect('/index/index/register');
     }
     public function index()
     {
@@ -34,6 +26,6 @@ class Login extends Controller
     }
     public function login()
     {
-
+        return "1111";
     }
 }

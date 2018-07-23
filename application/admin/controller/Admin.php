@@ -6,7 +6,7 @@ use app\admin\model\Admin as AdminModel;
 use app\admin\model\SalesRole as SalesRoleModel;
 use app\admin\model\SalesAdminRole as SalesAdminRoleModel;
 
-class Admin extends Controller
+class Admin extends Common
 {
     public function lst()
     {
@@ -23,25 +23,34 @@ class Admin extends Controller
                             ->find()
                             ->toArray();
         // dump($user);
-        return view('edit',['user'=>$user]);
+        $role = SalesRoleModel::where('id','<>',1)->select()->toArray();
+        return view('edit',['user'=>$user,'role'=>$role]);
     }
     public function doEdit(){
         //管理员修改页面执行
-        if (input('post.newpassword') == '') {
-            return json(['msg'=>'密码不能为空！','status'=>3]);
-        }
-        if (input('post.newpassword') != input('post.newpassword2')) {
-            return json(['msg'=>'两次输入密码不一致！','status'=>1]);
-        }
-        $newpassword = password_hash(input('post.newpassword'),PASSWORD_DEFAULT);
-        $id = input('post.id');
-        $res = AdminModel::where('id',$id)->update(['pass'=>$newpassword]);
-        if ($res) {
-            return json(['msg'=>'修改成功！','status'=>200]);
+        if (input('post.newpassword') != '' || input('post.newpassword2') != '') {
+            // return json(['msg'=>'密码不能为空！','status'=>3]);
+            if (input('post.newpassword') != input('post.newpassword2')) {
+                return json(['msg'=>'两次输入密码不一致！','status'=>1]);
+            }
         }
         else{
-            return json(['msg'=>'修改失败！','status'=>2]);
+            $newpassword = password_hash(input('post.newpassword'),PASSWORD_DEFAULT);
+            $id = input('post.id');
+            $res = AdminModel::where('id',$id)->update(['pass'=>$newpassword]);
+            if (!$res) {
+                return json(['msg'=>'修改失败！','status'=>2]);
+            }
         }
+        
+            $re = SalesAdminRoleModel::where('admin_id',$id)->update(['role_id'=>input('post.role')]);
+            if ($re) {
+                return json(['msg'=>'修改成功！','status'=>200]);
+            }
+            else{
+                return json(['msg'=>'角色修改失败!','status'=>4]);
+            }
+
     }
     public function add()
     {
@@ -105,5 +114,6 @@ class Admin extends Controller
             return json(['status'=>'0']);
         }
     }
+
 
 }

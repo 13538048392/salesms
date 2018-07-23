@@ -32,6 +32,18 @@ echo $_GET['id'];
           </td>
         </tr>
         <tr>
+          <th class="text-r">角色：</th>
+          <td>
+            
+              <select class="select" name="adminRole" id="adminRole" size="1">
+                {volist name="role" id="vo"}
+                <option value="{$vo['id']}">{$vo['role_name']}</option>
+                {/volist}
+              </select>
+
+          </td>
+        </tr>
+        <tr>
           <th></th>
           <td>
             <button type="submit" class="btn btn-success radius" id="admin-password-save" name="admin-password-save"><i class="icon-ok"></i> 确定</button>
@@ -56,11 +68,12 @@ echo $_GET['id'];
 $('#admin-password-save').click(function(){
   var newpassword = $('#newpassword').val();
   var newpassword2 = $('#newpassword2').val();
+  var role = $('#adminRole').val();
   var id = $('#uid').val();
   $.ajax({
         url:'doEdit',
         type:'post',
-        data:{'id':id,'newpassword':newpassword,'newpassword2':newpassword2},
+        data:{'id':id,'newpassword':newpassword,'newpassword2':newpassword2,'role':role},
         success:function(msg){
           if (msg.status != 200) {
             layer.alert(msg.msg,{icon:5,time:2000});

@@ -49,7 +49,7 @@ $('#create_url').click(function(){
 				data:{'channel':channel},
 				success:function(msg){
 					if (msg.status != 200) {
-						layer.alert(msg.msg,{icon:5,time:2000});
+						layer.alert(msg.msg,{icon:5,time:1000});
 					}
 					else{
 						layer.msg(msg.msg,{icon:6,time:1000,end:function(){

@@ -22,13 +22,22 @@
 
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3">角色：</label>
-		<div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;">
-			<select class="select" name="adminRole" id="adminRole" size="1">
+		<!-- <div class="formControls col-xs-8 col-sm-9"> <span class="select-box" style="width:150px;"> -->
+			<!-- <select class="select" name="adminRole" id="adminRole" size="1">
 				{volist name="role" id="vo"}
 				<option value="{$vo['id']}">{$vo['role_name']}</option>
 				{/volist}
-			</select>
-			</span> </div>
+			</select> -->
+			<!-- </span>  -->
+			<div class="formControls col-xs-8 col-sm-9" id="adminRole">
+			{volist name="role" id="vo"}
+				<label>
+				<input type="checkbox" value="{$vo['id']}" name="adminRole" id="">
+				{$vo['role_name']}
+				</label>
+			{/volist}
+			</div>
+		</div>
 	</div>
 
 	<div class="row cl">
@@ -91,7 +100,15 @@ $(function(){
 			var admin = $('#adminName').val();
 			var password = $('#password').val();
 			var password2 = $('#password2').val();
-			var role = $('#adminRole').val();
+			// var role = $('#adminRole').val();
+
+			// $("#adminRole :checkbox");
+			var arr = new Array();
+                $("input[name='adminRole']:checked").each(function(i){
+                    arr[i] = $(this).val();
+                });
+                var role = arr.join(",");
+                // console.log(vals);
 
 			$.ajax({
 				url:'doAdd',
@@ -99,10 +116,10 @@ $(function(){
 				data:{'admin':admin,'password':password,'password2':password2,'role':role},
 				success:function(msg){
 					if (msg.status != 200) {
-						layer.alert(msg.msg,{icon:5,time:2000});
+						layer.alert(msg.msg,{icon:5,time:1000});
 					}
 					else{
-						layer.msg(msg.msg,{icon:6,time:2000,end:function(){
+						layer.msg(msg.msg,{icon:6,time:1000,end:function(){
 			              parent.location.reload();
 			            }});
 						// var index = parent.layer.getFrameIndex(window.name);
@@ -113,6 +130,7 @@ $(function(){
 
 
 		    });
+
 			// $(form).ajaxSubmit({
 			// 	type: 'post',
 			// 	url: "doAdd" ,

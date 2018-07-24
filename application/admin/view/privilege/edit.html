@@ -9,16 +9,18 @@
 
 
 
-	<form action="" onsubmit="return false" method="post" class="form form-horizontal" id="form-admin-role-add">
+	<form action="" method="post" class="form form-horizontal" id="form-admin-role-eidt" onsubmit="return false">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>上级权限：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<span class="select-box">
 
 					<select class="select" size="1" name="parent_id">
-						<option value="0" selected>顶级权限</option>
+						<option value="0" <?php if($priIdData['parent_id']==0){ echo "selected";}?>>顶级权限</option>
 							<?php foreach ($parentData as $k => $v): ?>
-						<option value="<?php echo $v['id']; ?>"><?php echo str_repeat('-', 8*$v['level']).$v['pri_name']; ?></option>
+
+						<option value="<?php echo $v['id']; ?>" <?php if($priIdData['parent_id']==$v['id']){ echo "selected";}?>><?php echo str_repeat('-', 8*$v['level']).$v['pri_name']; ?></option>
+
 							<?php endforeach; ?>
 					</select>
 				</span>
@@ -27,31 +29,32 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>权限名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="roleName" name="pri_name">
+				<input type="text" class="hide" value="{$priIdData['id']}" placeholder=""  name="id">
+				<input type="text" class="input-text" value="{$priIdData['pri_name']}" placeholder="" id="roleName" name="pri_name">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">对应的模块名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="module_name">
+				<input type="text" class="input-text" value="{$priIdData['module_name']}" placeholder="" id="" name="module_name">
 
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">对应的控制器名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder=""  name="controller_name">
+				<input type="text" class="input-text" value="{$priIdData['controller_name']}" placeholder=""  name="controller_name">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3">对应的方法名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder=""  name="action_name">
+				<input type="text" class="input-text" value="{$priIdData['action_name']}" placeholder=""  name="action_name">
 			</div>
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
-				<button type="submit" class="btn btn-success radius" id="admin-role-save" name="admin-role-save"><i class="icon-ok"></i> 确定</button>
+				<button type="submit" class="btn btn-success radius" id="admin-role-save" ><i class="icon-ok"></i> 确定</button>
 			</div>
 		</div>
 	</form>
@@ -68,19 +71,19 @@
 <script type="text/javascript">
 $(function(){
     $("#admin-role-save").click(function () {
-        datas=$("#form-admin-role-add").serialize();
-        $.post('{:url("add")}',{str:datas},function (data) {
+        datas=$("#form-admin-role-eidt").serialize();
+        $.post('{:url("edit")}',{str:datas},function (data) {
 
             if(data.length>100){
-				parent.$(".page-container").html(data);
-				layer.msg('新增成功',{icon:1,time:2000});
-//				setTimeout("alert(1)",8000);
+                 parent.$(".page-container").html(data);
+				layer.msg('修改成功',{icon:1,time:2000});
 				setTimeout("layer_close()",1000);
-            }else {
+			}else {
                 layer.msg(data,{icon:1,time:2000});
-            }
+			}
         });
     });
+
 	// $(".permission-list dt input:checkbox").click(function(){
 	// 	$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
 	// });

@@ -5,8 +5,34 @@ use think\Model;
 
 class Privilege extends Model
 {
+    protected static function init()
+    {
+        Privilege::event('after_delete',function ($Privilege){
+            $nums=$Privilege->getChildren($Privilege->id);
+                Privilege::destroy($nums);
+        });
+    }
+
+    public function add($data){
+        if (!is_array($data)){
+            return exception('传递数据不合法');
+        }
+        $this->allowField(true)->save($data);
+        return $this->id;
+    }
+    public function edit($data){
+        if (!is_array($data)){
+            return exception('传递数据不合法');
+        }
+        $num =$this->setField($data);
+        return $num;
+    }
+    public function getOne($id){
+        return self::get($id)->toArray();
+    }
     public function getTree(){
-        $data =$this->select();
+        $data =$this->select()->toArray();
+
         return $this->_reSort($data);
     }
     private function _reSort($data,$parent_id=0,$level=0,$isClear=TRUE)

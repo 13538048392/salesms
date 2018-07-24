@@ -1,16 +1,20 @@
-﻿{include file="../application/admin/view/public/_meta.html"}
+﻿
+{include file="../application/admin/view/public/_meta.html"}
 
 <title>新建网站角色 - 管理员管理 - H-ui.admin v3.1</title>
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
 <body>
+
 <article class="page-container">
-	<form action="" method="post" class="form form-horizontal" id="form-admin-role-add" onsubmit="return false">
+	<form action="" method="post" class="form form-horizontal" id="form-admin-role-edit" onsubmit="return false">
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>角色名称：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="roleName" name="role_name">
+				<input type="text" class="hide" value="{$onedata[0]}" placeholder=""  name="id">
+				<input type="text" class="input-text" value="{$onedata[1]}" placeholder="" id="roleName" name="role_name">
+
 			</div>
 		</div>
 
@@ -18,13 +22,12 @@
 			<label class="form-label col-xs-4 col-sm-3">网站角色：</label>
 			<div class="formControls col-xs-8 col-sm-9">
 				<?php foreach($data as $k=>$v):?>
-
-
 					<dl class="permission-list">
 						<?php if($v['level']==0):?>
 						<dt>
 							<label>
-								<input type="checkbox" value="{$v['id']}" name="pri_id[]" id="user-Character-0">
+
+								<input type="checkbox" value="{$v['id']}" name="pri_id[]" id="user-Character-0" {if condition="(in_array($v['id'],$onedata[2]))" } checked {/if} >
 								{$v['pri_name']}</label>
 						</dt>
 						<?php endif;?>
@@ -34,7 +37,7 @@
 								<?php if($v['level']==1):?>
 									<dt>
 										<label class="">
-											<input type="checkbox" value="{$v['id']}" name="pri_id[]" id="user-Character-0-0">
+											<input type="checkbox" value="{$v['id']}" name="pri_id[]" {if condition="(in_array($v['id'],$onedata[2]))" } checked {/if} id="user-Character-0-0" >
 											{$v['pri_name']}</label>
 									</dt>
 								<dd>
@@ -45,7 +48,7 @@
 									?>
 
 									<label class="">
-										<input type="checkbox" value="{$data[$index]['id']}" name="pri_id[]" id="user-Character-0-0-0">
+										<input type="checkbox" value="{$data[$index]['id']}" name="pri_id[]" id="user-Character-0-0-0" {if condition="(in_array($v['id'],$onedata[2]))" } checked {/if}>
 										{$data[$index]['pri_name']}</label>
 									<?php endforeach;?>
 									<!--<label class="">-->
@@ -95,15 +98,18 @@
 <script type="text/javascript">
 $(function(){
 		$("#admin-role-save").click(function () {
-			str =$("#form-admin-role-add").serialize();
+			str =$("#form-admin-role-edit").serialize();
+
             check =decodeURIComponent(str ,true);
+
             if(check.match('pri_id')){
-                $.post('{:url("role/add")}',{str:str},function (data) {
+                $.post('{:url("role/edit")}',{str:str},function (data) {
                     if(data =='ok'){
-                        layer.msg('新增成功',{icon:1,time:2000});
+                        layer.msg('修改成功',{icon:1,time:2000});
                         setTimeout("layer_close()",1000);
                     }else{
-                        layer.msg(data,{icon:1,time:2000});
+                        console.log(data);
+                        // layer.msg(data,{icon:1,time:2000});
                     }
                 });
 			}else {

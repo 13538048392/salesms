@@ -3,4 +3,5 @@ salesms.git/
 .idea/
 runtime/
 application/database.php
+/thinkphp_
 thinkphp_/.*

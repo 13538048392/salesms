@@ -113,15 +113,16 @@ abstract class Builder
             } elseif (is_null($val)) {
                 $result[$item] = 'NULL';
             } elseif (is_array($val) && !empty($val)) {
-                switch (strtolower($val[0])) {
+                switch ($val[0]) {
+                    case 'exp':
+                        $result[$item] = $val[1];
+                        break;
                     case 'inc':
-                        $result[$item] = $item . '+' . floatval($val[1]);
+                        $result[$item] = $item . '+' . floatval($val[2]);
                         break;
                     case 'dec':
-                        $result[$item] = $item . '-' . floatval($val[1]);
+                        $result[$item] = $item . '-' . floatval($val[2]);
                         break;
-                    case 'exp':
-                        throw new Exception('not support data:[' . $val[0] . ']');
                 }
             } elseif (is_scalar($val)) {
                 // 过滤非标量数据
@@ -190,7 +191,7 @@ abstract class Builder
                 } elseif (!is_numeric($key)) {
                     $array[] = $this->parseKey($key, $options) . ' AS ' . $this->parseKey($field, $options, true);
                 } else {
-                    $array[] = $this->parseKey($field, $options);
+                    $array[] = $this->parseKey($field, $options, true);
                 }
             }
             $fieldsStr = implode(',', $array);
@@ -268,8 +269,10 @@ abstract class Builder
             $str = [];
             foreach ($val as $field => $value) {
                 if ($value instanceof Expression) {
-                    $str[] = ' ' . $key . ' ( ' . $field . ' ' . $value->getValue() . ' )';
-                } elseif ($value instanceof \Closure) {
+                    $str[] = ' ' . $logic . ' ( ' . $value->getValue() . ' )';
+                    continue;
+                }
+                if ($value instanceof \Closure) {
                     // 使用闭包查询
                     $query = new Query($this->connection);
                     call_user_func_array($value, [ & $query]);
@@ -388,11 +391,7 @@ abstract class Builder
             }
         } elseif ('EXP' == $exp) {
             // 表达式查询
-            if ($value instanceof Expression) {
-                $whereStr .= '( ' . $key . ' ' . $value->getValue() . ' )';
-            } else {
-                throw new Exception('where express error:' . $exp);
-            }
+            $whereStr .= '( ' . $key . ' ' . $value . ' )';
         } elseif (in_array($exp, ['NOT NULL', 'NULL'])) {
             // NULL 查询
             $whereStr .= $key . ' IS ' . $exp;
@@ -510,11 +509,6 @@ abstract class Builder
             }
         }
         $bindName = $bindName ?: $key;
-
-        if ($this->query->isBind($bindName)) {
-            $bindName .= '_' . str_replace('.', '_', uniqid('', true));
-        }
-
         $this->query->bind($bindName, $value, $bindType);
         return ':' . $bindName;
     }
@@ -545,9 +539,7 @@ abstract class Builder
                 list($table, $type, $on) = $item;
                 $condition               = [];
                 foreach ((array) $on as $val) {
-                    if ($val instanceof Expression) {
-                        $condition[] = $val->getValue();
-                    } elseif (strpos($val, '=')) {
+                    if (strpos($val, '=')) {
                         list($val1, $val2) = explode('=', $val, 2);
                         $condition[]       = $this->parseKey($val1, $options) . '=' . $this->parseKey($val2, $options);
                     } else {
@@ -587,8 +579,8 @@ abstract class Builder
                 } else {
                     $sort = $val;
                 }
-                $sort    = strtoupper($sort);
-                $sort    = in_array($sort, ['ASC', 'DESC'], true) ? ' ' . $sort : '';
+
+                $sort    = in_array(strtolower($sort), ['asc', 'desc'], true) ? ' ' . $sort : '';
                 $array[] = $this->parseKey($key, $options, true) . $sort;
             }
         }
@@ -627,9 +619,6 @@ abstract class Builder
      */
     protected function parseComment($comment)
     {
-        if (false !== strpos($comment, '*/')) {
-            $comment = strstr($coment, '*/', true);
-        }
         return !empty($comment) ? ' /* ' . $comment . ' */' : '';
     }
 
@@ -679,7 +668,11 @@ abstract class Builder
             return '';
         }
 
-        return sprintf(" FORCE INDEX ( %s ) ", is_array($index) ? implode(',', $index) : $index);
+        if (is_array($index)) {
+            $index = join(",", $index);
+        }
+
+        return sprintf(" FORCE INDEX ( %s ) ", $index);
     }
 
     /**
@@ -797,12 +790,8 @@ abstract class Builder
             $values[] = 'SELECT ' . implode(',', $value);
 
             if (!isset($insertFields)) {
-                $insertFields = array_keys($data);
+                $insertFields = array_map([$this, 'parseKey'], array_keys($data));
             }
-        }
-
-        foreach ($insertFields as $field) {
-            $fields[] = $this->parseKey($query, $field, true);
         }
 
         return str_replace(

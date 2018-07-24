@@ -277,6 +277,6 @@ class Handle
      */
     private static function getConst()
     {
-        return get_defined_constants(true)['admin'];
+        return get_defined_constants(true)['user'];
     }
 }

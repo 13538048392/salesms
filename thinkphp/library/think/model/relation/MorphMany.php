@@ -11,7 +11,6 @@
 
 namespace think\model\relation;
 
-use think\Db;
 use think\db\Query;
 use think\Exception;
 use think\Loader;
@@ -202,7 +201,7 @@ class MorphMany extends Relation
         return $this->query->where([
             $this->morphKey  => [
                 'exp',
-                Db::raw('=' . $this->parent->getTable() . '.' . $this->parent->getPk()),
+                '=' . $this->parent->getTable() . '.' . $this->parent->getPk(),
             ],
             $this->morphType => $this->type,
         ])->fetchSql()->count();

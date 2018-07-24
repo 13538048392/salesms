@@ -555,11 +555,7 @@ class App
 
         // 获取操作名
         $actionName = strip_tags($result[2] ?: $config['default_action']);
-        if (!empty($config['action_convert'])) {
-            $actionName = Loader::parseName($actionName, 1);
-        } else {
-            $actionName = $convert ? strtolower($actionName) : $actionName;
-        }
+        $actionName = $convert ? strtolower($actionName) : $actionName;
 
         // 设置当前请求的控制器、操作
         $request->controller(Loader::parseName($controller, 1))->action($actionName);

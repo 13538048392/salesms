@@ -395,15 +395,7 @@ abstract class Paginator implements ArrayAccess, Countable, IteratorAggregate, J
 
     public function __call($name, $arguments)
     {
-        $collection = $this->getCollection();
-
-        $result = call_user_func_array([$collection, $name], $arguments);
-
-        if ($result === $collection) {
-            return $this;
-        }
-
-        return $result;
+        return call_user_func_array([$this->getCollection(), $name], $arguments);
     }
 
 }

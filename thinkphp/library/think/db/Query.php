@@ -53,8 +53,6 @@ class Query
     protected static $info = [];
     // 回调事件
     private static $event = [];
-    // 读取主库
-    private static $readMaster = [];
 
     /**
      * 构造函数
@@ -140,25 +138,6 @@ class Query
     public function getModel()
     {
         return $this->model;
-    }
-
-    /**
-     * 设置后续从主库读取数据
-     * @access public
-     * @param  bool $allTable
-     * @return void
-     */
-    public function readMaster($allTable = false)
-    {
-        if ($allTable) {
-            $table = '*';
-        } else {
-            $table = isset($this->options['table']) ? $this->options['table'] : $this->getTable();
-        }
-
-        static::$readMaster[$table] = true;
-
-        return $this;
     }
 
     /**
@@ -259,7 +238,7 @@ class Query
      */
     public function execute($sql, $bind = [])
     {
-        return $this->connection->execute($sql, $bind, $this);
+        return $this->connection->execute($sql, $bind);
     }
 
     /**
@@ -630,7 +609,7 @@ class Query
                 return true;
             }
         }
-        return $this->setField($field, ['inc', $step]);
+        return $this->setField($field, ['inc', $field, $step]);
     }
 
     /**
@@ -658,9 +637,9 @@ class Query
                 $this->options = [];
                 return true;
             }
-            return $this->setField($field, ['inc', $step]);
+            return $this->setField($field, ['inc', $field, $step]);
         }
-        return $this->setField($field, ['dec', $step]);
+        return $this->setField($field, ['dec', $field, $step]);
     }
 
     /**
@@ -904,7 +883,7 @@ class Query
      */
     public function exp($field, $value)
     {
-        $this->data($field, $this->raw($value));
+        $this->data($field, ['exp', $value]);
         return $this;
     }
 
@@ -924,7 +903,7 @@ class Query
      * @access public
      * @param string|array $table 数据表
      * @param string|array $field 查询字段
-     * @param mixed        $on    JOIN条件
+     * @param string|array $on    JOIN条件
      * @param string       $type  JOIN类型
      * @return $this
      */
@@ -1209,7 +1188,7 @@ class Query
      */
     public function whereExp($field, $condition, $logic = 'AND')
     {
-        $this->parseWhereExp($logic, $field, 'exp', $this->raw($condition), [], true);
+        $this->parseWhereExp($logic, $field, 'exp', $condition, [], true);
         return $this;
     }
 
@@ -1260,7 +1239,7 @@ class Query
             // 记录一个字段多次查询条件
             $this->options['multi'][$logic][$field][] = $where[$field];
         } elseif (is_string($field) && preg_match('/[,=\>\<\'\"\(\s]/', $field)) {
-            $where[] = ['exp', $this->raw($field)];
+            $where[] = ['exp', $field];
             if (is_array($op)) {
                 // 参数绑定
                 $this->bind($op);
@@ -1281,28 +1260,21 @@ class Query
             $where[$field] = $param;
         } elseif (in_array(strtolower($op), ['null', 'notnull', 'not null'])) {
             // null查询
-            $where[$field] = [$op, ''];
-
+            $where[$field]                            = [$op, ''];
             $this->options['multi'][$logic][$field][] = $where[$field];
         } elseif (is_null($condition)) {
             // 字段相等查询
-            $where[$field] = ['eq', $op];
-
+            $where[$field]                            = ['eq', $op];
             $this->options['multi'][$logic][$field][] = $where[$field];
         } else {
-            if ('exp' == strtolower($op)) {
-                $where[$field] = ['exp', $this->raw($condition)];
+            $where[$field] = [$op, $condition, isset($param[2]) ? $param[2] : null];
+            if ('exp' == strtolower($op) && isset($param[2]) && is_array($param[2])) {
                 // 参数绑定
-                if (isset($param[2]) && is_array($param[2])) {
-                    $this->bind($param[2]);
-                }
-            } else {
-                $where[$field] = [$op, $condition];
+                $this->bind($param[2]);
             }
             // 记录一个字段多次查询条件
             $this->options['multi'][$logic][$field][] = $where[$field];
         }
-
         if (!empty($where)) {
             if (!isset($this->options['where'][$logic])) {
                 $this->options['where'][$logic] = [];
@@ -1531,11 +1503,7 @@ class Query
             if (!empty($this->options['via'])) {
                 $field = $this->options['via'] . '.' . $field;
             }
-            if (strpos($field, ',')) {
-                $field = array_map('trim', explode(',', $field));
-            } else {
-                $field = empty($order) ? $field : [$field => $order];
-            }
+            $field = empty($order) ? $field : [$field => $order];
         } elseif (!empty($this->options['via'])) {
             foreach ($field as $key => $val) {
                 if (is_numeric($key)) {
@@ -2225,7 +2193,7 @@ class Query
         }
 
         // 执行操作
-        $result = 0 === $sql ? 0 : $this->execute($sql, $bind, $this);
+        $result = 0 === $sql ? 0 : $this->execute($sql, $bind);
         if ($result) {
             $sequence  = $sequence ?: (isset($options['sequence']) ? $options['sequence'] : null);
             $lastInsId = $this->getLastInsID($sequence);
@@ -2291,10 +2259,10 @@ class Query
             return $this->connection->getRealSql($sql, $bind);
         } elseif (is_array($sql)) {
             // 执行操作
-            return $this->batchQuery($sql, $bind, $this);
+            return $this->batchQuery($sql, $bind);
         } else {
             // 执行操作
-            return $this->execute($sql, $bind, $this);
+            return $this->execute($sql, $bind);
         }
     }
 
@@ -2320,7 +2288,7 @@ class Query
             return $this->connection->getRealSql($sql, $bind);
         } else {
             // 执行操作
-            return $this->execute($sql, $bind, $this);
+            return $this->execute($sql, $bind);
         }
     }
 
@@ -2387,7 +2355,7 @@ class Query
                 Cache::clear($options['cache']['tag']);
             }
             // 执行操作
-            $result = '' == $sql ? 0 : $this->execute($sql, $bind, $this);
+            $result = '' == $sql ? 0 : $this->execute($sql, $bind);
             if ($result) {
                 if (is_string($pk) && isset($where[$pk])) {
                     $data[$pk] = $where[$pk];
@@ -2859,7 +2827,7 @@ class Query
             Cache::clear($options['cache']['tag']);
         }
         // 执行操作
-        $result = $this->execute($sql, $bind, $this);
+        $result = $this->execute($sql, $bind);
         if ($result) {
             if (!is_array($data) && is_string($pk) && isset($key) && strpos($key, '|')) {
                 list($a, $val) = explode('|', $key);
@@ -2942,10 +2910,6 @@ class Query
             if (!isset($options[$name])) {
                 $options[$name] = false;
             }
-        }
-
-        if (isset(static::$readMaster['*']) || (is_string($options['table']) && isset(static::$readMaster[$options['table']]))) {
-            $options['master'] = true;
         }
 
         foreach (['join', 'union', 'group', 'having', 'limit', 'order', 'force', 'comment'] as $name) {

@@ -292,7 +292,7 @@ return [
     'console'                => [
         'name'    => 'Think Console',
         'version' => '0.1',
-        'admin'    => null,
+        'user'    => null,
     ],
 
 ];

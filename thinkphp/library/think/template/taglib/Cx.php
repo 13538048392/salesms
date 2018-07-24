@@ -69,9 +69,9 @@ class Cx extends Taglib
     /**
      * volist标签解析 循环输出数据集
      * 格式：
-     * {volist name="userList" id="admin" empty=""}
-     * {admin.username}
-     * {admin.email}
+     * {volist name="userList" id="user" empty=""}
+     * {user.username}
+     * {user.email}
      * {/volist}
      * @access public
      * @param array $tag 标签属性
@@ -122,8 +122,8 @@ class Cx extends Taglib
     /**
      * foreach标签解析 循环输出数据集
      * 格式：
-     * {foreach name="userList" id="admin" key="key" index="i" mod="2" offset="3" length="5" empty=""}
-     * {admin.username}
+     * {foreach name="userList" id="user" key="key" index="i" mod="2" offset="3" length="5" empty=""}
+     * {user.username}
      * {/foreach}
      * @access public
      * @param array $tag 标签属性

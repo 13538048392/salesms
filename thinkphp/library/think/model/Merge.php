@@ -20,7 +20,7 @@ class Merge extends Model
 
     protected $relationModel = []; // HAS ONE 关联的模型列表
     protected $fk            = ''; //  外键名 默认为主表名_id
-    protected $mapFields     = []; //  需要处理的模型映射字段，避免混淆 array( id => 'admin.id'  )
+    protected $mapFields     = []; //  需要处理的模型映射字段，避免混淆 array( id => 'user.id'  )
 
     /**
      * 构造函数

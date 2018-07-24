@@ -126,7 +126,7 @@ class Console
         if (!$console) {
             $config = Config::get('console');
             // 实例化 console
-            $console = new self($config['name'], $config['version'], $config['admin']);
+            $console = new self($config['name'], $config['version'], $config['user']);
 
             // 读取指令集
             if (is_file(CONF_PATH . 'command' . EXT)) {

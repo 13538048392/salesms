@@ -737,7 +737,7 @@ class Route
         $rules = self::$rules['domain'];
         // 开启子域名部署 支持二级和三级域名
         if (!empty($rules)) {
-            $host = $request->host(true);
+            $host = $request->host();
             if (isset($rules[$host])) {
                 // 完整域名或者IP配置
                 $item = $rules[$host];
@@ -809,10 +809,10 @@ class Route
                         // 绑定到命名空间 例如 \app\index\behavior
                         self::$bind = ['type' => 'namespace', 'namespace' => $result];
                     } elseif (0 === strpos($result, '@')) {
-                        // 绑定到类 例如 @app\index\controller\Admin
+                        // 绑定到类 例如 @app\index\controller\User
                         self::$bind = ['type' => 'class', 'class' => substr($result, 1)];
                     } else {
-                        // 绑定到模块/控制器 例如 index/admin
+                        // 绑定到模块/控制器 例如 index/user
                         self::$bind = ['type' => 'module', 'module' => $result];
                     }
                     self::$domainBind = true;
@@ -1089,7 +1089,7 @@ class Route
      * 绑定到控制器类
      * @access public
      * @param string    $url URL地址
-     * @param string    $controller 控制器名 （支持带模块名 index/admin ）
+     * @param string    $controller 控制器名 （支持带模块名 index/user ）
      * @param string    $depr URL分隔符
      * @return array
      */
@@ -1506,7 +1506,7 @@ class Route
             App::$modulePath = APP_PATH . (Config::get('app_multi_module') ? $request->module() . DS : '');
         } else {
             // 路由到模块/控制器/操作
-            $result = self::parseModule($route, isset($option['convert']) ? $option['convert'] : false);
+            $result = self::parseModule($route);
         }
         // 开启请求缓存
         if ($request->isGet() && isset($option['cache'])) {
@@ -1527,10 +1527,9 @@ class Route
      * 解析URL地址为 模块/控制器/操作
      * @access private
      * @param string    $url URL地址
-     * @param bool      $convert 是否自动转换URL地址
      * @return array
      */
-    private static function parseModule($url, $convert = false)
+    private static function parseModule($url)
     {
         list($path, $var) = self::parseUrlPath($url);
         $action           = array_pop($path);
@@ -1544,7 +1543,7 @@ class Route
         // 设置当前请求的路由变量
         Request::instance()->route($var);
         // 路由到模块/控制器/操作
-        return ['type' => 'module', 'module' => [$module, $controller, $action], 'convert' => $convert];
+        return ['type' => 'module', 'module' => [$module, $controller, $action], 'convert' => false];
     }
 
     /**

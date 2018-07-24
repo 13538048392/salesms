@@ -15,8 +15,6 @@ use think\Exception;
 
 class File
 {
-    protected $cacheFile;
-
     /**
      * 写入编译缓存
      * @param string $cacheFile 缓存的文件名
@@ -44,13 +42,12 @@ class File
      */
     public function read($cacheFile, $vars = [])
     {
-        $this->cacheFile = $cacheFile;
         if (!empty($vars) && is_array($vars)) {
             // 模板阵列变量分解成为独立变量
             extract($vars, EXTR_OVERWRITE);
         }
         //载入模版缓存文件
-        include $this->cacheFile;
+        include $cacheFile;
     }
 
     /**

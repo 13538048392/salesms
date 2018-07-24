@@ -39,11 +39,12 @@ class Login extends Controller
             // 校验失败
             return json(['msg'=>'验证码错误！','status'=>4]);
         }else{
-        	// $where = 'id='.$check_user['id'];
-        	// $data = $admin_model->getAdmin($where);
+        	$where = 'a.id='.$check_user['id'];
+        	$data = $admin_model->getAdmin($where);
         	// dump($data);
-        	Session::set('username',$check_user['username']);
-        	Session::set('uid',$check_user['id']);
+        	Session::set('admin_name',$data[0]['username']);
+        	Session::set('uid',$data[0]['id']);
+            Session::set('role_name',$data[0]['role_name']);
         	return json(['msg'=>'正在登陆！','status'=>200]);
         }
     }

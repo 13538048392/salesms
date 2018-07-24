@@ -16,8 +16,8 @@ echo $_GET['id'];
       <tbody>
         <tr>
           <th class="text-r">用户名：</th>
-          <td><input name="username" id="username" class="input-text" type="text" autocomplete="off" disabled="" value="{$user['username']}" > 
-            <input type="hidden" name="" id="uid" value="{$user['id']}">
+          <td><input name="username" id="username" class="input-text" type="text" autocomplete="off" disabled="" value="{$user[$uid]['username']}" > 
+            <input type="hidden" name="" id="uid" value="{$user[$uid]['id']}">
           </td>
         </tr>
         <tr>
@@ -31,18 +31,24 @@ echo $_GET['id'];
           <td><input name="newpassword2" id="newpassword2" class="input-text" type="password" autocomplete="off" placeholder="确认新密码" tabindex="3" datatype="*" recheck="newpassword" nullmsg="请再输入一次新密码！" errormsg="您两次输入的新密码不一致！"> 
           </td>
         </tr>
-        <tr>
+        
+        <tr style="display: {$is_root}">
           <th class="text-r">角色：</th>
           <td>
             
-              <select class="select" name="adminRole" id="adminRole" size="1">
-                {volist name="role" id="vo"}
-                <option value="{$vo['id']}" {php}if($vo['id'] == 1){echo 'disabled';} if($vo['id'] == $role_id){echo 'selected';}{/php}>{$vo['role_name']}</option>
-                {/volist}
-              </select>
+              <!-- <select class="select" name="adminRole" id="adminRole" size="1">
+                
+              </select> -->
+              {volist name="role" id="vo"}
+                <label>
+                <input type="checkbox" value="{$vo['id']}" name="adminRole" id="" {php}if(in_array($vo['id'],$role_array)){echo 'checked';}{/php}>
+                {$vo['role_name']}
+                </label>
+              {/volist}
 
           </td>
         </tr>
+        
         <tr>
           <th></th>
           <td>
@@ -68,18 +74,23 @@ echo $_GET['id'];
 $('#admin-password-save').click(function(){
   var newpassword = $('#newpassword').val();
   var newpassword2 = $('#newpassword2').val();
-  var role = $('#adminRole').val();
+  // var role = $('#adminRole').val();
   var id = $('#uid').val();
+  var arr = new Array();
+          $("input[name='adminRole']:checked").each(function(i){
+              arr[i] = $(this).val();
+          });
+          var role = arr.join(",");
   $.ajax({
         url:'doEdit',
         type:'post',
         data:{'id':id,'newpassword':newpassword,'newpassword2':newpassword2,'role':role},
         success:function(msg){
           if (msg.status != 200) {
-            layer.alert(msg.msg,{icon:5,time:2000});
+            layer.alert(msg.msg,{icon:5,time:1000});
           }
           else{
-            layer.msg(msg.msg,{icon:6,time:2000,end:function(){
+            layer.msg(msg.msg,{icon:6,time:1000,end:function(){
               parent.location.reload();
             }});
             

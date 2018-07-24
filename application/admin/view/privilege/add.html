@@ -74,7 +74,6 @@ $(function(){
             if(data.length>100){
 				parent.$(".page-container").html(data);
 				layer.msg('新增成功',{icon:1,time:2000});
-//				setTimeout("alert(1)",8000);
 				setTimeout("layer_close()",1000);
             }else {
                 layer.msg(data,{icon:1,time:2000});

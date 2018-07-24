@@ -8,7 +8,9 @@ class Role extends Controller
     public function lst()
     {
         $data =model('Role')->lst();
+        $count =\app\admin\model\Role::count();
         $this->assign('data',$data);
+        $this->assign('count',$count);
         return $this->fetch();
 
     }
@@ -25,9 +27,16 @@ class Role extends Controller
                 $error =$validate->getError();
                 return json("$error");
             }
-//            halt($data);
             $id=model('Role')->edit($data);
-            return json("ok");
+            if ($id>=0){
+                $data =model('Role')->lst();
+                $count =\app\admin\model\Role::count();
+                $this->assign('data',$data);
+                $this->assign('count',$count);
+                return $this->fetch('ajaxlst');
+            }else{
+                return json("系统正忙，请稍后再修改");
+            }
         }else{
             $id =input('get.id');
             $result =model('role')->getOne($id);
@@ -56,13 +65,32 @@ class Role extends Controller
             }
 
             $id=model('Role')->add($data);
-            return json("ok");
+            if ($id){
+                $data =model('Role')->lst();
+                $count =\app\admin\model\Role::count();
+                $this->assign('data',$data);
+                $this->assign('count',$count);
+                return $this->fetch('ajaxlst');
+            }else{
+                return json('添加失败');
+            }
+
         }else{
             $data =model('privilege')->getTree();
             $this->assign('data',$data);
 //        halt($data);
             return view();
         }
+
+    }
+    public function del(){
+        $id =input('post.id');
+        if (model('role')->del($id)){
+            return join(['msg'=>'删除成功']);
+        }else{
+            return join(['msg'=>'失败成功']);
+        }
+
 
     }
 }

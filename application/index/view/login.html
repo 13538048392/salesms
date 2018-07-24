@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
     <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-    <script src="/static/js/form.js"></script>
+    <script src="/static/js/login.js"></script>
 </head>
 <body>
 <div class="container">
@@ -20,11 +20,21 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="username"></label>
-                        <input type="text" placeholder="username|email|phone：" class="form-control" id="username" name="username">
+                        <input type="text" placeholder="username|email：" class="form-control" id="username" name="username">
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="password"> </label>
                         <input type="password" placeholder="password:" class="form-control" id="password" name="password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label for="verify"></label>
+                        <input type="text" placeholder="Verification Code" class="form-control" id="verify" name="verify">
+
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="{:captcha_src()}" id="imgverify" style="display: block;vertical-align: text-bottom">
                     </div>
                 </div>
                 <div class="row">
@@ -53,6 +63,8 @@
         </div>
     </div>
 </div>
-
+<script>
+    imgurl="<?php echo captcha_src();?>";
+</script>
 </body>
 </html>

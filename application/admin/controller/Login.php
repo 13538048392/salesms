@@ -42,9 +42,9 @@ class Login extends Controller
         	$where = 'a.id='.$check_user['id'];
         	$data = $admin_model->getAdmin($where);
         	// dump($data);
-        	Session::set('admin_name',$data[0]['username']);
-        	Session::set('uid',$data[0]['id']);
-            Session::set('role_name',$data[0]['role_name']);
+        	Session::set('admin_name',$data[$check_user['id']]['username']);
+        	Session::set('uid',$data[$check_user['id']]['id']);
+            Session::set('role_name',$data[$check_user['id']]['role_name']);
         	return json(['msg'=>'正在登陆！','status'=>200]);
         }
     }

@@ -104,7 +104,8 @@ $(function(){
 
             if(check.match('pri_id')){
                 $.post('{:url("role/edit")}',{str:str},function (data) {
-                    if(data =='ok'){
+                    if(data.length>100){
+                        parent.$(".page-container").html(data);
                         layer.msg('修改成功',{icon:1,time:2000});
                         setTimeout("layer_close()",1000);
                     }else{

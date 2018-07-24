@@ -37,6 +37,9 @@ class Role extends Model
             }
 
         });
+        Role::event('after_delete',function ($Role){
+            model("RolePri")->where('role_id='.$Role->id)->delete();
+        });
     }
     public function add($data){
         $this->allowField(true)->save($data);
@@ -65,5 +68,8 @@ class Role extends Model
             ->where('R.id='.$id)
             ->select()->toArray();
         return $data;
+    }
+    public function del($id){
+       return $this->destroy($id);
     }
 }

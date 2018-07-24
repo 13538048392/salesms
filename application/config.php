@@ -243,4 +243,21 @@ return [
         'var_page'  => 'page',
         'list_rows' => 15,
     ],
+    //验证码
+    'captcha'       =>  [
+        //字符集合
+        'codeSet'   =>  '234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        //验证码字体大小
+        'fontSize'  =>  16,
+        //开启混淆曲线
+        'useCurve'  =>  true,
+        //高度
+        'imageH'    =>  40,
+        //宽度
+        'imageW'    =>  130,
+        //字符长度
+        'length'    =>  4,
+        //验证成功后重置
+        'reset'     => true
+    ]
 ];

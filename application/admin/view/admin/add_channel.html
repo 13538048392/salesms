@@ -1,0 +1,70 @@
+{include file="../application/admin/view/public/_meta.html"}
+<article class="page-container">
+	<form class="form form-horizontal" id="form-admin-add" onsubmit="return false;">
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>渠道：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<input type="text" class="input-text" value="" placeholder="渠道" id="channel" name="channel" >
+		</div>
+	</div>
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>url：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="channel_url" name="channel_url" readonly="">
+		</div>
+	</div>
+	
+
+	<div class="row cl">
+		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+			<input class="btn btn-primary radius" id="create_url" type="submit" value="&nbsp;&nbsp;生成url&nbsp;&nbsp;">
+		</div>
+	</div>
+	</form>
+</article>
+
+<!--_footer 作为公共模版分离出去-->
+{include file="../application/admin/view/public/_footer.html"}
+<!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+});
+
+$('#create_url').click(function(){
+	var channel = $('#channel').val();
+
+			$.ajax({
+				url:'doAddChannel',
+				type:'post',
+				data:{'channel':channel},
+				success:function(msg){
+					if (msg.status != 200) {
+						layer.alert(msg.msg,{icon:5,time:2000});
+					}
+					else{
+						layer.msg(msg.msg,{icon:6,time:1000,end:function(){
+			              $('#channel_url').val(msg.url);
+			              $('#create_url').attr('disabled',true);
+			            }});
+						// var index = parent.layer.getFrameIndex(window.name);
+						// parent.$('.btn-refresh').click();
+						// parent.layer.close(index);
+					}	
+				}
+
+		    });
+});
+</script> 
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

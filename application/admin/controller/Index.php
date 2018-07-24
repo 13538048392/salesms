@@ -3,7 +3,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Index extends Controller
+class Index extends Common
 {
     public function index()
     {
@@ -11,6 +11,6 @@ class Index extends Controller
     }
     public function welcome(){
 
-        return $this->fetch();
+        return view();
     }
 }

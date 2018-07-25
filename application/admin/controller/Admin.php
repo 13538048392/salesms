@@ -172,14 +172,15 @@ class Admin extends Common
             return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
         }
         $insert_data['channel_name'] = $channel;
-        $insert_data['user_id'] = Session::get('uid');
+        $insert_data['admin_id'] = Session::get('uid');
         $find = SalesChannelModel::where($insert_data)->find();
         if ($find) {
             return json(['msg'=>'渠道已经存在','status'=>2]);
         }
         $channel_id = SalesChannelModel::insertGetId($insert_data);
         if ($channel_id) {
-            $url = $url = $_SERVER['SERVER_NAME'].'/index.php/index/register?userid='.urlsafe_b64encode(Session::get('uid')).'&channelid='.urlsafe_b64encode($channel_id);
+            $uid = Session::get('uid');
+            $url = $_SERVER['SERVER_NAME']."/register/index/adminid/$uid/channelid/$channel_id";
             return json(['msg'=>'添加成功，生成url!',
                          'status'=>200,
                          'url'=>$url]);

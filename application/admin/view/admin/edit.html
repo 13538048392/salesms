@@ -32,20 +32,31 @@ echo $_GET['id'];
           </td>
         </tr>
         
-        <tr style="display: {$is_root}">
+        <tr>
           <th class="text-r">角色：</th>
           <td>
             
               <!-- <select class="select" name="adminRole" id="adminRole" size="1">
                 
               </select> -->
+              
               {volist name="role" id="vo"}
+              {if  condition= "$is_root neq ''"}
+              {if  condition= "$vo['role_name'] eq '超级管理员'"}
+                <label>
+                <input type="checkbox" disabled="" value="{$vo['id']}" name="adminRole" id="" {php}if(in_array($vo['id'],$role_array)){echo 'checked';}{/php}>
+                {$vo['role_name']}
+                </label>
+              {/if}
+              {else/}
+              {if  condition= "$vo['role_name'] neq '超级管理员'"}
                 <label>
                 <input type="checkbox" value="{$vo['id']}" name="adminRole" id="" {php}if(in_array($vo['id'],$role_array)){echo 'checked';}{/php}>
                 {$vo['role_name']}
                 </label>
+              {/if}
+              {/if}
               {/volist}
-
           </td>
         </tr>
         

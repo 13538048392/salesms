@@ -17,11 +17,11 @@ class Common extends Controller
         if($uid==1){
             return;
         }
-//         $data =model('admin')->chkPri($uid);
-//         if($data['has']==0){
-//            echo "<h1>您无权访问</h1>";exit;
-// //            $this->redirect(url('admin/Login/login'));
-//         }
+         $data =model('admin')->chkPri($uid);
+         if($data['has']==0){
+            echo "<h1>您无权访问</h1>";exit;
+ //            $this->redirect(url('admin/Login/login'));
+         }
 
 
     }

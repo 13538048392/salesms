@@ -48,7 +48,7 @@ class Admin extends Common
         }
         // dump($role_ids);
         //角色选项框集合
-        $role = SalesRoleModel::where('role_name','<>','超级管理员')->select()->toArray();
+        $role = SalesRoleModel::select()->toArray();
         return view('edit',['user'=>$user,
                             'role'=>$role,
                             'role_array'=>$role_array,
@@ -167,6 +167,10 @@ class Admin extends Common
         if ($channel == '') {
             return json(['msg'=>'渠道不能为空','status'=>1]);
         }
+        $count = SalesChannelModel::where('user_id',Session::get('uid'))->count();
+        if ($count == 10) {
+            return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
+        }
         $insert_data['channel_name'] = $channel;
         $insert_data['user_id'] = Session::get('uid');
         $find = SalesChannelModel::where($insert_data)->find();
@@ -175,7 +179,7 @@ class Admin extends Common
         }
         $channel_id = SalesChannelModel::insertGetId($insert_data);
         if ($channel_id) {
-            $url = $url = $_SERVER['SERVER_NAME'].'/index.php/index/register?userid='.base64_encode(Session::get('uid')).'&&channelid='.base64_encode($channel_id);
+            $url = $url = $_SERVER['SERVER_NAME'].'/index.php/index/register?userid='.urlsafe_b64encode(Session::get('uid')).'&channelid='.urlsafe_b64encode($channel_id);
             return json(['msg'=>'添加成功，生成url!',
                          'status'=>200,
                          'url'=>$url]);
@@ -186,6 +190,12 @@ class Admin extends Common
         
 
     }
+    // public function decode(){
+    //测试urlsafe_b64decode
+    //    echo urlsafe_b64decode('MzU');
+    //    echo '<br>';
+    //    echo urlsafe_b64decode('MjQ');
+    // }
 
 
 }

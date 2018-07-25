@@ -36,8 +36,11 @@
 				<td>{$vo['id']}</td>
 				<td>{$vo['username']}</td>
 
+				<?php if($vo['id'] ==1):?>
+				<td>超级管理员</td>
+				<?php else:?>
 				<td>{$vo['role_name']}</td>
-
+				<?php endif;?>
 				<td class="td-status">
 					{php}
 					if($vo['status'] == 1){

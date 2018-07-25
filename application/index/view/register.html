@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="/static/css/bootstrap.css" >
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
     <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script>
+        url_username="<?php echo url('register/checkUser','','',true)?>";
+        url_email="<?php echo url('register/checkEmail','','',true)?>";
+    </script>
     <script src="/static/js/form.js"></script>
 </head>
 <body >
@@ -38,12 +42,14 @@
                         <label for="confirm_password"> </label>
                         <input type="password" placeholder="Confirm Password:" class="form-control" id="confirm_password" name="confirm_password" >
                     </div>
+                </div>
+                <div>
                     <div class="col-sm-12 form-group">
                         <button type="submit" name="btnContactUs" class="btn btn-lg btn-success btn-block" id="btnContactUs">提交</button>
                     </div>
                 </div>
             </form>
-            <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully!</h3> </div>
+            <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Sent your message successfully! Please activate your account to your mailbox </h3> </div>
             <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
         </div>
     </div>

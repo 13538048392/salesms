@@ -18,7 +18,6 @@ class Login extends Controller
     public function __construct(Request $request = null)
     {
         parent::__construct($request);
-        $this->redirect('/index/index/register');
     }
     public function index()
     {

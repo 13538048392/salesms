@@ -18,6 +18,21 @@ $(function () {
                         max: 18,
                         message: '用户名长度必须在6到18位之间'
                     },
+                    threshold: 6,
+                    remote: {
+                        url: url_username,//验证地址
+                        message: '用户已存在',//提示消息
+                        delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                        type: 'POST'//请求方式
+                        /**自定义提交数据，默认值提交当前input value
+                         *  data: function(validator) {
+                               return {
+                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
+                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
+                               };
+                            }
+                         */
+                    },
                     regexp: {
                         regexp: /^[a-zA-Z0-9_\-]+$/,
                         message: '用户名只能包含大写、小写、数字、下划线和-'
@@ -31,6 +46,21 @@ $(function () {
                     },
                     emailAddress: {
                         message: '邮箱地址格式有误'
+                    },
+                    threshold: 9,
+                    remote: {
+                        url: url_email,//验证地址
+                        message: '邮箱已经使用',//提示消息
+                        delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                        type: 'POST'//请求方式
+                        /**自定义提交数据，默认值提交当前input value
+                         *  data: function(validator) {
+                               return {
+                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
+                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
+                               };
+                            }
+                         */
                     }
                 }
             },
@@ -90,7 +120,14 @@ $(function () {
         var bv = $form.data('bootstrapValidator');
         // Use Ajax to submit form data
         $.post($form.attr('action'), $form.serialize(), function (result) {
-            console.log(result);
+            if (result == '1') {
+                $('#error_message').css('display', 'block').html('请完善个人信息');
+
+            } else if (result == 'ok') {
+                $('#success_message').css('display', 'block');
+            } else {
+                $('#error_message').css('display', 'block');
+            }
         }, 'json');
     });
 });

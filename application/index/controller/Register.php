@@ -23,22 +23,28 @@ class Register extends Controller
     public function index(Request $request = null)
     {
         $arr = $request->param();
-        if (!empty($arr) && isset($arr['userid'], $arr['channelid'])) {
-            $userid = $arr['userid'];
-            $channelid = $arr['channelid'];
-            $channel = new Channel();
-            $result = $channel->channelIsExist($userid, $channelid);
-            if (!$result->isEmpty()) {
-                Session::set('user.userid', $userid);
-                Session::set('user.channelid', $channelid);
-                return $this->view->fetch('/register');
+        if (!empty($arr)) {
+            if (isset($arr['userid'], $arr['channelid'])) {
+                $userid=$arr['userid'];
+                $channelid=$arr['channelid'];
+                $channel = new Channel();
+                $result = $channel->channelIsExist($userid, 0, $channelid);
+                if (!$result->isEmpty()) {
+                    Session::set('user.userid', $userid);
+                    Session::set('user.channelid', $channelid);
+                    return $this->view->fetch('/register');
+                }
             } else {
-                echo 'RegisterUrlCode is not exists';//不是有效的RegisterUrlCode
-                exit;
+                $adminid = $arr['adminid'];
+                $channelid = $arr['channelid'];
+                $channel = new Channel();
+                $result = $channel->channelIsExist(0, $adminid, $channelid);
+                if (!$result->isEmpty()) {
+                    Session::set('user.userid', $adminid);
+                    Session::set('user.channelid', $channelid);
+                    return $this->view->fetch('/register');
+                }
             }
-        } else {
-            echo 'RegisterUrlCode is not exists';
-            exit;
         }
     }
 
@@ -56,8 +62,8 @@ class Register extends Controller
                     $refererId = Session::get('user.userid');
                     $channelId = Session::get('user.channelid');
                     $user = new User();
-                    $result= $user->userRegister($username, $pwd, $email, $refererId, $channelId);
-                    if($result||$result===0){
+                    $result = $user->userRegister($username, $pwd, $email, $refererId, $channelId);
+                    if ($result || $result === 0) {
                         $pwd = base64_encode($pwd);
                         $url = url('index/register/activation', '', '', true);
                         $url .= '/username/' . $username . '/pwd/' . $pwd;
@@ -67,15 +73,13 @@ class Register extends Controller
                         $mail = new \Mailer();
                         $result = $mail->send($email, $subject, $body);
                         if ($result) {
-                            return json(['0'=>'邮件发送成功']); //邮件发送成功
+                            return json(['resp_code' => '0', 'msg' => 'Sent your message successfully! Please activate your account to your mailbox']); //邮件发送成功
                         } else {
-                            return json(['1'=>'邮件发送失败']);//邮件发送失败
+                            return json(['resp_code' => '1', 'msg' => 'Email failed to register again ']);//邮件发送失败
                         }
-                    }else{
-                        return json(['3'=>'数据库发生错误']);
                     }
                 } else {
-                    return json(['4'=>'用户信息不完善']);//用户信息填写不完善
+                    return json(['resp_code' => '2', 'msg' => 'Sorry there was an error sending your form.']);//用户信息填写不完善
                 }
             } else {
                 return $this->error('非法请求');//非法提交表达
@@ -90,43 +94,39 @@ class Register extends Controller
             $user = new User();
             $result = $user->userNameIsExist($userName);
             if ($result) {
-                return false;
+                echo json_encode(['valid' => false]);
+            } else {
+                echo json_encode(['valid' => true]);
             }
         }
-    }
-
-    public function checkCode()
-    {
-
     }
 
     public function checkEmail()
     {
-        if(isset($_POST)){
-            $email=input('email');
-            $user=new User();
-            $result=$user->userEmailIsExist($email);
-            if($result)
-            {
-                return false;
+        if (isset($_POST)) {
+            $email = input('email');
+            $user = new User();
+            $result = $user->userEmailIsExist($email);
+            if ($result) {
+                echo json_encode(['valid' => false]);
+            } else {
+                echo json_encode(['valid' => true]);
             }
         }
     }
+
     public function activation(Request $request)
     {
-        $arr=$request->param();
+        $arr = $request->param();
         $username = $request->param('username');
         $pwd = base64_decode($request->param('pwd'));
-        if(!empty($username) && !empty($pwd)) {
-            $user=new User();
-            $result=$user->userActivation($username,$pwd);
-            return $result;
+        if (!empty($username) && !empty($pwd)) {
+            $user = new User();
+            $result = $user->userActivation($username, $pwd);
+            if ($result !== false) {
+                $this->redirect('/login/index');
+            }
         }
     }
 
-    public function baseUrl()
-    {
-        $result=base64_encode('1');
-        return $result;
-    }
 }

@@ -13,10 +13,6 @@ use think\Model;
 
 class UserInfo extends Model
 {
-    public function __construct($data = [])
-    {
-        parent::__construct($data);
-    }
 
     public function updateUserInfo($userid, $firstname, $lastname, $phone, $address, $wechat, $gender)
     {
@@ -30,6 +26,11 @@ class UserInfo extends Model
             'gender' => $gender
         ];
         $this->data($data)->save();
+    }
+
+    public function getUserInfoById($usreid)
+    {
+        return $this->limit(1)->where(['user_id' => $usreid])->select();
     }
 
 }

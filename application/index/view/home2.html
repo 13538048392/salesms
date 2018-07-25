@@ -1,33 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
-    <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-    <!--<script src="/static/js/form.js"></script>-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-</head>
-<body>
-<div class="container">
-    <div class="container-fluid">
-        <h1 class="text-center">用户个人信息</h1>
-        <button class="glyphicon glyphicon-user" id="btn"></button>
-    </div>
-    <div class="row">
-        <div class="col-md-2 " id="infocenter">
-            <ul class="nav nav-pills nav-stacked " >
-                <li role="presentation"><h3>
-                    <a href="javascript:;" id="personal">Personal Center</a></h3></li>
-                <!--<li role="presentation"><h3><a href="#" id="profile">Profile</a></h3></li>-->
-                <li role="presentation"><h3><a href="#" id="channel">Channel</a></h3></li>
-            </ul>
-        </div>
-        <div class="col-md-7 col-md-offset-1" id="content">
+
             <form>
                 <div class="form-group" >
                     <div class="col-md-5" style="margin-left: -15px;margin-bottom: 10px;">
@@ -70,26 +41,3 @@
 
                 <button type="submit" class="btn btn-danger">Submit</button>
             </form>
-        </div>
-    </div>
-</div>
-
-
-</body>
-</html>
-<script>
-    $("#btn").click(function () {
-        $("#infocenter").toggle();
-    });
-    $("#personal").click(function () {
-        $.post('{:url("index/personal")}','',function (data) {
-            $("#content").html(data);
-        });
-    });
-
-    $("#channel").click(function () {
-        $.post('{:url("index/channel")}','',function (data) {
-            $("#content").html(data);
-        });
-    });
-</script>

@@ -3,7 +3,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Privilege extends Controller
+class Privilege extends Common
 {
     public function lst()
     {

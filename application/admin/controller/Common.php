@@ -1,15 +1,29 @@
 <?php
 namespace app\admin\controller;
 
+
 use think\Controller;
 use think\Session;
+
 
 class Common extends Controller
 {
     public function __construct(){
-//        $uid = Session::get('uid');
-//        if (!isset($uid)) {
+        parent::__construct();
+        $uid = Session::get('uid');
+        if (!isset($uid)) {
+            $this->redirect(url('admin/Login/login'));
+        }
+        if($uid==1){
+            return;
+        }
+        $data =model('admin')->chkPri($uid);
+        if($data['has']==0){
+           echo "<h1>您无权访问</h1>";exit;
 //            $this->redirect(url('admin/Login/login'));
-//        }
+        }
+
+
     }
+
 }

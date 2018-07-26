@@ -132,22 +132,17 @@ class Admin extends Common
         
     }
 
-    public function isStop(){
+    public function enable(){
         //停用
         $id = input('post.id');
-        $res = AdminModel::where('id',$id)->update(['status'=>0]);
-        if ($res) {
-            return json(['status'=>'200']);
+        $type = input('post.type');
+        $res = '';
+        if ($type == 1) {
+            $res = AdminModel::where('id',$id)->update(['status'=>1]);
         }
-        else{
-            return json(['status'=>'0']);
+        if ($type == 0) {
+            $res = AdminModel::where('id',$id)->update(['status'=>0]);
         }
-    }
-
-    public function isUse(){
-        //启用
-        $id = input('post.id');
-        $res = AdminModel::where('id',$id)->update(['status'=>1]);
         if ($res) {
             return json(['status'=>'200']);
         }
@@ -181,9 +176,16 @@ class Admin extends Common
         if ($channel_id) {
             $uid = Session::get('uid');
             $url = $_SERVER['SERVER_NAME']."/register/index/adminid/$uid/channelid/$channel_id";
-            return json(['msg'=>'添加成功，生成url!',
+            $update_url = SalesChannelModel::where('channel_id',$channel_id)->update(['url_code'=>$url]);
+            if ($update_url) {
+                return json(['msg'=>'添加成功，生成url!',
                          'status'=>200,
                          'url'=>$url]);
+            }
+            else{
+                return json(['msg'=>'生成url失败','status'=>4]);
+            }
+            
         }
         else{
             return json(['msg'=>'添加失败！','status'=>0]);

@@ -9,8 +9,8 @@
 namespace app\index\model;
 
 
-use think\Loader;
 use think\Model;
+use think\Db;
 
 class User extends Model
 {
@@ -20,8 +20,8 @@ class User extends Model
             'user_name' => $username,
             'pass' => $password,
             'email' => $email,
-            'referee_id'=>$referee_id,
-            'channel_id'=>$channel_id
+            'referee_id' => $referee_id,
+            'channel_id' => $channel_id
         ];
         return $this->save();
     }
@@ -42,6 +42,13 @@ class User extends Model
     }
 
     public function userNameIsExist($username)
+    {
+        if (isset($username) && !empty($username)) {
+            return $this->limit(1)->where(['user_name' => $username])->find();
+        }
+    }
+
+    public function userLogin($username)
     {
         if (isset($username) && !empty($username)) {
             return $this->limit(1)->where(['user_name' => $username])->find();

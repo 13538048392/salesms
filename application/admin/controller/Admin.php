@@ -58,20 +58,21 @@ class Admin extends Common
 
     public function doEdit(){
         //管理员修改页面执行
+        $id = input('post.id');
         if (input('post.newpassword') != '' || input('post.newpassword2') != '') {
             // return json(['msg'=>'密码不能为空！','status'=>3]);
             if (input('post.newpassword') != input('post.newpassword2')) {
                 return json(['msg'=>'两次输入密码不一致！','status'=>1]);
             }
-        }
-        
-            $newpassword = password_hash(input('post.newpassword'),PASSWORD_DEFAULT);
-            $id = input('post.id');
-            $res = AdminModel::where('id',$id)->update(['pass'=>$newpassword]);
-            if (!$res) {
-                return json(['msg'=>'修改失败！','status'=>2]);
+            else{
+                $newpassword = password_hash(input('post.newpassword'),PASSWORD_DEFAULT);
+                $res = AdminModel::where('id',$id)->update(['pass'=>$newpassword]);
+                if (!$res) {
+                    return json(['msg'=>'修改失败！','status'=>2]);
+                }
             }
-            
+        }
+ 
             $role_ids = explode(',',input('post.role'));
             foreach ($role_ids as $key => $value) {
                 $insert_admin_role[$key]['admin_id'] = $id;

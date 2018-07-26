@@ -142,9 +142,9 @@ function admin_stop(obj,id){
 		$(obj).parents("tr").find(".td-status").html('<span class="label label-default radius">已禁用</span>');
 		$(obj).remove();
 		$.ajax({
-			url:'isStop',
+			url:'enable',
 			type:'post',
-			data:{'id':id},
+			data:{'id':id,'type':0},
 			success:function(msg){
 				if (msg.status == 200) {
 					layer.msg('已停用!',{icon: 6,time:1000});
@@ -170,9 +170,9 @@ function admin_start(obj,id){
 		$(obj).parents("tr").find(".td-status").html('<span class="label label-success radius">已启用</span>');
 		$(obj).remove();
 		$.ajax({
-			url:'isUse',
+			url:'enable',
 			type:'post',
-			data:{'id':id},
+			data:{'id':id,'type':1},
 			success:function(msg){
 				if (msg.status == 200) {
 					layer.msg('已启用!',{icon: 6,time:1000});

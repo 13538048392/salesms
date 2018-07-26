@@ -132,22 +132,17 @@ class Admin extends Common
         
     }
 
-    public function isStop(){
+    public function enable(){
         //停用
         $id = input('post.id');
-        $res = AdminModel::where('id',$id)->update(['status'=>0]);
-        if ($res) {
-            return json(['status'=>'200']);
+        $type = input('post.type');
+        $res = '';
+        if ($type == 1) {
+            $res = AdminModel::where('id',$id)->update(['status'=>1]);
         }
-        else{
-            return json(['status'=>'0']);
+        if ($type == 0) {
+            $res = AdminModel::where('id',$id)->update(['status'=>0]);
         }
-    }
-
-    public function isUse(){
-        //启用
-        $id = input('post.id');
-        $res = AdminModel::where('id',$id)->update(['status'=>1]);
         if ($res) {
             return json(['status'=>'200']);
         }

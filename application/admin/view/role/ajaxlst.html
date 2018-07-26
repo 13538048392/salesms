@@ -24,8 +24,10 @@
         <td><input type="checkbox" value="" name=""></td>
         <td>{$vo['id']}</td>
         <td>{$vo['role_name']}</td>
-        <td><a href="#">小明。小黄，带更新</a></td>
-        <td>{$vo['pri_name']}</td>
+        <?php $username =array_unique(explode(',',$vo['username']));$username =implode(',',$username);?>
+        <td><a href="#">{$username}</a></td>
+        <?php $pri_name =array_unique(explode(',',$vo['pri_name']));$pri_name =implode(',',$pri_name);?>
+        <td>{$pri_name}</td>
         <td class="f-14">
             <a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','/admin456salesms.php/role/edit?id={$vo.id}','1')" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>
             <a title="删除" href="javascript:;" onclick="admin_role_del(this,'{$vo.id}')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>

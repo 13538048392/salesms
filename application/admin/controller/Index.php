@@ -4,7 +4,7 @@ namespace app\admin\controller;
 use think\Controller;
 use think\Session;
 
-class Index extends Common
+class Index extends Controller
 {
     public function __construct()
     {

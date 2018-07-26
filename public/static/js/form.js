@@ -18,6 +18,7 @@ $(function () {
                         max: 18,
                         message: '用户名长度必须在6到18位之间'
                     },
+                    verbose: false,
                     threshold: 6,
                     remote: {
                         url: url_username,//验证地址
@@ -47,10 +48,11 @@ $(function () {
                     emailAddress: {
                         message: '邮箱地址格式有误'
                     },
-                    threshold: 9,
+                    verbose: false,
+                    threshold: 6,
                     remote: {
                         url: url_email,//验证地址
-                        message: '邮箱已经使用',//提示消息
+                        message: '邮箱已使用',//提示消息
                         delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
                         type: 'POST'//请求方式
                         /**自定义提交数据，默认值提交当前input value
@@ -120,13 +122,13 @@ $(function () {
         var bv = $form.data('bootstrapValidator');
         // Use Ajax to submit form data
         $.post($form.attr('action'), $form.serialize(), function (result) {
-            if (result == '1') {
-                $('#error_message').css('display', 'block').html('请完善个人信息');
-
-            } else if (result == 'ok') {
-                $('#success_message').css('display', 'block');
+            if (result.resp_code == 0) {
+                setTimeout(function () {
+                    $('#success_message').css('display', 'block').html(result.msg);
+                    location.href = url_login;
+                }, 4);
             } else {
-                $('#error_message').css('display', 'block');
+                $('#error_message').css('display', 'block').html(result.msg);
             }
         }, 'json');
     });

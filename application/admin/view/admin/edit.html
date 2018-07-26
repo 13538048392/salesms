@@ -31,7 +31,7 @@ echo $_GET['id'];
           <td><input name="newpassword2" id="newpassword2" class="input-text" type="password" autocomplete="off" placeholder="确认新密码(如果不需要更改密码可以空着，密码不会发生变化！)" tabindex="3" datatype="*" recheck="newpassword" nullmsg="请再输入一次新密码！" errormsg="您两次输入的新密码不一致！"> 
           </td>
         </tr>
-        
+        <?php if($user[$uid]['id']!=1):?>
         <tr>
           <th class="text-r">角色：</th>
           <td>
@@ -59,7 +59,7 @@ echo $_GET['id'];
               {/volist}
           </td>
         </tr>
-        
+        <?php endif;?>
         <tr>
           <th></th>
           <td>

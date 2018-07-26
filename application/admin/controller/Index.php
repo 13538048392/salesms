@@ -3,7 +3,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 
-class Index extends Common
+class Index extends Controller
 {
     public function index()
     {

@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <h2>User Login</h2>
-            <form role="form" method="post" id="reused_form" action="{:url('register/register')}">
+            <form role="form" method="post" id="reused_form" action="{:url('login/login')}">
                 <input type="hidden" name="__token__" value="{$Request.token}"/>
                 <div class="row">
                     <div class="col-sm-6 form-group">
@@ -31,22 +31,14 @@
                     <div class="col-sm-6 form-group">
                         <label for="verify"></label>
                         <input type="text" placeholder="Verification Code" class="form-control" id="verify" name="verify">
-
                     </div>
-                    <div class="col-sm-6">
-                        <img src="{:captcha_src()}" id="imgverify" style="display: block;vertical-align: text-bottom">
+                    <div class="col-sm-6 form-group" style="padding-top: 15px">
+                        <img src="{:captcha_src()}" id="imgverify"  style="display: block;vertical-align: text-bottom">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="remember"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 form-group">
-                        <a class="btn btn-default" href="#" role="button">Forgot Password</a>
+                        <a  href="#" role="button">Forgot Password</a>
                     </div>
                 </div>
                 <div class="row">
@@ -65,6 +57,7 @@
 </div>
 <script>
     imgurl="<?php echo captcha_src();?>";
+    checkCodeUrl="<?php echo url('login/checkValidateCode','','',true)?>";
 </script>
 </body>
 </html>

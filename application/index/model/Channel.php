@@ -13,8 +13,12 @@ use think\Model;
 
 class Channel extends Model
 {
-    public function channelIsExist($userId, $channelId)
+    public function channelIsExist($userId, $adminId, $channelId)
     {
-        return $this->limit(1)->where(['channel_id' => $channelId, 'user_id' => $userId])->select();
+        if ($userId !== 0) {
+            return $this->limit(1)->where(['channel_id' => $channelId, 'user_id' => $userId])->select();
+        } else {
+            return $this->limit(1)->where(['channel_id' => $channelId, 'admin_id' => $adminId])->select();
+        }
     }
 }

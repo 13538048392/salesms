@@ -26,7 +26,7 @@ class Login extends Controller
     		return json(['msg'=>'验证码不能为空！','status'=>3]);
     	}
     	$admin_model = new AdminModel();
-        $check_user = $admin_model->where('username',$username)->find();
+        $check_user = $admin_model->where(['username'=>$username,'status'=>1])->find();
         if (!$check_user) {
         	return json(['msg'=>'用户名不存在！','status'=>5]);
         }

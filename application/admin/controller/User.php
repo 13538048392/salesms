@@ -16,11 +16,17 @@ class User extends Common
         return view('member_lst',['member'=>$member,'count'=>count($member)]);
     }
 
-
-    public function isStop(){
+    public function enable(){
         //停用
         $id = input('post.id');
-        $res = UserModel::where('user_id',$id)->update(['status'=>0]);
+        $type = input('post.type');
+        $res = '';
+        if ($type == 1) {
+            $res = UserModel::where('user_id',$id)->update(['status'=>1]);
+        }
+        if ($type == 0) {
+            $res = UserModel::where('user_id',$id)->update(['status'=>0]);
+        }
         if ($res) {
             return json(['status'=>'200']);
         }
@@ -28,20 +34,5 @@ class User extends Common
             return json(['status'=>'0']);
         }
     }
-
-    public function isUse(){
-        //启用
-        $id = input('post.id');
-        $res = UserModel::where('user_id',$id)->update(['status'=>1]);
-        if ($res) {
-            return json(['status'=>'200']);
-        }
-        else{
-            return json(['status'=>'0']);
-        }
-    }
-
-    
-
 
 }

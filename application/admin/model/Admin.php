@@ -2,6 +2,7 @@
 
 namespace app\admin\model;
 
+use think\Db;
 use think\Model;
 
 class Admin extends Model
@@ -51,6 +52,32 @@ class Admin extends Model
             ->where($where)
             ->find()->toArray();
         return $data;
+    }
+    //获取_menu权限列表
+    public function getBtns(){
+        $id = session('uid');
+        if ($id ==1){
+            $priData =Db::name('privilege')->select();
+        }else{
+            $priData=$this->alias('A')->field('P.*')
+                ->join('admin_role AR','A.id=AR.admin_id','left')
+                ->join('role_pri RP','AR.role_id=RP.role_id','left')
+                ->join('privilege P','P.id=RP.pri_id','left')
+                ->where('A.id='.$id)
+                ->select()->toArray();
+        }
+        $ret =array();
+        foreach($priData as $v){
+            if ($v['parent_id'] ==0){
+                foreach($priData as $v1){
+                    if ($v1['parent_id']==$v['id']){
+                        $v['children'][]=$v1;
+                    }
+                }
+                $ret[]=$v;
+            }
+        }
+        return $ret;
     }
 
 

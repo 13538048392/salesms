@@ -48,7 +48,7 @@
 									?>
 
 									<label class="">
-										<input type="checkbox" value="{$data[$index]['id']}" name="pri_id[]" id="user-Character-0-0-0" {if condition="(in_array($v['id'],$onedata[2]))" } checked {/if}>
+										<input type="checkbox" value="{$data[$index]['id']}" name="pri_id[]" id="user-Character-0-0-0" {if condition="(in_array($data[$index]['id'],$onedata[2]))" } checked {/if}>
 										{$data[$index]['pri_name']}</label>
 									<?php endforeach;?>
 									<!--<label class="">-->
@@ -119,9 +119,9 @@ $(function(){
 
 
         });
-	$(".permission-list dt input:checkbox").click(function(){
-		$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
-	});
+	// $(".permission-list dt input:checkbox").click(function(){
+	// 	$(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+	// });
 	// $(".permission-list2 dd input:checkbox").click(function(){
 	// 	var l =$(this).parent().parent().find("input:checked").length;
 	// 	var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;

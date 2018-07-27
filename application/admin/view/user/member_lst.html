@@ -5,14 +5,8 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 会员列表 <span class="c-gray en">&gt;</span> 会员列表 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
 
-	<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
-		<!--<a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> -->
-		<!-- <a href="javascript:;" onclick="admin_add('添加管理员','/admin456salesms.php/admin/add.html','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加管理员</a>
-		<a href="javascript:;" onclick="admin_add('添加渠道','/admin456salesms.php/admin/addChannel.html','800','300')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加渠道</a> -->
-	</span>
-
-		 <span class="r">共有数据：<strong></strong> {$count}条</span> </div>
-	<table class="table table-border table-bordered table-bg" id="admin_table">
+	
+	<table class="table table-border table-bordered table-bg" id="member_list">
 		<thead>
 			<tr>
 				<th scope="col" colspan="9">会员列表</th>
@@ -97,13 +91,15 @@
 <script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
-// $(document).ready( function () {
-//           $('#admin_table').dataTable( {
-//             	searching : false, //去掉搜索框方法
-//             	bLengthChange: false,   //去掉每页显示多少条数据方法
+$(document).ready( function () {
+          $('#member_list').dataTable( {
+            	// searching : false, //去掉搜索框方法
+            	// bLengthChange: false,   //去掉每页显示多少条数据方法
+            	bAutoWidth: false,                   //是否启用自动适应列宽
+
             
-//           } );
-//         } );
+          } );
+        } );
 
 /*
 	参数解释：

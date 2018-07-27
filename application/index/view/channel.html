@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+
+    <meta charset="UTF-8"/>
     <title>Title</title>
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
@@ -11,6 +11,11 @@
     <script src="/static/js/home.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script>
+        url_addChannel="<?php echo url('/channel/addChannel')?>";
+        url_deleteChannel="<?php echo url('/channel/deleteChannel')?>";
+        data_channel="<?php echo session('userid') ?>";
+    </script>
 </head>
 <body>
 <div class="container">
@@ -29,28 +34,38 @@
                 </h3></li>
             </ul>
         </div>
-        <div class="col-md-3 col-md-offset-1" id="content">
+        <div class="col-md-8 col-md-offset-1" id="content">
             <div>
-                <form role="form" method="post" id="reused_form" action="{:url('channel/addChannel',['userid'=>Session('userid')])}">
-                    <div class="form-group">
-                        <label for="channel"></label>
-                        <input type="text" class="form-control" placeholder="Channel Name" id="channel" name="channel_name">
+                <form class="form-inline">
+                    <div class="form-group col-md-8">
+                        <label for="exampleInputEmail2" style="margin-left: -10px;margin-right: 10px">Channel Name</label>
+                        <input type="text" class="form-control" name="channel_name" id="channel_name" placeholder="Channel Name" style="width: 70%">
                     </div>
-                    <button type="submit" class="btn btn-danger">Submit</button>
+                    <button type="submit" id="addChannel" class="btn btn-default">Submit</button>
                 </form>
             </div>
-            <div style="padding-top: 20px">
-                <?php foreach($data as $key=>$val):?>
-                <div class="form-group">
-                    <span>{$val.channel_name}</span> <label name="urlcode">{$val.url_code}</label>
-                    <a name="del" href="{:url('channel/deleteChannel',['channel_id'=>$val.channel_id])}" />删除
-                </div>
-                <?php endforeach;?>
+            <div style="padding-top: 20px" >
+                <table class="table" style="width: 100%">
+                    <tr>
+                        <th>Channel Name</th>
+                        <th>UrlCode</th>
+                        <th>操作</th>
+                    </tr>
+                    <?php foreach($data as $key=>$val):?>
+                    <tr>
+                        <td>{$val.channel_name}</td>
+                        <td>{$val.url_code}</td>
+                        <td><button type="button"  value="{$val.channel_id}" class="btn btn-danger del">删除</button></td>
+                    </tr>
+                    <?php endforeach;?>
+                </table>
+
             </div>
 
         </div>
     </div>
 </div>
-
+<script>
+</script>
 </body>
 </html>

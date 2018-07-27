@@ -40,15 +40,42 @@ $(function () {
         var $form = $(e.target);
         var bv = $form.data('bootstrapValidator');
         $.post($form.attr('action'), $form.serialize(), function (result) {
-            if(result.resp_code==0||result.resp_code==1){
+            if (result.resp_code == 0 || result.resp_code == 1) {
                 alert('更新成功！');
                 location.reload();
             }
         }, 'json');
     });
-   $('#delChannel').click(function () {
-       $.post(delUrl,{"channel_id":},function (result) {
+    $('.del').click(function () {
+       var tr= $(this).parent().parent();
+        $.ajax({
+                url: url_deleteChannel,
+                type: 'POST',
+                data: {'channel_id':$(this).val()},
+                dataType: 'json',
+                success: function (result) {
+                     if(result.resp_code==0){
+                            tr.remove();
+                     }
 
-       });
-   })
+                }
+            });
+    });
+    $('#addChannel').click(function () {
+        var tr= $(this).parent().parent();
+        $.ajax({
+            url: url_addChannel,
+            type: 'POST',
+            data: {"userid":data_channel,"channel_name":$('#channel_name').val()},
+            dataType: 'json',
+            success: function (result) {
+                if(result.resp_code==0)
+                {
+                    location.reload();
+                }else {
+                    alert(result.msg);
+                }
+            }
+        });
+    });
 });

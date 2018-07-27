@@ -18,10 +18,8 @@ class Channel extends Controller
     {
         $userid = $request->param('userid');
         $channel = new \app\index\model\Channel();
-        $data = $channel->getChannelById($userid);
-//        print_r($data);
-//        exit;
-        return view('/channel', ['data' => $data]);
+        $data = $channel->getChannelByUserId($userid);
+        return view('/channel', ['data' => $data->toArray()]);
     }
 
     public function addChannel(Request $request)
@@ -32,12 +30,17 @@ class Channel extends Controller
             $channel = new \app\index\model\Channel();
             $num = $channel->getChannelNumById($userId);
             if ($num < 10) {
-                $result = $channel->addChannel($userId, 0, $channelName);
-                if($result){
-                    return "<script>location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
+                $channelId = $channel->addChannel($userId, 0, $channelName);
+                if ($channelId) {
+                    $url = $_SERVER['SERVER_NAME'] . "/register/index/userid/$userId/channelid/$channelId";
+                    $result = $channel->UpdateByChannelId($channelId, $url);
+                    if ($result) {
+                        $data=$channel->getChannelById($channelId);
+                        return json(['resp_code' => 0, 'msg' => $data]);
+                    }
                 }
-            }else{
-                return "<script>alert('最多添加十个');location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
+            } else {
+                return json(['resp_code' => 1, 'msg' => '最多增加10个渠道']);
             }
         }
     }
@@ -49,7 +52,7 @@ class Channel extends Controller
             $channel = new \app\index\model\Channel();
             $result = $channel->deleteChannel($channelId);
             if ($result && $result !== false) {
-                return "<script>location.href='".$_SERVER["HTTP_REFERER"]."';</script>";
+                return json(['resp_code' => 0, 'msg' => 'true']);
             }
         }
     }

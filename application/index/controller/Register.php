@@ -34,10 +34,10 @@ class Register extends Controller
         $_uid = -1;
         if (isset($arr['userid'])) {
             $arr['adminid'] = 0;
-            $_uid = $arr['userid']
+            $_uid = $arr['userid'];
         } else {
             $arr['userid'] = 0;
-            $_uid=$arr['adminid'];
+            $_uid = $arr['adminid'];
         }
         $channel = new Channel();
         $result = $channel->channelIsExist($arr['userid'], $arr['adminid'], $arr['channelid']);

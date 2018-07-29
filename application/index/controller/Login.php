@@ -24,7 +24,7 @@ class Login extends Controller
     public function index()
     {
         if (Session::has('user.username')) {
-            $this->redirect('index/index');
+            $this->redirect('home/index', ['userid' => session('userid')]);
 //        } elseif (Cookie::has('user.username')) {
             //            $username = Cookie::get('user.username');
             //            $password = Cookie::get('user.password');
@@ -45,23 +45,19 @@ class Login extends Controller
             $password = input('password');
             $user = new User();
             $result = $user->userLogin($username);
-            if ($result && $result !== false) {
-                if (password_verify($password, $result['pass'])) {
-                    if ($result['active'] == 0) {
-                        return json(['resp_code' => 3, 'msg' => 'Email is not verified']);
-                    } else {
-                        Session::set('user.username', $username);
-                        Session::set('userid', $result['user_id']);
-                        // Cookie::set('user,username', $result['user_id'], 604800);
-                        // Cookie::set('user.password', $user['pass'], 604800);
-                        return json(['resp_code' => 0, 'user_id' => $result['user_id']]);
-                    }
-                } else {
-                    return json(['resp_code' => 2, 'msg' => 'password is unavailable']);
-                }
-            } else {
-                return json(['resp_code' => 1, 'msg' => 'user is unavailable']);
+            if ($result == null) {
+                return json(['resp_code' => 1, 'msg' => '用户名不存在']);
             }
+            if (!password_verify($password, $result['pass'])) {
+                return json(['resp_code' => 2, 'msg' => '密码不正确']);
+            }
+            if ($result['active'] == 0) {
+                return json(['resp_code' => 3, 'msg' => '账号未激活，请到您的邮箱激活']);
+            }
+            Session::set('user.username', $username);
+            Session::set('userid', $result['user_id']);
+            return json(['resp_code' => 0, 'user_id' => $result['user_id']]);
+
         }
     }
 

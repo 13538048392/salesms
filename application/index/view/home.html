@@ -16,7 +16,7 @@
 <body>
 <div class="container">
     <div class="container-fluid">
-        <h1 class="text-center">用户个人信息</h1>
+        <h1 class="text-center">Your Profile</h1>
         <button class="glyphicon glyphicon-user" id="btn"></button>
     </div>
     <div class="row">
@@ -26,14 +26,14 @@
                                                id="Profile">You Profile</a></h3></li>
                 <li role="presentation"><h3><a href="<?php echo url('channel/index',['userid'=>session('userid')])?>"
                                                id="channelmanager">ChannelManager</a></h3></li>
-                <li role="presentation"><h3><a href="<?php echo url('home/loginOut') ?>" id="loginout">login out</a>
+                <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">login out</a>
                 </h3></li>
             </ul>
         </div>
 
         <div class="col-md-7 col-md-offset-1" id="content">
             <form role="form" method="post" id="reused_form"
-                  action="{:url('home/updateProfile',['userid'=>$data['user_id']])}">
+                  action="{:url('home/updateProfile',['userid'=>session('userid')])}">
                 <div class="form-group">
                     <div class="col-md-5" style="margin-left: -15px;margin-bottom: 10px;">
                         <label for="firstname">First Name</label>
@@ -66,11 +66,11 @@
                     <label for="gender">Gender</label><br>
                     <label class="radio_inline">
                         <input type="radio" name="gender" id="gender" value="1"
-                               checked={$data['gender']==1?'true':'false'}>Male
+                               {$data['gender']==1?'checked':''}>Male
                     </label>
                     <label for="gender1" class="radio_inline">
                         <input type="radio" name="gender" id="gender1" value="0"
-                               checked={$data['gender']==0?'true':'false'}>Female
+                               {$data['gender']==0?'checked':''}>Female
                     </label>
                 </div>
 

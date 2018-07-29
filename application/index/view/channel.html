@@ -20,7 +20,7 @@
 <body>
 <div class="container">
     <div class="container-fluid">
-        <h1 class="text-center">用户个人信息</h1>
+        <h1 class="text-center">Your Profile</h1>
         <button class="glyphicon glyphicon-user" id="btn"></button>
     </div>
     <div class="row">
@@ -30,16 +30,16 @@
                                                id="Profile">You Profile</a></h3></li>
                 <li role="presentation"><h3><a href="<?php echo url('channel/index',['userid'=>session('userid')])?>"
                                                id="channelmanager">ChannelManager</a></h3></li>
-                <li role="presentation"><h3><a href="<?php echo url('home/loginOut') ?>" id="loginout">login out</a>
+                <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">login out</a>
                 </h3></li>
             </ul>
         </div>
         <div class="col-md-8 col-md-offset-1" id="content">
             <div>
-                <form class="form-inline">
+                <form class="form-inline" onsubmit="return false">
                     <div class="form-group col-md-8">
                         <label for="exampleInputEmail2" style="margin-left: -10px;margin-right: 10px">Channel Name</label>
-                        <input type="text" class="form-control" name="channel_name" id="channel_name" placeholder="Channel Name" style="width: 70%">
+                        <input type="text" class="form-control" name="channel_name" id="channel_name" required placeholder="Channel Name" style="width: 70%">
                     </div>
                     <button type="submit" id="addChannel" class="btn btn-default">Submit</button>
                 </form>

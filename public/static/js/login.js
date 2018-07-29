@@ -44,14 +44,11 @@ $(function () {
         var bv = $form.data('bootstrapValidator');
         $.post($form.attr('action'), $form.serialize(), function (result) {
             if (result.resp_code == 0) {
-                    location.href = indexurl+result.msg;
-            } else if (result.resp_code == 1) {
-                $('#error_message').css('display', 'block').html(result.msg);
-            } else if (result.resp_code == 2) {
-                $('#error_message').css('display', 'block').html(result.msg);
-            } else {
-                $('#error_message').css('display', 'block').html(result.msg);
+                    location.href = indexurl+'?userid='+result.user_id;
+            }else{
+                 alert(result.msg);
             }
+           
         }, 'json');
     });
     $('#imgverify').click(function () {

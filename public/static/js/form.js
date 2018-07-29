@@ -123,8 +123,8 @@ $(function () {
         // Use Ajax to submit form data
         $.post($form.attr('action'), $form.serialize(), function (result) {
             if (result.resp_code == 0) {
-                setTimeout(function () {
-                    $('#success_message').css('display', 'block').html(result.msg);
+                 $('#success_message').css('display', 'block').html(result.msg);
+                setTimeout(function () {               
                     location.href = url_login;
                 }, 4);
             } else {

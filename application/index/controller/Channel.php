@@ -8,7 +8,6 @@
 
 namespace app\index\controller;
 
-
 use think\Controller;
 use think\Request;
 
@@ -32,10 +31,10 @@ class Channel extends Controller
             if ($num < 10) {
                 $channelId = $channel->addChannel($userId, 0, $channelName);
                 if ($channelId) {
-                    $url = $_SERVER['SERVER_NAME'] . "/register/index/userid/$userId/channelid/$channelId";
+                    $url = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/userid/$userId/channelid/$channelId";
                     $result = $channel->UpdateByChannelId($channelId, $url);
                     if ($result) {
-                        $data=$channel->getChannelById($channelId);
+                        $data = $channel->getChannelById($channelId);
                         return json(['resp_code' => 0, 'msg' => $data]);
                     }
                 }

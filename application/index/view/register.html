@@ -13,6 +13,7 @@
     <script>
         url_username="<?php echo url('register/checkUser','','',true)?>";
         url_email="<?php echo url('register/checkEmail','','',true)?>";
+        url_phone="<?php echo url('register/checkPhone','','',true)?>";
         url_login="<?php echo url('login/index','','',true)?>";
     </script>
     <script src="/static/js/form.js"></script>
@@ -27,25 +28,36 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="username"></label>
-                        <input type="text" placeholder="User Name：" class="form-control" id="username" name="username" >
+                        <input type="text" placeholder="用户名：" class="form-control" id="username" name="username" >
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="email"> </label>
-                        <input type="text" placeholder="Email:" class="form-control" id="email" name="email" >
+                        <input type="text" placeholder="邮箱:" class="form-control" id="email" name="email" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label for="phone"> </label>
+                        <input type="text" placeholder="手机号:" class="form-control" id="phone" name="phone" >
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="password"> </label>
-                        <input type="password" placeholder="Password:" class="form-control" id="password" name="password">
+                        <input type="password" placeholder="密码:" class="form-control" id="password" name="password">
                     </div>
+
+                </div>
+                <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="confirm_password"> </label>
-                        <input type="password" placeholder="Confirm Password:" class="form-control" id="confirm_password" name="confirm_password" >
+                        <input type="password" placeholder="确认密码:" class="form-control" id="confirm_password" name="confirm_password" >
                     </div>
                 </div>
                 <div>
-                    <div class="col-sm-12 form-group">
+                    <div class="col-sm-6 form-group">
                         <button type="submit" name="btnContactUs" class="btn btn-lg btn-success btn-block" id="btnContactUs">提交</button>
                     </div>
                 </div>

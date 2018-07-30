@@ -14,14 +14,15 @@ use think\Db;
 
 class User extends Model
 {
-    public function userRegister($username, $password, $email, $referee_id, $channel_id)
+    public function userRegister($username, $password, $email, $phone,$channel_id,$type)
     {
         $this->data = [
             'user_name' => $username,
             'pass' => $password,
             'email' => $email,
-            'referee_id' => $referee_id,
-            'channel_id' => $channel_id
+            'phone'=>$phone,
+            'channel_id' => $channel_id,
+            'type'=>$type
         ];
         return $this->save();
     }
@@ -45,6 +46,13 @@ class User extends Model
     {
         if (isset($username) && !empty($username)) {
             return $this->limit(1)->where(['user_name' => $username])->find();
+        }
+    }
+
+    public function phoneIsExist($phone)
+    {
+        if (isset($phone) && !empty($phone)) {
+            return $this->limit(1)->where(['phone' => $phone])->find();
         }
     }
 

@@ -12,15 +12,10 @@ use think\Model;
 
 class Channel extends Model
 {
-    public function channelIsExist($userId, $adminId, $channelId)
+    public function channelIsExist($id)
     {
-        $where = ['channel_id' => $channelId];
-        if ($userId !== 0) {
-            $where['user_id'] = $userId;
-            return $this->where($where)->select();
-        }
-        $where['admin_id'] = $adminId;
-        return $this->where($where)->select();
+        $where = ['id' => $id];
+        return $this->where($where)->find();
     }
 
     public function getChannelNumById($userId)
@@ -32,10 +27,12 @@ class Channel extends Model
     {
         return $this->where(['channel_id' => $channelId])->find();
     }
+
     public function getChannelByUserId($userid)
     {
         return $this->where(['user_id' => $userid])->select();
     }
+
     public function UpdateByChannelId($channelId, $urlCode)
     {
         return $this->where(['channel_id' => $channelId])->data(['url_code' => $urlCode])->update();

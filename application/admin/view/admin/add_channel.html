@@ -42,19 +42,20 @@ $(function(){
 
 $('#create_url').click(function(){
 	var channel = $('#channel').val();
-
+	$('#create_url').attr('disabled',true);
 			$.ajax({
 				url:'doAddChannel',
 				type:'post',
 				data:{'channel':channel},
 				success:function(msg){
 					if (msg.status != 200) {
-						layer.alert(msg.msg,{icon:5,time:1000});
+						layer.msg(msg.msg,{icon:5,time:1000});
+						$('#create_url').attr('disabled',false);
 					}
 					else{
 						layer.msg(msg.msg,{icon:6,time:1000,end:function(){
 			              $('#channel_url').val(msg.url);
-			              $('#create_url').attr('disabled',true);
+			              $('#create_url').attr('disabled',false);
 			            }});
 						// var index = parent.layer.getFrameIndex(window.name);
 						// parent.$('.btn-refresh').click();

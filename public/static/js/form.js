@@ -14,9 +14,9 @@ $(function () {
                         message: '用户名不能为空'
                     },
                     stringLength: {
-                        min: 6,
+                        min: 8,
                         max: 18,
-                        message: '用户名长度必须在6到18位之间'
+                        message: '用户名长度必须在8到18位之间'
                     },
                     verbose: false,
                     threshold: 6,
@@ -35,8 +35,8 @@ $(function () {
                          */
                     },
                     regexp: {
-                        regexp: /^[a-zA-Z0-9_\-]+$/,
-                        message: '用户名只能包含大写、小写、数字、下划线和-'
+                        regexp: /^[a-zA-Z0-9]+$/,
+                        message: '用户名只能包含大写、小写、数字'
                     }
                 }
             },

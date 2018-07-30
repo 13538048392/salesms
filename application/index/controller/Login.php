@@ -41,10 +41,12 @@ class Login extends Controller
     public function login()
     {
         if (isset($_POST)) {
+
             $username = input('username');
             $password = input('password');
             $user = new User();
             $result = $user->userLogin($username);
+
             if ($result == null) {
                 return json(['resp_code' => 1, 'msg' => '用户名不存在']);
             }
@@ -54,8 +56,10 @@ class Login extends Controller
             if ($result['active'] == 0) {
                 return json(['resp_code' => 3, 'msg' => '账号未激活，请到您的邮箱激活']);
             }
+
             Session::set('user.username', $username);
             Session::set('userid', $result['user_id']);
+            
             return json(['resp_code' => 0, 'user_id' => $result['user_id']]);
 
         }
@@ -63,8 +67,10 @@ class Login extends Controller
 
     public function loginOut()
     {
-        Session::clear();
-        Session::destroy();
+        // Session::clear();
+        Session::set('user.username',null);
+        Session::set('userid',null);
+        // Session::destroy();
         $this->redirect('/index');
     }
 
@@ -191,4 +197,5 @@ class Login extends Controller
             return json(['status' => '0', 'msg' => 'Sending mail failure']);//邮件发送失败
         }
     }
+
 }

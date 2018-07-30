@@ -163,12 +163,17 @@ class Admin extends Common
         $data['admin_id'] = Session::get('uid');
         return doAddChannel($data);
     }
-    // public function decode(){
-    //测试urlsafe_b64decode
-    //    echo urlsafe_b64decode('MzU');
-    //    echo '<br>';
-    //    echo urlsafe_b64decode('MjQ');
-    // }
 
+    public function checkAdmin(){
+        //检查用户名是否存在
+        $name = input('post.adminName');
+        $res = AdminModel::where('username',$name)->find();
+        if ($res) {
+            echo json_encode(['valid' => false]);
+        }
+        else{
+            echo json_encode(['valid' => true]);
+        }
+    }
 
 }

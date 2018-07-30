@@ -172,7 +172,7 @@ class Login extends Controller
         if ($result) {
             return json(['status' => '1', 'msg' => 'Send the mail successfully, please go to your mailbox to complete the password recovery operation.']); //邮件发送成功
         } else {
-            return json(['status' => '0', 'msg' => 'Sending mail failure']);//邮件发送失败
+            return json(['status' => '0', 'msg' => 'Sending mail failure','error'=>$mail->ErrorInfo]);//邮件发送失败
         }
     }
 }

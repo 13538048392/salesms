@@ -37,7 +37,7 @@
                     <div class="col-sm-6 form-group">
                         <label for="verify"></label>
                         
-                        <button class="btn btn-lg btn-success btn-block" style="width:160px;height: 45px;" id="send_email">发送短信验证码</button>
+                        <button class="btn btn-lg btn-success btn-block" style="width:200px;height: 45px;" id="send_email">发送邮件获取验证码</button>
                     
                     </div>
                 </div>
@@ -124,7 +124,7 @@ $(function () {
 });
 
 
-var time = 5;
+var time = 60;
 var timer = '';
 $('#send_email').click(function(){
     //发邮件

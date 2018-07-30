@@ -1,42 +1,71 @@
-<form>
-    <div class="form-group" >
-        <div class="col-md-5" style="margin-left: -15px;margin-bottom: 10px;">
-            <label for="FirstName">First name</label>
-            <input type="text" class="form-control"  placeholder="First name" name="first_name">
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
+    <script src="/static/js/home.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <script>
+        url_addChannel="<?php echo url('/channel/addChannel')?>";
+        url_deleteChannel="<?php echo url('/channel/deleteChannel')?>";
+        data_channel="<?php echo session('userid') ?>";
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="container-fluid">
+        <h1 class="text-center">Your Profile</h1>
+        <button class="glyphicon glyphicon-user" id="btn"></button>
+    </div>
+    <div class="row">
+        <div class="col-md-2 " id="infocenter">
+            <ul class="nav nav-pills nav-stacked ">
+                <li role="presentation"><h3><a href="<?php echo url('home/index',['userid'=>session('userid')])?>"
+                                               id="Profile">You Profile</a></h3></li>
+                <li role="presentation"><h3><a href="<?php echo url('channel/index',['userid'=>session('userid')])?>"
+                                               id="channelmanager">ChannelManager</a></h3></li>
+                <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">login out</a>
+                </h3></li>
+            </ul>
         </div>
-        <div class="col-md-5 col-md-offset-2" style="margin-bottom: 10px;">
-            <label for="LastName">Last name</label>
-            <input type="text" class="form-control"  placeholder="Last name" name="last_name">
+        <div class="col-md-8 col-md-offset-1" id="content">
+            <div>
+                <form class="form-inline" onsubmit="return false">
+                    <div class="form-group col-md-8">
+                        <label for="exampleInputEmail2" style="margin-left: -10px;margin-right: 10px">Channel Name</label>
+                        <input type="text" class="form-control" name="channel_name" id="channel_name" required placeholder="Channel Name" style="width: 70%">
+                    </div>
+                    <button type="submit" id="addChannel" class="btn btn-default">Submit</button>
+                </form>
+            </div>
+            <div style="padding-top: 20px" >
+                <table class="table" style="width: 100%">
+                    <tr>
+                        <th>Channel Name</th>
+                        <th>UrlCode</th>
+                        <th>操作</th>
+                    </tr>
+                    <?php foreach($data as $key=>$val):?>
+                    <tr>
+                        <td>{$val.channel_name}</td>
+                        <td>{$val.url_code}</td>
+                        <td><button type="button"  value="{$val.channel_id}" class="btn btn-danger del">删除</button></td>
+                    </tr>
+                    <?php endforeach;?>
+                </table>
+
+            </div>
+
         </div>
     </div>
-    <div class="form-group">
-        <label for="Address">Home address</label>
-        <input type="text" class="form-control"  placeholder="Home address">
-    </div>
-    <div class="form-group">
-        <label for="wechat">Wechat</label>
-        <input type="text" class="form-control"  placeholder="Wechat">
-    </div>
-    <div class="form-group">
-        <label for="EmailAddress">Email address</label>
-        <input type="email" class="form-control"  placeholder="Email" name="email">
-    </div>
-    <div class="form-group">
-        <label for="Phone">Phone</label>
-        <input type="tel" class="form-control" placeholder="Phone" name="phone">
-    </div>
-
-    <div class="form-group">
-        <label for="Phone">Gender</label><br>
-        <label class="radio_inline">
-            <input type="radio" name="gender" value="1">Male
-        </label>
-        <label class="radio_inline">
-            <input type="radio" name="gender" value="0">Female
-        </label>
-    </div>
-
-
-
-    <button type="submit" class="btn btn-danger">Submit</button>
-</form>
+</div>
+<script>
+</script>
+</body>
+</html>

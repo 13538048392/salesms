@@ -9,12 +9,12 @@
 namespace app\index\controller;
 
 use app\index\model\Channel;
+use app\index\model\User;
 use think\Controller;
 use think\Loader;
 use think\Request;
 use think\Session;
 use think\Validate;
-use app\index\model\User;
 
 Loader::import('Mailer', ROOT_PATH . 'application/entend/Mailer.php');
 
@@ -23,29 +23,30 @@ class Register extends Controller
     public function index(Request $request = null)
     {
         $arr = $request->param();
-        if (!empty($arr)) {
-            if (isset($arr['userid'], $arr['channelid'])) {
-                $userid=$arr['userid'];
-                $channelid=$arr['channelid'];
-                $channel = new Channel();
-                $result = $channel->channelIsExist($userid, 0, $channelid);
-                if (!$result->isEmpty()) {
-                    Session::set('user.userid', $userid);
-                    Session::set('user.channelid', $channelid);
-                    return $this->view->fetch('/register');
-                }
-            } else {
-                $adminid = $arr['adminid'];
-                $channelid = $arr['channelid'];
-                $channel = new Channel();
-                $result = $channel->channelIsExist(0, $adminid, $channelid);
-                if (!$result->isEmpty()) {
-                    Session::set('user.userid', $adminid);
-                    Session::set('user.channelid', $channelid);
-                    return $this->view->fetch('/register');
-                }
-            }
+        if (!isset($arr['channelid'])) {
+            return $this->error('404');
         }
+
+        if (!isset($arr['userid']) && !isset($arr['adminid'])) {
+            return $this->error('404');
+        }
+
+        $_uid = -1;
+        if (isset($arr['userid'])) {
+            $arr['adminid'] = 0;
+            $_uid = $arr['userid'];
+        } else {
+            $arr['userid'] = 0;
+            $_uid = $arr['adminid'];
+        }
+        $channel = new Channel();
+        $result = $channel->channelIsExist($arr['userid'], $arr['adminid'], $arr['channelid']);
+        if ($result->isEmpty()) {
+            return $this->error('邀请链接无效');
+        }
+        Session::set('user.userid', $_uid);
+        Session::set('user.channelid', $arr['channelid']);
+        return $this->view->fetch('/register');
     }
 
     public function register()
@@ -75,14 +76,14 @@ class Register extends Controller
                         if ($result) {
                             return json(['resp_code' => '0', 'msg' => 'Sent your message successfully! Please activate your account to your mailbox']); //邮件发送成功
                         } else {
-                            return json(['resp_code' => '1', 'msg' => 'Email failed to register again ']);//邮件发送失败
+                            return json(['resp_code' => '1', 'msg' => 'Email failed to register again ']); //邮件发送失败
                         }
                     }
                 } else {
-                    return json(['resp_code' => '2', 'msg' => 'Sorry there was an error sending your form.']);//用户信息填写不完善
+                    return json(['resp_code' => '2', 'msg' => 'Sorry there was an error sending your form.']); //用户信息填写不完善
                 }
             } else {
-                return $this->error('非法请求');//非法提交表达
+                return $this->error('非法请求'); //非法提交表达
             }
         }
     }

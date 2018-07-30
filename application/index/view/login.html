@@ -20,20 +20,22 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="username"></label>
-                        <input type="text" placeholder="username|email：" class="form-control" id="username" name="username">
+                        <input type="text" placeholder="username：" class="form-control" id="username" name="username">
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="password"> </label>
-                        <input type="password" placeholder="password:" class="form-control" id="password" name="password">
+                        <input type="password" placeholder="password:" class="form-control" id="password"
+                               name="password">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="verify"></label>
-                        <input type="text" placeholder="Verification Code" class="form-control" id="verify" name="verify">
+                        <input type="text" placeholder="Verification Code" class="form-control" id="verify"
+                               name="verify">
                     </div>
                     <div class="col-sm-6 form-group" style="padding-top: 15px">
-                        <img src="{:captcha_src()}" id="imgverify"  style="display: block;vertical-align: text-bottom">
+                        <img src="{:captcha_src()}" id="imgverify" style="display: block;vertical-align: text-bottom">
                     </div>
                 </div>
                 <div class="row">
@@ -47,17 +49,15 @@
                     </div>
                 </div>
             </form>
-            <div id="success_message" style="width:100%; height:100%; display:none; "><h3>Sent your message
-                successfully!</h3></div>
-            <div id="error_message" style="width:100%; height:100%; display:none; "><h3>Error</h3> Sorry there was an
-                error sending your form.
+            <div id="error_message" style="width:100%; height:100%; display:none; ">
             </div>
         </div>
     </div>
 </div>
 <script>
-    imgurl="<?php echo captcha_src();?>";
-    checkCodeUrl="<?php echo url('login/checkValidateCode','','',true)?>";
+    imgurl = "<?php echo captcha_src();?>";
+    checkCodeUrl = "<?php echo url('login/checkValidateCode','','',true)?>";
+    indexurl="<?php echo url('/home/index/userid/')?>";
 </script>
 </body>
 </html>

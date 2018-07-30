@@ -18,7 +18,7 @@ $(function () {
             verify: {
                 validators: {
                     notEmpty: {
-                        message: '邮箱不能为空'
+                        message: '验证码不能为空'
                     },
                     verbose: false,
                     threshold: 4,
@@ -27,14 +27,6 @@ $(function () {
                         message: '验证码不正确',//提示消息
                         delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
                         type: 'POST'//请求方式
-                        /**自定义提交数据，默认值提交当前input value
-                         *  data: function(validator) {
-                               return {
-                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
-                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
-                               };
-                            }
-                         */
                     }
                 }
             },
@@ -47,15 +39,16 @@ $(function () {
             }
         }
     }).on('success.form.bv', function (e) {
-        // Prevent form submission
         e.preventDefault();
-        // Get the form instance
         var $form = $(e.target);
-        // Get the BootstrapValidator instance
         var bv = $form.data('bootstrapValidator');
-        // Use Ajax to submit form data
         $.post($form.attr('action'), $form.serialize(), function (result) {
-            console.log(result);
+            if (result.resp_code == 0) {
+                    location.href = indexurl+'?userid='+result.user_id;
+            }else{
+                 alert(result.msg);
+            }
+           
         }, 'json');
     });
     $('#imgverify').click(function () {

@@ -9,17 +9,6 @@ class Index extends Controller
     {
         return view('/index');
     }
-    public function firstpage()
-    {
-        return view('/firstpage');
-    }
-    public function personal()
-    {
-        return view('/personal');
-    }
-    public function channel(){
-        return view('/channel');
-    }
     public function register()
     {
         return "this is register method";

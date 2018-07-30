@@ -159,40 +159,9 @@ class Admin extends Common
 
     public function doAddChannel(){
         //执行添加渠道
-        $channel = input('post.channel');
-        if ($channel == '') {
-            return json(['msg'=>'渠道不能为空','status'=>1]);
-        }
-        $count = SalesChannelModel::where('user_id',Session::get('uid'))->count();
-        if ($count == 10) {
-            return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
-        }
-        $insert_data['channel_name'] = $channel;
-        $insert_data['admin_id'] = Session::get('uid');
-        $find = SalesChannelModel::where($insert_data)->find();
-        if ($find) {
-            return json(['msg'=>'渠道已经存在','status'=>2]);
-        }
-        $channel_id = SalesChannelModel::insertGetId($insert_data);
-        if ($channel_id) {
-            $uid = Session::get('uid');
-            $url = $_SERVER['SERVER_NAME']."/register/index/adminid/$uid/channelid/$channel_id";
-            $update_url = SalesChannelModel::where('channel_id',$channel_id)->update(['url_code'=>$url]);
-            if ($update_url) {
-                return json(['msg'=>'添加成功，生成url!',
-                         'status'=>200,
-                         'url'=>$url]);
-            }
-            else{
-                return json(['msg'=>'生成url失败','status'=>4]);
-            }
-            
-        }
-        else{
-            return json(['msg'=>'添加失败！','status'=>0]);
-        }
-        
-
+        $data['channel_name'] = input('post.channel');
+        $data['admin_id'] = Session::get('uid');
+        return doAddChannel($data);
     }
     // public function decode(){
     //测试urlsafe_b64decode

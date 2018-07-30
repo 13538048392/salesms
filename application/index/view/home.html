@@ -8,94 +8,76 @@
     <link rel="stylesheet" href="/static/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
     <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-    <!--<script src="/static/js/form.js"></script>-->
+    <script src="/static/js/home.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
 </head>
 <body>
 <div class="container">
     <div class="container-fluid">
-        <h1 class="text-center">用户个人信息</h1>
+        <h1 class="text-center">Your Profile</h1>
         <button class="glyphicon glyphicon-user" id="btn"></button>
     </div>
     <div class="row">
         <div class="col-md-2 " id="infocenter">
-            <ul class="nav nav-pills nav-stacked " >
-                <li role="presentation"><h3>
-                    <a href="javascript:;" id="Profile">You Profile</a></h3></li>
-                <!--<li role="presentation"><h3><a href="#" id="profile">Profile</a></h3></li>-->
-                <li role="presentation"><h3><a href="#" id="addchannel">AddChannel</a></h3></li>
-                <li role="presentation"><h3><a href="#" id="channelmanager">ChannelManager</a></h3></li>
-                <li role="presentation"><h3><a href="#" id="loginout">login out</a></h3></li>
+            <ul class="nav nav-pills nav-stacked ">
+                <li role="presentation"><h3><a href="<?php echo url('home/index',['userid'=>session('userid')])?>"
+                                               id="Profile">You Profile</a></h3></li>
+                <li role="presentation"><h3><a href="<?php echo url('channel/index',['userid'=>session('userid')])?>"
+                                               id="channelmanager">ChannelManager</a></h3></li>
+                <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">login out</a>
+                </h3></li>
             </ul>
         </div>
+
         <div class="col-md-7 col-md-offset-1" id="content">
-            <form>
-                <div class="form-group" >
+            <form role="form" method="post" id="reused_form"
+                  action="{:url('home/updateProfile',['userid'=>session('userid')])}">
+                <div class="form-group">
                     <div class="col-md-5" style="margin-left: -15px;margin-bottom: 10px;">
-                        <label for="FirstName">First name</label>
-                        <input type="text" class="form-control"  placeholder="First name" name="first_name">
+                        <label for="firstname">First Name</label>
+                        <input type="text" class="form-control" placeholder="First Name" id="firstname"
+                               name="firstname" value="{$data['first_name']}">
                     </div>
-                   <div class="col-md-5 col-md-offset-2" style="margin-bottom: 10px;padding-left: 0px">
-                        <label for="LastName">Last name</label>
-                        <input type="text" class="form-control"  placeholder="Last name" name="last_name">
-                   </div>
+                    <div class="col-md-5 col-md-offset-2" style="margin-bottom: 10px;padding-left: 0px">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" class="form-control" placeholder="LastName" id="lastname" name="lastname"
+                               value="{$data['last_name']}">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="Address">Home address</label>
-                    <input type="text" class="form-control"  placeholder="Home address">
+                    <label for="address">Home Address</label>
+                    <input type="text" class="form-control" placeholder="Home address" id="address" name="address"
+                           value="{$data['address']}">
                 </div>
                 <div class="form-group">
                     <label for="wechat">Wechat</label>
-                    <input type="text" class="form-control"  placeholder="Wechat">
+                    <input type="text" class="form-control" placeholder="Wechat" id="wechat" name="wechat"
+                           value="{$data['wechat']}">
                 </div>
                 <div class="form-group">
-                    <label for="EmailAddress">Email address</label>
-                    <input type="email" class="form-control"  placeholder="Email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="Phone">Phone</label>
-                    <input type="tel" class="form-control" placeholder="Phone" name="phone">
+                    <label for="phone">Phone</label>
+                    <input type="tel" class="form-control" placeholder="Phone" id="phone" name="phone"
+                           value="{$data['phone']}">
                 </div>
 
                 <div class="form-group">
-                    <label for="Phone">Gender</label><br>
+                    <label for="gender">Gender</label><br>
                     <label class="radio_inline">
-                        <input type="radio" name="gender" value="1">Male
+                        <input type="radio" name="gender" id="gender" value="1"
+                               {$data['gender']==1?'checked':''}>Male
                     </label>
-                    <label class="radio_inline">
-                        <input type="radio" name="gender" value="0">Female
+                    <label for="gender1" class="radio_inline">
+                        <input type="radio" name="gender" id="gender1" value="0"
+                               {$data['gender']==0?'checked':''}>Female
                     </label>
                 </div>
-
-
 
                 <button type="submit" class="btn btn-danger">Submit</button>
             </form>
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
-<script>
-    $("#btn").click(function () {
-        $("#infocenter").toggle();
-    });
-    $("#Profile").click(function () {
-        $.post('{:url("home/index2")}','',function (data) {
-            $("#content").html(data);
-        });
-    });
-    $("#addchannel").click(function () {
-        $.post('{:url("channel/addChannel")}','',function (data) {
-            $("#content").html(data);
-        });
-    });
-    $("#channelmanager").click(function () {
-        $.post('{:url("channel/index")}','',function (data) {
-            $("#content").html(data);
-        });
-    });
-</script>

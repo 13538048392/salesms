@@ -15,11 +15,11 @@ class Admin extends Model
     public function getAdmin($where='1=1'){
     	//获取管理员
     	$admin = Admin::alias('a')
-    					 ->join('sales_admin_role s','a.id=s.admin_id','left')
+    					 ->join('sales_admin_role s','a.id=s.user_id','left')
     					 ->join('sales_role r','s.role_id=r.id','left')
     					 ->field('a.id,a.user_name,a.status,s.*,r.role_name')
     					 ->where($where)
-                         ->where('type',0)
+                         ->where('a.type',0)
     					 ->select()
     					 ->toArray();
     	// echo Admin::getlastsql();exit;

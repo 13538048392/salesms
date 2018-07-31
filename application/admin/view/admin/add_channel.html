@@ -8,12 +8,17 @@
 		</div>
 	</div>
 	<div class="row cl">
-		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>url：</label>
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邀请医生url：</label>
 		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="channel_url" name="channel_url" readonly="">
+			<input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="doctors_url" name="channel_url" readonly="">
 		</div>
 	</div>
-	
+	<div class="row cl">
+		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邀请销售url：</label>
+		<div class="formControls col-xs-8 col-sm-9">
+			<input type="text" class="input-text" autocomplete="off" value="" placeholder="" id="sales_url" name="channel_url" readonly="">
+		</div>
+	</div>
 
 	<div class="row cl">
 		<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
@@ -44,7 +49,7 @@ $('#create_url').click(function(){
 	var channel = $('#channel').val();
 	$('#create_url').attr('disabled',true);
 			$.ajax({
-				url:'doAddChannel',
+				url:'addChannel',
 				type:'post',
 				data:{'channel':channel},
 				success:function(msg){
@@ -55,7 +60,7 @@ $('#create_url').click(function(){
 					else{
 						layer.msg(msg.msg,{icon:6,time:1000,end:function(){
 			              $('#channel_url').val(msg.url);
-			              $('#create_url').attr('disabled',false);
+			              // $('#create_url').attr('disabled',false);
 			            }});
 						// var index = parent.layer.getFrameIndex(window.name);
 						// parent.$('.btn-refresh').click();

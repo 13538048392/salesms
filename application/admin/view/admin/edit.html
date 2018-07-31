@@ -93,7 +93,7 @@ $('#admin-password-save').click(function(){
           });
           var role = arr.join(",");
   $.ajax({
-        url:'doEdit',
+        url:'edit',
         type:'post',
         data:{'id':id,'newpassword':newpassword,'newpassword2':newpassword2,'role':role},
         success:function(msg){

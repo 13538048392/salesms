@@ -26,7 +26,7 @@ class Login extends Controller
     		return json(['msg'=>'验证码不能为空！','status'=>3]);
     	}
     	$admin_model = new AdminModel();
-        $check_user = $admin_model->where(['username'=>$username,'status'=>1])->find();
+        $check_user = $admin_model->where(['user_name'=>$username,'status'=>1])->find();
         if (!$check_user) {
         	return json(['msg'=>'用户名不存在！','status'=>5]);
         }
@@ -42,7 +42,7 @@ class Login extends Controller
         	$where = 'a.id='.$check_user['id'];
         	$data = $admin_model->getAdmin($where);
         	// dump($data);
-        	Session::set('admin_name',$data[$check_user['id']]['username']);
+        	Session::set('admin_name',$data[$check_user['id']]['user_name']);
         	Session::set('uid',$data[$check_user['id']]['id']);
             Session::set('role_name',$data[$check_user['id']]['role_name']);
         	return json(['msg'=>'正在登陆！','status'=>200]);

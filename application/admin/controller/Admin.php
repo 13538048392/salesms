@@ -36,7 +36,7 @@ class Admin extends Common
         else{
             $check_root = 'none';
         }
-        $role_ids = SalesAdminRoleModel::where('admin_id',$id)
+        $role_ids = SalesAdminRoleModel::where('user_id',$id)
                                     ->field('role_id')
                                     ->select()
                                     ->toArray();
@@ -75,10 +75,10 @@ class Admin extends Common
  
             $role_ids = explode(',',input('post.role'));
             foreach ($role_ids as $key => $value) {
-                $insert_admin_role[$key]['admin_id'] = $id;
+                $insert_admin_role[$key]['user_id'] = $id;
                 $insert_admin_role[$key]['role_id'] = $value;
             }
-            $del_res = SalesAdminRoleModel::where('admin_id',$id)->delete();
+            $del_res = SalesAdminRoleModel::where('user_id',$id)->delete();
             $re = SalesAdminRoleModel::insertAll($insert_admin_role);
             if ($re !== false) {
                 return json(['msg'=>'修改成功！','status'=>200]);
@@ -113,11 +113,11 @@ class Admin extends Common
             return json(['msg'=>'管理员已经存在，不可重复创建！','status'=>2]);
         }
         
-        $admin_id = AdminModel::insertGetId($insert_admin);
-        if ($admin_id != 0) {
+        $user_id = AdminModel::insertGetId($insert_admin);
+        if ($user_id != 0) {
             $role_ids = explode(',',input('post.role'));
             foreach ($role_ids as $key => $value) {
-                $insert_admin_role[$key]['admin_id'] = $admin_id;
+                $insert_admin_role[$key]['user_id'] = $user_id;
                 $insert_admin_role[$key]['role_id'] = $value;
             }
 

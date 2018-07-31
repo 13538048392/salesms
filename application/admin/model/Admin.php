@@ -8,7 +8,7 @@ use think\Model;
 class Admin extends Model
 {
     // 设置当前模型对应的完整数据表名称
-    protected $table = 'sales_admin';
+    protected $table = 'sales_user';
     // 主键
     protected $pk = 'id';
 
@@ -17,8 +17,9 @@ class Admin extends Model
     	$admin = Admin::alias('a')
     					 ->join('sales_admin_role s','a.id=s.admin_id','left')
     					 ->join('sales_role r','s.role_id=r.id','left')
-    					 ->field('a.id,a.username,a.status,s.*,r.role_name')
+    					 ->field('a.id,a.user_name,a.status,s.*,r.role_name')
     					 ->where($where)
+                         ->where('type',0)
     					 ->select()
     					 ->toArray();
     	// echo Admin::getlastsql();exit;

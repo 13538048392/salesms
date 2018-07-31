@@ -22,10 +22,10 @@ class User extends Common
         $type = input('post.type');
         $res = '';
         if ($type == 1) {
-            $res = UserModel::where('user_id',$id)->update(['status'=>1]);
+            $res = UserModel::where('id',$id)->update(['status'=>1]);
         }
         if ($type == 0) {
-            $res = UserModel::where('user_id',$id)->update(['status'=>0]);
+            $res = UserModel::where('id',$id)->update(['status'=>0]);
         }
         if ($res) {
             return json(['status'=>'200']);

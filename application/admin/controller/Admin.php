@@ -104,8 +104,11 @@ class Admin extends Common
             return json(['msg'=>'两次输入密码不一致！','status'=>1]);
         }
         $insert_admin['pass'] = password_hash(input('post.password'),PASSWORD_DEFAULT);
-        $insert_admin['username'] = input('post.admin');
-        $res = AdminModel::where(['username'=>$insert_admin['username']])->find();
+        $insert_admin['user_name'] = input('post.admin');
+        $insert_admin['type'] = 0;
+        //管理员没有邮箱输入，由于唯一键的限制，现在以用户名插入email字段防止报错
+        $insert_admin['email'] = input('post.admin');
+        $res = AdminModel::where(['user_name'=>$insert_admin['user_name']])->find();
         if ($res) {
             return json(['msg'=>'管理员已经存在，不可重复创建！','status'=>2]);
         }
@@ -160,7 +163,7 @@ class Admin extends Common
     public function doAddChannel(){
         //执行添加渠道
         $data['channel_name'] = input('post.channel');
-        $data['admin_id'] = Session::get('uid');
+        $data['user_id'] = Session::get('uid');
         return doAddChannel($data);
     }
 

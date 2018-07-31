@@ -30,10 +30,9 @@ function urlsafe_b64encode($string) {
 
 function doAddChannel($data){
         //执行添加渠道,
-        //该方法有三个参数,channel渠道名,user_id会员id,admin_id管理员id,
-        //其中会员id和管理员id两个中只能存在一个作为插入数据库对象
+        //该方法有两个参数,channel渠道名,user_id用户id
         $count = '';//渠道数
-        $uid = '';//管理员id或者会员id
+        $uid = '';//用户id
         $url = '';//根据渠道生成邀请url
         if ($data['channel_name'] == '') {
             return json(['msg'=>'渠道不能为空','status'=>1]);
@@ -41,9 +40,9 @@ function doAddChannel($data){
         if (isset($data['user_id'])) {
             $count = SalesChannelModel::where('user_id',$data['user_id'])->count();
         }
-        if (isset($data['admin_id'])) {
-            $count = SalesChannelModel::where('admin_id',$data['admin_id'])->count();
-        }
+        // if (isset($data['admin_id'])) {
+        //     $count = SalesChannelModel::where('admin_id',$data['admin_id'])->count();
+        // }
         
         if ($count == 10) {
             return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
@@ -59,14 +58,14 @@ function doAddChannel($data){
         if ($channel_id) {
             if (isset($data['user_id'])) {
                 $uid = $data['user_id'];
-                $url = $_SERVER['SERVER_NAME']."/register/index/userid/$uid/channelid/$channel_id";
+                $url = $_SERVER['SERVER_NAME']."/register/index/channelid/$channel_id";
             }
-            if (isset($data['admin_id'])) {
-                $uid = $data['admin_id'];
-                $url = $_SERVER['SERVER_NAME']."/register/index/adminid/$uid/channelid/$channel_id";
-            }
+            // if (isset($data['admin_id'])) {
+            //     $uid = $data['admin_id'];
+            //     $url = $_SERVER['SERVER_NAME']."/register/index/adminid/$uid/channelid/$channel_id";
+            // }
             
-            $update_url = SalesChannelModel::where('channel_id',$channel_id)->update(['url_code'=>$url]);
+            $update_url = SalesChannelModel::where('id',$channel_id)->update(['url_code'=>$url]);
             if ($update_url) {
                 return json(['msg'=>'添加成功，生成url!',
                          'status'=>200,

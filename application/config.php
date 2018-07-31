@@ -251,13 +251,15 @@ return [
         //验证码字体大小
         'fontSize'  =>  16,
         //开启混淆曲线
-        'useCurve'  =>  true,
+        'useCurve'  =>  false,
         //高度
         'imageH'    =>  40,
         //宽度
         'imageW'    =>  130,
         //字符长度
         'length'    =>  4,
+        //杂点
+        'useNoise'  =>  false,
         //验证成功后重置
         'reset'     => true
     ]

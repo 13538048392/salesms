@@ -40,10 +40,7 @@ function doAddChannel($data){
         if (isset($data['user_id'])) {
             $count = SalesChannelModel::where('user_id',$data['user_id'])->count();
         }
-        // if (isset($data['admin_id'])) {
-        //     $count = SalesChannelModel::where('admin_id',$data['admin_id'])->count();
-        // }
-        
+
         if ($count == 10) {
             return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
         }
@@ -53,6 +50,12 @@ function doAddChannel($data){
         if ($find) {
             return json(['msg'=>'渠道已经存在','status'=>2]);
         }
+
+        //循环角色，有多少个角色就插入多少条数据，同时生成多少条url
+        foreach ($data['role'] as $k => $v) {
+            $insert_data['user_id'] = $data['user_id'];
+            
+        }
         $channel_id = SalesChannelModel::insertGetId($data);
         
         if ($channel_id) {
@@ -60,11 +63,7 @@ function doAddChannel($data){
                 $uid = $data['user_id'];
                 $url = $_SERVER['SERVER_NAME']."/register/index/channelid/$channel_id";
             }
-            // if (isset($data['admin_id'])) {
-            //     $uid = $data['admin_id'];
-            //     $url = $_SERVER['SERVER_NAME']."/register/index/adminid/$uid/channelid/$channel_id";
-            // }
-            
+
             $update_url = SalesChannelModel::where('id',$channel_id)->update(['url_code'=>$url]);
             if ($update_url) {
                 return json(['msg'=>'添加成功，生成url!',

@@ -54,13 +54,13 @@ class Role extends Model
         return $num;
     }
     public function lst(){
-        $data=$this->alias('R')->field('R.id,R.role_name,group_concat(pri_name) pri_name,group_concat(username) username')
+        $data=$this->alias('R')->field('R.id,R.role_name,group_concat(pri_name) pri_name,group_concat(user_name) username')
             ->join('admin_role AR','R.id=AR.role_id','left')
-            ->join('admin A','A.id=AR.admin_id','left')
+            ->join('user A','A.id=AR.user_id','left')
             ->join('role_pri RP','R.id=RP.role_id','left')
             ->join('privilege P','P.id=RP.pri_id','left')
             ->group('R.id')
-            ->select()->toArray();
+            ->where('R.type=0')->select()->toArray();
         return $data;
     }
     public function getOne($id){

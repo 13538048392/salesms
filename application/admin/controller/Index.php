@@ -21,7 +21,6 @@ class Index extends Controller
       return view();
     }
     public function welcome(){
-
         return view();
     }
 }

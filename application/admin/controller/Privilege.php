@@ -8,8 +8,9 @@ class Privilege extends Common
     public function lst()
     {
         $model =model('Privilege');
-        $count =\app\admin\model\Privilege::count();
+
         $data = $model->getTree();
+        $count = count($data);
         $this->assign('data',$data);
         $this->assign('count',$count);
         return view();

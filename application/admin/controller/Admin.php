@@ -13,6 +13,7 @@ class Admin extends Common
     public function lst()
     {
         $admin_model = new AdminModel();
+
         $data = $admin_model->getAdmin();
         $count = count($data);
         // dump($data);

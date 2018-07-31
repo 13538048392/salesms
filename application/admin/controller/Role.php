@@ -8,7 +8,7 @@ class Role extends Common
     public function lst()
     {
         $data =model('Role')->lst();
-        $count =\app\admin\model\Role::count();
+        $count = count($data);
         $this->assign('data',$data);
         $this->assign('count',$count);
         return $this->fetch();

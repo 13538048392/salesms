@@ -1,6 +1,7 @@
 $(function () {
     $('form').bootstrapValidator({
         message: 'This value is not valid',
+        excluded: [':disabled'],
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -69,27 +70,11 @@ $(function () {
             phone: {
                 validators: {
                     notEmpty: {
-                        message: '手机号不能为空'
+                        message: '电话号码不能为空'
                     },
                     regexp: {
                         regexp: /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/,
-                        message: '手机号码格式不正确'
-                    },
-                    verbose: false,
-                    threshold: 6,
-                    remote: {
-                        url: url_phone,//验证地址
-                        message: '手机号已经使用',//提示消息
-                        delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
-                        type: 'POST'//请求方式
-                        /**自定义提交数据，默认值提交当前input value
-                         *  data: function(validator) {
-                               return {
-                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
-                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
-                               };
-                            }
-                         */
+                        message: '电话号码格式不正确'
                     }
                 }
             },
@@ -138,7 +123,7 @@ $(function () {
                         message: '密码由数字字母下划线和.组成'
                     }
                 }
-            }
+            },
         }
     }).on('success.form.bv', function (e) {
         // Prevent form submission
@@ -150,8 +135,8 @@ $(function () {
         // Use Ajax to submit form data
         $.post($form.attr('action'), $form.serialize(), function (result) {
             if (result.resp_code == 0) {
-                 alert(result.msg);
-                setTimeout(function () {               
+                alert(result.msg);
+                setTimeout(function () {
                     location.href = url_login;
                 }, 4);
             } else {

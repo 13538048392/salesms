@@ -23,70 +23,58 @@ class Login extends Controller
 
     public function index()
     {
-        if (Session::has('user.username')) {
-            $this->redirect('home/index', ['userid' => session('userid')]);
-//        } elseif (Cookie::has('user.username')) {
-            //            $username = Cookie::get('user.username');
-            //            $password = Cookie::get('user.password');
-            //            $user = new User();
-            //            $result = $user->vertifyCookie($username, $password);
-            //            if ($result && $result !== false) {
-            //                $this->redirect('index/index');
-            //            }
-        } else {
+        if (!Session::has('user.username')) {
             return view('/login');
         }
+        $this->redirect('home/index', ['userid' => session('userid')]);
     }
 
     public function login()
     {
         if (isset($_POST)) {
-
             $username = input('username');
             $password = input('password');
+            $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
+            $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/";
             $user = new User();
-            $result = $user->userLogin($username);
-
-            if ($result == null) {
-                return json(['resp_code' => 1, 'msg' => '用户名不存在']);
-            }
-            if (!password_verify($password, $result['pass'])) {
-                return json(['resp_code' => 2, 'msg' => '密码不正确']);
+            if (preg_match($checkEmail, $username)) {
+                $result = $user->userEmailLogin($username);
+            } elseif (preg_match($checkPhone, $username)) {
+                $result = $user->userPhoneLogin($username);
+            } else {
+                $result = $user->userNameLogin($username);
             }
             if ($result['active'] == 0) {
                 return json(['resp_code' => 3, 'msg' => '账号未激活，请到您的邮箱激活']);
             }
+            if ($result == null) {
+                return json(['resp_code' => 1, 'msg' => '用户名不存在']);
+            }
+            if ($result['status'] == 0) {
+                $time = 10 * 60 - (time() - strtotime($result['login_time']));
+                if ($time > 0) {
+                    return json(['resp_code' => '4', 'msg' => '用户已经被锁定请' . $time . '秒后再试']);
+                }
+                $update = new User();
+                $update->uodateStatus();
+            }
+            if (!password_verify($password, $result['pass'])) {
+                return json(['resp_code' => 2, 'msg' => '密码不正确']);
+            }
 
             Session::set('user.username', $username);
             Session::set('userid', $result['user_id']);
-            
             return json(['resp_code' => 0, 'user_id' => $result['user_id']]);
-
         }
     }
 
     public function loginOut()
     {
-        // Session::clear();
-        Session::set('user.username',null);
-        Session::set('userid',null);
-        // Session::destroy();
+        Session::set('user.username', null);
+        Session::set('userid', null);
         $this->redirect('/index');
     }
 
-    public function checkValidateCode()
-    {
-        if (isset($_POST)) {
-            $verify_code = input('verify');
-            if (!captcha_check($verify_code)) {
-                // 校验失败
-                echo json_encode(['valid' => false]);
-            } else {
-                echo json_encode(['valid' => true]);
-            }
-        }
-
-    }
 
     public function searchPass()
     {

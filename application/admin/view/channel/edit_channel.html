@@ -4,7 +4,7 @@
 	<div class="row cl">
 		<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>渠道：</label>
 		<div class="formControls col-xs-8 col-sm-9">
-			<input type="text" class="input-text" value="" placeholder="渠道" id="channel" name="channel" >
+			<input type="text" class="input-text" value="{$channel['channel_name']}" placeholder="渠道" id="channel" name="channel" readonly="" >
 		</div>
 	</div>
 	<div class="row cl">
@@ -12,10 +12,12 @@
 		
 			<div class="formControls col-xs-8 col-sm-9" id="registerUser">
 			{volist name="role" id="vo"}
-				<label>
-				<input type="checkbox" value="{$vo['id']}" name="registerUser" id="" checked="">
-				{$vo['role_name']}
-				</label>
+				
+				
+					<label {php}if(in_array($vo['id'],$disabled_role)){ echo "style=display:none";}{/php}>
+					<input type='checkbox' value="{$vo['id']}" name='registerUser' >{$vo['role_name']}
+					</label>
+				
 			{/volist}
 			</div>
 		</div>
@@ -55,6 +57,7 @@ $('#create_url').click(function(){
 	var arr = new Array();
                 $("input[name='registerUser']:checked").each(function(i){
                     arr[i] = $(this).val();
+                    $(this).parent().remove();
                 });
                 var role = arr.join(",");
             if (role == '') {
@@ -62,7 +65,7 @@ $('#create_url').click(function(){
             }
             else{
             	$.ajax({
-				url:'addChannel',
+				url:'editChannel',
 				type:'post',
 				data:{'channel':channel,'role':role},
 				success:function(msg){

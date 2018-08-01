@@ -173,7 +173,8 @@ class Admin extends Common
             return doAddChannel($data);
         }
         else{
-            return view();
+            $role = SalesRoleModel::where('type',1)->field('id,role_name')->select()->toArray();
+            return view('add_channel',['role'=>$role]);
         }
         
     }

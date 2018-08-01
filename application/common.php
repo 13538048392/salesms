@@ -1,5 +1,7 @@
 <?php
 use app\admin\model\SalesChannel as SalesChannelModel;
+use app\admin\model\Url as UrlModel;
+use app\admin\model\Role as RoleModel;
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -32,8 +34,7 @@ function doAddChannel($data){
         //执行添加渠道,
         //该方法有两个参数,channel渠道名,user_id用户id
         $count = '';//渠道数
-        $uid = '';//用户id
-        $url = '';//根据渠道生成邀请url
+        $insert_data = array();//写入url表的数据
         if ($data['channel_name'] == '') {
             return json(['msg'=>'渠道不能为空','status'=>1]);
         }
@@ -44,40 +45,61 @@ function doAddChannel($data){
         if ($count == 10) {
             return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
         }
-        // $insert_data['channel_name'] = $channel;
-        // $insert_data['admin_id'] = Session::get('uid');
-        $find = SalesChannelModel::where($data)->find();
+        $find = SalesChannelModel::where(['channel_name'=>$data['channel_name'],'user_id'=>$data['user_id']])->find();
         if ($find) {
-            return json(['msg'=>'渠道已经存在','status'=>2]);
-        }
+            //已存在渠道的时候进行url添加处理
+            $url_num = UrlModel::where('channel_id',$find['id'])->count();
+            $role_num = RoleModel::where('type',1)->count();
 
-        //循环角色，有多少个角色就插入多少条数据，同时生成多少条url
-        foreach ($data['role'] as $k => $v) {
-            $insert_data['user_id'] = $data['user_id'];
-            
-        }
-        $channel_id = SalesChannelModel::insertGetId($data);
-        
-        if ($channel_id) {
-            if (isset($data['user_id'])) {
-                $uid = $data['user_id'];
-                $url = $_SERVER['SERVER_NAME']."/register/index/channelid/$channel_id";
-            }
-
-            $update_url = SalesChannelModel::where('id',$channel_id)->update(['url_code'=>$url]);
-            if ($update_url) {
-                return json(['msg'=>'添加成功，生成url!',
-                         'status'=>200,
-                         'url'=>$url]);
+            if ($url_num == $role_num) {
+                return json(['msg'=>'渠道已经存在','status'=>2]);
             }
             else{
-                return json(['msg'=>'生成url失败','status'=>4]);
+                foreach ($data['role'] as $k => $v) {
+                    $check_channel_role = UrlModel::where(['channel_id'=>$find['id'],'role_id'=>$v['id']])->find();
+                        if ($check_channel_role) {
+                            continue;
+                        }
+                        else{
+                            $insert_data[$k]['channel_id'] = $find['id'];
+                            $insert_data[$k]['role_id'] = $v['id'];
+                            $insert_data[$k]['url_code'] = $_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']; 
+                        }
+                        
+                    
+                }
+
+                $res = UrlModel::insertAll($insert_data);
             }
             
         }
         else{
-            return json(['msg'=>'添加失败！','status'=>0]);
+            //没有渠道存在的时候进行url的处理
+            $channel_id = SalesChannelModel::insertGetId(['channel_name'=>$data['channel_name'],'user_id'=>$data['user_id']]);
+            //循环角色，有多少个角色就插入多少条数据，同时生成多少条url
+            foreach ($data['role'] as $k => $v) {
+                $check_channel_role = UrlModel::where(['channel_id'=>$channel_id,'role_id'=>$v['id']])->find();
+                if ($check_channel_role) {
+                    continue;
+                }
+                else{
+                    $insert_data[$k]['channel_id'] = $channel_id;
+                    $insert_data[$k]['role_id'] = $v['id'];
+                    $insert_data[$k]['url_code'] = $_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']; 
+                }
+            }
+            $res = UrlModel::insertAll($insert_data);
         }
         
+
+        if ($res) {
+            return json(['msg'=>'添加成功，生成url!',
+                     'status'=>200,
+                     'url'=>$insert_data,
+                     'role'=>$data['role']]);
+        }
+        else{
+            return json(['msg'=>'生成url失败','status'=>4]);
+        }
 
     }

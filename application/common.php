@@ -46,7 +46,6 @@ function doAddChannel($data){
             return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
         }
         $find = SalesChannelModel::where(['channel_name'=>$data['channel_name'],'user_id'=>$data['user_id']])->find();
-
         if ($find) {
             //已存在渠道的时候进行url添加处理
             $url_num = UrlModel::where('channel_id',$find['id'])->count();
@@ -57,7 +56,7 @@ function doAddChannel($data){
             }
             else{
                 foreach ($data['role'] as $k => $v) {
-                    $check_channel_role = UrlModel::where(['channel_id'=>$channel_id,'role_id'=>$v['id']])->find();
+                    $check_channel_role = UrlModel::where(['channel_id'=>$find['id'],'role_id'=>$v['id']])->find();
                         if ($check_channel_role) {
                             continue;
                         }

@@ -40,20 +40,32 @@ class Channel extends Controller
     public function editChannel(){
         //编辑渠道
         if (request()->isPost()) {
-            
+            //执行添加渠道
+            $where['id'] = array('in',input('post.role'));
+            $role = SalesRoleModel::where($where)->field('id,role_name')->select()->toArray();
+            //获取需要添加的角色
+            $data['role'] = $role;
+            $data['channel_name'] = input('post.channel');
+            $data['user_id'] = Session::get('uid');
+
+            return doAddChannel($data);
         }
         else{
             $disabled = UrlModel::where('channel_id',input('get.id'))->field('role_id')->select()->toArray();
             $disabled_role = array_column($disabled, 'role_id');
             $role = SalesRoleModel::where('type',1)->field('id,role_name')->select()->toArray();
-            return view('edit_channel',['role'=>$role,'disabled_role'=>$disabled_role]);
-        }
+            $channel = SalesChannelModel::where('id',input('get.id'))->find();
+            return view('edit_channel',['role'=>$role,
+                                        'disabled_role'=>$disabled_role,
+                                        'channel'=>$channel]);
+                                }
     }
 
     public function delChannel(){
         //删除渠道
-        $res = SalesChannelModel::where('id',input('post.id'))->delete();
-        if ($res) {
+        $del_channel = SalesChannelModel::where('id',input('post.id'))->delete();
+        $del_url = UrlModel::where('channel_id',input('post.id'))->delete();
+        if ($del_channel && $del_url) {
             return json(['status'=>200,'msg'=>'删除成功']);
         }
         else{

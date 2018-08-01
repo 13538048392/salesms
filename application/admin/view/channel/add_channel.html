@@ -55,8 +55,7 @@ $('#create_url').click(function(){
 	var arr = new Array();
                 $("input[name='registerUser']:checked").each(function(i){
                     arr[i] = $(this).val();
-                    $(this).attr('checked',false);
-                    $(this).attr('disabled',true);
+                    $(this).parent().remove();
                 });
                 var role = arr.join(",");
             if (role == '') {

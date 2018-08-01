@@ -11,6 +11,7 @@ namespace app\index\controller;
 use app\index\model\User;
 use think\Controller;
 use think\Cookie;
+use think\Db;
 use think\Request;
 use think\Session;
 
@@ -55,16 +56,20 @@ class Login extends Controller
                 if ($time > 0) {
                     return json(['resp_code' => '4', 'msg' => '用户已经被锁定请' . $time . '秒后再试']);
                 }
-                $update = new User();
-                $update->uodateStatus();
+                Db::name('user')->where(['id' => $result['id']])->data(['status' => 1, 'error_times' => 0])->update();
+            }
+            if ($result['error_times'] >= 5) {
+                Db::name('user')->where(['id' => $result['id']])->data(['status' => 0])->update();
+                return json(['resp_code' => 5, 'msg' => '您的账号已被锁定']);
             }
             if (!password_verify($password, $result['pass'])) {
-                return json(['resp_code' => 2, 'msg' => '密码不正确']);
+                Db::name('user')->where(['id' => $result['id']])->data(['error_times' => $result['error_times'] + 1, 'login_time' => time()])->update();
+                return json(['resp_code' => 2, 'msg' => '密码不正确，超过五次账号将被锁定十分钟']);
             }
-
+            Db::name('user')->where(['id' => $result['id']])->data(['error_times' => 0])->update();
             Session::set('user.username', $username);
-            Session::set('userid', $result['user_id']);
-            return json(['resp_code' => 0, 'user_id' => $result['user_id']]);
+            Session::set('userid', $result['id']);
+            return json(['resp_code' => 0, 'user_id' => $result['id']]);
         }
     }
 

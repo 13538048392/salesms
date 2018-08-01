@@ -8,7 +8,10 @@
 
 namespace app\index\controller;
 
+use app\admin\model\Role;
+use app\admin\model\Url;
 use think\Controller;
+use think\Db;
 use think\Request;
 
 class Channel extends Controller
@@ -16,9 +19,14 @@ class Channel extends Controller
     public function index(Request $request)
     {
         $userid = $request->param('userid');
-        $channel = new \app\index\model\Channel();
-        $data = $channel->getChannelByUserId($userid);
-        return view('/channel', ['data' => $data->toArray()]);
+        $channel_id=Db::name('channel')->field('id')->where(['user_id'=>$userid])->find();
+        $data= Db::name('channel')
+            ->alias('a')
+            ->join('url','a.id=b.channel_id')
+            ->join('role','b.role_id=c.id')
+            ->field('a.channel_name,b.url_code,c.role_name')
+            ->where(['a.id'=>$channel_id]);
+        return view('/channel', ['data' => $data]);
     }
 
     public function addChannel(Request $request)
@@ -28,18 +36,20 @@ class Channel extends Controller
             $channelName = input('channel_name');
             $channel = new \app\index\model\Channel();
             $num = $channel->getChannelNumById($userId);
-            if ($num < 10) {
-                $channelId = $channel->addChannel($userId, 0, $channelName);
-                if ($channelId) {
-                    $url = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/userid/$userId/channelid/$channelId";
-                    $result = $channel->UpdateByChannelId($channelId, $url);
-                    if ($result) {
-                        $data = $channel->getChannelById($channelId);
-                        return json(['resp_code' => 0, 'msg' => $data]);
-                    }
-                }
-            } else {
+            if ($num > 10) {
                 return json(['resp_code' => 1, 'msg' => '最多增加10个渠道']);
+            }
+            $channelId = $channel->addChannel($userId, $channelName);
+            $arr_role = Db::name('role')->field('id')->where(['type' => 1])->select();
+            foreach ($arr_role as $key => $value) {
+                if ($value == '3') {
+                    $url = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value;
+                } else {
+                    $url = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                }
+                Db::name('url')->data(['channel_id' => $channelId, 'url_code' => $url, 'role_id' => $value])->insert();
+                $data = $channel->getChannelById($channelId);
+                return json(['resp_code' => 0, 'msg' => $data]);
             }
         }
     }

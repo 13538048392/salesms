@@ -37,17 +37,15 @@ class Home extends Controller
             $lastName=input('lastname');
             $address=input('address');
             $wechat=input('wechat');
-            $phone=input('phone');
             $gender=input('gender');
             $userinfo=new UserInfo();
             if($userinfo->idIsExist($userid)){
-                $userinfo->updateUserInfo($userid,$firstName,$lastName,$phone,$address,$wechat,$gender);
+                $userinfo->updateUserInfo($userid,$firstName,$lastName,$address,$wechat,$gender);
                 return json(['resp_code'=>1,'msg'=>'update suceess']);
             }else{
-                $userinfo->addUserInfo($userid,$firstName,$lastName,$phone,$address,$wechat,$gender);
+                $userinfo->addUserInfo($userid,$firstName,$lastName,$address,$wechat,$gender);
                 return json(['resp_code'=>0,'msg'=>'add success']);
             }
-
         }
     }
 }

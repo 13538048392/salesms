@@ -33,14 +33,9 @@ class Channel extends Model
         return $this->where(['user_id' => $userid])->select();
     }
 
-    public function UpdateByChannelId($channelId, $urlCode)
+    public function addChannel($userID, $channelName)
     {
-        return $this->where(['channel_id' => $channelId])->data(['url_code' => $urlCode])->update();
-    }
-
-    public function addChannel($userID, $adminId, $channelName)
-    {
-        $data = ['user_id' => $userID, 'admin_id' => $adminId, 'channel_name' => $channelName];
+        $data = ['user_id' => $userID,'channel_name' => $channelName];
         return $channelId = Channel::insertGetId($data);
     }
 

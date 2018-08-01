@@ -54,7 +54,7 @@ class Register extends Controller
             if (!$user_id) {
                 return json(['resp_code' => '2', 'msg' => '注册失败请重新注册 ']);
             }
-            Db::name('sales_admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('role_id')])->insert();
+            Db::name('admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('role_id')])->insert();
             $password = base64_encode(password_hash($data['password'], PASSWORD_DEFAULT));
             $url = url('index/register/activation', '', '', true);
             $url .= '/username/' . $data['username'] . '/pwd/' . $password;

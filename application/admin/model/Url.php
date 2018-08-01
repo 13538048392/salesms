@@ -17,7 +17,7 @@ class Url extends Model
     	foreach ($channel as $k => $v) {
     		$temp = Url::alias('a')
 		    		->join('sales_role b','a.role_id = b.id','left')
-		    		->field('a.id,a.url_code,b.role_name')
+		    		->field('a.id,a.url_code,b.role_name,a.role_id')
 		    		->where('channel_id',$v['id'])
 		    		->select()
 		    		->toArray();

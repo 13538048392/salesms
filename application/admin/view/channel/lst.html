@@ -38,7 +38,7 @@
 				<td>{$vo['create_time']}</td>
 				<td>
 					{volist name="vo['url_code']" id="v"}
-					邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp;{$v['url_code']}<br/>
+					邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $_SERVER['SERVER_NAME'];?>{$v['url_code']}<br/>
 					{/volist}
 				</td>
 				<td>

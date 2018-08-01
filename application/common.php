@@ -63,10 +63,9 @@ function doAddChannel($data){
                         else{
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = $_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']; 
+                            $insert_data[$k]['url_code'] = "/register/index/id/$find[id]/role_id/".$v['id']; 
                         }
-                        
-                    
+
                 }
 
                 $res = UrlModel::insertAll($insert_data);
@@ -85,7 +84,7 @@ function doAddChannel($data){
                 else{
                     $insert_data[$k]['channel_id'] = $channel_id;
                     $insert_data[$k]['role_id'] = $v['id'];
-                    $insert_data[$k]['url_code'] = $_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']; 
+                    $insert_data[$k]['url_code'] = "/register/index/id/$channel_id/role_id/".$v['id']; 
                 }
             }
             $res = UrlModel::insertAll($insert_data);

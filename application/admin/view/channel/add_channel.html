@@ -74,9 +74,15 @@ $('#create_url').click(function(){
 					else{
 						var html = '';
 						layer.msg(msg.msg,{icon:6,time:1000,end:function(){
-
+							var host = "<?php echo $_SERVER['SERVER_NAME'];?>";
+						
+						
+						// console.log(host);
 			              for(var i = 0;i < msg.url.length;i++){
-			              	html+="<div class='row cl'><label class='form-label col-xs-4 col-sm-3'><span class='c-red'>*</span>邀请"+msg.role[i]['role_name']+"url：</label><div class='formControls col-xs-8 col-sm-9'><input type='text' class='input-text' autocomplete='off' value='"+msg.url[i]['url_code']+"' id='' name='' readonly=''></div></div>";
+			              	if (msg.role[i]['id'] == 2) {
+								var host = "";
+							}
+			              	html+="<div class='row cl'><label class='form-label col-xs-4 col-sm-3'><span class='c-red'>*</span>邀请"+msg.role[i]['role_name']+"url：</label><div class='formControls col-xs-8 col-sm-9'><input type='text' class='input-text' autocomplete='off' value='"+host+msg.url[i]['url_code']+"' id='' name='' readonly=''></div></div>";
 			              }
 			              $('#channel_url').html(html);
 			            }});

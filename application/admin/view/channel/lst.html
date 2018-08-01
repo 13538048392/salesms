@@ -36,9 +36,10 @@
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>{$vo['channel_name']}</td>
 				<td>{$vo['create_time']}</td>
-				<td>
+				<td style="text-align: left;">
 					{volist name="vo['url_code']" id="v"}
-					邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp;{$v['url_code']}<br/>
+					{if condition="$v['role_id'] eq 2"}
+					邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp; {$v['url_code']}<br/>{else/}邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $_SERVER['SERVER_NAME'];?>{$v['url_code']}<br/>{/if}
 					{/volist}
 				</td>
 				<td>

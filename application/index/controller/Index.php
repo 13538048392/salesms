@@ -17,4 +17,10 @@ class Index extends Controller
     {
         return "this is login method";
     }
+    //二维码生成示范
+    public function  showQR(){
+        $content ="https://www.baidu.com/";
+        $file='qrcode'.time().'.png';
+        \Qrcode\MyQrcode::showQrcode($content,$file);
+    }
 }

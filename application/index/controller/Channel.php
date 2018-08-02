@@ -19,14 +19,19 @@ class Channel extends Controller
     public function index(Request $request)
     {
         $userid = $request->param('userid');
-        $channel_id=Db::name('channel')->field('id')->where(['user_id'=>$userid])->find();
-        $data= Db::name('channel')
-            ->alias('a')
-            ->join('url','a.id=b.channel_id')
-            ->join('role','b.role_id=c.id')
-            ->field('a.channel_name,b.url_code,c.role_name')
-            ->where(['a.id'=>$channel_id]);
-        return view('/channel', ['data' => $data]);
+        $channel = Db::name('channel')->where(['user_id' => $userid])->select();
+        foreach ($channel as $key=>$value)
+        {
+            $data = Db::name('url')
+                ->alias('b')
+                ->join('channel a', 'a.id=b.channel_id')
+                ->join('role c', 'b.role_id=c.id')
+                ->field('b.url_code,c.role_name')
+                ->where('b.channel_id',$value['id'])
+                ->select();
+            $channel[$key]['url_code']=$data;
+        }
+        return view('/channel', ['data' => $channel]);
     }
 
     public function addChannel(Request $request)
@@ -40,17 +45,40 @@ class Channel extends Controller
                 return json(['resp_code' => 1, 'msg' => '最多增加10个渠道']);
             }
             $channelId = $channel->addChannel($userId, $channelName);
-            $arr_role = Db::name('role')->field('id')->where(['type' => 1])->select();
+            $arr_role = Db::name('admin_role')->field('role_id')->where(['user_id' => $userId])->select();
             foreach ($arr_role as $key => $value) {
-                if ($value == '3') {
-                    $url = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value;
-                } else {
-                    $url = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                    switch ($value['role_id']) {
+                        //如果是角色是医生
+                        case 2:
+                            $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                            $data = [
+                                'channel_id' => $channelId,
+                                'url_code' => $url_doctor,
+                                'role_id' => $value['role_id']
+                            ];
+                            Db::name('url')->insert($data);
+                            break;
+                        //如果角色是销售员
+                        case 3:
+                            $url_sale = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value['role_id'];
+                            $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                            $data = [
+                                [
+                                    'channel_id' => $channelId,
+                                    'url_code' => $url_sale,
+                                    'role_id' => $value['role_id']
+                                ],
+                                [
+                                    'channel_id' => $channelId,
+                                    'url_code' => $url_doctor,
+                                    'role_id' => 2
+                                ]
+                            ];
+                            Db::name('url')->insertAll($data);
+                            break;
                 }
-                Db::name('url')->data(['channel_id' => $channelId, 'url_code' => $url, 'role_id' => $value])->insert();
-                $data = $channel->getChannelById($channelId);
-                return json(['resp_code' => 0, 'msg' => $data]);
             }
+            return json(['resp_code' => 0, 'msg' => '添加成功']);
         }
     }
 

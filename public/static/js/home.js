@@ -74,6 +74,7 @@ $(function () {
             success: function (result) {
                 if(result.resp_code==0)
                 {
+                    alert(result.msg);
                     location.reload();
                 }else {
                     alert(result.msg);

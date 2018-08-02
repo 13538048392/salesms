@@ -49,15 +49,22 @@
                     <tr>
                         <th>渠道名</th>
                         <th>UrlCode</th>
-                        <th>推荐类型</th>
+                        <th>创建时间</th>
                         <th>操作</th>
                     </tr>
+
                     <?php foreach($data as $key=>$val):?>
                     <tr>
                         <td>{$val.channel_name}</td>
-                        <td>{$val.url_code}</td>
-                        <td></td>
-                        <td><button type="button"  value="{$val.channel_id}" class="btn btn-danger del">删除</button></td>
+                        <td>
+                        <?php foreach($val['url_code'] as $k=>$v):?>
+                        {$v.role_name}
+                        </br>{$v.url_code}
+                            </br>
+                        <?php endforeach?>
+                        </td>
+                        <td>{$val['create_time']}</td>
+                        <td><button type="button"  value="{$val.id}" class="btn btn-danger del">删除</button></td>
                     </tr>
                     <?php endforeach;?>
                 </table>

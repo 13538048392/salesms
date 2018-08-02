@@ -8,6 +8,7 @@
 
 namespace app\index\model;
 
+use think\Db;
 use think\Model;
 
 class Channel extends Model
@@ -41,6 +42,8 @@ class Channel extends Model
 
     public function deleteChannel($channeId)
     {
-        return $this->where(['channel_id' => $channeId])->delete();
+
+        Db::name('url')->where('channel_id',$channeId)->delete();
+        return $this->where(['id' => $channeId])->delete();
     }
 }

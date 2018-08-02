@@ -15,6 +15,17 @@
 			</nav>
 			<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
 				<ul class="cl">
+					<style>
+						.cc{
+							color: #2aabd2 !important;
+						}
+					</style>
+					<li>
+						<a href="javascript:void(0);" lang='cn' id="cn" class='bt cc'>中文</a>
+						<a href="javascript:void(0);" lang='en' id="en" class='bt cc'>Eng</a>
+						<a href="javascript:void(0);" lang='hk' id="hk" class='bt cc'>繁體</a>
+					</li>
+
 					<li>{$Request.session.role_name}</li>
 					<li class="dropDown dropDown_hover"> <a href="#" class="dropDown_A">{$Request.session.admin_name}<i class="Hui-iconfont">&#xe6d5;</i></a>
 						<ul class="dropDown-menu menu radius box-shadow">
@@ -28,12 +39,7 @@
 						<span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i>
 						</a>
 					</li>
-					<li>
-						<button type="button" lang='cn' class='btn'>中文</button>
-						<!--<button type="button" lang='en' class='btn'>{:lang('按钮2')}</button>-->
-						<button type="button" lang='en' class='btn'>Eng</button>
-						<button type="button" lang='hk' class='btn'>繁體</button>
-					</li>
+
 					<li>
 						<span>{$Think.lang.test}</span>
 						<span>{$Think.lang.name}</span>
@@ -59,10 +65,16 @@
 	function loginOut(){
 		location.href = '/admin456salesms.php/Login/loginOut';
 	}
-    $('.btn').click(function(){
+    $('.bt').click(function(){
         var data={'lang':$(this).attr('lang')}
         $.get("{:url('lang')}",data,function(){
             location.reload();
         })
     })
+
 </script>
+{php}
+$lang =substr(\think\Lang::detect(),3);
+if($lang=="us")$lang="en";
+echo "<script>$('#".$lang."').removeClass('cc');</script>";
+{/php}

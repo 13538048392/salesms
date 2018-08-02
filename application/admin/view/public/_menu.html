@@ -2,13 +2,12 @@
 	<div class="menu_dropdown bk_2">
 
 		{php}$data =model('admin')->getBtns();
-
 		{/php}
 
 
 		<?php foreach($data as $k=>$v):?>
 		<dl id="menu-member">
-			<dt><i class="Hui-iconfont">&#xe60d;</i> {$v['pri_name']}<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+			<dt><i class="Hui-iconfont">&#xe60d;</i>{$v['pri_name']} <i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
 					<?php foreach($v['children'] as $k1=>$v1):?>

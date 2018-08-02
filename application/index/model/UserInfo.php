@@ -14,13 +14,12 @@ use think\Model;
 class UserInfo extends Model
 {
 
-    public function addUserInfo($userid, $firstname, $lastname, $phone, $address, $wechat, $gender)
+    public function addUserInfo($userid, $firstname, $lastname, $address, $wechat, $gender)
     {
         $data = [
             'user_id' => $userid,
             'first_name' => $firstname,
             'last_name' => $lastname,
-            'phone' => $phone,
             'address' => $address,
             'wechat' => $wechat,
             'gender' => $gender
@@ -28,7 +27,7 @@ class UserInfo extends Model
         return $this->data($data)->save();
     }
 
-    public function updateUserInfo($userid, $firstname, $lastname, $phone, $address, $wechat, $gender)
+    public function updateUserInfo($userid, $firstname, $lastname, $address, $wechat, $gender)
     {
         $data = [
             'first_name' => $firstname,

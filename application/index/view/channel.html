@@ -38,7 +38,7 @@
             <div>
                 <form class="form-inline" onsubmit="return false">
                     <div class="form-group col-md-8">
-                        <label for="exampleInputEmail2" style="margin-left: -10px;margin-right: 10px">Channel Name</label>
+                        <label for="channel_name" style="margin-left: -10px;margin-right: 10px">Channel Name</label>
                         <input type="text" class="form-control" name="channel_name" id="channel_name" required placeholder="Channel Name" style="width: 70%">
                     </div>
                     <button type="submit" id="addChannel" class="btn btn-default">Submit</button>
@@ -47,14 +47,16 @@
             <div style="padding-top: 20px" >
                 <table class="table" style="width: 100%">
                     <tr>
-                        <th>Channel Name</th>
+                        <th>渠道名</th>
                         <th>UrlCode</th>
+                        <th>推荐类型</th>
                         <th>操作</th>
                     </tr>
                     <?php foreach($data as $key=>$val):?>
                     <tr>
                         <td>{$val.channel_name}</td>
                         <td>{$val.url_code}</td>
+                        <td></td>
                         <td><button type="button"  value="{$val.channel_id}" class="btn btn-danger del">删除</button></td>
                     </tr>
                     <?php endforeach;?>

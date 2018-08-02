@@ -60,13 +60,18 @@ function doAddChannel($data){
                         if ($check_channel_role) {
                             continue;
                         }
+                        else if($v['id'] == 2){
+                            //医生的url
+                            $insert_data[$k]['channel_id'] = $find['id'];
+                            $insert_data[$k]['role_id'] = $v['id'];
+                            $insert_data[$k]['url_code'] = "http://47.90.203.241/signup?channelId=$find[id]&referralCode=$data[user_id]"; 
+                        }
                         else{
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = $_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']; 
+                            $insert_data[$k]['url_code'] = "/register/index/id/$find[id]/role_id/".$v['id']; 
                         }
-                        
-                    
+
                 }
 
                 $res = UrlModel::insertAll($insert_data);
@@ -82,10 +87,16 @@ function doAddChannel($data){
                 if ($check_channel_role) {
                     continue;
                 }
+                else if($v['id'] == 2){
+                            //医生的url
+                            $insert_data[$k]['channel_id'] = $channel_id;
+                            $insert_data[$k]['role_id'] = $v['id'];
+                            $insert_data[$k]['url_code'] = "http://47.90.203.241/signup?channelId=$channel_id&referralCode=$data[user_id]"; 
+                }
                 else{
                     $insert_data[$k]['channel_id'] = $channel_id;
                     $insert_data[$k]['role_id'] = $v['id'];
-                    $insert_data[$k]['url_code'] = $_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']; 
+                    $insert_data[$k]['url_code'] = "/register/index/id/$channel_id/role_id/".$v['id']; 
                 }
             }
             $res = UrlModel::insertAll($insert_data);

@@ -14,17 +14,17 @@ use think\Db;
 
 class User extends Model
 {
-    public function userRegister($username, $password, $email, $phone,$channel_id,$type)
+    public function userRegister($username, $password, $email, $channel_id, $parent_id, $phone)
     {
-        $this->data = [
+        $data = [
             'user_name' => $username,
             'pass' => $password,
             'email' => $email,
-            'phone'=>$phone,
             'channel_id' => $channel_id,
-            'type'=>$type
+            'parent_id' => $parent_id,
+            'phone' => $phone
         ];
-        return $this->save();
+        return $this->insertGetId($data);
     }
 
     public function userActivation($username, $password)
@@ -37,7 +37,7 @@ class User extends Model
     public function userEmailIsExist($email)
     {
         if (isset($email) && !empty($email)) {
-            return $this->limit(1)->where(['email' => $email])->find();
+            return $this->where(['email' => $email])->find();
 
         }
     }
@@ -45,39 +45,56 @@ class User extends Model
     public function userNameIsExist($username)
     {
         if (isset($username) && !empty($username)) {
-            return $this->limit(1)->where(['user_name' => $username])->find();
+            return $this->where(['user_name' => $username])->find();
         }
     }
 
     public function phoneIsExist($phone)
     {
         if (isset($phone) && !empty($phone)) {
-            return $this->limit(1)->where(['phone' => $phone])->find();
+            return $this->where(['phone' => $phone])->find();
         }
     }
 
-    public  function vertifyCookie($username,$password)
+    public function vertifyCookie($username, $password)
     {
-        if (isset($username,$password) && !empty($username)&&!empty($password)) {
-            return $this->limit(1)->where(['user_name' => $username,'pass'=>$password])->find();
+        if (isset($username, $password) && !empty($username) && !empty($password)) {
+            return $this->where(['user_name' => $username, 'pass' => $password])->find();
         }
     }
-    public function userLogin($username)
+
+    public function userNameLogin($username)
     {
         if (isset($username) && !empty($username)) {
-            return $this->limit(1)->where(['user_name' => $username])->find();
+            return $this->where(['user_name' => $username])->find();
         }
     }
 
-    public function checkEmail($data){
+    public function userEmailLogin($email)
+    {
+        if (isset($email) && !empty($email)) {
+            return $this->where(['email' => $email])->find();
+        }
+    }
+
+    public function userPhoneLogin($phone)
+    {
+        if (isset($phone) && !empty($phone)) {
+            return $this->where(['phone' => $phone])->find();
+        }
+    }
+
+    public function checkEmail($data)
+    {
         //检测邮箱和用户
         $res = User::where($data)->find();
         return $res;
     }
 
-    public function resetPass($where,$password){
+    public function resetPass($where, $password)
+    {
         //修改密码
-        $res = User::where($where)->update(['pass'=>$password]);
+        $res = User::where($where)->update(['pass' => $password]);
         return $res;
     }
 }

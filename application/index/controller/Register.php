@@ -11,6 +11,7 @@ namespace app\index\controller;
 use app\index\model\Channel;
 use app\index\model\User;
 use think\Controller;
+use think\Db;
 use think\Loader;
 use think\Request;
 use think\Session;
@@ -23,7 +24,7 @@ class Register extends Controller
     public function index(Request $request = null)
     {
         $arr = $request->param();
-        if (!isset($arr['id']) && !isset($arr['type'])) {
+        if (!isset($arr['id'])&&!isset($arr['role_id'])) {
             return $this->error('邀请链接不存在');
         }
         $channel = new Channel();
@@ -31,9 +32,9 @@ class Register extends Controller
         if ($result == null) {
             return $this->error('邀请链接无效');
         }
-        Session::set('user.id', $result['user_id']);
-        Session::set('channel.id', $arr['id']);
-        Session::set('user.type', $arr['type']);
+        Session::set('user.parent_id', $result['user_id']);
+        Session::set('user.channel_id', $arr['id']);
+        Session::set('user_role.role_id',$arr['role_id']);
         return $this->view->fetch('/register');
     }
 
@@ -49,10 +50,11 @@ class Register extends Controller
                 return json(['resp_code' => '1', 'msg' => '用户信息不正确']); //用户信息填写不完善
             }
             $user = new User();
-            $result = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email'], $data['phone'], Session::get('channel.id'), Session::get('user.type'));
-            if (!$result) {
+            $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email'], Session::get('user.channel_id'),Session::get('user.parent_id'),$data['phone']);
+            if (!$user_id) {
                 return json(['resp_code' => '2', 'msg' => '注册失败请重新注册 ']);
             }
+            Db::name('admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('role_id')])->insert();
             $password = base64_encode(password_hash($data['password'], PASSWORD_DEFAULT));
             $url = url('index/register/activation', '', '', true);
             $url .= '/username/' . $data['username'] . '/pwd/' . $password;
@@ -65,23 +67,9 @@ class Register extends Controller
             } else {
                 return json(['resp_code' => '3', 'msg' => '邮件发送失败，请重新注册 ']); //邮件发送失败
             }
-
         }
     }
 
-    public function checkPhone()
-    {
-        if (isset($_POST)) {
-            $phone = input('phone');
-            $user = new User();
-            $result = $user->phoneIsExist($phone);
-            if ($result) {
-                echo json_encode(['valid' => false]);
-            } else {
-                echo json_encode(['valid' => true]);
-            }
-        }
-    }
 
     public function checkUser()
     {
@@ -124,5 +112,4 @@ class Register extends Controller
             }
         }
     }
-
 }

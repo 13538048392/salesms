@@ -8,7 +8,7 @@ use app\admin\model\SalesAdminRole as SalesAdminRoleModel;
 use app\admin\model\SalesChannel as SalesChannelModel;
 use app\admin\model\Url as UrlModel;
 
-class Channel extends Controller
+class Channel extends Common
 {
         public function lst(){
             //渠道列表

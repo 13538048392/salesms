@@ -66,7 +66,6 @@ $(function () {
             alert('渠道名不能为空');
             return false;
         }
-        var tr= $(this).parent().parent();
         $.ajax({
             url: url_addChannel,
             type: 'POST',

@@ -16,7 +16,6 @@ class User extends Validate
     protected $rules=[
         'username'=>['require','min'=>6,'max'=>18,'regex'=>'/^[a-zA-Z0-9_\-]+$/'],
         'email'=>'email',
-        'phone'=>'mobile',
         'password'=>['require','confirm'],
         'confirm_password'=>['require','confirm'=>'password'],
     ];
@@ -26,7 +25,6 @@ class User extends Validate
         'username.max' => '用户名最多为18个字符',
         'username.regex'=>'用户名只能包含大写、小写、数字、下划线和-',
         'email' => '邮箱格式错误',
-        'phone'=>'手机号码不正确',
         'password.require'=>'密码不能为空',
         'confirm_password.require'=>'密码不能为空',
         'confirm_password.confirm'=>'两次密码不一致',

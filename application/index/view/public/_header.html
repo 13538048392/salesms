@@ -1,0 +1,38 @@
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="/"><strong>Salesms</strong></a>
+        </div>
+
+        
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+
+        <li>
+        <a href="#" id="en" lang="en" class="js-change-lang">Eng</a>
+        </li>
+        <li>
+        <a href="#" id="zh" lang="cn" class="js-change-lang disabled">中文</a>
+        </li>
+        <li>
+        <a href="#" id="hk" lang="hk" class="js-change-lang disabled">繁体</a>
+        </li>
+      </ul>
+    </div>
+  
+    </div>
+  </nav>
+  <script type="text/javascript">
+      $('.js-change-lang').click(function(){
+        var data={'lang':$(this).attr('lang')}
+        $.get("{:url('lang')}",data,function(){
+            location.reload();
+        })
+    })
+  </script>

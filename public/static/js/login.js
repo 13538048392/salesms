@@ -10,14 +10,14 @@ $(function () {
             username: {
                 validators: {
                     notEmpty: {
-                        message: '用户名不能为空'
+                        message: user_check
                     }
                 }
             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: '密码不能为空'
+                        message: pass_check
                     }
                 }
             }

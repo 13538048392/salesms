@@ -11,31 +11,32 @@
     <script src="/static/js/login.js"></script>
 </head>
 <body>
-<div class="container">
+   {include file="../application/index/view/public/_header.html"}
+<div class="container" style="margin:60px 0 0 0;">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h2>User Login</h2>
+            <h2>{$Think.lang.login}</h2>
             <form role="form" method="post" id="reused_form" action="{:url('login/login')}">
                 <input type="hidden" name="__token__" value="{$Request.token}"/>
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="username"></label>
-                        <input type="text" placeholder="用户名|邮箱|手机号：" class="form-control" id="username" name="username">
+                        <input type="text" placeholder="{$Think.lang.username}|{$Think.lang.email}|{$Think.lang.phone}：" class="form-control" id="username" name="username">
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="password"> </label>
-                        <input type="password" placeholder="密码:" class="form-control" id="password"
+                        <input type="password" placeholder="{$Think.lang.password}:" class="form-control" id="password"
                                name="password">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <a  href="{:url('searchPass')}" role="button" target="_blank">忘记密码</a>
+                        <a  href="{:url('searchPass')}" role="button" target="_blank">{$Think.lang.forgot}</a>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">提交</button>
+                        <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">{$Think.lang.login}</button>
                     </div>
                 </div>
             </form>
@@ -48,6 +49,8 @@
     imgurl = "<?php echo captcha_src();?>";
     checkCodeUrl = "<?php echo url('login/checkValidateCode','','',true)?>";
     indexurl="<?php echo url('/home/index/userid/')?>";
+    user_check = "{$Think.lang.user_not_null}";
+    pass_check = "{$Think.lang.pass_not_null}";
 </script>
 </body>
 </html>

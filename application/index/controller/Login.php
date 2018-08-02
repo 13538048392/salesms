@@ -14,8 +14,9 @@ use think\Cookie;
 use think\Db;
 use think\Request;
 use think\Session;
+use app\common\Base;
 
-class Login extends Controller
+class Login extends Base
 {
     public function __construct(Request $request = null)
     {
@@ -91,17 +92,17 @@ class Login extends Controller
     {
         //找回密码执行
         if (input('post.username') == '') {
-            return json(['msg' => '用户名不能为空', 'status' => 1]);
+            return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
         }
         if (input('post.email') == '') {
-            return json(['msg' => '邮箱不能为空', 'status' => 2]);
+            return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
         }
         $data['user_name'] = input('post.username');
         $data['email'] = input('post.email');
         $user = new User();
         $res = $user->checkEmail($data);
         if (!$res) {
-            return json(['msg' => '用户名和邮箱不匹配', 'status' => 0]);
+            return json(['msg' => \think\lang::get('check_email_user'), 'status' => 0]);
         }
         $code = input('post.code');
         if ($code != Cookie::get('code')) {

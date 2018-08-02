@@ -10,34 +10,36 @@
     <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
 </head>
 <body>
-<div class="container">
+    {include file="../application/index/view/public/_header.html"}
+<div class="container" style="margin: 60px 0 0 0">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h2>Search Password</h2>
+            <h2>{$Think.lang.forgot}</h2>
+            <h4>{$Think.lang.forgot_info}</h4>
             <form role="form" onsubmit="return false;">
                 <input type="hidden" name="__token__" value="{$Request.token}"/>
                 <div class="row">
                     <div class="col-sm-12 form-group">
                         <label for="username"></label>
-                        <input type="text" placeholder="You User：" class="form-control" id="username" name="username">
+                        <input type="text" placeholder="{$Think.lang.username}：" class="form-control" id="username" name="username">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
                         <label for="email"></label>
-                        <input type="text" placeholder="You Email：" class="form-control" id="email" name="email">
+                        <input type="text" placeholder="{$Think.lang.email}：" class="form-control" id="email" name="email">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="verify"></label>
-                        <input type="text" placeholder="Verification Code" class="form-control" id="verify" name="verify">
+                        <input type="text" placeholder="{$Think.lang.verify_code}" class="form-control" id="verify" name="verify">
 
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="verify"></label>
                         
-                        <button class="btn btn-lg btn-success btn-block" style="width:200px;height: 45px;" id="send_email">发送邮件获取验证码</button>
+                        <button class="btn btn-lg btn-success btn-block" style="width:200px;height: 45px;" id="send_email">{$Think.lang.send_email_code}</button>
                     
                     </div>
                 </div>
@@ -49,7 +51,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
-                        <button type="submit" class="btn btn-lg btn-success btn-block" id="commit">提交</button>
+                        <button type="submit" class="btn btn-lg btn-success btn-block" id="commit">{$Think.lang.commit}</button>
                     </div>
                 </div>
             </form>
@@ -59,6 +61,9 @@
     </div>
 </div>
 <script>
+user_check = "{$Think.lang.user_not_null}";
+pass_check = "{$Think.lang.pass_not_null}";
+email_check = "{$Think.lang.email_not_null}";
 $(function () {
     $('form').bootstrapValidator({
         message: 'This value is not valid',
@@ -72,7 +77,7 @@ $(function () {
                 message: '用户名验证失败',
                 validators: {
                     notEmpty: {
-                        message: '用户名不能为空'
+                        message: user_check
                     }
                 }
             },
@@ -80,14 +85,14 @@ $(function () {
                 message: '邮箱验证失败',
                 validators: {
                     notEmpty: {
-                        message: '邮箱不能为空'
+                        message: pass_check
                     }
                 }
             },
             verify: {
                 validators: {
                     notEmpty: {
-                        message: '验证码'
+                        message: email_check
                     },
                     verbose: false,
                     threshold: 4,
@@ -181,7 +186,7 @@ $('#commit').click(function(){
 
 });
         
-        
+
 </script>
 </body>
 </html>

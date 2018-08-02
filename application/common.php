@@ -2,6 +2,7 @@
 use app\admin\model\SalesChannel as SalesChannelModel;
 use app\admin\model\Url as UrlModel;
 use app\admin\model\Role as RoleModel;
+
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -45,6 +46,7 @@ function doAddChannel($data){
         if ($count == 10) {
             return json(['msg'=>'最多只能添加10个渠道','status'=>3]);
         }
+
         $find = SalesChannelModel::where(['channel_name'=>$data['channel_name'],'user_id'=>$data['user_id']])->find();
         if ($find) {
             //已存在渠道的时候进行url添加处理
@@ -100,8 +102,21 @@ function doAddChannel($data){
                 }
             }
             $res = UrlModel::insertAll($insert_data);
+        // $insert_data['channel_name'] = $channel;
+        // $insert_data['admin_id'] = Session::get('uid');
+        $find = SalesChannelModel::where(['channel_name'=>$data['channel_name'],'user_id'=>$data['user_id']])->find();
+        if ($find) {
+            return json(['msg'=>'渠道已经存在','status'=>2]);
         }
-        
+        $channel_id = SalesChannelModel::insertGetId(['channel_name'=>$data['channel_name'],'user_id'=>$data['user_id']]);
+        //循环角色，有多少个角色就插入多少条数据，同时生成多少条url
+        foreach ($data['role'] as $k => $v) {
+            $insert_data[$k]['channel_id'] = $channel_id;
+            $insert_data[$k]['role_id'] = $v['id'];
+            $insert_data[$k]['url_code'] = $_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id'];
+            
+        }
+        $res = UrlModel::insertAll($insert_data);
 
         if ($res) {
             return json(['msg'=>'添加成功，生成url!',
@@ -111,6 +126,8 @@ function doAddChannel($data){
         }
         else{
             return json(['msg'=>'生成url失败','status'=>4]);
+
         }
 
     }
+}

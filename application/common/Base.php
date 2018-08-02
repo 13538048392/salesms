@@ -17,6 +17,9 @@ class Base extends Controller {
             case 'en':
                 cookie('think_var', 'en-us');
                 break;
+            case 'hk':
+                cookie('think_var', 'zh-hk');
+                break;
             //其它语言
         }
     }

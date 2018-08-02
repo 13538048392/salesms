@@ -29,8 +29,10 @@
 						</a>
 					</li>
 					<li>
-						<button type="button" lang='cn' class='btn'>{:lang('按钮1')}</button>
-						<button type="button" lang='en' class='btn'>{:lang('按钮2')}</button>
+						<button type="button" lang='cn' class='btn'>中文</button>
+						<!--<button type="button" lang='en' class='btn'>{:lang('按钮2')}</button>-->
+						<button type="button" lang='en' class='btn'>Eng</button>
+						<button type="button" lang='hk' class='btn'>繁體</button>
 					</li>
 					<li>
 						<span>{$Think.lang.test}</span>
@@ -59,7 +61,7 @@
 	}
     $('.btn').click(function(){
         var data={'lang':$(this).attr('lang')}
-        $.get("{:url('Test/lang')}",data,function(){
+        $.get("{:url('lang')}",data,function(){
             location.reload();
         })
     })

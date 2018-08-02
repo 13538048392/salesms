@@ -1,10 +1,11 @@
 <?php
 namespace app\admin\controller;
 
+use app\common\Base;
 use think\Controller;
 use think\Session;
 
-class Index extends Controller
+class Index extends Base
 {
     public function __construct()
     {

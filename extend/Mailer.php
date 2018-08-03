@@ -24,6 +24,8 @@ class Mailer
         $mailer->FromName = Config::get('mail.fromname'); //发件人姓名
         $mailer->AddAddress($to,"尊敬的客户");
         $mailer->WordWrap = 50; //设置每行字符长度
+        // $mailer->Port = 465;//端口
+        // $mailer->SMTPSecure = "ssl";
         $mailer->IsHTML(Config::get('mail.ishtml')); // 是否HTML格式邮件
         $mailer->CharSet=Config::get('mail.charset'); //设置邮件编码
         $mailer->Subject =$subject; //邮件主题

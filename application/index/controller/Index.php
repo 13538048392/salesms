@@ -25,7 +25,7 @@ class Index extends Controller
     }
     public function sendm(){
         $mail = new \Mailer();
-        $a =$mail->send('1642504508@qq.com',"你好",'真好');
+        $a =$mail->send('249208644@qq.com',"你好",'真好');
         dump($a);
     }
 }

@@ -19,43 +19,44 @@
     <script src="/static/js/form.js"></script>
 </head>
 <body>
-<div class="container">
+    {include file="../application/index/view/public/_header.html"}
+<div class="container" style="margin: 60px 0 0 0">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h2>User Register</h2>
+            <h2>{$Think.lang.user} {$Think.lang.register}</h2>
             <form role="form" method="post" id="reused_form" action="{:url('register/register')}">
                 {:token()}
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="username"></label>
-                        <input type="text" placeholder="用户名：" class="form-control" id="username" name="username">
+                        <input type="text" placeholder="{$Think.lang.username}:" class="form-control" id="username" name="username">
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="email"> </label>
-                        <input type="text" placeholder="邮箱:" class="form-control" id="email" name="email">
+                        <input type="text" placeholder="{$Think.lang.email}:" class="form-control" id="email" name="email">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="phone"> </label>
-                        <input type="text" placeholder="手机号:" class="form-control" id="phone" name="phone">
+                        <input type="text" placeholder="{$Think.lang.phone}:" class="form-control" id="phone" name="phone">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="password"> </label>
-                        <input type="password" placeholder="密码:" class="form-control" id="password" name="password">
+                        <input type="password" placeholder="{$Think.lang.password}:" class="form-control" id="password" name="password">
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="confirm_password"> </label>
-                        <input type="password" placeholder="确认密码:" class="form-control" id="confirm_password"
+                        <input type="password" placeholder="{$Think.lang.password2}:" class="form-control" id="confirm_password"
                                name="confirm_password">
                     </div>
                 </div>
                 <div>
                     <div class="col-sm-12 form-group">
                         <button type="submit" name="btnContactUs" class="btn btn-lg btn-success btn-block"
-                                id="btnContactUs">提交
+                                id="btnContactUs">{$Think.lang.commit}
                         </button>
                     </div>
                 </div>
@@ -70,3 +71,21 @@
 </div>
 </body>
 </html>
+<script type="text/javascript">
+    var user_not_null = "{$Think.lang.user_not_null}";
+    var email_not_null = "{$Think.lang.email_not_null}";
+    var phone_not_null = "{$Think.lang.phone_not_null}";
+    var pass_not_null = "{$Think.lang.pass_not_null}";
+    var pass2_not_null = "{$Think.lang.pass2_not_null}";
+    var user_length = "{$Think.lang.user_length}";
+    var user_rule = "{$Think.lang.user_rule}";
+    var email_rule = "{$Think.lang.email_rule}";
+    var user_exist = "{$Think.lang.user_exist}";
+    var email_exist = "{$Think.lang.email_exist}";
+    var phone_rule = "{$Think.lang.phone_rule}";
+    var pass_length = "{$Think.lang.pass_length}";
+    var user_both = "{$Think.lang.user_length}";
+    var pass_rule =  "{$Think.lang.pass_rule}";
+    var two_pass_differ = "{$Think.lang.two_pass_differ}";
+
+</script>

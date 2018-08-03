@@ -11,20 +11,23 @@ return [
 //    '按钮3'=>'complex',
     'test'=>'TEST',
     'name'=>'NAME',
-
+//login controller
     'user' => 'User',
     'login' => 'Log In',
+    'register' => 'Register',
     'username' => 'UserName',
     'email' => 'Email',
     'phone'	=> 'Phone',
     'password' => 'Password',
+    'password2' => 'Confirm password',
     'forgot' => 'Forgot Password?',
     'user_not_null' => 'The username can not be empty',
     'pass_not_null' => 'The password can not be empty',
     'pass2_not_null' => 'The confirm password can not be empty',
     'reset_pass' => 'Please reset your password',
     'reset_pass2' => 'Please confirm your password',
-    'email_not_null' => 'The email can not be empty',
+    'email_not_null' => 'The email can not be empty', 
+    'phone_not_null' => 'The phone can not be empty',
     'verify_code' => 'Verification Code',
     'send_email_code' => 'Send Email',
     'commit' => 'Commit',
@@ -46,5 +49,32 @@ return [
 	'user_frozen_seconds' => 'Second retry ',
 	'password_error' => 'Password is incorrect, more than five times the account will be frozen for ten minutes.',
 	'verify_success' => 'Verifies success',
+
+	//end login controller
+
+	//register controller
+
+	'inviting_link_not_exist' => 'invitation link does not exist ',
+	'inviting_link_invalid' => 'inviting link invalid ',
+	'unlawful_request' => 'unlawful request ',
+	'user_error' => 'user information is incorrect ',
+	'register_fail' => 'registration failure please register ',
+	'register_title' =>'get activation code ',
+	'register_email_body' => 'registration is successful, your activation code is',
+	'register_email_body2' => 'please click on this address to activate your user',
+	'register_success' => 'registration is successful. Please go to the mailbox to activate your account',
+	'register_fail' => 'Mail failed. Please re register',
+
+	'user_length' => 'user name length must be between 8 and 18 bits',
+	'user_rule' => 'user name can contain uppercase, lowercase, numeric ',
+	'email_rule' => 'mailbox address format is mistaken ',
+	'user_exist' => 'user already ',
+	'email_exist' => 'mailbox has been used ',
+	'phone_rule' => 'the phone number is not properly format ',
+	'pass_length' => 'password length must be between 6 and 30 ',
+	'user_both' => 'can not be the same as the username ',
+	'pass_rule' => 'password is underlined by digital letters',
+
+	//end register controller
 
 ];

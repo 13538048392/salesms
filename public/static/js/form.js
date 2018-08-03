@@ -12,18 +12,18 @@ $(function () {
                 message: '用户名验证失败',
                 validators: {
                     notEmpty: {
-                        message: '用户名不能为空'
+                        message: user_not_null
                     },
                     stringLength: {
                         min: 8,
                         max: 18,
-                        message: '用户名长度必须在8到18位之间'
+                        message: user_length
                     },
                     verbose: false,
                     threshold: 6,
                     remote: {
                         url: url_username,//验证地址
-                        message: '用户已存在',//提示消息
+                        message: user_exist,//提示消息
                         delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
                         type: 'POST'//请求方式
                         /**自定义提交数据，默认值提交当前input value
@@ -37,23 +37,23 @@ $(function () {
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9]+$/,
-                        message: '用户名只能包含大写、小写、数字'
+                        message: user_rule
                     }
                 }
             },
             email: {
                 validators: {
                     notEmpty: {
-                        message: '邮箱不能为空'
+                        message: email_not_null
                     },
                     emailAddress: {
-                        message: '邮箱地址格式有误'
+                        message: email_rule
                     },
                     verbose: false,
                     threshold: 6,
                     remote: {
                         url: url_email,//验证地址
-                        message: '邮箱已使用',//提示消息
+                        message: email_exist,//提示消息
                         delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
                         type: 'POST'//请求方式
                         /**自定义提交数据，默认值提交当前input value
@@ -70,57 +70,57 @@ $(function () {
             phone: {
                 validators: {
                     notEmpty: {
-                        message: '电话号码不能为空'
+                        message: phone_not_null
                     },
                     regexp: {
                         regexp: /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/,
-                        message: '电话号码格式不正确'
+                        message: phone_rule
                     }
                 }
             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: '密码不能为空'
+                        message: pass_not_null
                     },
                     stringLength: {
                         /*长度提示*/
                         min: 6,
                         max: 30,
-                        message: '密码长度必须在6到30之间'
+                        message: pass_length
                     },
                     different: {//不能和用户名相同
                         field: 'loginName',//需要进行比较的input name值
-                        message: '不能和用户名相同'
+                        message: user_both
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: '密码由数字字母下划线和.组成'
+                        message: pass_rule
                     }
                 }
             },
             confirm_password: {
                 validators: {
                     notEmpty: {
-                        message: '密码无效'
+                        message: pass2_not_null
                     },
                     stringLength: {
                         /*长度提示*/
                         min: 6,
                         max: 30,
-                        message: '密码长度必须在6到30之间'
+                        message: pass_length
                     },
                     different: {//不能和用户名相同
                         field: 'loginName',//需要进行比较的input name值
-                        message: '不能和用户名相同'
+                        message: user_both
                     },
                     identical: {//相同
                         field: 'password',
-                        message: '两次密码不一致'
+                        message: two_pass_differ
                     },
                     regexp: {
                         regexp: /^[a-zA-Z0-9_\.]+$/,
-                        message: '密码由数字字母下划线和.组成'
+                        message: pass_rule
                     }
                 }
             },

@@ -16,21 +16,24 @@ use think\Loader;
 use think\Request;
 use think\Session;
 use think\Validate;
+use app\common\Base;
 
 Loader::import('Mailer', ROOT_PATH . 'application/entend/Mailer.php');
 
-class Register extends Controller
+class Register extends Base
 {
     public function index(Request $request = null)
     {
         $arr = $request->param();
         if (!isset($arr['id'])&&!isset($arr['role_id'])) {
-            return $this->error('邀请链接不存在');
+            //邀请链接不存在
+            return $this->error(\think\lang::get('inviting_link_not_exist'));
         }
         $channel = new Channel();
         $result = $channel->channelIsExist($arr['id']);
         if ($result == null) {
-            return $this->error('邀请链接无效');
+            //邀请链接无效
+            return $this->error(\think\lang::get('inviting_link_invalid'));
         }
         Session::set('user.parent_id', $result['user_id']);
         Session::set('user.channel_id', $arr['id']);
@@ -42,30 +45,33 @@ class Register extends Controller
     {
         if (isset($_POST)) {
             if (!Validate::token('__token__', '', ['__token__' => input('param.__token__')])) {
-                return $this->error('非法请求');
+                //非法请求
+                return $this->error(\think\lang::get('unlawful_request'));
             }
             $data = input('post.');
             $validate = new \app\index\validate\User;
             if (!$validate->check($data)) {
-                return json(['resp_code' => '1', 'msg' => '用户信息不正确']); //用户信息填写不完善
+                //用户信息错误
+                return json(['resp_code' => '1', 'msg' => \think\lang::get('user_error')]); //用户信息填写不完善
             }
             $user = new User();
             $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email'], Session::get('user.channel_id'),Session::get('user.parent_id'),$data['phone']);
             if (!$user_id) {
-                return json(['resp_code' => '2', 'msg' => '注册失败请重新注册 ']);
+                //注册失败，请重新注册
+                return json(['resp_code' => '2', 'msg' => \think\lang::get('register_fail')]);
             }
             Db::name('admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('role_id')])->insert();
             $password = base64_encode(password_hash($data['password'], PASSWORD_DEFAULT));
             $url = url('index/register/activation', '', '', true);
             $url .= '/username/' . $data['username'] . '/pwd/' . $password;
             $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
-            $subject = '激活码获取';
-            $body = '注册成功，您的激活码是:' . $strHtml . '请点击该地址激活您的用户';
+            $subject = \think\lang::get('register_title');
+            $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
             $mail = new \Mailer();
             if ($mail->send($data['email'], $subject, $body)) {
-                return json(['resp_code' => '0', 'msg' => '注册成功，请到邮箱激活您的账号']); //邮件发送成功
+                return json(['resp_code' => '0', 'msg' => \think\lang::get('register_success')]); //邮件发送成功
             } else {
-                return json(['resp_code' => '3', 'msg' => '邮件发送失败，请重新注册 ']); //邮件发送失败
+                return json(['resp_code' => '3', 'msg' => \think\lang::get('register_fail')]); //邮件发送失败
             }
         }
     }

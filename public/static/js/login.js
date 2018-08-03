@@ -10,14 +10,14 @@ $(function () {
             username: {
                 validators: {
                     notEmpty: {
-                        message: '用户名不能为空'
+                        message: user_check
                     }
                 }
             },
             password: {
                 validators: {
                     notEmpty: {
-                        message: '密码不能为空'
+                        message: pass_check
                     }
                 }
             }
@@ -28,9 +28,11 @@ $(function () {
         var bv = $form.data('bootstrapValidator');
         $.post($form.attr('action'), $form.serialize(), function (result) {
             if (result.resp_code == 0) {
+                    $('#success_message').html('<h3>'+result.msg+'</h3>');
                     location.href = indexurl+'?userid='+result.user_id;
             }else{
-                 alert(result.msg);
+                 // alert(result.msg);
+                 $('#success_message').html('<h3>'+result.msg+'</h3>');
             }
            
         }, 'json');

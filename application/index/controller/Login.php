@@ -14,8 +14,9 @@ use think\Cookie;
 use think\Db;
 use think\Request;
 use think\Session;
+use app\common\Base;
 
-class Login extends Controller
+class Login extends Base
 {
     public function __construct(Request $request = null)
     {
@@ -45,26 +46,31 @@ class Login extends Controller
             } else {
                 $result = $user->userNameLogin($username);
             }
-            if ($result['active'] == 0) {
-                return json(['resp_code' => 3, 'msg' => '账号未激活，请到您的邮箱激活']);
-            }
+            
             if ($result == null) {
-                return json(['resp_code' => 1, 'msg' => '用户名不存在']);
+                //用户名不存在
+                return json(['resp_code' => 1, 'msg' => \think\lang::get('user_not_exist')]);
+            }
+            if ($result['active'] == 0) {
+                //账号未激活
+                return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate')]);
             }
             if ($result['status'] == 0) {
                 $time = 10 * 60 - (time() - strtotime($result['login_time']));
                 if ($time > 0) {
-                    return json(['resp_code' => '4', 'msg' => '用户已经被锁定请' . $time . '秒后再试']);
+                    //用户被锁定
+                    return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen') . $time . \think\lang::get('user_frozen_seconds')]);
                 }
                 Db::name('user')->where(['id' => $result['id']])->data(['status' => 1, 'error_times' => 0])->update();
             }
             if ($result['error_times'] >= 5) {
                 Db::name('user')->where(['id' => $result['id']])->data(['status' => 0])->update();
-                return json(['resp_code' => 5, 'msg' => '您的账号已被锁定']);
+                //账号被锁定
+                return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen')]);
             }
             if (!password_verify($password, $result['pass'])) {
                 Db::name('user')->where(['id' => $result['id']])->data(['error_times' => $result['error_times'] + 1, 'login_time' => time()])->update();
-                return json(['resp_code' => 2, 'msg' => '密码不正确，超过五次账号将被锁定十分钟']);
+                return json(['resp_code' => 2, 'msg' => \think\lang::get('password_error')]);
             }
             Db::name('user')->where(['id' => $result['id']])->data(['error_times' => 0])->update();
             Session::set('user.username', $username);
@@ -91,23 +97,28 @@ class Login extends Controller
     {
         //找回密码执行
         if (input('post.username') == '') {
-            return json(['msg' => '用户名不能为空', 'status' => 1]);
+            //用户名不能为空
+            return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
         }
         if (input('post.email') == '') {
-            return json(['msg' => '邮箱不能为空', 'status' => 2]);
+            //email不能为空
+            return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
         }
         $data['user_name'] = input('post.username');
         $data['email'] = input('post.email');
         $user = new User();
         $res = $user->checkEmail($data);
         if (!$res) {
-            return json(['msg' => '用户名和邮箱不匹配', 'status' => 0]);
+            //用户名和邮箱不匹配
+            return json(['msg' => \think\lang::get('check_email_user'), 'status' => 0]);
         }
         $code = input('post.code');
         if ($code != Cookie::get('code')) {
-            return json(['msg' => '验证码错误', 'status' => 3]);
+            //验证码错误
+            return json(['msg' => \think\lang::get('verify_code_error'), 'status' => 3]);
         }
-        return json(['msg' => '验证成功',
+        //验证成功
+        return json(['msg' => \think\lang::get('verify_success'),
             'status' => 200,
             'user_name' => $data['user_name'],
             'email' => $data['email']]);
@@ -123,30 +134,30 @@ class Login extends Controller
     {
         //密码重置执行
         if (input('post.username') == '') {
-            return json(['msg' => '用户名不能为空', 'status' => 1]);
+            return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
         }
         if (input('post.email') == '') {
-            return json(['msg' => '邮箱不能为空', 'status' => 2]);
+            return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
         }
         if (input('post.password') == '') {
-            return json(['msg' => '密码不能为空', 'status' => 3]);
+            return json(['msg' => \think\lang::get('pass_not_null'), 'status' => 3]);
         }
         if (input('post.password') != input('post.password2')) {
-            return json(['msg' => '两次输入密码不一致', 'status' => 4]);
+            return json(['msg' => \think\lang::get('two_pass_differ'), 'status' => 4]);
         }
         $data['user_name'] = input('post.username');
         $data['email'] = input('post.email');
         $user = new User();
         $res = $user->checkEmail($data);
         if (!$res) {
-            return json(['msg' => '用户名和邮箱不匹配', 'status' => 0]);
+            return json(['msg' => \think\lang::get('check_email_user'), 'status' => 0]);
         }
         $res = $user->resetPass($data, password_hash(input('post.password'), PASSWORD_DEFAULT));
 
         if ($res) {
-            return json(['msg' => '密码重置成功', 'status' => 200]);
+            return json(['msg' => \think\lang::get('pass_reset_success'), 'status' => 200]);
         } else {
-            return json(['msg' => '密码重置失败', 'status' => 5]);
+            return json(['msg' => \think\lang::get('pass_reset_fail'), 'status' => 5]);
         }
 
     }
@@ -165,29 +176,29 @@ class Login extends Controller
     {
         //发送找回密码邮件
         if (input('post.username') == '') {
-            return json(['msg' => '用户名不能为空', 'status' => 1]);
+            return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
         }
         if (input('post.email') == '') {
-            return json(['msg' => '邮箱不能为空', 'status' => 2]);
+            return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
         }
         $data['user_name'] = input('post.username');
         $data['email'] = input('post.email');
         $user = new User();
         $res = $user->checkEmail($data);
         if (!$res) {
-            return json(['msg' => '用户名和邮箱不匹配', 'status' => 0]);
+            return json(['msg' => \think\lang::get('check_email_user'), 'status' => 0]);
         }
         $mail = new \Mailer();
         $email = $data['email'];
-        $subject = 'Get your password back';
+        $subject = \think\lang::get('email_title');
         $code = mt_rand(1000, 9999);
         Cookie::set('code', $code, 3600);
-        $body = "您的验证码是{$code}，有效期一个小时，请尽快把验证码输入到网页上完成找回密码操作，如果这条信息不是您本人操作请忽视！";
+        $body = \think\lang::get('email_body_one')." ({$code}),".\think\lang::get('email_body_two');
         $result = $mail->send($email, $subject, $body);
         if ($result) {
-            return json(['status' => '1', 'msg' => 'Send the mail successfully, please go to your mailbox to complete the password recovery operation.']); //邮件发送成功
+            return json(['status' => '1', 'msg' => \think\lang::get('send_email_success')]); //邮件发送成功
         } else {
-            return json(['status' => '0', 'msg' => 'Sending mail failure']);//邮件发送失败
+            return json(['status' => '0', 'msg' => \think\lang::get('send_email_fail')]);//邮件发送失败
         }
     }
 

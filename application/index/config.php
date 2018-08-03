@@ -17,4 +17,15 @@ return [
         'ishtml' => TRUE,
         'smtpdebug'=>0
     ],
+    'mail2' => [
+        'host' => 'smtp.163.com',
+        'smtpauth' => TRUE,
+        'username' => '13538048392@163.com',
+        'from' => '13538048392@163.com',
+        'fromname' => 'salesms.com',
+        'password' => 'liuhui583384123',//邮箱授权码
+        'charset' => 'utf-8',
+        'ishtml' => TRUE,
+        'smtpdebug'=>0
+    ],
 ];

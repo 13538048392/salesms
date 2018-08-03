@@ -20,17 +20,19 @@
 <body>
 <div class="container">
     <div class="container-fluid">
-        <h1 class="text-center">Your Profile</h1>
+        <h1 class="text-center">用户管理</h1>
         <button class="glyphicon glyphicon-user" id="btn"></button>
     </div>
     <div class="row">
         <div class="col-md-2 " id="infocenter">
             <ul class="nav nav-pills nav-stacked ">
                 <li role="presentation"><h3><a href="<?php echo url('home/index',['userid'=>session('userid')])?>"
-                                               id="Profile">You Profile</a></h3></li>
+                                               id="Profile">个人信息</a></h3></li>
                 <li role="presentation"><h3><a href="<?php echo url('channel/index',['userid'=>session('userid')])?>"
-                                               id="channelmanager">ChannelManager</a></h3></li>
-                <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">login out</a>
+                                               id="channelmanager">渠道管理</a></h3></li>
+                <li role="presentation"><h3><a href="<?php echo url('referrer/index',['userid'=>session('userid')])?>"
+                                               id="Referrer">推荐人列表</a></h3></li>
+                <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">退出登录</a>
                 </h3></li>
             </ul>
         </div>

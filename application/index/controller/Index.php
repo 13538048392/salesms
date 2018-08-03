@@ -23,4 +23,9 @@ class Index extends Controller
         $file='qrcode'.time().'.png';
         \Qrcode\MyQrcode::showQrcode($content,$file);
     }
+    public function sendm(){
+        $mail = new \Mailer();
+        $a =$mail->send('1642504508@qq.com',"你好",'真好');
+        dump($a);
+    }
 }

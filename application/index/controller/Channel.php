@@ -14,8 +14,9 @@ use think\Controller;
 use think\Db;
 use think\Request;
 Loader::import('QueryingCode', ROOT_PATH . 'application/entend/QueryingCode.php');
+use app\common\Base;
 
-class Channel extends Controller
+class Channel extends Base
 {
     public function index(Request $request)
     {

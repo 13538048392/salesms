@@ -79,7 +79,35 @@ return [
 	'user_both' => '不能和用户名相同',
 	'pass_rule' => '密码由数字字母下划线和.组成',
 
+//index contorller
 
+	'home_title' => '网站首页',
+	'admin_code' => '管理员推荐注册码',
+	'user_code' => '用户推荐注册码',
+	'login_title' => '已注册请登录',
+
+//end index controller
+
+	//home controller
+
+	'first_name' => '名字',
+	'last_name' => '姓',
+	'home_address' => '家庭地址',
+	'wechat' => '微信',
+	'gender' => '性别',
+	'male' => '男',
+	'female' => '女',
+	'you_profile' => '您的简介',
+	'channel_manager' => '渠道信息',
+	'login_out' => '退出登录',
+	'channel_name' => '渠道名',
+	'url_code' => '邀请链接',
+	'recommended_type' => '邀请类型',
+	'operation' => '操作',
+	'add' => '添加',
+	'del' => '删除',
+
+	//end home controller
 
 
 

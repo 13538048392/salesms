@@ -77,4 +77,35 @@ return [
 
 	//end register controller
 
+	//index controller
+
+	'home_title' => 'Web page',
+	'admin_code' => 'Administrator recommends the registration code',
+	'user_code' => 'User recommended registration code',
+	'login_title' => 'Registered please login',
+
+	//end index controller
+
+
+	//home controller
+
+	'first_name' => 'First Name',
+	'last_name' => 'Last Name',
+	'home_address' => 'Home Address',
+	'wechat' => 'Wechat',
+	'gender' => 'Gender',
+	'male' => 'Male',
+	'female' => 'Female',
+	'you_profile' => 'You Profile',
+	'channel_manager' => 'ChannelMaster',
+	'login_out' => 'LoginOut',
+	'channel_name' => 'Channel Name',
+	'url_code' => 'UrlCode',
+	'recommended_type' => 'Recommended Type',
+	'operation' => 'Operation',
+	'add' => 'Add',
+	'del' => 'Delete',
+
+	//end home controller
+
 ];

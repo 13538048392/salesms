@@ -38,7 +38,8 @@ class Channel extends Base
             $channel = new \app\index\model\Channel();
             $num = $channel->getChannelNumById($userId);
             if ($num > 10) {
-                return json(['resp_code' => 1, 'msg' => '最多增加10个渠道']);
+                //最多创建十个渠道
+                return json(['resp_code' => 1, 'msg' => \think\lang::get('channel_check')]);
             }
             $channelId = $channel->addChannel($userId, $channelName);
             $arr_role = Db::name('role')->field('id')->where(['type' => 1])->select();

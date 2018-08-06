@@ -99,13 +99,19 @@ return [
 	'you_profile' => '您的簡介',
 	'channel_manager' => '渠道資訊',
 	'login_out' => '登出',
+	
+
+	//end home controller
+
+	//channel controller
+
 	'channel_name' => '渠道名',
 	'url_code' => '邀請連結',
 	'recommended_type' => '邀請類型',
 	'operation' => '操作',
 	'add' => '添加',
 	'del' => '刪除',
+	'channel_check' => '最多只能創建10個渠道',
 
-	//end home controller
-
+	//end channel controller
 ];

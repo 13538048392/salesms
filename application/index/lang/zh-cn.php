@@ -100,15 +100,20 @@ return [
 	'you_profile' => '您的简介',
 	'channel_manager' => '渠道信息',
 	'login_out' => '退出登录',
+	
+	//end home controller
+
+//channel controller
+
 	'channel_name' => '渠道名',
 	'url_code' => '邀请链接',
 	'recommended_type' => '邀请类型',
 	'operation' => '操作',
 	'add' => '添加',
 	'del' => '删除',
+	'channel_check' => '最多创建10个渠道',
 
-	//end home controller
-
+	//end channel controller
 
 
 ];

@@ -99,13 +99,19 @@ return [
 	'you_profile' => 'You Profile',
 	'channel_manager' => 'ChannelMaster',
 	'login_out' => 'LoginOut',
+	
+
+	//end home controller
+
+	//channel controller
+
 	'channel_name' => 'Channel Name',
 	'url_code' => 'UrlCode',
 	'recommended_type' => 'Recommended Type',
 	'operation' => 'Operation',
 	'add' => 'Add',
 	'del' => 'Delete',
+	'channel_check' => 'Create 10 channels at most',
 
-	//end home controller
-
+	//end channel controller
 ];

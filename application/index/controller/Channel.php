@@ -7,12 +7,13 @@
  */
 
 namespace app\index\controller;
-
+use think\Loader;
 use app\admin\model\Role;
 use app\admin\model\Url;
 use think\Controller;
 use think\Db;
 use think\Request;
+Loader::import('QueryingCode', ROOT_PATH . 'application/entend/QueryingCode.php');
 
 class Channel extends Controller
 {
@@ -92,5 +93,11 @@ class Channel extends Controller
                 return json(['resp_code' => 0, 'msg' => 'true']);
             }
         }
+    }
+
+    public function queryingCode()
+    {
+        $code=new \QueryingCode();
+        $code->makeQueryingCode('https://www.baidu.com');
     }
 }

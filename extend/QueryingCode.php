@@ -10,13 +10,11 @@ class QueryingCode
 {
 
    public  function makeQueryingCode($url=''){
-        require_once (ROOT_PATH  . 'extend/Qrcode/PHPQRCode/QRcode.php');
-        header('Content-Type: image/png');
+        require_once (ROOT_PATH  . 'extend/phpqrcode/phpqrcode.php');
         $value = $url;					//二维码内容
         $errorCorrectionLevel = 'L';	//容错级别
         $matrixPointSize = 5;			//生成图片大小
         //生成二维码图片
-        $QR = \Qrcode\PHPQRCode\QRcode::png($value,false,$errorCorrectionLevel, $matrixPointSize, 2);
-        exit;
+       $QR = QRcode::png($value,false,$errorCorrectionLevel, $matrixPointSize, 2);
     }
 }

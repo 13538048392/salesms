@@ -82,4 +82,15 @@ $(function () {
             }
         });
     });
+    $('.addcode').click(function () {
+        $.ajax({
+            url:url_addCode,
+            type:'POST',
+            data:{'channel_id':$(this).val()},
+            dataType:'json',
+            success:function (result) {
+                console.log(result);
+            }
+        })
+    })
 });

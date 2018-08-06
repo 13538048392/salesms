@@ -12,8 +12,9 @@ namespace app\index\controller;
 use app\index\model\UserInfo;
 use think\Controller;
 use think\Request;
+use app\common\Base;
 
-class Home extends Controller
+class Home extends Base
 {
     public function index(Request $request)
     {

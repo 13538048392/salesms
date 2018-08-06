@@ -78,4 +78,34 @@ return [
 
 	//end register controller
 
+	//index controller
+
+	'home_title' => '網站首頁',
+	'admin_code' => '管理員推薦註冊碼',
+	'user_code' => '用戶推薦註冊碼',
+	'login_title' => '已注册請登入',
+
+	//end index controller
+
+	//home controller
+
+	'first_name' => '名字',
+	'last_name' => '姓',
+	'home_address' => '家庭地址',
+	'wechat' => '微信',
+	'gender' => '性別',
+	'male' => '男',
+	'female' => '女',
+	'you_profile' => '您的簡介',
+	'channel_manager' => '渠道資訊',
+	'login_out' => '登出',
+	'channel_name' => '渠道名',
+	'url_code' => '邀請連結',
+	'recommended_type' => '邀請類型',
+	'operation' => '操作',
+	'add' => '添加',
+	'del' => '刪除',
+
+	//end home controller
+
 ];

@@ -13,8 +13,9 @@ use app\admin\model\Url;
 use think\Controller;
 use think\Db;
 use think\Request;
+use app\common\Base;
 
-class Channel extends Controller
+class Channel extends Base
 {
     public function index(Request $request)
     {

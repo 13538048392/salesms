@@ -1,4 +1,20 @@
+<style type="text/css">
 
+    .js-change-lang{
+        width: 60px;
+        height: 50px;
+        display: block;
+        text-align: center;
+        vertical-align: middle;
+        line-height:50px;
+        text-decoration:none;
+        color: black;
+    } 
+    .js-change-lang:hover{
+        background:#E0E0E0;
+        text-decoration:none;
+    }
+</style>
     <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -13,15 +29,26 @@
         
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-
+        <?php $lang = isset($_COOKIE['think_var'])?$_COOKIE['think_var']:'zh-cn';?>
         <li>
-        <a href="#" id="en" lang="en" class="js-change-lang">Eng</a>
+        <div>
+            <a href="#" id="en" lang="en" class="js-change-lang" <?php if($lang == 'en-us'){echo "style='background:#E8E8E8;text-decoration:none;color: #0000FF;font-weight: bold;'";}?>>Eng</a>
+        </div>
+        
         </li>
         <li>
-        <a href="#" id="zh" lang="cn" class="js-change-lang disabled">中文</a>
+            <div>
+                <a href="#" id="zh" lang="cn" class="js-change-lang"<?php if($lang == 'zh-cn'){echo "style='background: #E8E8E8;
+        text-decoration:none;color: #0000FF;font-weight: bold;'";}?>>中文</a>
+            </div>
+        
         </li>
         <li>
-        <a href="#" id="hk" lang="hk" class="js-change-lang disabled">繁体</a>
+            <div>
+                <a href="#" id="hk" lang="hk" class="js-change-lang"<?php if($lang == 'zh-hk'){echo "style='background: #E8E8E8;
+        text-decoration:none;color: #0000FF;font-weight: bold;'";}?>>繁体</a>
+            </div>
+        
         </li>
       </ul>
     </div>

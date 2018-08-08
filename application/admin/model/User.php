@@ -41,7 +41,7 @@ class User extends Model
                               ->join('sales_user b','a.parent_id = b.id','left')
                               ->join('sales_channel c','c.id=a.channel_id','left')
                               ->join('sales_user_info d','d.user_id = a.id','left')
-                              ->field('a.id,a.user_name,a.email,a.status,a.create_time,c.channel_name,d.phone')
+                              ->field('a.id,a.user_name,a.email,a.status,a.create_time,c.channel_name,a.phone')
                               ->field(['b.user_name'=>'referee_name'])
                               ->where('a.type','>',0)
                               ->select()

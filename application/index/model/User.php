@@ -30,7 +30,10 @@ class User extends Model
     public function userActivation($username, $password)
     {
         if (isset($username, $password) && !empty($username) && !empty($password)) {
-            return $this->where(['user_name' => $username, 'pass' => $password])->update(['active' => 1]);
+            $result=$this->where(['user_name'=>$username])->field('pass')->find();
+            if (password_verify($password, $result['pass'])){
+                return $this->where(['user_name' => $username])->update(['active' => 1]);
+            }
         }
     }
 

@@ -61,7 +61,7 @@ class Register extends Base
                 return json(['resp_code' => '2', 'msg' => \think\lang::get('register_fail')]);
             }
             Db::name('admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('user_role.role_id')])->insert();
-            $password = base64_encode(password_hash($data['password'], PASSWORD_DEFAULT));
+            $password = urlsafe_b64encode($data['password']);
             $url = url('index/register/activation', '', '', true);
             $url .= '/username/' . $data['username'] . '/pwd/' . $password;
             $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
@@ -107,9 +107,8 @@ class Register extends Base
 
     public function activation(Request $request)
     {
-        $arr = $request->param();
         $username = $request->param('username');
-        $pwd = base64_decode($request->param('pwd'));
+        $pwd = urlsafe_b64decode($request->param('pwd'));
         if (!empty($username) && !empty($pwd)) {
             $user = new User();
             $result = $user->userActivation($username, $pwd);

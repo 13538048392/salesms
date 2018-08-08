@@ -39,7 +39,7 @@
 				<td style="text-align: left;">
 					{volist name="vo['url_code']" id="v"}
 					{if condition="$v['role_id'] eq 2"}
-					邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp; {$v['url_code']}<br/>{else/}邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $_SERVER['SERVER_NAME'];?>{$v['url_code']}<br/>{/if}
+					邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp; {$v['url_code']}<br/>{else/}邀请{$v['role_name']}url:&nbsp;&nbsp;&nbsp;&nbsp; http://<?php echo $_SERVER['SERVER_NAME'];?>{$v['url_code']}<br/>{/if}
 					{/volist}
 				</td>
 				<td>

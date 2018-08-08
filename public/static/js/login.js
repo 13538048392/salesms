@@ -28,7 +28,6 @@ $(function () {
         var bv = $form.data('bootstrapValidator');
         $.post($form.attr('action'), $form.serialize(), function (result) {
             if (result.resp_code == 0) {
-                    $('#success_message').html('<h3>'+result.msg+'</h3>');
                     location.href = indexurl+'?userid='+result.user_id;
             }else{
                  // alert(result.msg);

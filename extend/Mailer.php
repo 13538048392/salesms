@@ -56,7 +56,7 @@ class Mailer
         $mailer->Subject =$subject; //邮件主题
         $mailer->Body = $body; //邮件内容
         //$mailer->AltBody = "这是一个纯文本的身体在非营利的HTML电子邮件客户端"; //邮件正文不支持HTML的备用显示
-        $mailer->SMTPDebug = 2;
+        $mailer->SMTPDebug = 0;
         return $mailer->Send();
     }
 }

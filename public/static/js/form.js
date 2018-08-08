@@ -134,7 +134,7 @@ $(function () {
         var bv = $form.data('bootstrapValidator');
         // Use Ajax to submit form data
         $.post($form.attr('action'), $form.serialize(), function (result) {
-            if (result.resp_code == 0) {
+            if (result.resp_code =="0") {
                 alert(result.msg);
                 setTimeout(function () {
                     location.href = url_login;

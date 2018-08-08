@@ -107,11 +107,16 @@ return [
 
 	'channel_name' => 'Channel Name',
 	'url_code' => 'UrlCode',
-	'recommended_type' => 'Recommended Type',
+	'recommended_type' => 'Create Time',
 	'operation' => 'Operation',
 	'add' => 'Add',
 	'del' => 'Delete',
 	'channel_check' => 'Create 10 channels at most',
 
 	//end channel controller
+
+	//end home controller
+    'search'=>'Search',
+    'referrer_manager'=>'referrer_manager',
+    'create_time'=>'Create Time',
 ];

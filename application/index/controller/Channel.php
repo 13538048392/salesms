@@ -7,13 +7,16 @@
  */
 
 namespace app\index\controller;
+
 use think\Loader;
 use app\admin\model\Role;
 use app\admin\model\Url;
 use think\Controller;
 use think\Db;
 use think\Request;
+
 Loader::import('QueryingCode', ROOT_PATH . 'application/entend/QueryingCode.php');
+
 use app\common\Base;
 
 class Channel extends Base
@@ -22,16 +25,15 @@ class Channel extends Base
     {
         $userid = $request->param('userid');
         $channel = Db::name('channel')->where(['user_id' => $userid])->select();
-        foreach ($channel as $key=>$value)
-        {
+        foreach ($channel as $key => $value) {
             $data = Db::name('url')
                 ->alias('b')
                 ->join('channel a', 'a.id=b.channel_id')
                 ->join('role c', 'b.role_id=c.id')
                 ->field('b.url_code,c.role_name')
-                ->where('b.channel_id',$value['id'])
+                ->where('b.channel_id', $value['id'])
                 ->select();
-            $channel[$key]['url_code']=$data;
+            $channel[$key]['url_code'] = $data;
         }
         return view('/channel', ['data' => $channel]);
     }
@@ -50,35 +52,35 @@ class Channel extends Base
             $channelId = $channel->addChannel($userId, $channelName);
             $arr_role = Db::name('admin_role')->field('role_id')->where(['user_id' => $userId])->select();
             foreach ($arr_role as $key => $value) {
-                    switch ($value['role_id']) {
-                        //如果是角色是医生
-                        case 2:
-                            $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
-                            $data = [
+                switch ($value['role_id']) {
+                    //如果是角色是医生
+                    case 2:
+                        $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                        $data = [
+                            'channel_id' => $channelId,
+                            'url_code' => $url_doctor,
+                            'role_id' => $value['role_id']
+                        ];
+                        Db::name('url')->insert($data);
+                        break;
+                    //如果角色是销售员
+                    case 3:
+                        $url_sale = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value['role_id'];
+                        $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                        $data = [
+                            [
+                                'channel_id' => $channelId,
+                                'url_code' => $url_sale,
+                                'role_id' => $value['role_id']
+                            ],
+                            [
                                 'channel_id' => $channelId,
                                 'url_code' => $url_doctor,
-                                'role_id' => $value['role_id']
-                            ];
-                            Db::name('url')->insert($data);
-                            break;
-                        //如果角色是销售员
-                        case 3:
-                            $url_sale = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value['role_id'];
-                            $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
-                            $data = [
-                                [
-                                    'channel_id' => $channelId,
-                                    'url_code' => $url_sale,
-                                    'role_id' => $value['role_id']
-                                ],
-                                [
-                                    'channel_id' => $channelId,
-                                    'url_code' => $url_doctor,
-                                    'role_id' => 2
-                                ]
-                            ];
-                            Db::name('url')->insertAll($data);
-                            break;
+                                'role_id' => 2
+                            ]
+                        ];
+                        Db::name('url')->insertAll($data);
+                        break;
                 }
             }
             return json(['resp_code' => 0, 'msg' => '添加成功']);
@@ -97,9 +99,10 @@ class Channel extends Base
         }
     }
 
-    public function queryingCode()
+    public function QrCode()
     {
-        $code=new \QueryingCode();
-        $code->makeQueryingCode('https://www.baidu.com');
+        $url= urldecode(input('url_code'));
+        $code = new \QueryingCode();
+        $code->makeQrCode($url);
     }
 }

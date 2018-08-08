@@ -107,13 +107,18 @@ return [
 
 	'channel_name' => '渠道名',
 	'url_code' => '邀请链接',
-	'recommended_type' => '邀请类型',
+	'recommended_type' => '创建时间',
 	'operation' => '操作',
 	'add' => '添加',
 	'del' => '删除',
 	'channel_check' => '最多创建10个渠道',
 
+
 	//end channel controller
 
+	//end home controller
 
+    'search'=>'搜索',
+    'referrer_manager'=>'推广管理',
+    'create_time'=>'创建时间',
 ];

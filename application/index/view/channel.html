@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
     <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <script src="/static/js/home.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <script>
@@ -37,7 +39,7 @@
                 </h3></li>
             </ul>
         </div>
-        <div class="col-md-8 col-md-offset-1" id="content">
+        <div class="col-md-9 col-md-offset-1" id="content">
             <div>
                 <form class="form-inline" onsubmit="return false">
                     <div class="form-group col-md-8">
@@ -48,39 +50,46 @@
                 </form>
             </div>
             <div style="padding-top: 20px" >
-                <table class="table" style="width: 100%">
+                <table id="channel_list" class="table" style="width: 100%">
+                    <thead>
                     <tr>
-                        <th>{$Think.lang.channel_name}</th>
+                        <th style="align-content: center">{$Think.lang.channel_name}</th>
                         <th>{$Think.lang.url_code}</th>
                         <th>{$Think.lang.recommended_type}</th>
                         <th>{$Think.lang.operation}</th>
                     </tr>
-
+                    </thead>
+                    <tbody>
                     <?php foreach($data as $key=>$val):?>
                     <tr>
                         <td>{$val.channel_name}</td>
                         <td>
                         <?php foreach($val['url_code'] as $k=>$v):?>
-                        {$v.role_name}
-                        </br>{$v.url_code}
+                        {$v.role_name} {$v.url_code}<img width="100px" height="100px" src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>"/>
                             </br>
                         <?php endforeach?>
                         </td>
                         <td>{$val['create_time']}</td>
                         <td>
                             <button type="button"  value="{$val.id}" class="btn btn-danger del">{$Think.lang.del}</button>
-                            <button type="button" value="" class="btn btn-danger">{$Think.lang.QR code}</button>
                         </td>
                     </tr>
                     <?php endforeach;?>
+                    </tbody>
                 </table>
-
             </div>
-
         </div>
     </div>
 </div>
-<script>
-</script>
 </body>
+<script>
+    $('#channel_list').dataTable({
+        searching: false, //去掉搜索框方法
+        bLengthChange: false,   //去掉每页显示多少条数据方法
+        bAutoWidth: false,                   //是否启用自动适应列宽
+        pageNumber: 1,            // 显示第几页数据，默认1
+        iDisplayLength: 2,
+        bSort:false,
+    });
+</script>
 </html>

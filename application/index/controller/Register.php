@@ -60,7 +60,7 @@ class Register extends Base
                 //注册失败，请重新注册
                 return json(['resp_code' => '2', 'msg' => \think\lang::get('register_fail')]);
             }
-            Db::name('admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('role_id')])->insert();
+            Db::name('admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('user_role.role_id')])->insert();
             $password = base64_encode(password_hash($data['password'], PASSWORD_DEFAULT));
             $url = url('index/register/activation', '', '', true);
             $url .= '/username/' . $data['username'] . '/pwd/' . $password;

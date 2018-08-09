@@ -1,6 +1,6 @@
 <?php
 namespace app\index\controller;
-
+use duanxin\demo\sendSms;
 use think\Controller;
 use app\common\Base;
 
@@ -18,15 +18,18 @@ class Index extends Base
     {
         return "this is login method";
     }
-    //二维码生成示范
-//    public function  showQR(){
-//        $content ="https://www.baidu.com/";
-//        $file='qrcode'.time().'.png';
-//        \Qrcode\MyQrcode::showQrcode($content,$file);
-//    }
-//    public function sendm(){
-//        $mail = new \Mailer();
-//        $a =$mail->send('249208644@qq.com',"你好",'真好');
-//        dump($a);
-//    }
+    //短信验证码发送
+    public function test(){
+        ini_set("display_errors", "on"); // 显示错误提示，仅用于测试时排查问题
+// error_reporting(E_ALL); // 显示所有错误提示，仅用于测试时排查问题
+        set_time_limit(0); // 防止脚本超时，仅用于测试使用，生产环境请按实际情况设置
+        header("Content-Type: text/plain; charset=utf-8"); // 输出为utf-8的文本格式，仅用于测试
+
+//      //验证发送短信(SendSms)接口
+        $sendSms = new sendSms();
+        $code='SB00';
+        $phone="13421453520";
+        print_r($sendSms->sendSms($code,$phone));
+
+    }
 }

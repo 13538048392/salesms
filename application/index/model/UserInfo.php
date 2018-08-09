@@ -32,7 +32,6 @@ class UserInfo extends Model
         $data = [
             'first_name' => $firstname,
             'last_name' => $lastname,
-            'phone' => $phone,
             'address' => $address,
             'wechat' => $wechat,
             'gender' => $gender

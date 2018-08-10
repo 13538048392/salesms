@@ -112,6 +112,7 @@ return [
 	'add' => '添加',
 	'del' => '删除',
 	'channel_check' => '最多创建10个渠道',
+	'channel_exists' => '该渠道已经存在,不能重复添加',
 
 
 	//end channel controller

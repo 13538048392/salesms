@@ -55,7 +55,8 @@ $(function () {
             dataType: 'json',
             success: function (result) {
                 if (result.resp_code == 0) {
-                    tr.remove();
+                    // tr.remove();
+                    location.reload();
                 }
 
             }

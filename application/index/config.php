@@ -33,5 +33,7 @@ return [
         'accessKeySecret'=>'uyAiiBCMMBAyDmkjo59TZOXhrhHNHP',
         'signName'=>'魔方科技',
         'templateCode'=>'SMS_137865176',
-    ]
+    ],
+    'level' => 1,
+    //推广会员层级
 ];

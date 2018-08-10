@@ -92,17 +92,30 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach($data as $key=>$val):?>
-                <?php foreach($val as $k=>$v):?>
-                <tr>
-                    <td>{$v['user_name']}</td>
-                    <td>{$v['channel_name']}</td>
-                    <td>{$v['first_name']}</td>
-                    <td>{$v['last_name']}</td>
-                    <td>{$v['create_time']}</td>
-                </tr>
-                <?php endforeach;?>
-                <?php endforeach;?>
+                {volist name="data" id="vo"}
+                
+                <?php
+                    $list[0] = $vo;
+                    $c_fix = '';
+                    while(!empty($list))
+                    {
+                        $one = array_shift($list);
+                        
+                            echo "<tr>";
+                            echo "<td>$c_fix$one[user_name]</td>";
+                            echo "<td>$one[channel_name]</td>";
+                            echo "<td>$one[first_name]</td>";
+                            echo "<td>$one[last_name]</td>";
+                            echo "<td>$one[create_time]</td>";
+                            echo "</tr>";
+
+                            if(isset($one['_child'])){
+                            $list = array_merge($list,$one['_child']);
+                        }
+                        $c_fix.= '--';
+                    }
+                ?>
+                {/volist}
                 </tbody>
             </table>
         </div>

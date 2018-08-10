@@ -49,6 +49,10 @@ class Channel extends Base
                 //最多创建十个渠道
                 return json(['resp_code' => 1, 'msg' => \think\lang::get('channel_check')]);
             }
+            $find = $channel->where(['channel_name'=>$channelName,'user_id'=>$userId])->find();
+            if ($find) {
+                return json(['resp_code' => 2, 'msg' => \think\lang::get('channel_exists')]);
+            }
             $channelId = $channel->addChannel($userId, $channelName);
             $arr_role = Db::name('admin_role')->field('role_id')->where(['user_id' => $userId])->select();
             foreach ($arr_role as $key => $value) {

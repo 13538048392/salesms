@@ -101,6 +101,27 @@ $(function () {
                     }
                 }
             },
+            code: {
+                validators: {
+                    notEmpty: {
+                        message: '请输入短信验证码'
+                    },
+                    remote: {
+                        url: url_code,//验证地址
+                        message: '验证码输入错误',//提示消息
+                        delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+                        type: 'POST'//请求方式
+                        /**自定义提交数据，默认值提交当前input value
+                         *  data: function(validator) {
+                               return {
+                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
+                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
+                               };
+                            }
+                         */
+                    }
+                }
+            },
             password: {
                 validators: {
                     notEmpty: {
@@ -168,30 +189,46 @@ $(function () {
         }, 'json');
     });
 
+    $("#phone").focus(function () {
+        $('form .row:eq(2)').show();
+    });
+
+    $("#phone").blur(function () {
+        if (!$("#phone").val()) {
+            $('form .row:eq(2)').hide();
+        }
+    })
+
     $("#sendMessage").click(function () {
         if ($.trim($("#phone").val()) == "") {
             alert('请输入手机号码');
             return false;
         }
+        var ret = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
+        if (!ret.test($("#phone").val())) {
+            alert('手机号码不正确');
+            return false;
+        }
         //00+国际区号+号码
         var section = $('.regoin').data('value');
-        var number = $("#phone").val();//获取手机号码
-        var phone = '00' + section + number;
+        var phone = $("#phone").val();//获取手机号码
         $.ajax({
             url: url_send_message,//请求地址，html页面传过来的
             type: "post",
-            data: {'phone': phone},
+            data: {'phone': phone,'section':section},
             success: function (result) {
-                if (result == 0) {
-                   // var intDiff = parseInt(60);//倒计时总秒数量
+                if (result.resp_code == 0) {
+                    // var intDiff = parseInt(60);//倒计时总秒数量
                     //timer(intDiff);
                     curCount = count;
                     //设置button效果，开始计时
                     $("#sendMessage").css("background-color", "LightSkyBlue");
                     $("#sendMessage").attr("disabled", "true");
-                   // $('#sendMessage').html('<s></s>' + curCount + '秒');
+                    // $('#sendMessage').html('<s></s>' + curCount + '秒');
                     InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
-                    alert("验证码发送成功，请查收!");
+                    alert(result.msg);
+                } else {
+                    alert(result.msg);
                 }
             }
         });

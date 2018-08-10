@@ -16,6 +16,7 @@
         url_phone = "<?php echo url('register/checkPhone','','',true)?>";
         url_login = "<?php echo url('login/index','','',true)?>";
         url_send_message="<?php echo url('register/sendMessage','','',true)?>";
+        url_code="<?php echo url('register/checkVerifyCode','','',true)?>";
     </script>
     <script src="/static/js/form.js"></script>
 </head>
@@ -53,7 +54,7 @@
                                name="phone">
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="display: none">
                     <div class="col-sm-6 form-group">
                         <input type="text" placeholder="{$Think.lang.short_message}" class="form-control" id="code" name="code">
                     </div>

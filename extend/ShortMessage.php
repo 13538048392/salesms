@@ -27,9 +27,9 @@ class ShortMessage
         // fixme 必填: 短信接收号码
         $params["PhoneNumbers"] = $phone;
         // fixme 必填: 短信签名，应严格按"签名名称"填写，请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/sign
-        $params["SignName"] = Config::get('signName');
+        $params["SignName"] = Config::get('sendMessage.signName');
         // fixme 必填: 短信模板Code，应严格按"模板CODE"填写, 请参考: https://dysms.console.aliyun.com/dysms.htm#/develop/template
-        $params["TemplateCode"] = Config::get('templateCode');
+        $params["TemplateCode"] = Config::get('sendMessage.templateCode');
         // fixme 可选: 设置模板参数, 假如模板中存在变量需要替换则为必填项
         $params['TemplateParam'] = Array(
             "code" => $code,
@@ -38,7 +38,7 @@ class ShortMessage
         // fixme 可选: 设置发送短信流水号
         $params['OutId'] = "12345";
         // fixme 可选: 上行短信扩展码, 扩展码字段控制在7位或以下，无特殊需求用户请忽略此字段
-        $params['SmsUpExtendCode'] = "1234567";
+        //$params['SmsUpExtendCode'] = "1234567";
 
         // *** 需用户填写部分结束, 以下代码若无必要无需更改 ***
         if (!empty($params["TemplateParam"]) && is_array($params["TemplateParam"])) {

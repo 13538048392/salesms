@@ -95,7 +95,9 @@ $(function () {
                 "channel_name": $('#channel_name').val()
             },
             success: function (result) {
-                var res = getDataList(result);
+                // console.log(result.data);
+                var res = getDataList(result.data);
+                // console.log(res);
                 $('#referrer_list').dataTable().fnClearTable();
                 $('#referrer_list').dataTable().fnDestroy();
                 // $('#referrer_list').dataTable().fnAddData(html);  //重新绑定table数据
@@ -117,21 +119,49 @@ $(function () {
         })
     });
 var html='';
-    function getDataList(data) {
-        if (!data) return;
-            $.each(data, function (key, value) {
-                if ($.isArray(this)) {
-                    getDataList(this);//当前节点是数组，继续递归
-                } else {
-                    html += '<tr>' +
-                        '<td>' + value.user_name + '</td>' +
-                        '<td>' + value.channel_name + '</td>' +
-                        '<td>' + value.first_name + '</td>' +
-                        '<td>' + value.last_name + '</td>' +
-                        '<td>' + value.create_time + '</td>' +
-                        '</tr>';
-                }
-            });
-        return html;
+    // function getDataList(data) {
+    //     if (!data) return;
+    //         $.each(data, function (key, value) {
+    //             if ($.isArray(this)) {
+    //                 getDataList(this);//当前节点是数组，继续递归
+    //             } else {
+    //                 html += '<tr>' +
+    //                     '<td>' + value.user_name + '</td>' +
+    //                     '<td>' + value.channel_name + '</td>' +
+    //                     '<td>' + value.first_name + '</td>' +
+    //                     '<td>' + value.last_name + '</td>' +
+    //                     '<td>' + value.create_time + '</td>' +
+    //                     '</tr>';
+    //             }
+    //         });
+    //     return html;
+    // }
+
+
+function getDataList(data){
+    for (var i = 0; i < data.length; i++) {
+        var list = [data[i]];
+        console.log(list);
+        var c_fix = '';
+        while(list != ''){
+            var one = list.shift();
+            console.log(one);
+            html += "<tr>" +
+                    "<td>" +c_fix+one.user_name+ "</td>" +
+                    "<td>" +one.channel_name+ "</td>" +
+                    "<td>" +one.first_name+ "</td>" +
+                    "<td>" +one.last_name+ "</td>" +
+                    "<td>" +one.create_time+ "</td>" +
+                    "</tr>";
+            // console.log(one);
+            if( typeof one._child != "undefined" ) {
+                list = list.concat(one._child);
+                // console.log(list);
+            }
+            c_fix+='--';
+        }
     }
+    return html;
+}
+
 });

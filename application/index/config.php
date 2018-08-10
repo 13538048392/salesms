@@ -34,6 +34,6 @@ return [
         'signName'=>'魔方科技',
         'templateCode'=>'SMS_137865176',
     ],
-    'level' => 1,
+    'level' => 2,
     //推广会员层级
 ];

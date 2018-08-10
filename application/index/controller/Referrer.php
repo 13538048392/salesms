@@ -35,7 +35,7 @@ class Referrer extends Base
 
     }
 
-    public function getReferrer(){
+    public function getReferrer($where=[]){
         //获取推广下级
         $level = Config::get('level');
         //获取要展示的层级
@@ -57,6 +57,7 @@ class Referrer extends Base
                             ->join('sales_channel c','a.channel_id = c.id','left')
                             ->field('a.id,a.parent_id,a.user_name,a.create_time,b.first_name,b.last_name,c.channel_name')
                             ->where('a.parent_id',$v)
+                            ->where($where)
                             ->select()
                             ->toArray();
                 // dump($temp_data);exit;
@@ -198,7 +199,10 @@ class Referrer extends Base
             if (input('channel_name')) {
                 $where['c.channel_name'] = input('channel_name');
             }
-            return json($this->getDataList($where));
+            // return json($this->getDataList($where));
+            $user = $this->getReferrer($where);
+            $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
+            return json(['data'=>$data]);
         }
     }
 }

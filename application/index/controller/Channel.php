@@ -83,7 +83,7 @@ class Channel extends Base
                         break;
                 }
             }
-            return json(['resp_code' => 0, 'msg' => '添加成功']);
+            return json(['resp_code' => 0, 'msg' => \think\lang::get('add_success')]);
         }
     }
 

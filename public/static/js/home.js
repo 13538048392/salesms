@@ -41,7 +41,7 @@ $(function () {
         var bv = $form.data('bootstrapValidator');
         $.post($form.attr('action'), $form.serialize(), function (result) {
             if (result.resp_code == 0 || result.resp_code == 1) {
-                alert('更新成功！');
+                alert(lang_update_success);
                 location.reload();
             }
         }, 'json');
@@ -63,7 +63,7 @@ $(function () {
     });
     $('#addChannel').click(function () {
         if ($('#channel_name').val() == '') {
-            alert('渠道名不能为空');
+            alert(lang_channel_name);
             return false;
         }
         $.ajax({

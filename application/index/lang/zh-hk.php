@@ -118,4 +118,13 @@ return [
     'search'=>'搜索',
     'referrer_manager'=>'推廣管理',
     'create_time'=>'創建時間',
+    'add_success'=>'添加成功',
+    'channel_empty'=>'渠道名不能為空',
+    'update_success'=>'更新成功',
+    'short_message'=>'短信驗證碼',
+    'send_message'=>'发送短信驗證碼',
+    'phone_exist'=>'手機號碼已經存在',
+
+
+
 ];

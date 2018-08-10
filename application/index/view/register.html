@@ -15,11 +15,12 @@
         url_email = "<?php echo url('register/checkEmail','','',true)?>";
         url_phone = "<?php echo url('register/checkPhone','','',true)?>";
         url_login = "<?php echo url('login/index','','',true)?>";
+        url_send_message="<?php echo url('register/sendMessage','','',true)?>";
     </script>
     <script src="/static/js/form.js"></script>
 </head>
 <body>
-    {include file="../application/index/view/public/_header.html"}
+{include file="../application/index/view/public/_header.html"}
 <div class="container" style="margin: 60px 0 0 0">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -29,27 +30,48 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                         <label for="username"></label>
-                        <input type="text" placeholder="{$Think.lang.username}:" class="form-control" id="username" name="username">
+                        <input type="text" placeholder="{$Think.lang.username}:" class="form-control" id="username"
+                               name="username">
                     </div>
                     <div class="col-sm-6 form-group">
                         <label for="email"> </label>
-                        <input type="text" placeholder="{$Think.lang.email}:" class="form-control" id="email" name="email">
+                        <input type="text" placeholder="{$Think.lang.email}:" class="form-control" id="email"
+                               name="email">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <label for="phone"> </label>
-                        <input type="text" placeholder="{$Think.lang.phone}:" class="form-control" id="phone" name="phone">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%"><span class="regoin">+86</span>
+                            <span class="caret" style="float: right;margin-top: 9px"></span>
+                        </button>
+                        <ul class="dropdown-menu phone-regoin" aria-labelledby="dropdownMenu1">
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <input type="text" placeholder="{$Think.lang.phone}:" class="form-control" id="phone"
+                               name="phone">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <label for="password"> </label>
-                        <input type="password" placeholder="{$Think.lang.password}:" class="form-control" id="password" name="password">
+                        <input type="text" placeholder="{$Think.lang.short_message}" class="form-control" id="code" name="code">
                     </div>
                     <div class="col-sm-6 form-group">
-                        <label for="confirm_password"> </label>
-                        <input type="password" placeholder="{$Think.lang.password2}:" class="form-control" id="confirm_password"
+                        <button type="button" name="btnContactUs" class="btn  btn-success btn-block"
+                                id="sendMessage"> {$Think.lang.send_message}
+                        </button>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <input type="password" placeholder="{$Think.lang.password}:" class="form-control" id="password"
+                               name="password">
+                    </div>
+                    <div class="col-sm-6 form-group">
+                        <input type="password" placeholder="{$Think.lang.password2}:" class="form-control"
+                               id="confirm_password"
                                name="confirm_password">
                     </div>
                 </div>
@@ -85,7 +107,31 @@
     var phone_rule = "{$Think.lang.phone_rule}";
     var pass_length = "{$Think.lang.pass_length}";
     var user_both = "{$Think.lang.user_length}";
-    var pass_rule =  "{$Think.lang.pass_rule}";
+    var pass_rule = "{$Think.lang.pass_rule}";
     var two_pass_differ = "{$Think.lang.two_pass_differ}";
+    var phone_exist="{$Think.lang.phone_exist}";
 
+    var regoin = [
+        { name: '中国', value: '+86' },
+        { name: '中国香港特别行政区', value: '+852' },
+        { name: '中国澳门特别行政区', value: '+853' },
+        { name: '中国台湾地区', value: '+886' },
+        { name: '英国', value: '+44' },
+        { name: '美国', value: '+1' },
+    ];
+
+    var $regoin = $('.phone-regoin');
+    for(var i = 0; i < regoin.length; i++){
+        var item = regoin[i];
+        $regoin.append('<li><a href="javascript:void(0)" data-value="'+item.value+'">'+item.value + item.name+'</a></li>')
+    }
+    // var selectVal =regoin[0],
+    var $r = $('.regoin');
+    $r.data('value', regoin[0]['value'].replace('+', ''));
+    $regoin.on('click', 'a', function(e){
+        var selectVal = $(this).data('value');
+        $r.html(selectVal);
+        $r.data('value', selectVal.replace('+', ''));
+        // $('.regoin').data('value');
+    });
 </script>

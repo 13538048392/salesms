@@ -17,10 +17,17 @@ class Referrer extends Base
 {
     public function index()
     {
+
+        //php获取上周起始时间戳和结束时间戳
+
+        //$beginLastweek=mktime(0,0,0,date('m'),date('d')-date('w')+1-7,date('Y'));
+
+      //  $endLastweek=mktime(23,59,59,date('m'),date('d')-date('w')+7-7,date('Y'));
         return view('/referrer', ['data' => $this->getDataList()]);
+       // dump($this->getDataList());
     }
 
-    public function getDataList($where = [])
+    public function getDataList($where=[])
     {
         $userList = Db::name('user')->field('id,user_name,parent_id')->select();
         $result = $this->GetTeamMember($userList, session('userid'));
@@ -28,17 +35,18 @@ class Referrer extends Base
         foreach ($result as $k => $v) {
             $temp = Db::name('user')
                 ->alias('a')
-                ->join('user_info b', 'a.id=b.user_id')
-                ->join('channel c', 'a.channel_id=c.id')
+                ->join('user_info b', 'a.id=b.user_id','left')
+                ->join('channel c', 'a.channel_id=c.id','left')
                 ->field('a.user_name,a.create_time,b.first_name,b.last_name,c.channel_name')
                 ->where('a.id', $v)
                 ->where($where)
-                ->whereTime('a.create_time', 'last week')//显示一周之内的
+                //->whereTime('a.create_time', 'week')//显示一周之内的
                 ->select();
             if($temp){
                 $data[] = $temp;
             }
         }
+        //return Db::name('user')->getLastSql();
         return $data;
     }
 

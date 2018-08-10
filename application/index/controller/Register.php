@@ -17,7 +17,7 @@ use think\Request;
 use think\Session;
 use think\Validate;
 use app\common\Base;
-
+Loader::import('ShortMessage', ROOT_PATH . 'application/entend/ShortMessage.php');
 Loader::import('Mailer', ROOT_PATH . 'application/entend/Mailer.php');
 
 class Register extends Base
@@ -25,7 +25,7 @@ class Register extends Base
     public function index(Request $request = null)
     {
         $arr = $request->param();
-        if (!isset($arr['id'])&&!isset($arr['role_id'])) {
+        if (!isset($arr['id']) && !isset($arr['role_id'])) {
             //邀请链接不存在
             return $this->error(\think\lang::get('inviting_link_not_exist'));
         }
@@ -37,7 +37,7 @@ class Register extends Base
         }
         Session::set('user.parent_id', $result['user_id']);
         Session::set('user.channel_id', $arr['id']);
-        Session::set('user_role.role_id',$arr['role_id']);
+        Session::set('user_role.role_id', $arr['role_id']);
         return $this->view->fetch('/register');
     }
 
@@ -55,12 +55,12 @@ class Register extends Base
                 return json(['resp_code' => '1', 'msg' => \think\lang::get('user_error')]); //用户信息填写不完善
             }
             $user = new User();
-            $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email'], Session::get('user.channel_id'),Session::get('user.parent_id'),$data['phone']);
+            $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email'], Session::get('user.channel_id'), Session::get('user.parent_id'), $data['phone']);
             if (!$user_id) {
                 //注册失败，请重新注册
                 return json(['resp_code' => '2', 'msg' => \think\lang::get('register_fail')]);
             }
-            Db::name('admin_role')->data(['user_id'=>$user_id,'role_id'=>Session::get('user_role.role_id')])->insert();
+            Db::name('admin_role')->data(['user_id' => $user_id, 'role_id' => Session::get('user_role.role_id')])->insert();
             $password = urlsafe_b64encode($data['password']);
             $url = url('index/register/activation', '', '', true);
             $url .= '/username/' . $data['username'] . '/pwd/' . $password;
@@ -83,6 +83,20 @@ class Register extends Base
             $userName = input('username');
             $user = new User();
             $result = $user->userNameIsExist($userName);
+            if ($result) {
+                echo json_encode(['valid' => false]);
+            } else {
+                echo json_encode(['valid' => true]);
+            }
+        }
+    }
+
+    public function checkPhone()
+    {
+        if (isset($_POST)) {
+            $email = input('phone');
+            $user = new User();
+            $result = $user->phoneIsExist($email);
             if ($result) {
                 echo json_encode(['valid' => false]);
             } else {
@@ -117,4 +131,31 @@ class Register extends Base
             }
         }
     }
+
+    public function sendMessage()
+    {
+        $code=$this->random();
+        $phone='13451728874';
+        $message=new \ShortMessage();
+        return dump($message->sendSms($phone,$code));
+//       if(\request()->isPost()){
+//           $phone=input('phone');
+//           $message=new \ShortMessage();
+//           $result=$message->sendSms($phone,$this->random());
+//           dump($result);
+//       }
+    }
+
+    public function random()
+    {
+        $length = 6;
+        $char = '0123456789';
+        $code = '';
+        while(strlen($code) < $length){
+            //截取字符串长度
+            $code .= substr($char,(mt_rand()%strlen($char)),1);
+        }
+        return $code;
+    }
+
 }

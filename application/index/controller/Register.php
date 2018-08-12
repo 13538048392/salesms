@@ -18,8 +18,8 @@ use think\Session;
 use think\Validate;
 use app\common\Base;
 
-Loader::import('ShortMessage', ROOT_PATH . 'application/entend/ShortMessage.php');
-Loader::import('Mailer', ROOT_PATH . 'application/entend/Mailer.php');
+Loader::import('ShortMessage',ROOT_PATH . 'application/entend/ShortMessage.php');
+Loader::import('Mailer',ROOT_PATH . 'application/entend/Mailer.php');
 
 class Register extends Base
 {
@@ -29,7 +29,7 @@ class Register extends Base
     {
         parent::__construct($request);
         $this->redis = new \Redis();
-        $this->redis->connect('127.0.0.1', 6379);
+        $this->redis->connect('127.0.0.1',6379);
         $this->redis->select(0);
     }
 
@@ -46,16 +46,16 @@ class Register extends Base
             //邀请链接无效
             return $this->error(\think\lang::get('inviting_link_invalid'));
         }
-        Session::set('user.parent_id', $result['user_id']);
-        Session::set('user.channel_id', $arr['id']);
-        Session::set('user_role.role_id', $arr['role_id']);
+        Session::set('user.parent_id',$result['user_id']);
+        Session::set('user.channel_id',$arr['id']);
+        Session::set('user_role.role_id',$arr['role_id']);
         return $this->view->fetch('/register');
     }
 
     public function register()
     {
         if (isset($_POST)) {
-            if (!Validate::token('__token__', '', ['__token__' => input('param.__token__')])) {
+            if (!Validate::token('__token__','',['__token__' => input('param.__token__')])) {
                 //非法请求
                 return $this->error(\think\lang::get('unlawful_request'));
             }
@@ -63,26 +63,26 @@ class Register extends Base
             $validate = new \app\index\validate\User;
             if (!$validate->check($data)) {
                 //用户信息错误
-                return json(['resp_code' => '1', 'msg' => \think\lang::get('user_error')]); //用户信息填写不完善
+                return json(['resp_code' => '1','msg' => \think\lang::get('user_error')]); //用户信息填写不完善
             }
             $user = new User();
-            $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email'], Session::get('user.channel_id'), Session::get('user.parent_id'), $data['phone']);
+            $user_id = $user->userRegister($data['username'],password_hash($data['password'],PASSWORD_DEFAULT),$data['email'],Session::get('user.channel_id'),Session::get('user.parent_id'),$data['phone']);
             if (!$user_id) {
                 //注册失败，请重新注册
-                return json(['resp_code' => '2', 'msg' => \think\lang::get('register_fail')]);
+                return json(['resp_code' => '2','msg' => \think\lang::get('register_fail')]);
             }
-            Db::name('admin_role')->data(['user_id' => $user_id, 'role_id' => Session::get('user_role.role_id')])->insert();
+            Db::name('admin_role')->data(['user_id' => $user_id,'role_id' => Session::get('user_role.role_id')])->insert();
             $password = urlsafe_b64encode($data['password']);
-            $url = url('index/register/activation', '', '', true);
+            $url = url('index/register/activation','','',true);
             $url .= '/username/' . $data['username'] . '/pwd/' . $password;
             $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
             $subject = \think\lang::get('register_title');
             $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
             $mail = new \Mailer();
-            if ($mail->send($data['email'], $subject, $body)) {
-                return json(['resp_code' => '0', 'msg' => \think\lang::get('register_success')]); //邮件发送成功
+            if ($mail->send($data['email'],$subject,$body)) {
+                return json(['resp_code' => '0','msg' => \think\lang::get('register_success')]); //邮件发送成功
             } else {
-                return json(['resp_code' => '3', 'msg' => \think\lang::get('register_fail')]); //邮件发送失败
+                return json(['resp_code' => '3','msg' => \think\lang::get('register_fail')]); //邮件发送失败
             }
         }
     }
@@ -131,9 +131,9 @@ class Register extends Base
             $user = new User();
             $result = $user->userEmailIsExist($email);
             if ($result) {
-                echo json_encode(['valid' => false]);
+                return json(['valid' => false]);
             }
-            echo json_encode(['valid' => true]);
+            return json(['valid' => true]);
 
         }
     }
@@ -149,7 +149,7 @@ class Register extends Base
         $pwd = urlsafe_b64decode($request->param('pwd'));
         if (!empty($username) && !empty($pwd)) {
             $user = new User();
-            $result = $user->userActivation($username, $pwd);
+            $result = $user->userActivation($username,$pwd);
             if ($result !== false) {
                 $this->redirect('/login/index');
             }
@@ -164,20 +164,21 @@ class Register extends Base
     {
         if (\request()->isPost()) {
             $phone = input('phone');
-            $section=input('section');
+            $section = input('section');
             if (!$this->isMobile($phone)) {
-                return json(['resp_code' => '1', 'msg' => '手机号码格式不对']);
+                return json(['resp_code' => '1','msg' => '手机号码格式不对']);
             }
             if (!$this->checkExpire($phone)) {
-                return json(['resp_code' => '2', 'msg' => '每分钟最多发一次，每天最多发十次']);
+                return json(['resp_code' => '2','msg' => '每分钟最多发一次，每天最多发十次']);
             }
             $code = $this->random();
-            $this->redis->set($phone, $code);
-            $this->redis->setex($phone, 60, $code);
+            $this->redis->set($phone,$code);
+            $this->redis->setex($phone,60,$code);
+            return 0;
             $message = new \ShortMessage();
-            $result = $message->sendSms('00'.$section.$phone, $code);
+            $result = $message->sendSms('00' . $section . $phone,$code);
             if ($result->Message == 'OK' && $result->Code == 'OK') {
-                return json(['resp_code' => '0', 'msg' => '验证码发送成功，请查收!']);
+                return json(['resp_code' => '0','msg' => '验证码发送成功，请查收!']);
             }
         }
     }
@@ -193,7 +194,7 @@ class Register extends Base
         $code = '';
         while (strlen($code) < $length) {
             //截取字符串长度
-            $code .= substr($char, (mt_rand() % strlen($char)), 1);
+            $code .= substr($char,(mt_rand() % strlen($char)),1);
         }
         return $code;
     }
@@ -201,12 +202,14 @@ class Register extends Base
     /*
      * Redis 测试
      */
-    public function testRedis()
-    {
-        $redis = new \Redis();
-        $redis->set('code', $this->random());
-        return $redis->get('code');
-    }
+//    public function testRedis()
+//    {
+//        $this->redis->set('user:code',$this->random());
+//        $this->redis->set('user:vertify',$this->random());
+//        $data[] = $this->redis->get('user:code');
+//        $data[] = $this->redis->get('user:vertify');
+//        return $data[0];
+//    }
 
     /**
      * @param $mobile
@@ -215,7 +218,7 @@ class Register extends Base
      */
     private function isMobile($mobile)
     {
-        if (preg_match('/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/', $mobile))
+        if (preg_match('/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/',$mobile))
             return true;
         return false;
     }
@@ -226,13 +229,19 @@ class Register extends Base
      * @return bool
      * 校对输入验证码
      */
-    public function checkVerifyCode($phone, $code)
+    public function checkVerifyCode()
     {
-        if ($this->redis->get($phone) === $code) {
+        if ($this->redis->get(input('phone')) === input('code')) {
             return json(['valid' => true]);
         }
         return json(['valid' => false]);
     }
+
+//    public function getRedisKey()
+//    {
+//        $phone=input('phone');
+//        $this->redis->get($phone);
+//    }
 
     /**
      * @param $phone
@@ -243,10 +252,10 @@ class Register extends Base
      */
     function checkExpire($phone)
     {
-        if ($this->redis->exists('min:' . date('YmdHi') . ':' . $phone) || $redis->get('day:' . date('YmdHi') . ':' . $phone) > 10) {
+        if ($this->redis->exists('min:' . date('YmdHi') . ':' . $phone) || $this->redis->get('day:' . date('YmdHi') . ':' . $phone) > 10) {
             return false;
         }
-        $this->redis->set('min:' . date('YmdHi') . ':' . $phone, 1);
+        $this->redis->set('min:' . date('YmdHi') . ':' . $phone,1);
         $this->redis->incr('day:' . date('Ymd') . ':' . $phone);
         return true;
     }

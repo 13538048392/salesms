@@ -125,6 +125,8 @@ return [
     'short_message'=>'短信驗證碼',
     'send_message'=>'发送短信驗證碼',
     'phone_exist'=>'手機號碼已經存在',
+    'short_message_reg'=>'每分鐘最多發壹次，每天最多發十次',
+    'short_message_success'=>'驗證碼發送成功，請查收!',
 
 
 

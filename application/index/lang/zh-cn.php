@@ -128,4 +128,6 @@ return [
     'short_message'=>'短信验证码',
     'send_message'=>'发送短信验证码',
     'phone_exist'=>'手机号码已经存在',
+    'short_message_reg'=>'每分钟最多发一次，每天最多发十次',
+    'short_message_success'=>'验证码发送成功，请查收!',
 ];

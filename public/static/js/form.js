@@ -1,7 +1,6 @@
 var InterValObj; //timer变量，控制时间
 var count = 60; //间隔函数，1秒执行
 var curCount;//当前剩余秒数
-var code = ""; //验证码
 
 $(function () {
     $('form').bootstrapValidator({
@@ -14,7 +13,6 @@ $(function () {
         },
         fields: {
             username: {
-                message: '用户名验证失败',
                 validators: {
                     notEmpty: {
                         message: user_not_null
@@ -219,8 +217,6 @@ $(function () {
             data: {'phone': phone,'section':section},
             success: function (result) {
                 if (result.resp_code == 0) {
-                    // var intDiff = parseInt(60);//倒计时总秒数量
-                    //timer(intDiff);
                     curCount = count;
                     //设置button效果，开始计时
                     $("#sendMessage").css("background-color", "LightSkyBlue");
@@ -243,7 +239,7 @@ function SetRemainTime() {
         $("#sendMessage").removeAttr("disabled");//启用按钮
         $("#sendMessage").css("background-color", "");
         $("#sendMessage").html("重发验证码");
-        code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+       // code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
     }
     else {
         curCount--;
@@ -251,30 +247,5 @@ function SetRemainTime() {
     }
 }
 
-function timer(intDiff) {
-    window.setInterval(function () {
-        if (intDiff == 0) {
-            // window.clearInterval(InterValObj);//停止计时器
-            $("#sendMessage").removeAttr("disabled");//启用按钮
-            //  $("#sendMessage").css("background-color", "");
-            $("#sendMessage").html("重发验证码");
-            code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
-        }
-        var day = 0,
-            hour = 0,
-            minute = 0,
-            second = 0;//时间默认值
-        if (intDiff > 0) {
-            day = Math.floor(intDiff / (60 * 60 * 24));
-            hour = Math.floor(intDiff / (60 * 60)) - (day * 24);
-            minute = Math.floor(intDiff / 60) - (day * 24 * 60) - (hour * 60);
-            second = Math.floor(intDiff) - (day * 24 * 60 * 60) - (hour * 60 * 60) - (minute * 60);
-        }
-        if (minute <= 9) minute = '0' + minute;
-        if (second <= 9) second = '0' + second;
-        $('#sendMessage').html('<s></s>' + second + '秒');
-        intDiff--;
-    }, 1000);
-}
 
 

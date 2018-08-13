@@ -125,6 +125,10 @@ return [
     'update_success'=>'Your Profile update success',
     'short_message'=>'message authentication code',
     'send_message'=>'Send SMS verification code',
-    'phone_exist'=>'The phone number is already exist'
+    'phone_exist'=>'The phone number is already exist',
+    'short_message_reg'=>'Up to once a minute, 10 times a day',
+    'short_message_success'=>'The verification code was sent successfully, please check!',
+
+
 
 ];

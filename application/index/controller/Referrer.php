@@ -68,6 +68,8 @@ class Referrer extends Base
                         //得到新的uid存入临时uid集合数组中
                         array_push($data, $b);
                         //得到的新数据存入集合
+                        $where = '1=1';
+                        //清空查询条件
                     }
 
                 }

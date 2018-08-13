@@ -46,7 +46,7 @@ return [
     'user_not_exist' => 'Username does not exist ',
 	'user_not_activate' => 'Account is not activated. Please go to your mailbox to activate.',
 	'user_frozen' => 'Your account has been frozen ',
-	'user_frozen_seconds' => 'Second retry ',
+	'user_frozen_seconds' => 'ten minutes retry ',
 	'password_error' => 'Password is incorrect, more than five times the account will be frozen for ten minutes.',
 	'verify_success' => 'Verifies success',
 

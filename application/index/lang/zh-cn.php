@@ -47,7 +47,7 @@ return [
     'user_not_exist' => '用户名不存在',
     'user_not_activate' => '账号未激活，请到您的邮箱激活',
     'user_frozen' => '您的账号已被冻结',
-    'user_frozen_seconds' => '秒后重试',
+    'user_frozen_seconds' => '10分钟后重试',
     'password_error' => '密码不正确，超过五次账号将被冻结十分钟',
     'verify_success' => '验证成功',
 

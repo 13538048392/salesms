@@ -112,6 +112,7 @@ return [
 	'add' => '添加',
 	'del' => '删除',
 	'channel_check' => '最多创建10个渠道',
+	'channel_exists' => '该渠道已经存在,不能重复添加',
 
 
 	//end channel controller
@@ -121,4 +122,10 @@ return [
     'search'=>'搜索',
     'referrer_manager'=>'推广管理',
     'create_time'=>'创建时间',
+    'add_success'=>'添加成功',
+    'channel_empty'=>'渠道名不能为空',
+    'update_success'=>'更新成功',
+    'short_message'=>'短信验证码',
+    'send_message'=>'发送短信验证码',
+    'phone_exist'=>'手机号码已经存在',
 ];

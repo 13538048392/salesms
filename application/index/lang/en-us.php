@@ -112,6 +112,7 @@ return [
 	'add' => 'Add',
 	'del' => 'Delete',
 	'channel_check' => 'Create 10 channels at most',
+	'channel_exists' =>'The channel already exists and cannot be added repeatedly',
 
 	//end channel controller
 
@@ -119,4 +120,11 @@ return [
     'search'=>'Search',
     'referrer_manager'=>'referrer_manager',
     'create_time'=>'Create Time',
+    'add_success'=>'add success',
+    'channel_empty'=>'channel name is not empty',
+    'update_success'=>'Your Profile update success',
+    'short_message'=>'message authentication code',
+    'send_message'=>'Send SMS verification code',
+    'phone_exist'=>'The phone number is already exist'
+
 ];

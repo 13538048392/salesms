@@ -11,16 +11,84 @@ namespace app\index\controller;
 
 use app\common\Base;
 use think\Controller;
+use app\index\model\User as UserModel;
+use think\Config;
 use think\Db;
 
 class Referrer extends Base
 {
     public function index()
     {
-        return view('/referrer', ['data' => $this->getDataList()]);
+
+        //php获取上周起始时间戳和结束时间戳
+
+        //$beginLastweek=mktime(0,0,0,date('m'),date('d')-date('w')+1-7,date('Y'));
+
+      //  $endLastweek=mktime(23,59,59,date('m'),date('d')-date('w')+7-7,date('Y'));
+        // return view('/referrer', ['data' => $this->getDataList()]);
+       // dump($this->getDataList());
+        $user = $this->getReferrer();
+        //获取下级
+        $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
+        // dump($data);exit;
+        return view('/referrer', ['data' => $data]);
+
     }
 
-    public function getDataList($where = [])
+    public function getReferrer($where=[]){
+        //获取推广下级
+        $level = Config::get('level');
+        //获取要展示的层级
+        $c_num = 1;
+        //设置当前的层级
+        $data = array();
+        //结果集数组
+        $uid = array(session('userid'));
+        //初始第一层级的userid
+        $temp_uid = array();
+        //临时记录uid的数组
+        $temp_data = array();
+        //临时记录数据的数组
+        while ($c_num <= $level) {
+            foreach ($uid as $k => $v) {
+                //按照uid去查询下级
+                $temp_data = UserModel::alias('a')
+                            ->join('sales_user_info b','a.id = b.user_id','left')
+                            ->join('sales_channel c','a.channel_id = c.id','left')
+                            ->field('a.id,a.parent_id,a.user_name,a.create_time,b.first_name,b.last_name,c.channel_name')
+                            ->where('a.parent_id',$v)
+                            ->where($where)
+                            ->select()
+                            ->toArray();
+                // dump($temp_data);exit;
+                //查询结束后从uid集合里面删除这个uid
+                if ($temp_data) {
+                    foreach ($temp_data as $a => $b) {
+                        array_push($temp_uid, $b['id']);
+                        //得到新的uid存入临时uid集合数组中
+                        array_push($data, $b);
+                        //得到的新数据存入集合
+                        $where = '1=1';
+                        //清空查询条件
+                    }
+
+                }
+
+            }
+
+            $uid = $temp_uid;
+            $temp_uid = array();
+            // dump($uid);
+            //刷新用户id用于查询下级  
+            $c_num++;
+        }
+
+        // dump($data);exit;
+        return $data;
+
+    }
+
+    public function getDataList($where=[])
     {
         $userList = Db::name('user')->field('id,user_name,parent_id')->select();
         $result = $this->GetTeamMember($userList, session('userid'));
@@ -28,17 +96,18 @@ class Referrer extends Base
         foreach ($result as $k => $v) {
             $temp = Db::name('user')
                 ->alias('a')
-                ->join('user_info b', 'a.id=b.user_id')
-                ->join('channel c', 'a.channel_id=c.id')
+                ->join('user_info b', 'a.id=b.user_id','left')
+                ->join('channel c', 'a.channel_id=c.id','left')
                 ->field('a.user_name,a.create_time,b.first_name,b.last_name,c.channel_name')
                 ->where('a.id', $v)
                 ->where($where)
-                ->whereTime('a.create_time', 'last week')//显示一周之内的
+                //->whereTime('a.create_time', 'week')//显示一周之内的
                 ->select();
             if($temp){
                 $data[] = $temp;
             }
         }
+        //return Db::name('user')->getLastSql();
         return $data;
     }
 
@@ -132,7 +201,10 @@ class Referrer extends Base
             if (input('channel_name')) {
                 $where['c.channel_name'] = input('channel_name');
             }
-            return json($this->getDataList($where));
+            // return json($this->getDataList($where));
+            $user = $this->getReferrer($where);
+            $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
+            return json(['data'=>$data]);
         }
     }
 }

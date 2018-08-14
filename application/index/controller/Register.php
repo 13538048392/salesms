@@ -166,19 +166,18 @@ class Register extends Base
             $phone = input('phone');
             $section = input('section');
             if (!$this->isMobile($phone)) {
-                return json(['resp_code' => '1','msg' => '手机号码格式不对']);
+                return json(['resp_code' => '1','msg' => \think\lang::get('phone_rule')]);
             }
             if (!$this->checkExpire($phone)) {
-                return json(['resp_code' => '2','msg' => '每分钟最多发一次，每天最多发十次']);
+                return json(['resp_code' => '2','msg' => \think\lang::get('short_message_reg')]);
             }
             $code = $this->random();
-            $this->redis->set($phone,$code);
-            $this->redis->setex($phone,60,$code);
-            return 0;
+            $this->redis->set('user:'.$phone,$code);
+            $this->redis->setex('user:'.$phone,300,$code);
             $message = new \ShortMessage();
             $result = $message->sendSms('00' . $section . $phone,$code);
             if ($result->Message == 'OK' && $result->Code == 'OK') {
-                return json(['resp_code' => '0','msg' => '验证码发送成功，请查收!']);
+                return json(['resp_code' => '0','msg' =>  \think\lang::get('short_message_success')]);
             }
         }
     }
@@ -199,17 +198,6 @@ class Register extends Base
         return $code;
     }
 
-    /*
-     * Redis 测试
-     */
-//    public function testRedis()
-//    {
-//        $this->redis->set('user:code',$this->random());
-//        $this->redis->set('user:vertify',$this->random());
-//        $data[] = $this->redis->get('user:code');
-//        $data[] = $this->redis->get('user:vertify');
-//        return $data[0];
-//    }
 
     /**
      * @param $mobile
@@ -231,17 +219,11 @@ class Register extends Base
      */
     public function checkVerifyCode()
     {
-        if ($this->redis->get(input('phone')) === input('code')) {
+        if ($this->redis->get('user:'.input('phone')) === input('code')) {
             return json(['valid' => true]);
         }
         return json(['valid' => false]);
     }
-
-//    public function getRedisKey()
-//    {
-//        $phone=input('phone');
-//        $this->redis->get($phone);
-//    }
 
     /**
      * @param $phone

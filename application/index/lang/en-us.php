@@ -46,7 +46,7 @@ return [
     'user_not_exist' => 'Username does not exist ',
 	'user_not_activate' => 'Account is not activated. Please go to your mailbox to activate.',
 	'user_frozen' => 'Your account has been frozen ',
-	'user_frozen_seconds' => 'Second retry ',
+	'user_frozen_seconds' => 'ten minutes retry ',
 	'password_error' => 'Password is incorrect, more than five times the account will be frozen for ten minutes.',
 	'verify_success' => 'Verifies success',
 
@@ -125,6 +125,10 @@ return [
     'update_success'=>'Your Profile update success',
     'short_message'=>'message authentication code',
     'send_message'=>'Send SMS verification code',
-    'phone_exist'=>'The phone number is already exist'
+    'phone_exist'=>'The phone number is already exist',
+    'short_message_reg'=>'Up to once a minute, 10 times a day',
+    'short_message_success'=>'The verification code was sent successfully, please check!',
+
+
 
 ];

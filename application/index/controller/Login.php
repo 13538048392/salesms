@@ -18,8 +18,12 @@ use app\common\Base;
 
 class Login extends Base
 {
+    private $redis;
     public function __construct(Request $request = null)
     {
+        $this->redis=new \Redis();
+        $this->redis->connect('127.0.0.1',6379);
+        $this->redis->select(0);
         parent::__construct($request);
     }
 
@@ -55,24 +59,38 @@ class Login extends Base
                 //账号未激活
                 return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate')]);
             }
-            if ($result['status'] == 0) {
-                $time = 10 * 60 - (time() - strtotime($result['login_time']));
-                if ($time > 0) {
-                    //用户被锁定
-                    return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen') . $time . \think\lang::get('user_frozen_seconds')]);
-                }
-                Db::name('user')->where(['id' => $result['id']])->data(['status' => 1, 'error_times' => 0])->update();
+
+            if($result['status'] == 0){
+                return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen')]);
             }
-            if ($result['error_times'] >= 5) {
-                Db::name('user')->where(['id' => $result['id']])->data(['status' => 0])->update();
-                //账号被锁定
-                return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen')]);
+
+            if($this->redis->get('user:'.$username)>=5){
+                $this->redis->expire('user:'.$username,'600');
+                return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen_seconds')]);
             }
+//            if ($result['status'] == 0) {
+//                $time = 10 * 60 - (time() - strtotime($result['login_time']));
+//                if ($time > 0) {
+//                    //用户被锁定
+//                    return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen') . $time . \think\lang::get('user_frozen_seconds')]);
+//                }
+//                Db::name('user')->where(['id' => $result['id']])->data(['status' => 1, 'error_times' => 0])->update();
+//            }
+//            if ($result['error_times'] >= 5) {
+//                Db::name('user')->where(['id' => $result['id']])->data(['status' => 0])->update();
+//                //账号被锁定
+//                return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen')]);
+//            }
             if (!password_verify($password, $result['pass'])) {
-                Db::name('user')->where(['id' => $result['id']])->data(['error_times' => $result['error_times'] + 1, 'login_time' => time()])->update();
+               // Db::name('user')->where(['id' => $result['id']])->data(['error_times' => $result['error_times'] + 1, 'login_time' => time()])->update();
+                if($this->redis->exists('user:'.$username)){
+                    $this->redis->incr('user:'.$username);
+                }else{
+                    $this->redis->set('user:'.$username,1);
+                }
                 return json(['resp_code' => 2, 'msg' => \think\lang::get('password_error')]);
             }
-            Db::name('user')->where(['id' => $result['id']])->data(['error_times' => 0])->update();
+           // Db::name('user')->where(['id' => $result['id']])->data(['error_times' => 0])->update();
             Session::set('user.username', $username);
             Session::set('userid', $result['id']);
             return json(['resp_code' => 0, 'user_id' => $result['id']]);

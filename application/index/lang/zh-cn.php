@@ -47,7 +47,7 @@ return [
     'user_not_exist' => '用户名不存在',
     'user_not_activate' => '账号未激活，请到您的邮箱激活',
     'user_frozen' => '您的账号已被冻结',
-    'user_frozen_seconds' => '秒后重试',
+    'user_frozen_seconds' => '10分钟后重试',
     'password_error' => '密码不正确，超过五次账号将被冻结十分钟',
     'verify_success' => '验证成功',
 
@@ -128,4 +128,6 @@ return [
     'short_message'=>'短信验证码',
     'send_message'=>'发送短信验证码',
     'phone_exist'=>'手机号码已经存在',
+    'short_message_reg'=>'每分钟最多发一次，每天最多发十次',
+    'short_message_success'=>'验证码发送成功，请查收!',
 ];

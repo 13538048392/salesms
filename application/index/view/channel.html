@@ -19,27 +19,20 @@
         data_channel="<?php echo session('userid') ?>";
         lang_channel_name="{$Think.lang.channel_empty}";
     </script>
+<style type="text/css">
+    table{
+        font-size: 14px;
+    }
+</style>
 </head>
 <body>
-    {include file="../application/index/view/public/_header.html"}
-<div class="container" style="margin-top: 60px;">
+    {include file="../application/index/view/public/_header2.html"}
+<!-- <div class="container" style="margin-top: 60px;">
     <div class="container-fluid">
         <h1 class="text-center">{$Think.lang.channel_manager}</h1>
-        <button class="glyphicon glyphicon-user" id="btn"></button>
     </div>
     <div class="row">
-        <div class="col-md-2 " id="infocenter">
-            <ul class="nav nav-pills nav-stacked ">
-                <li role="presentation"><h3><a href="<?php echo url('home/index',['userid'=>session('userid')])?>"
-                                               id="Profile">{$Think.lang.you_profile}</a></h3></li>
-                <li role="presentation"><h3><a href="<?php echo url('channel/index',['userid'=>session('userid')])?>"
-                                               id="channelmanager">{$Think.lang.channel_manager}</a></h3></li>
-                <li role="presentation"><h3><a href="<?php echo url('referrer/index',['userid'=>session('userid')])?>"
-                                               id="Referrer">{$Think.lang.referrer_manager}</a></h3></li>
-                <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">{$Think.lang.login_out}</a>
-                </h3></li>
-            </ul>
-        </div>
+        
         <div class="col-md-9 col-md-offset-1" id="content">
             <div>
                 <form class="form-inline" onsubmit="return false">
@@ -81,7 +74,90 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<!-- 分界线 -->
+<div>
+    <div class="l-flex-center is--full w-container">
+      <div class="c-login">
+        <div class="c-login__title">
+          <div>{$Think.lang.channel_manager}</div>
+        </div>
+        <div class="c-login__body">
+          <div class="w-form">
+            <form id="wf-form-aform" name="wf-form-aform" data-name="aform" method="post" action="https://www.authpro.com/auth/mistercreate/">
+              <div class="w-row">
+                <div class="w-col w-col-3 w-col-small-4"><label for="first-name-2">{$Think.lang.channel_name}:</label></div>
+                <div class="w-col w-col-6 w-col-small-4">
+                  <div class="w-embed">
+                    <input class="w-input c-login__input" type="textbox" name="channel_name" id="channel_name" placeholder="{$Think.lang.channel_name}">
+                </div>
+                </div>
+                <div class="w-col w-col-3 w-col-small-4"><input type="submit" value="{$Think.lang.add} {$Think.lang.channel}" data-wait="Please wait..." id="addChannel" class="link w-button"></div>
+              </div>
+              <div class="w-embed"><input type="hidden" name="action" value="reg2">
+                <input type="hidden" name="regcode" value=""></div>
+              <div></div>
+            </form>
+            <div class="w-form-done">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+          <div>
+            <div class="row w-row">
+              
+            <table id="channel_list" class="table" style="width: 100%">
+                    <thead>
+                    <tr>
+                        <th style="text-align: center">{$Think.lang.channel}</th>
+                        <th style="text-align: center;">{$Think.lang.role}</th>
+                        <th style="text-align: center;">{$Think.lang.url_code} ({$Think.lang.click_to_copy})</th>
+                        <th width="100" style="text-align: center;">{$Think.lang.qc_code}</th>
+                        <th style="text-align: center;">{$Think.lang.create_time}</th>
+                    </tr>
+                    </thead>
+                    <tbody id="channel_list_tbody">
+                    <?php foreach($data as $key=>$val):?>
+                    <tr>
+                        <td style="text-align: center;">{$val.channel_name}<br><br><button type="button"  value="{$val.id}" class="link w-button">{$Think.lang.del}</button></td>
+                        <td style="text-align: center;">
+                        {volist name="val['url_code']" id="vo"}
+                        <div style="height: 100px;">
+                            {$vo['role_name']}
+                        </div>
+                        <br/>
+                        {/volist}
+                        </td>
+                        <td style="text-align: center;">
+                        <?php foreach($val['url_code'] as $k=>$v):?>
+                        <div style="height: 100px;">
+                            {$v.url_code}
+                            
+                        </div>
+                        </br>
+                        <?php endforeach?>
+                        </td>
+                        <td style="text-align: center;">
+                        {volist name="val['url_code']" id="va"}
+                        <img width="100px" height="100px" src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($va['url_code'])])?>"/>
+                        <br>
+                        {/volist}
+                        </td>
+                        <td>{$val['create_time']}</td>
+
+                    </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 <script>
     $('#channel_list').dataTable({

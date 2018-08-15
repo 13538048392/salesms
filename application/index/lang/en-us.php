@@ -101,7 +101,17 @@ return [
 	'you_profile' => 'You Profile',
 	'channel_manager' => 'ChannelMaster',
 	'login_out' => 'LoginOut',
-	
+	'profile' => 'Profile',
+	'channel' => 'Channel',
+	'referral' => 'Referral',
+	'report' => 'Report',
+	'logout' => 'Logout',
+	'sales' => 'Sales',
+	'doctors' => 'Doctors',
+	'role' => 'Role',
+	'click_to_copy' => 'Click to copy',
+	'click_to_download' => 'Click to download',
+	'qc_code' => 'QC_Code',
 
 	//end home controller
 

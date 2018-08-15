@@ -1,17 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>User Register</title>
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
-    <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
-
-
+    <meta charset="UTF-8">
+    <title>Title</title>
     <link href="/static/css/normalize.css" rel="stylesheet" type="text/css">
     <link href="/static/css/webflow.css" rel="stylesheet" type="text/css">
     <link href="/static/css/alexs-login-project.webflow.css" rel="stylesheet" type="text/css">
@@ -19,7 +10,11 @@
     <link href="https://daks2k3a4ib2z.cloudfront.net/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link href="https://daks2k3a4ib2z.cloudfront.net/img/webclip.png" rel="apple-touch-icon">
 
-
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
+    <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <script>
         url_username = "<?php echo url('register/checkUser','','',true)?>";
         url_email = "<?php echo url('register/checkEmail','','',true)?>";
@@ -28,16 +23,17 @@
         url_send_message="<?php echo url('register/sendMessage','','',true)?>";
         url_code="<?php echo url('register/checkVerifyCode','','',true)?>";
     </script>
+    <script src="/static/js/form.js"></script>
 
     <style type="text/css">
-        .hid { display: none }
+        hid {display: none}
     </style>
 
 </head>
 <body>
 <div>
     <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar-2 nav-container w-nav">
-        <div class="container-2 w-container"><a href="#" class="w-nav-brand"><img src="/static/images/Logo_Kooa06.png" class="image-2"></a>
+        <div class="container-2 w-container"><a href="#" class="w-nav-brand"><img src="../images/Logo_Kooa06.png" class="image-2"></a>
             <nav role="navigation" class="w-nav-menu"><a href="#" class="nav-link-2 w-nav-link">Home</a>
                 <div data-delay="0" class="w-dropdown">
                     <div class="w-dropdown-toggle">
@@ -54,27 +50,21 @@
     <div class="l-flex-center is--full w-container">
         <div class="c-login">
             <div class="c-login__title">
-                <div>{$Think.lang.user}{$Think.lang.register}</div>
+                <div>{$Think.lang.user} {$Think.lang.register}</div>
             </div>
             <div class="c-login__body">
                 <div class="w-form">
                     <form role="form" method="post" id="reused_form" action="{:url('register/register')}">
-
                         <label for="login-2">{$Think.lang.username}:</label>
                         <div class="w-embed form-group">
-
                             <input class="w-input c-login__input form-control" type="text" placeholder="{$Think.lang.username}" name="username" id="username">
                         </div>
-
                         <label for="login-2">{$Think.lang.email}:</label>
                         <div class="w-embed form-group">
-
                             <input class="w-input c-login__input form-control" type="text" placeholder="{$Think.lang.email}" name="email" id="email">
                         </div>
-
                         <label for="login-2">区号：</label>
-                        <div class="w-embed form-group" style="position: relative">
-
+                        <div class="w-embed form-group">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" style="width: 100%"><span class="regoin">+86</span>
                                 <span class="caret" style="float: right;margin-top: 9px"></span>
@@ -82,44 +72,34 @@
                             <ul class="dropdown-menu phone-regoin" aria-labelledby="dropdownMenu1">
                             </ul>
                         </div>
-
                         <label for="login-2">{$Think.lang.phone}:</label>
                         <div class="w-embed form-group">
-
                             <input class="w-input c-login__input form-control" type="text" placeholder="{$Think.lang.phone}" name="phone" id="phone">
                         </div>
-
-                        <label class="hid"  for="login-2">{$Think.lang.short_message}:</label>
-                        <div class="w-embed form-group hid">
-
+                        <label for="login-2">{$Think.lang.short_message}:</label>
+                        <div class="w-embed form-group">
                             <input class="w-input c-login__input form-control" type="text" placeholder="{$Think.lang.short_message}" name="code" id="code">
                         </div>
-                        <div class="w-embed form-group hid">
+                        <label for="email">发送短信:</label>
+                        <div class="w-embed form-group">
                             <button type="button" name="sendMessage" class="btn  btn-success btn-block"
                                     id="sendMessage"> {$Think.lang.send_message}
                             </button>
                         </div>
-
                         <label for="password-3">{$Think.lang.password}:</label>
                         <div class="w-embed form-group">
-
                             <input class="w-input c-login__input form-control" type="password" placeholder="{$Think.lang.password}" name="password" id="password">
                         </div>
-
                         <label for="password-3">{$Think.lang.password2}:</label>
                         <div class="w-embed form-group">
-
                             <input class="w-input c-login__input" type="password" placeholder="{$Think.lang.password2}" name="confirm_password" id="confirm_password">
                         </div>
-
                         <div class="w-embed form-group">
-                            <input type="submit" value="{$Think.lang.commit}" data-wait="Please wait..." class="c-login__submit w-button" name="btnContactUs" id="btnContactUs">
+                        <input type="submit" value="{$Think.lang.commit}" data-wait="Please wait..." class="c-login__submit w-button" name="btnContactUs" id="btnContactUs">
                         </div>
-
                         <div class="w-embed"><input type="hidden" name="action" value="reg2">
                             <input type="hidden" name="regcode" value="">
                         </div>
-
                     </form>
                     <div class="w-form-done">
                         <div>Thank you! Your submission has been received!</div>
@@ -132,10 +112,10 @@
         </div>
     </div>
 </div>
-
-<script src="/static/js/form.js"></script>
+<script src="../js/webflow.js" type="text/javascript"></script>
 </body>
 </html>
+
 <script type="text/javascript">
     var user_not_null = "{$Think.lang.user_not_null}";
     var email_not_null = "{$Think.lang.email_not_null}";

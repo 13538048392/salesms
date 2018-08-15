@@ -141,11 +141,11 @@ var html='';
 function getDataList(data){
     for (var i = 0; i < data.length; i++) {
         var list = [data[i]];
-        console.log(list);
+        //console.log(list);
         var c_fix = '';
         while(list != ''){
             var one = list.shift();
-            console.log(one);
+            //console.log(one);
             html += "<tr>" +
                     "<td>" +c_fix+one.user_name+ "</td>" +
                     "<td>" +one.channel_name+ "</td>" +

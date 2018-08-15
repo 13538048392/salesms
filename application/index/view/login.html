@@ -12,39 +12,49 @@
 </head>
 <body>
    {include file="../application/index/view/public/_header.html"}
-<div class="container" style="margin:60px 0 0 0;">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>{$Think.lang.login}</h2>
-            <form role="form" method="post" id="reused_form" action="{:url('login/login')}">
-                <input type="hidden" name="__token__" value="{$Request.token}"/>
-                <div class="row">
-                    <div class="col-sm-6 form-group">
-                        <label for="username"></label>
-                        <input type="text" placeholder="{$Think.lang.username}|{$Think.lang.email}|{$Think.lang.phone}：" class="form-control" id="username" name="username">
-                    </div>
-                    <div class="col-sm-6 form-group">
-                        <label for="password"> </label>
-                        <input type="password" placeholder="{$Think.lang.password}:" class="form-control" id="password"
-                               name="password">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 form-group">
-                        <a  href="{:url('searchPass')}" role="button" target="_blank">{$Think.lang.forgot}</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12 form-group">
-                        <button type="submit" class="btn btn-lg btn-success btn-block" id="btnContactUs">{$Think.lang.login}</button>
-                    </div>
-                </div>
-            </form>
-            <div id="success_message" style="width:100%; height:100%;">
-            </div>
-        </div>
-    </div>
-</div>
+   <div class="l-flex-center is--full w-container">
+       <div class="c-login">
+           <div class="c-login__title">
+               <div>KOOA - Sales Management System</div>
+           </div>
+   <div class="l-flex-center is--full w-container">
+       <div class="c-login">
+           <div class="c-login__body">
+               <div class="w-form">
+                   <form id="reused_form" action="{:url('login/login')}" name="wf-form-aform" data-name="aform" method="post" >
+                           <input type="hidden" name="__token__" value="{$Request.token}"/>
+                       <label for="login">{$Think.lang.login}</label>
+                       <input type="text" class="c-login__input w-input" maxlength="256" id="username" name="username" data-name="login"   required="" placeholder="{$Think.lang.username}|{$Think.lang.email}|{$Think.lang.phone}：">
+                       <label for="password-2">{$Think.lang.password}</label>
+                       <input type="password" class="c-login__input w-input" maxlength="256" name="password" data-name="password" placeholder="{$Think.lang.password}:" id="password" required="">
+                       <div class="w-checkbox">
+                           <input type="checkbox" id="Remember" name="Remember" data-name="Remember" class="w-checkbox-input"><label for="Remember" class="w-form-label">Remember me</label>
+                       </div>
+                       <input type="submit" value="Enter" data-wait="Please wait..." class="c-login__submit w-button">
+                       <div>
+                           <!--Lost your username or password? <a href="../authpro/lost-password.html" class="c-link">Find it here!</a>-->
+                           <div class="col-sm-6 form-group">
+                               <a  href="{:url('searchPass')}" role="button" target="_blank">{$Think.lang.forgot}</a>
+                           </div>
+                       </div>
+
+                       <div class="w-embed">
+                           <input type="hidden" name="action" value="login">
+                           <input type="hidden" name="hide" value="">
+                       </div>
+                   </form>
+                   <div class="w-form-done">
+                       <div>Thank you! Your submission has been received!</div>
+                   </div>
+                   <div class="w-form-fail">
+                       <div>Oops! Something went wrong while submitting the form.</div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+       </div>
+   </div>
 <script>
     imgurl = "<?php echo captcha_src();?>";
     checkCodeUrl = "<?php echo url('login/checkValidateCode','','',true)?>";

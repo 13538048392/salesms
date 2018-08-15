@@ -79,7 +79,9 @@ return [
 	//end register controller
 
 	//index controller
-
+	'home' => '主頁',
+	'language' => '語言',
+	'contact' => '聯繫',
 	'home_title' => '網站首頁',
 	'admin_code' => '管理員推薦註冊碼',
 	'user_code' => '用戶推薦註冊碼',

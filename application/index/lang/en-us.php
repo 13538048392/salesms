@@ -78,7 +78,9 @@ return [
 	//end register controller
 
 	//index controller
-
+	'home' => 'Home',
+	'language' => 'Language',
+	'contact' => 'Contact',
 	'home_title' => 'Web page',
 	'admin_code' => 'Administrator recommends the registration code',
 	'user_code' => 'User recommended registration code',

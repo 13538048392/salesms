@@ -14,11 +14,11 @@
   <script src="__PUBLIC__/js/webflow.js" type="text/javascript"></script>
 <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar-2 nav-container w-nav">
       <div class="container-2 w-container"><a href="#" class="w-nav-brand"><img src="__PUBLIC__/images/Logo_Kooa06.png" class="image-2"></a>
-        <nav role="navigation" class="w-nav-menu"><a href="#" class="nav-link-2 w-nav-link">Home</a>
+        <nav role="navigation" class="w-nav-menu"><a href="#" class="nav-link-2 w-nav-link">{$Think.lang.home}</a>
           <div data-delay="0" class="w-dropdown">
             <div class="w-dropdown-toggle">
               <div class="w-icon-dropdown-toggle"></div>
-              <div class="text-block">Language</div>
+              <div class="text-block">{$Think.lang.language}</div>
             </div>
             <nav class="w-dropdown-list">
               <?php $lang = isset($_COOKIE['think_var'])?$_COOKIE['think_var']:'zh-cn';?>
@@ -28,7 +28,7 @@
 
               <a href="#" id="hk" lang="hk" class="w-dropdown-link"<?php if($lang == 'zh-hk'){echo "style='background: #E8E8E8;text-decoration:none;color: #0000FF;font-weight: bold;'";}?>>繁体中文</a>
             </nav>
-          </div><a href="#" class="nav-link-4 w-nav-link">Contact</a></nav>
+          </div><a href="#" class="nav-link-4 w-nav-link">{$Think.lang.contact}</a></nav>
         <div class="w-nav-button">
           <div class="w-icon-nav-menu"></div>
         </div>

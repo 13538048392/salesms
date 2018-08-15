@@ -80,7 +80,9 @@ return [
 	'pass_rule' => '密码由数字字母下划线和.组成',
 
 //index contorller
-
+	'home' => '主页',
+	'language' => '语言',
+	'contact' => '联系',
 	'home_title' => '网站首页',
 	'admin_code' => '管理员推荐注册码',
 	'user_code' => '用户推荐注册码',

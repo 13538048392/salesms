@@ -189,12 +189,12 @@ $(function () {
     });
 
     $("#phone").focus(function () {
-        $('form .row:eq(2)').show();
+        $('.hid').show();
     });
 
     $("#phone").blur(function () {
         if (!$("#phone").val()) {
-            $('form .row:eq(2)').hide();
+            $('.hid').hide();
         }
     })
 

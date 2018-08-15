@@ -9,6 +9,7 @@
 namespace app\index\controller;
 
 use app\index\model\User;
+use think\Config;
 use think\Controller;
 use think\Cookie;
 use think\Db;
@@ -21,10 +22,10 @@ class Login extends Base
     private $redis;
     public function __construct(Request $request = null)
     {
-        $this->redis=new \Redis();
-        $this->redis->connect('127.0.0.1',6379);
-        $this->redis->select(0);
         parent::__construct($request);
+        $this->redis=new \Redis();
+        $this->redis->connect(Config::get('redis.host'),Config::get('redis.port'));
+        $this->redis->select(Config::get('redis.db_index'));
     }
 
     public function index()

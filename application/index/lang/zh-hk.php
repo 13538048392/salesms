@@ -129,7 +129,7 @@ return [
 
 	//end channel controller
 	//end home controller
-    'search'=>'搜索',
+    'search'=>'搜 索',
     'referrer_manager'=>'推廣管理',
     'create_time'=>'創建時間',
     'add_success'=>'添加成功',

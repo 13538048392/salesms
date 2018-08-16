@@ -31,7 +31,7 @@ $(function () {
                     location.href = indexurl+'?userid='+result.user_id;
             }else{
                  // alert(result.msg);
-                 $('#w-form-fail').html(result.msg);
+                 $('.w-form-fail').html(result.msg);
             }
            
         }, 'json');

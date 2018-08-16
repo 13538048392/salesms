@@ -34,10 +34,6 @@ class Register extends Base
         $this->redis->select(Config::get('redis.db_index'));
     }
 
-    public function test()
-    {
-        return view('/_register');
-    }
 
     public function index(Request $request = null)
     {

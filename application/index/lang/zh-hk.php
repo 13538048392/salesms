@@ -79,7 +79,9 @@ return [
 	//end register controller
 
 	//index controller
-
+	'home' => '主頁',
+	'language' => '語言',
+	'contact' => '聯繫',
 	'home_title' => '網站首頁',
 	'admin_code' => '管理員推薦註冊碼',
 	'user_code' => '用戶推薦註冊碼',
@@ -99,6 +101,17 @@ return [
 	'you_profile' => '您的簡介',
 	'channel_manager' => '渠道資訊',
 	'login_out' => '登出',
+	'profile' => '簡介',
+	'channel' => '渠道',
+	'referral' => '推薦',
+	'report' => '報告',
+	'logout' => '登出',
+	'sales' => '銷售',
+	'doctors' => '醫生',
+	'role' => '角色',
+	'click_to_copy' => '點擊複製',
+	'click_to_download' => '點擊下載',
+	'qc_code' => '二維碼',
 	
 
 	//end home controller

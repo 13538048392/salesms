@@ -126,6 +126,9 @@ return [
 	'del' => '刪除',
 	'channel_check' => '最多只能創建10個渠道',
 	'channel_exists' => '該渠道已經存在，不能重複添加',
+	'copy' => '複製',
+	'success' => '成功',
+	'fail' => '失敗',
 
 	//end channel controller
 	//end home controller

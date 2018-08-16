@@ -32,4 +32,16 @@ class Index extends Base
         print_r($sendSms->sendSms($code,$phone));
 
     }
+
+    function getShortUrl(){
+        //获取短链接
+        $api_url = 'http://api.c7.gg/api.php?url=';
+        //api接口地址
+        $url = str_replace('&', '%26', 'http://47.90.203.241/signup?channelId=88&referralCode=5');
+        dump($url);exit;
+        $short_url = file_get_contents($url);
+        dump($short_url);
+
+    }
+
 }

@@ -66,12 +66,13 @@ function doAddChannel($data){
                             //医生的url
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = "http://47.90.203.241/signup?channelId=$find[id]&referralCode=$data[user_id]"; 
+                            $insert_data[$k]['url_code'] = getShortUrl("http://47.90.203.241/signup?channelId=$find[id]&referralCode=$data[user_id]"); 
+
                         }
                         else{
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = "/register/index/id/$find[id]/role_id/".$v['id']; 
+                            $insert_data[$k]['url_code'] = getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']); 
                         }
 
                 }
@@ -93,12 +94,12 @@ function doAddChannel($data){
                             //医生的url
                             $insert_data[$k]['channel_id'] = $channel_id;
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = "http://47.90.203.241/signup?channelId=$channel_id&referralCode=$data[user_id]"; 
+                            $insert_data[$k]['url_code'] = getShortUrl("http://47.90.203.241/signup?channelId=$channel_id&referralCode=$data[user_id]"); 
                 }
                 else{
                     $insert_data[$k]['channel_id'] = $channel_id;
                     $insert_data[$k]['role_id'] = $v['id'];
-                    $insert_data[$k]['url_code'] = "/register/index/id/$channel_id/role_id/".$v['id']; 
+                    $insert_data[$k]['url_code'] = getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']); 
                 }
             }
 
@@ -119,3 +120,16 @@ function doAddChannel($data){
 
     
 }
+
+    function getShortUrl($url){
+        //获取短链接
+        $api_url = 'http://api.c7.gg/api.php?url=';
+        //api接口地址
+        $url = str_replace('&', '%26', $url);
+        //字符串替换&为%26
+        $get_url = $api_url.$url;
+        $short_url = file_get_contents($get_url);
+        // dump($short_url);exit;
+        return $short_url;
+
+    }

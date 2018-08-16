@@ -132,7 +132,7 @@ return [
 
 	//end home controller
 
-    'search'=>'搜索',
+    'search'=>'搜 索',
     'referrer_manager'=>'推广管理',
     'create_time'=>'创建时间',
     'add_success'=>'添加成功',

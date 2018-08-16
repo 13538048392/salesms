@@ -99,9 +99,19 @@ return [
 	'male' => 'Male',
 	'female' => 'Female',
 	'you_profile' => 'You Profile',
-	'channel_manager' => 'ChannelMaster',
+	'channel_manager' => 'Channel Master',
 	'login_out' => 'LoginOut',
-	
+	'profile' => 'Profile',
+	'channel' => 'Channel',
+	'referral' => 'Referral',
+	'report' => 'Report',
+	'logout' => 'Logout',
+	'sales' => 'Sales',
+	'doctors' => 'Doctors',
+	'role' => 'Role',
+	'click_to_copy' => 'Click to copy',
+	'click_to_download' => 'Click to download',
+	'qc_code' => 'QR_Code',
 
 	//end home controller
 
@@ -120,7 +130,7 @@ return [
 
 	//end home controller
     'search'=>'Search',
-    'referrer_manager'=>'referrer_manager',
+    'referrer_manager'=>'Referrer Manager',
     'create_time'=>'Create Time',
     'add_success'=>'add success',
     'channel_empty'=>'channel name is not empty',

@@ -102,6 +102,17 @@ return [
 	'you_profile' => '您的简介',
 	'channel_manager' => '渠道信息',
 	'login_out' => '退出登录',
+	'profile' => '简介',
+	'channel' => '渠道',
+	'referral' => '推荐',
+	'report' => '报告',
+	'logout' => '登出',
+	'sales' => '销售',
+	'doctors' => '医生',
+	'role' => '角色',
+	'click_to_copy' => '点击复制',
+	'click_to_download' => '点击下载',
+	'qc_code' => '二维码',
 	
 	//end home controller
 
@@ -121,7 +132,7 @@ return [
 
 	//end home controller
 
-    'search'=>'搜索',
+    'search'=>'搜 索',
     'referrer_manager'=>'推广管理',
     'create_time'=>'创建时间',
     'add_success'=>'添加成功',

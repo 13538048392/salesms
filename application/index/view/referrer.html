@@ -44,13 +44,13 @@
 </head>
 <body>
 {include file="../application/index/view/public/_header2.html"}
-<div class="container">
+<!-- <div class="container">
     <div class="container-fluid">
         <h1 class="text-center">{$Think.lang.referrer_manager}</h1>
         <button class="glyphicon glyphicon-user" id="btn"></button>
     </div>
-    <div class="row">
-        <div class="col-md-2 " id="infocenter">
+    <div class="row"> -->
+        <!-- <div class="col-md-2 " id="infocenter">
             <ul class="nav nav-pills nav-stacked ">
                 <li role="presentation"><h3><a href="<?php echo url('home/index',['userid'=>session('userid')])?>"
                                                id="Profile">{$Think.lang.you_profile}</a></h3></li>
@@ -61,9 +61,9 @@
                 <li role="presentation"><h3><a href="<?php echo url('login/loginOut') ?>" id="loginout">{$Think.lang.login_out}</a>
                 </h3></li>
             </ul>
-        </div>
+        </div> -->
 
-        <div class="col-md-7 col-md-offset-1" id="content">
+        <!-- <div class="col-md-7 col-md-offset-1" id="content">
             <div class="form-group search-container">
                 <div class="col-md-4">
                     <input type="text" class="form-control" placeholder="{$Think.lang.first_name}" name="first_name" id="first_name">
@@ -121,7 +121,102 @@
         </div>
     </div>
 
-</div>
+</div> -->
+
+<!-- 分割线 -->
+
+    <div class="l-flex-center is--full w-container">
+      <div class="c-login">
+        <div class="c-login__title">
+          <div>{$Think.lang.referrer_manager}</div>
+        </div>
+        <div class="c-login__body">
+          <div class="w-form">
+            <form id="wf-form-aform" name="wf-form-aform" data-name="aform" method="post">
+              <div class="w-row">
+                <!-- <div class="w-col w-col-3 w-col-small-4">
+                    <label for="first-name-2">{$Think.lang.channel_name}:</label></div>
+                <div class="w-col w-col-6 w-col-small-4">
+                  <div class="w-embed">
+                    <input class="w-input c-login__input" type="textbox" name="channel_name" id="channel_name" placeholder="{$Think.lang.channel_name}">
+                </div>
+                </div>
+                <div class="w-col w-col-3 w-col-small-4"><input type="submit" value="{$Think.lang.add} {$Think.lang.channel}" data-wait="Please wait..." id="addChannel" class="link w-button"></div> -->
+                <div class="form-group search-container">
+                <div class="col-md-2">
+                    <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.first_name}" name="first_name" id="first_name">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.last_name}" name="last_name" id="last_name">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.username}" name="username" id="username">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.channel_name}" name="channel_name" id="channel_name">
+                </div>
+                <div class="col-md-4">
+                    <button id="search" class="link w-button"> {$Think.lang.search} </button>
+                </div>
+            </div>
+              </div>
+              <div class="w-embed"><input type="hidden" name="action" value="reg2">
+                <input type="hidden" name="regcode" value=""></div>
+              <div></div>
+            </form>
+            <div class="w-form-done">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            <div class="w-form-fail">
+              <div>Oops! Something went wrong while submitting the form.</div>
+            </div>
+          </div>
+          <div>
+            <div class="row w-row">
+              
+            <table id="referrer_list" class="table" style="width: 100%">
+                <thead>
+                <tr>
+                    <th>{$Think.lang.username}</th>
+                    <th>{$Think.lang.channel_name}</th>
+                    <th>{$Think.lang.first_name}</th>
+                    <th>{$Think.lang.last_name}</th>
+                    <th>{$Think.lang.create_time}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {volist name="data" id="vo"}
+                
+                <?php
+                    $list[0] = $vo;
+                    $c_fix = '';
+                    while(!empty($list))
+                    {
+                        $one = array_shift($list);
+                        
+                            echo "<tr>";
+                            echo "<td>$c_fix$one[user_name]</td>";
+                            echo "<td>$one[channel_name]</td>";
+                            echo "<td>$one[first_name]</td>";
+                            echo "<td>$one[last_name]</td>";
+                            echo "<td>$one[create_time]</td>";
+                            echo "</tr>";
+
+                            if(isset($one['_child'])){
+                            $list = array_merge($list,$one['_child']);
+                        }
+                        $c_fix.= '--';
+                    }
+                ?>
+                {/volist}
+                </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 <script>

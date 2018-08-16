@@ -99,7 +99,7 @@ return [
 	'male' => 'Male',
 	'female' => 'Female',
 	'you_profile' => 'You Profile',
-	'channel_manager' => 'ChannelMaster',
+	'channel_manager' => 'Channel Master',
 	'login_out' => 'LoginOut',
 	'profile' => 'Profile',
 	'channel' => 'Channel',
@@ -130,7 +130,7 @@ return [
 
 	//end home controller
     'search'=>'Search',
-    'referrer_manager'=>'referrer_manager',
+    'referrer_manager'=>'Referrer Manager',
     'create_time'=>'Create Time',
     'add_success'=>'add success',
     'channel_empty'=>'channel name is not empty',

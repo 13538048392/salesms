@@ -122,8 +122,8 @@
                     <tbody id="channel_list_tbody">
                     <?php foreach($data as $key=>$val):?>
                     <tr>
-                        <td style="text-align: center;">{$val.channel_name}<br><br><button type="button"  value="{$val.id}" class="link w-button">{$Think.lang.del}</button></td>
-                        <td style="text-align: center;">
+                        <td style="text-align: center;">{$val.channel_name}<br><br><button type="button"  value="{$val.id}" class="link w-button del">{$Think.lang.del}</button></td>
+                        <td style="text-align: center;width: 60px;">
                         {volist name="val['url_code']" id="vo"}
                         <div style="height: 100px;">
                             {$vo['role_name']}
@@ -131,7 +131,7 @@
                         <br/>
                         {/volist}
                         </td>
-                        <td style="text-align: center;">
+                        <td>
                         <?php foreach($val['url_code'] as $k=>$v):?>
                         <div style="height: 100px;">
                             {$v.url_code}

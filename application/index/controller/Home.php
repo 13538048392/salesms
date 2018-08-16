@@ -34,8 +34,8 @@ class Home extends Base
     {
         if(isset($_POST)){
             $userid=$request->param('userid');
-            $firstName=input('firstname');
-            $lastName=input('lastname');
+            $firstName=input('first_name');
+            $lastName=input('last_name');
             $address=input('address');
             $wechat=input('wechat');
             $gender=input('gender');

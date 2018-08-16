@@ -111,7 +111,7 @@ return [
 	'role' => 'Role',
 	'click_to_copy' => 'Click to copy',
 	'click_to_download' => 'Click to download',
-	'qc_code' => 'QC_Code',
+	'qc_code' => 'QR_Code',
 
 	//end home controller
 

@@ -21,7 +21,7 @@ return [
     'phone'	=> '手機號',
     'password' => '密碼',
     'password2' => '確認密碼',
-    'forgot' => '忘記密碼?',
+    'forgot' => '点击找回密碼?',
     'user_not_null' => '用戶名不能為空',
     'pass_not_null' => '密碼不能為空',
     'pass2_not_null' => '確認密碼不能為空',
@@ -126,6 +126,9 @@ return [
 	'del' => '刪除',
 	'channel_check' => '最多只能創建10個渠道',
 	'channel_exists' => '該渠道已經存在，不能重複添加',
+	'copy' => '複製',
+	'success' => '成功',
+	'fail' => '失敗',
 
 	//end channel controller
 	//end home controller
@@ -140,6 +143,7 @@ return [
     'phone_exist'=>'手機號碼已經存在',
     'short_message_reg'=>'每分鐘最多發壹次，每天最多發十次',
     'short_message_success'=>'驗證碼發送成功，請查收!',
+    'forgot_pass'=>'忘記用戶名或密碼',
 
 
 

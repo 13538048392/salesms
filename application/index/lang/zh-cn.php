@@ -21,7 +21,7 @@ return [
     'phone'	=> '手机号',
     'password' => '密码',
     'password2' => '确认密码',
-    'forgot' => '忘记密码?',
+    'forgot' => '点击找回密码',
     'user_not_null' => '用户名不能为空',
     'pass_not_null' => '密码不能为空',
     'pass2_not_null' => '确认密码不能为空',
@@ -146,4 +146,7 @@ return [
     'phone_exist'=>'手机号码已经存在',
     'short_message_reg'=>'每分钟最多发一次，每天最多发十次',
     'short_message_success'=>'验证码发送成功，请查收!',
+    'forgot_pass'=>'忘记用户名或密码',
+
+
 ];

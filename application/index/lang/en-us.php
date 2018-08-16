@@ -20,7 +20,7 @@ return [
     'phone'	=> 'Phone',
     'password' => 'Password',
     'password2' => 'Confirm password',
-    'forgot' => 'Forgot Password?',
+    'forgot' => 'Find it here?',
     'user_not_null' => 'The username can not be empty',
     'pass_not_null' => 'The password can not be empty',
     'pass2_not_null' => 'The confirm password can not be empty',
@@ -143,7 +143,7 @@ return [
     'phone_exist'=>'The phone number is already exist',
     'short_message_reg'=>'Up to once a minute, 10 times a day',
     'short_message_success'=>'The verification code was sent successfully, please check!',
-
+    'forgot_pass'=>'Lost your username or password?',
 
 
 ];

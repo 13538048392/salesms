@@ -125,6 +125,9 @@ return [
 	'del' => 'Delete',
 	'channel_check' => 'Create 10 channels at most',
 	'channel_exists' =>'The channel already exists and cannot be added repeatedly',
+	'copy' => 'Copy',
+	'success' => 'Success',
+	'fail' => 'Fail',
 
 	//end channel controller
 

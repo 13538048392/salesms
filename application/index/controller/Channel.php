@@ -59,7 +59,7 @@ class Channel extends Base
                 switch ($value['role_id']) {
                     //如果是角色是医生
                     case 2:
-                        $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                        $url_doctor = getShortUrl("http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId);
                         $data = [
                             'channel_id' => $channelId,
                             'url_code' => $url_doctor,
@@ -69,8 +69,8 @@ class Channel extends Base
                         break;
                     //如果角色是销售员
                     case 3:
-                        $url_sale = "http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value['role_id'];
-                        $url_doctor = "http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId;
+                        $url_sale = getShortUrl("http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value['role_id']);
+                        $url_doctor = getShortUrl("http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId);
                         $data = [
                             [
                                 'channel_id' => $channelId,

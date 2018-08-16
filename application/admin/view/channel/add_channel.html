@@ -79,12 +79,12 @@ $('#create_url').click(function(){
 						
 						// console.log(host);
 			              for(var i = 0;i < msg.url.length;i++){
-			              	if (msg.role[i]['id'] == 2) {
-								host = "";
-							}
-							else{
-								host = "http://<?php echo $_SERVER['SERVER_NAME'];?>";
-							}
+			    //           	if (msg.role[i]['id'] == 2) {
+							// 	host = "";
+							// }
+							// else{
+							// 	host = "http://<?php echo $_SERVER['SERVER_NAME'];?>";
+							// }
 							$('#role'+msg.role[i]['id']).parent().remove();
 			              	html+="<div class='row cl'><label class='form-label col-xs-4 col-sm-3'><span class='c-red'>*</span>邀请"+msg.role[i]['role_name']+"url：</label><div class='formControls col-xs-8 col-sm-9'><input type='text' class='input-text' autocomplete='off' value='"+host+msg.url[i]['url_code']+"' id='' name='' readonly=''></div></div>";
 			              }

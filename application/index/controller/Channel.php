@@ -106,7 +106,8 @@ class Channel extends Base
     public function QrCode()
     {
         $url= urldecode(input('url_code'));
+        $logoPath='static\images\tou.jpg';
         $code = new \QueryingCode();
-        $code->makeQrCode($url);
+        $code->makeQueryingCode($url,$logoPath);
     }
 }

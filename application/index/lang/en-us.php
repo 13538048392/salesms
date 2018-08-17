@@ -118,7 +118,7 @@ return [
 	//channel controller
 
 	'channel_name' => 'Channel Name',
-	'url_code' => 'UrlCode',
+	'url_code' => 'URL',
 	'recommended_type' => 'Create Time',
 	'operation' => 'Operation',
 	'add' => 'Add',

@@ -24,7 +24,10 @@ class Logins
     {
         echo 11111;
     }
-
+    public function test()
+    {
+        echo 22222222;
+    }
  
 
 }

@@ -3,6 +3,7 @@ namespace app\index\controller;
 use duanxin\demo\sendSms;
 use think\Controller;
 use app\common\Base;
+use app\index\model\ShortUrl as ShortUrlModel;
 
 class Index extends Base
 {
@@ -42,6 +43,28 @@ class Index extends Base
         $short_url = file_get_contents($url);
         dump($short_url);
 
+    }
+
+    function test233(){
+        //
+        $short_url = $_SERVER["REQUEST_URI"];
+         
+        //获取短链
+        if ($short_url) {
+            $short_url = substr($short_url,1);
+            //去除/
+            $url = ShortUrlModel::where('short_url',$short_url)->find();
+            if ($url) {
+                //跳转
+                header("location:$url[url]");
+            }
+            else{
+                echo 333;die;
+
+                
+                header("location:".'http://'.$_SERVER['HTTP_HOST'].'/'.$short_url.'/index');die;
+            }
+        }
     }
 
 }

@@ -108,10 +108,12 @@
                             <div class="text-block-3">{$val['role_name']}<br></div>
                         </div>
                         <div class="w-col w-col-5 w-col-small-5 w-col-tiny-5">
-                            <div class="text-block-4">{$val['url_code']}</div>
+                            <div class="text-block-4" onclick="CopyUrl(this)">{$val['url_code']}</div>
                         </div>
                         <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-                            <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72">
+                            <a href="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" download="file" title="点击下载">
+                                <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72">
+                            </a>
                         </div>
                         <?php }?>
                         <?php endforeach; ?>
@@ -128,10 +130,10 @@
                             <div class="text-block-3">{$v['role_name']}<br></div>
                         </div>
                         <div class="column-2 w-col w-col-5 w-col-small-5 w-col-tiny-5">
-                            <div class="text-block-5">{$v['url_code']}</div>
+                            <div class="text-block-5" onclick="CopyUrl(this)">{$v['url_code']}</div>
                         </div>
                         <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2">
-                            <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>" width="72">
+                            <a href="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" download="file" title="点击下载"><img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>" width="72"></a>
                         </div>
                         <div class="w-col w-col-2 w-col-small-2 w-col-tiny-2"></div>
                     </div>
@@ -145,7 +147,7 @@
     </div>
 </div>
 </body>
-<script src="../js/webflow.js" type="text/javascript"></script>
+<script src="/static/js/webflow.js" type="text/javascript"></script>
 <script>
     // $('#channel_list').dataTable({
     //     searching: false, //去掉搜索框方法

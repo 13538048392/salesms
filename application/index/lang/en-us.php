@@ -103,8 +103,8 @@ return [
 	'login_out' => 'LoginOut',
 	'profile' => 'Profile',
 	'channel' => 'Channel',
-	'referral' => 'Referral',
-	'report' => 'Report',
+	'referral' => 'Sales Network',
+	'report' => 'Transaction Report',
 	'logout' => 'Logout',
 	'sales' => 'Sales',
 	'doctors' => 'Doctors',
@@ -118,7 +118,7 @@ return [
 	//channel controller
 
 	'channel_name' => 'Channel Name',
-	'url_code' => 'UrlCode',
+	'url_code' => 'URL',
 	'recommended_type' => 'Create Time',
 	'operation' => 'Operation',
 	'add' => 'Add',

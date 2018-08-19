@@ -31,9 +31,18 @@ class Login extends Base
     public function index()
     {
         if (!Session::has('user.username')) {
-            return view('/login');
+            if(!Cookie::has('username')){
+               // return '111';
+                return view('/login');
+            }else{
+               // return '1111';
+                Session::set('userid',Cookie::get('userid'));
+                $this->redirect('home/index', ['userid' => session('userid')]);
+            }
+        }else{
+            $this->redirect('home/index', ['userid' => session('userid')]);
         }
-        $this->redirect('home/index', ['userid' => session('userid')]);
+
     }
 
     public function login()
@@ -41,6 +50,7 @@ class Login extends Base
         if (isset($_POST)) {
             $username = input('username');
             $password = input('password');
+            //return dump(input('remember'));
             $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
             $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/";
             $user = new User();
@@ -91,6 +101,10 @@ class Login extends Base
                 }
                 return json(['resp_code' => 2, 'msg' => \think\lang::get('password_error')]);
             }
+            if(input('remember')=='on'){
+               Cookie::set('username',$username,30*24*60*60);
+               Cookie::set('userid',$result['id'],30*24*60*60);
+            }
            // Db::name('user')->where(['id' => $result['id']])->data(['error_times' => 0])->update();
             Session::set('user.username', $username);
             Session::set('userid', $result['id']);
@@ -102,6 +116,8 @@ class Login extends Base
     {
         Session::set('user.username', null);
         Session::set('userid', null);
+        Cookie::delete('username');
+        Cookie::delete('userid');
         $this->redirect('/index');
     }
 

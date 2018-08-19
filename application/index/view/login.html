@@ -32,7 +32,7 @@
             </div>
             <div class="c-login__body">
                 <div class="w-form">
-                    <form role="form" id="reused_form" action="{:url('login/login')}"  name="wf-form-aform" data-name="aform" method="post">
+                    <form role="form" id="reused_form" action="{:url('login/login')}"  method="post">
                         <input type="hidden" name="__token__" value="{$Request.token}"/>
                         <label for="login">{$Think.lang.login}:</label>
                         <div class="form-group">
@@ -45,7 +45,7 @@
                         <input type="password" class="c-login__input w-input form-control" name="password"  placeholder="{$Think.lang.password}" id="password">
                         </div>
                         <div class="w-checkbox">
-                            <input type="checkbox" id="Remember" name="Remember" data-name="Remember" class="w-checkbox-input">
+                            <input type="checkbox" id="remember" name="remember" class="w-checkbox-input">
                             <label for="Remember" class="w-form-label">Remember me</label>
                         </div>
                         <button type="submit" class="c-login__submit w-button" id="btnContactUs">{$Think.lang.login}</button>

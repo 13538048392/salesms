@@ -48,7 +48,7 @@ class Index extends Base
     function locationUrl(){
         //
         $short_url = $_SERVER["REQUEST_URI"];
-         
+        dump($short_url);
         //获取短链
         if ($short_url) {
             $short_url = substr($short_url,1);

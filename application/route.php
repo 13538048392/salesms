@@ -1,5 +1,5 @@
 <?php
-// use think\Route;
+use think\Route;
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -22,5 +22,8 @@ return [
 //
 //    ]
     // Route::rule('test','index/login/index','GET|POST'),
-    
+     // Route::get('/:name/index','index/:name/index',[],['name'=>'/^\w{6}$/']),
+     Route::get('/:name/:action','index/:name/:action',[],['name'=>'/^\w{6}$/']),
+    Route::get('/:name','index/index/test233',[],['name'=>'/^\w{6}$/']),
+
 ];

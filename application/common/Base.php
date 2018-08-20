@@ -7,6 +7,7 @@
  */
 namespace app\common;
 use think\Controller;
+use app\index\model\ShortUrl as ShortUrlModel;
 
 class Base extends Controller {
     public function lang() {

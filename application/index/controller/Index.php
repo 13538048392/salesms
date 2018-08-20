@@ -59,7 +59,7 @@ class Index extends Base
                 header("location:$url[url]");
             }
             else{
-                echo 333;die;
+               
 
                 
                 header("location:".'http://'.$_SERVER['HTTP_HOST'].'/'.$short_url.'/index');die;

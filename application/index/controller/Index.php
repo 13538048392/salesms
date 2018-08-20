@@ -45,7 +45,7 @@ class Index extends Base
 
     }
 
-    function test233(){
+    function locationUrl(){
         //
         $short_url = $_SERVER["REQUEST_URI"];
          

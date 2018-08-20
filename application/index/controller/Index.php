@@ -53,10 +53,9 @@ class Index extends Base
             $short_url = substr($short_url,1);
             //去除/
             $url = ShortUrlModel::where('short_url',$short_url)->find();
-            dump($url);
             if ($url) {
                 //跳转
-                header("location:$url[url]");
+                header("location:$url[url]");die;
             }
             else{
                 header("location:".'http://'.$_SERVER['HTTP_HOST'].'/'.$short_url.'/index');die;

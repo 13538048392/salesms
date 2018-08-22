@@ -2,6 +2,7 @@
 use app\admin\model\SalesChannel as SalesChannelModel;
 use app\admin\model\Url as UrlModel;
 use app\admin\model\Role as RoleModel;
+use app\admin\model\ShortUrl as ShortUrlModel;
 
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
@@ -66,13 +67,13 @@ function doAddChannel($data){
                             //医生的url
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = getShortUrl("http://47.90.203.241/signup?channelId=$find[id]&referralCode=$data[user_id]"); 
+                            $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl("http://47.90.203.241/signup?channelId=$find[id]&referralCode=$data[user_id]"); 
 
                         }
                         else{
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']); 
+                            $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']); 
                         }
 
                 }
@@ -94,12 +95,12 @@ function doAddChannel($data){
                             //医生的url
                             $insert_data[$k]['channel_id'] = $channel_id;
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = getShortUrl("http://47.90.203.241/signup?channelId=$channel_id&referralCode=$data[user_id]"); 
+                            $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl("http://47.90.203.241/signup?channelId=$channel_id&referralCode=$data[user_id]"); 
                 }
                 else{
                     $insert_data[$k]['channel_id'] = $channel_id;
                     $insert_data[$k]['role_id'] = $v['id'];
-                    $insert_data[$k]['url_code'] = getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']); 
+                    $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']); 
                 }
             }
 
@@ -121,15 +122,73 @@ function doAddChannel($data){
     
 }
 
+    // function getShortUrl($url){
+    //     //获取短链接
+    //     $api_url = 'http://api.c7.gg/api.php?url=';
+    //     //api接口地址
+    //     $url = str_replace('&', '%26', $url);
+    //     //字符串替换&为%26
+    //     $get_url = $api_url.$url;
+    //     $short_url = file_get_contents($get_url);
+    //     // dump($short_url);exit;
+    //     return $short_url;
+
+    // }
     function getShortUrl($url){
-        //获取短链接
-        $api_url = 'http://api.c7.gg/api.php?url=';
-        //api接口地址
-        $url = str_replace('&', '%26', $url);
-        //字符串替换&为%26
-        $get_url = $api_url.$url;
-        $short_url = file_get_contents($get_url);
+        //生成短连接
+        $short_url = shorturl($url);
         // dump($short_url);exit;
-        return $short_url;
+        foreach ($short_url as $k => $v) {
+           $find = ShortUrlModel::where('short_url',$v)->find();
+           if (!$find) {
+            //去重
+               $data['short_url'] = $v;
+               $data['url'] = $url;
+               $data['create_time'] = time();
+               $res = ShortUrlModel::insert($data);
+               if ($res) {
+                    return $v;
+                }
+                else{
+                    return '';
+                }
+           }
+        }
+        
+        
 
     }
+
+    function shorturl( $input ) 
+    { 
+        //加密算法
+         $base32 = array (
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+            'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+            'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
+            'y', 'z', '0', '1', '2', '3', '4', '5'
+            );
+         
+          $hex = md5($input);
+          $hexLen = strlen($hex);
+          $subHexLen = $hexLen / 8;
+          $output = array();
+         
+          for ($i = 0; $i < $subHexLen; $i++) {
+            $subHex = substr ($hex, $i * 8, 8);
+            $int = 0x3FFFFFFF & (1*(bin2hex($subHex)));
+            $out = '';
+            // dump(0x3FFFFFFF & (1*(0x0e33af79)));
+            // dump($int);
+            for ($j = 0; $j < 6; $j++) {
+              $val = 0x0000001F & $int;
+              $out .= $base32[$val];
+              $int = $int >> 5;
+
+            }
+         
+            $output[] = $out;
+          }
+         
+          return $output;
+    } 

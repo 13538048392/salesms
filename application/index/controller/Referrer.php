@@ -14,9 +14,20 @@ use think\Controller;
 use app\index\model\User as UserModel;
 use think\Config;
 use think\Db;
+use think\Request;
+use think\Csv;
 
 class Referrer extends Base
 {
+    private $redis;
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
+        $this->redis=new \Redis();
+        $this->redis->connect(Config::get('redis.host'),Config::get('redis.port'));
+        $this->redis->select(Config::get('redis.db_index'));
+    }
+
     public function index()
     {
 
@@ -31,6 +42,7 @@ class Referrer extends Base
         //获取下级
         $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
         // dump($data);exit;
+        $this->redis->set('referrer_data',serialize($data));
         return view('/referrer', ['data' => $data]);
 
     }
@@ -201,10 +213,48 @@ class Referrer extends Base
             if (input('channel_name')) {
                 $where['c.channel_name'] = input('channel_name');
             }
+
             // return json($this->getDataList($where));
             $user = $this->getReferrer($where);
             $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
-            return json(['data'=>$data]);
+            $this->redis->set('referrer_data',serialize($data));
+            return view('/referrer', ['data' => $data]);
+            // return json(['data'=>$data]);
         }
+    }
+
+    public function export(){
+        //导出csv
+        $csv = new Csv();
+
+        $data = unserialize($this->redis->get('referrer_data'));
+        //源数据
+        $new_data = array();
+        //新数据
+        foreach ($data as $k => $val) {
+            $list[0] = $val;
+            $c_fix = '';
+            while(!empty($list))
+            {
+                $one = array_shift($list);
+                    // dump($one);exit;
+                    $one['user_name'] = $c_fix.$one['user_name'];
+                    $new_data[] = $one;
+                    // dump($one);
+                    if(isset($one['_child'])){
+                    $list = array_merge($list,$one['_child']);
+                }
+                $c_fix.= '__';
+            }
+        }
+        
+        // dump($new_data);exit;
+        $title = array('id',\think\lang::get('channel_name'),\think\lang::get('first_name'),\think\lang::get('last_name'),\think\lang::get('username'),\think\lang::get('signup_date'));
+        //标题栏
+        $field = array('id','channel_name','first_name','last_name','user_name','create_time');
+        $file_name = 'Sales_Network';
+
+        $csv->put_csv($new_data,$title,$field,$file_name);
+
     }
 }

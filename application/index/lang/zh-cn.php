@@ -113,6 +113,8 @@ return [
 	'click_to_copy' => '点击复制',
 	'click_to_download' => '点击下载',
 	'qc_code' => '二维码',
+	'signup_date' => '注册日期',
+	'export' => '导出',
 	
 	//end home controller
 

@@ -45,10 +45,9 @@ class Index extends Base
 
     }
 
-    function test233(){
+    function locationUrl(){
         //
         $short_url = $_SERVER["REQUEST_URI"];
-         
         //获取短链
         if ($short_url) {
             $short_url = substr($short_url,1);
@@ -56,12 +55,9 @@ class Index extends Base
             $url = ShortUrlModel::where('short_url',$short_url)->find();
             if ($url) {
                 //跳转
-                header("location:$url[url]");
+                header("location:$url[url]");die;
             }
             else{
-               
-
-                
                 header("location:".'http://'.$_SERVER['HTTP_HOST'].'/'.$short_url.'/index');die;
             }
         }

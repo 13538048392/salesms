@@ -112,6 +112,8 @@ return [
 	'click_to_copy' => 'Click to copy',
 	'click_to_download' => 'Click to download',
 	'qc_code' => 'QR_Code',
+	'signup_date' => 'Signup Date',
+	'export' => 'Export',
 
 	//end home controller
 

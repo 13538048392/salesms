@@ -112,6 +112,8 @@ return [
 	'click_to_copy' => '點擊複製',
 	'click_to_download' => '點擊下載',
 	'qc_code' => '二維碼',
+	'signup_date' => '註冊日期',
+	'export' => '導出',
 	
 
 	//end home controller

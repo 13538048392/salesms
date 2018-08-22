@@ -125,7 +125,7 @@
 
 <!-- 分割线 -->
 
-  <!--   <div class="l-flex-center is--full w-container">
+<!--     <div class="l-flex-center is--full w-container">
       <div class="c-login">
         <div class="c-login__title">
           <div>{$Think.lang.referral}</div>
@@ -219,7 +219,7 @@
         </div>
         <div class="c-login__body">
           <div class="w-form">
-            <form id="wf-form-aform" name="wf-form-aform" data-name="aform" method="post">
+            <form id="wf-form-aform" name="wf-form-aform" data-name="aform" method="post" action="<?php echo url('/referrer/search')?>">
               <div class="w-row">
                 <div class="w-col w-col-2"><input type="text" class="text-field w-input" maxlength="256" name="first_name" data-name="first_name" placeholder="{$Think.lang.first_name}" id="first_name" ></div>
 
@@ -229,7 +229,9 @@
 
                 <div class="w-col w-col-2"><input type="text" class="text-field w-input" maxlength="256" name="channel_name" data-name="channel_name" placeholder="{$Think.lang.channel_name}" id="channel_name" ></div>
 
-                <div class="w-clearfix w-col w-col-2"><input type="submit" id="search" value="{$Think.lang.search}" data-wait="Please wait..." class="export_csv_submit w-button"></div>
+                <div class="w-clearfix w-col w-col-2">
+                <button id="search" class="export_csv_submit w-button"> {$Think.lang.search} </button>
+                </div>
               </div>
               <div class="w-embed"><input type="hidden" name="action" value="reg2">
                 <input type="hidden" name="regcode" value=""></div>
@@ -293,7 +295,7 @@
         </div>
       </div>
       <div class="w-form">
-        <form id="email-form" name="email-form" data-name="Email Form" class="w-clearfix"><input type="submit" value="{$Think.lang.export} CSV" data-wait="Please wait..." class="export_csv_submit w-button"></form>
+        <form id="email-form" name="email-form" data-name="Email Form" class="w-clearfix" method="post" action="<?php echo url('/referrer/export')?>"><input type="submit" value="{$Think.lang.export} CSV" data-wait="Please wait..." class="export_csv_submit w-button"></form>
         <div class="w-form-done">
           <div>Thank you! Your submission has been received!</div>
         </div>

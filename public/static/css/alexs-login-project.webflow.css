@@ -90,6 +90,7 @@ p {
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  float: right;
   border-radius: 100px;
   background-image: -webkit-linear-gradient(45deg, #102397, #187adf 50%, #00eaf8);
   background-image: linear-gradient(45deg, #102397, #187adf 50%, #00eaf8);
@@ -337,10 +338,14 @@ p {
 .row {
   height: 50px;
   border: 1px none #000;
+  background-image: -webkit-linear-gradient(270deg, rgba(94, 207, 252, .5), rgba(94, 207, 252, .5));
+  background-image: linear-gradient(180deg, rgba(94, 207, 252, .5), rgba(94, 207, 252, .5));
   font-size: 16px;
 }
 
 .channel_label {
+  margin-right: 5px;
+  float: left;
   font-weight: 700;
 }
 
@@ -363,7 +368,8 @@ p {
 
 .link {
   margin-top: 5px;
-  padding: 5px 7px;
+  margin-right: 2px;
+  padding: 5px 20px;
   border-radius: 20px;
   background-image: -webkit-linear-gradient(270deg, #f30b30, #f30b30);
   background-image: linear-gradient(180deg, #f30b30, #f30b30);
@@ -414,6 +420,10 @@ p {
   height: 5px;
 }
 
+.row-2 {
+  height: 50px;
+}
+
 .utility-page-wrap {
   display: -webkit-box;
   display: -webkit-flex;
@@ -461,6 +471,77 @@ p {
   -webkit-align-items: stretch;
   -ms-flex-align: stretch;
   align-items: stretch;
+}
+
+.field-label {
+  margin-top: 20px;
+  margin-bottom: auto;
+}
+
+.dropdown-toggle {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.text-block-8 {
+  font-size: 14px;
+}
+
+.dropdown-link {
+  font-size: 14px;
+}
+
+.bold-text {
+  display: block;
+  font-weight: 400;
+}
+
+.bold-text-2 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.column-3 {
+  height: 50px;
+  padding-left: auto;
+}
+
+.column-4 {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+.submit-button-2 {
+  margin-right: 40px;
+  float: right;
+  border-radius: 10px;
+  background-color: #299be7;
+  background-image: -webkit-linear-gradient(0deg, #000, #fff);
+  background-image: linear-gradient(90deg, #000, #fff);
+}
+
+.export_csv_submit {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: auto;
+  float: right;
+  border-radius: 100px;
+  background-image: -webkit-linear-gradient(45deg, #102397, #187adf 36%, #00eaf8);
+  background-image: linear-gradient(45deg, #102397, #187adf 36%, #00eaf8);
+  -webkit-transition: background-color 200ms ease;
+  transition: background-color 200ms ease;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.export_csv_submit:hover {
+  background-color: #4f5d73;
+}
+
+.text-field {
+  border: 2px solid grey;
+  border-radius: 10px;
 }
 
 @media (max-width: 991px) {

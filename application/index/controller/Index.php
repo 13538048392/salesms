@@ -11,6 +11,7 @@ class Index extends Base
     {
         return view('/index');
     }
+   
     public function register()
     {
         return "this is register method";

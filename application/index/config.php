@@ -42,5 +42,7 @@ return [
         'port'=>'6379',
         'author'=>'',
         'db_index'=>0,
-    ]
+    ],
+    'api_token' => 'GbwS8JFxJfW3uj86S',
+    
 ];

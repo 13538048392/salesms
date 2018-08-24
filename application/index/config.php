@@ -36,6 +36,7 @@ return [
     ],
     'level' => 1,
     //推广会员层级
+    'api_token' => 'GbwS8JFxJfW3uj86S',
 
     'redis'=>[
         'host'=>'127.0.0.1',
@@ -43,6 +44,6 @@ return [
         'author'=>'',
         'db_index'=>0,
     ],
-    'api_token' => 'GbwS8JFxJfW3uj86S',
+    
     
 ];

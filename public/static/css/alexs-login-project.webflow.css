@@ -32,7 +32,8 @@ p {
 }
 
 .c-login {
-  min-width: 500px;
+  max-width: auto;
+  min-width: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
   box-shadow: 1px 1px 24px 0 hsla(1, 87%, 76%, .06);
@@ -55,11 +56,11 @@ p {
 
 .l-flex-center.is--full {
   display: block;
-  min-height: 100vh;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  min-height: auto;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   border-style: none;
 }
 
@@ -351,8 +352,6 @@ p {
 
 .text-block-3 {
   display: inline-block;
-  background-image: -webkit-linear-gradient(270deg, rgba(234, 253, 10, .5), rgba(234, 253, 10, .5));
-  background-image: linear-gradient(180deg, rgba(234, 253, 10, .5), rgba(234, 253, 10, .5));
   font-size: 14px;
   line-height: 1.2;
   text-align: left;
@@ -613,6 +612,18 @@ p {
 .roles {
   display: inline-block;
   font-size: 14px;
+}
+
+.section {
+  display: block;
+  max-width: auto;
+  min-width: auto;
+  float: none;
+}
+
+.text-block-9 {
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 @media (max-width: 991px) {

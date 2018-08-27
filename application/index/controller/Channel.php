@@ -35,7 +35,7 @@ class Channel extends Base
                 ->select();
             $channel[$key]['url_code'] = $data;
         }
-        return view('/channel1', ['data' => $channel]);
+        return view('/channel', ['data' => $channel]);
     }
 
 

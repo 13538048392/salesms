@@ -106,7 +106,9 @@
                             <div class="text-block-5" onclick="CopyUrl(this)">{$val['url_code']}</div>
                         </div>
                         <div class="w-col w-col-2">
-                            <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">
+                            <a href="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" download="file" title="点击下载">
+                                <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">
+                            </a>
                         </div>
                         <?php }?>
                         <?php endforeach; ?>
@@ -127,7 +129,9 @@
                             <div class="text-block-5" onclick="CopyUrl(this)">{$v['url_code']}</div>
                         </div>
                         <div class="w-col w-col-2">
-                            <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>" width="72" class="qrcode">
+                            <a href="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>" download="file" title="点击下载">
+                                <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>" width="72" class="qrcode">
+                            </a>
                         </div>
                         <?php } ?>
                         <?php endforeach; ?>

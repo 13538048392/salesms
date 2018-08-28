@@ -15,7 +15,7 @@ class Channel extends Model
 {
     public function channelIsExist($id)
     {
-        $where = ['id' => $id];
+        $where = ['id' => $id,'status'=>1];
         return $this->where($where)->find();
     }
 

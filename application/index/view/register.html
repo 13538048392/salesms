@@ -28,7 +28,7 @@
         url_username = "<?php echo url('register/checkUser','','',true)?>";
         url_email = "<?php echo url('register/checkEmail','','',true)?>";
         url_phone = "<?php echo url('register/checkPhone','','',true)?>";
-        url_login = "<?php echo url('ShowPage/registerSuccess','','',true)?>";
+        url_login = "<?php echo url('showPages/registerSuccess','','',true)?>";
         url_send_message="<?php echo url('register/sendMessage','','',true)?>";
         url_code="<?php echo url('register/checkVerifyCode','','',true)?>";
     </script>
@@ -49,7 +49,7 @@
             <div class="c-login__body">
                 <div class="w-form">
                     <form role="form" method="post" id="reused_form" action="{:url('register/register')}">
-
+                        {:token()}
                         <label for="username">{$Think.lang.username}:</label>
                         <div class="w-embed form-group">
 
@@ -131,7 +131,7 @@
                             <input type="submit" value="{$Think.lang.commit}" data-wait="Please wait..." class="c-login__submit w-button" name="btnContactUs" id="btnContactUs">
                         </div>
 
-                        <div class="w-embed"><input type="hidden" name="action" value="reg2">
+                        <div class="w-embed">
                             <input type="hidden" name="regcode" value="">
                         </div>
 
@@ -186,10 +186,18 @@
     // var selectVal =regoin[0],
     var $r = $('.regoin');
     $r.data('value', regoin[0]['value'].replace('+', ''));
+    $('input[name="regcode"]').val($r.data('value'));
     $regoin.on('click', 'a', function(e){
         var selectVal = $(this).data('value');
         $r.html(selectVal);
         $r.data('value', selectVal.replace('+', ''));
+
+        $('input[name="regcode"]').val(selectVal);
+
+        selectVal == '+86'? $('.hid').show(): $('.hid').hide();
+
+        // if(selectVal)
+
         // $('.regoin').data('value');
     });
 </script>

@@ -5,7 +5,7 @@ var curCount;//当前剩余秒数
 $(function () {
     $('form').bootstrapValidator({
         message: 'This value is not valid',
-        excluded: [':disabled'],
+        //excluded: [':disabled'],
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
@@ -99,28 +99,28 @@ $(function () {
                     }
                 }
             },
-            code: {
-                validators: {
-                    notEmpty: {
-                        message: '请输入短信验证码'
-                    },
-                    remote: {
-                        url: url_code,//验证地址
-                        message: '验证码输入错误',//提示消息
-                        delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
-                        type: 'POST',//请求方式
-                       // data:{'phone':$('#phone').val(),'code':$('#code').val()}
-                        //自定义提交数据，默认值提交当前input value
-                        data: function(validator) {
-                               return {
-                                   phone: $('#phone').val(),
-                                   code: $('#code').val()
-                               };
-                            }
-
-                    }
-                }
-            },
+            // code: {
+            //     validators: {
+            //         notEmpty: {
+            //             message: '请输入短信验证码'
+            //         },
+            //         remote: {
+            //             url: url_code,//验证地址
+            //             message: '验证码输入错误',//提示消息
+            //             delay: 2000,//每输入一个字符，就发ajax请求，服务器压力还是太大，设置2秒发送一次ajax（默认输入一个字符，提交一次，服务器压力太大）
+            //             type: 'POST',//请求方式
+            //            // data:{'phone':$('#phone').val(),'code':$('#code').val()}
+            //             //自定义提交数据，默认值提交当前input value
+            //             data: function(validator) {
+            //                    return {
+            //                        phone: $('#phone').val(),
+            //                        code: $('#code').val()
+            //                    };
+            //                 }
+            //
+            //         }
+            //     }
+            // },
             password: {
                 validators: {
                     notEmpty: {
@@ -184,12 +184,16 @@ $(function () {
                 }, 4);
             } else {
                 alert(result.msg);
+                location.reload();
             }
         }, 'json');
     });
 
     $("#phone").focus(function () {
-        $('.hid').show();
+        var section = $('.regoin').data('value');
+        if(section=='86'){
+            $('.hid').show();
+        }
     });
 
     $("#phone").blur(function () {

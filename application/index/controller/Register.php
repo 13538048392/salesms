@@ -63,6 +63,16 @@ class Register extends Base
                 return redirect('ShowPages/failAuthorization');
             }
             $data = input('post.');
+
+            if($data['regcode']=='86'){
+                if($data['code']==''){
+                    return json(['resp_code' => '4','msg' =>'验证码不能为空']);
+                }
+                if ($this->redis->get('user:'.input('phone')) !== input('code')) {
+                    return json(['resp_code' => '4','msg' =>'验证码不对']);
+                }
+            }
+
             $validate = new \app\index\validate\User;
             if (!$validate->check($data)) {
                 //用户信息错误

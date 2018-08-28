@@ -58,7 +58,7 @@ class QueryingCode
      public function createQrCode($url,$logo_url){
       //生成二维码
       $value = $url; //二维码内容 
-      $errorCorrectionLevel = 'L';//容错级别 
+      $errorCorrectionLevel = 'H';//容错级别 
       $matrixPointSize = 6.8;//生成图片大小 
       $file = 'qr_code/'.microtime().'.png';
       //生成二维码图片 

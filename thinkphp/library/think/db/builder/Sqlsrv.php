@@ -12,7 +12,6 @@
 namespace think\db\builder;
 
 use think\db\Builder;
-use think\db\Expression;
 
 /**
  * Sqlsrv数据库驱动
@@ -35,29 +34,25 @@ class Sqlsrv extends Builder
      */
     protected function parseOrder($order, $options = [])
     {
-        if (empty($order)) {
-            return ' ORDER BY rand()';
-        }
-
-        $array = [];
-        foreach ($order as $key => $val) {
-            if ($val instanceof Expression) {
-                $array[] = $val->getValue();
-            } elseif (is_numeric($key)) {
-                if (false === strpos($val, '(')) {
-                    $array[] = $this->parseKey($val, $options);
-                } elseif ('[rand]' == $val) {
-                    $array[] = $this->parseRand();
+        if (is_array($order)) {
+            $array = [];
+            foreach ($order as $key => $val) {
+                if (is_numeric($key)) {
+                    if (false === strpos($val, '(')) {
+                        $array[] = $this->parseKey($val, $options);
+                    } elseif ('[rand]' == $val) {
+                        $array[] = $this->parseRand();
+                    } else {
+                        $array[] = $val;
+                    }
                 } else {
-                    $array[] = $val;
+                    $sort    = in_array(strtolower(trim($val)), ['asc', 'desc']) ? ' ' . $val : '';
+                    $array[] = $this->parseKey($key, $options) . ' ' . $sort;
                 }
-            } else {
-                $sort    = in_array(strtolower(trim($val)), ['asc', 'desc'], true) ? ' ' . $val : '';
-                $array[] = $this->parseKey($key, $options, true) . ' ' . $sort;
             }
+            $order = implode(',', $array);
         }
-
-        return ' ORDER BY ' . implode(',', $array);
+        return !empty($order) ? ' ORDER BY ' . $order : ' ORDER BY rand()';
     }
 
     /**
@@ -77,11 +72,8 @@ class Sqlsrv extends Builder
      * @param array  $options
      * @return string
      */
-    protected function parseKey($key, $options = [], $strict = false)
+    protected function parseKey($key, $options = [])
     {
-        if (is_int($key)) {
-            return $key;
-        }
         $key = trim($key);
         if (strpos($key, '.') && !preg_match('/[,\'\"\(\)\[\s]/', $key)) {
             list($table, $key) = explode('.', $key, 2);
@@ -92,7 +84,7 @@ class Sqlsrv extends Builder
                 $table = $options['alias'][$table];
             }
         }
-        if ('*' != $key && ($strict || !preg_match('/[,\'\"\*\(\)\[.\s]/', $key))) {
+        if (!is_numeric($key) && !preg_match('/[,\'\"\*\(\)\[.\s]/', $key)) {
             $key = '[' . $key . ']';
         }
         if (isset($table)) {

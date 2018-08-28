@@ -40,13 +40,13 @@ class Register extends Base
         $arr = $request->param();
         if (!isset($arr['id']) && !isset($arr['role_id'])) {
             //邀请链接不存在
-            return $this->error(\think\lang::get('inviting_link_not_exist'));
+            return redirect('ShowPages/failPage');
         }
         $channel = new Channel();
         $result = $channel->channelIsExist($arr['id']);
         if ($result == null) {
             //邀请链接无效
-            return $this->error(\think\lang::get('inviting_link_invalid'));
+            return redirect('ShowPages/cancel');
         }
         Session::set('user.parent_id',$result['user_id']);
         Session::set('user.channel_id',$arr['id']);
@@ -54,12 +54,13 @@ class Register extends Base
         return $this->view->fetch('/register');
     }
 
+
     public function register()
     {
         if (isset($_POST)) {
             if (!Validate::token('__token__','',['__token__' => input('param.__token__')])) {
                 //非法请求
-                return $this->error(\think\lang::get('unlawful_request'));
+                return redirect('ShowPages/failAuthorization');
             }
             $data = input('post.');
             $validate = new \app\index\validate\User;
@@ -88,6 +89,8 @@ class Register extends Base
             }
         }
     }
+
+
 
 
     /**

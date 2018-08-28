@@ -11,6 +11,7 @@ class Index extends Base
     {
         return view('/index');
     }
+   
     public function register()
     {
         return "this is register method";
@@ -24,6 +25,7 @@ class Index extends Base
         $mailer->send('1642504508@qq.com','你好','是的，很好');
 
     }
+
 
     function getShortUrl(){
         //获取短链接

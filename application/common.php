@@ -3,6 +3,7 @@ use app\admin\model\SalesChannel as SalesChannelModel;
 use app\admin\model\Url as UrlModel;
 use app\admin\model\Role as RoleModel;
 use app\admin\model\ShortUrl as ShortUrlModel;
+use think\Config;
 
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
@@ -67,13 +68,13 @@ function doAddChannel($data){
                             //医生的url
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl("http://47.90.203.241/signup?channelId=$find[id]&referralCode=$data[user_id]"); 
+                            $insert_data[$k]['url_code'] = getShortUrl("http://app.kooa.vip/signup?channelId=$find[id]&referralCode=$data[user_id]"); 
 
                         }
                         else{
                             $insert_data[$k]['channel_id'] = $find['id'];
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']); 
+                            $insert_data[$k]['url_code'] = getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$find[id]/role_id/".$v['id']); 
                         }
 
                 }
@@ -95,12 +96,12 @@ function doAddChannel($data){
                             //医生的url
                             $insert_data[$k]['channel_id'] = $channel_id;
                             $insert_data[$k]['role_id'] = $v['id'];
-                            $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl("http://47.90.203.241/signup?channelId=$channel_id&referralCode=$data[user_id]"); 
+                            $insert_data[$k]['url_code'] = getShortUrl("http://app.kooa.vip/signup?channelId=$channel_id&referralCode=$data[user_id]"); 
                 }
                 else{
                     $insert_data[$k]['channel_id'] = $channel_id;
                     $insert_data[$k]['role_id'] = $v['id'];
-                    $insert_data[$k]['url_code'] = 'http://'.$_SERVER['SERVER_NAME'].'/'.getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']); 
+                    $insert_data[$k]['url_code'] = getShortUrl('http://'.$_SERVER['SERVER_NAME']."/register/index/id/$channel_id/role_id/".$v['id']); 
                 }
             }
 
@@ -134,28 +135,38 @@ function doAddChannel($data){
     //     return $short_url;
 
     // }
+
+
+    // function getShortUrl($url){
+    //     //生成短连接
+    //     $short_url = shorturl($url);
+    //     // dump($short_url);exit;
+    //     foreach ($short_url as $k => $v) {
+    //        $find = ShortUrlModel::where('short_url',$v)->find();
+    //        if (!$find) {
+    //         //去重
+    //            $data['short_url'] = $v;
+    //            $data['url'] = $url;
+    //            $data['create_time'] = time();
+    //            $res = ShortUrlModel::insert($data);
+    //            if ($res) {
+    //                 return $v;
+    //             }
+    //             else{
+    //                 return '';
+    //             }
+    //        }
+    //     }
+        
+    // }
+
     function getShortUrl($url){
-        //生成短连接
-        $short_url = shorturl($url);
-        // dump($short_url);exit;
-        foreach ($short_url as $k => $v) {
-           $find = ShortUrlModel::where('short_url',$v)->find();
-           if (!$find) {
-            //去重
-               $data['short_url'] = $v;
-               $data['url'] = $url;
-               $data['create_time'] = time();
-               $res = ShortUrlModel::insert($data);
-               if ($res) {
-                    return $v;
-                }
-                else{
-                    return '';
-                }
-           }
-        }
-        
-        
+      //生成短连接
+      $url = str_replace('&', '%26', $url);
+      //字符串替换&为%26
+      $short_url = "http://soc.kooa.ai/api/v2/action/shorten?key=6bfe932f34246e3395cdcb69e888c1&url=".$url.'&is_secret=true';
+      $short_url = file_get_contents($short_url);
+      return $short_url;
 
     }
 

@@ -8,10 +8,10 @@
 require_once (ROOT_PATH  . 'extend/phpqrcode/phpqrcode.php');
 class QueryingCode
 {
-   public  function makeQueryingCode($url='',$logoPath){
+   public  function makeQueryingCode($url='',$logoPath,$option =''){
        $value = $url;					//二维码内容
        $errorCorrectionLevel = 'H';	//容错级别
-       $matrixPointSize = 6;			//生成图片大小
+       $matrixPointSize = 6.8;			//生成图片大小
        //生成二维码图片
        ob_start();
        QRcode::png($value,false , $errorCorrectionLevel, $matrixPointSize, 2);
@@ -37,11 +37,24 @@ class QueryingCode
            imagecopyresampled($QR, $logo, $from_width, $from_width, 0, 0, $logo_qr_width,$logo_qr_height, $logo_width, $logo_height);
 
        }
-       //输出图片
-       Header("Content-type: image/png");
-       imagepng($QR);
-       exit;
-    }
+       if ($option == '') {
+         //输出图片
+         Header("Content-type: image/png");
+         imagepng($QR);
+         exit;
+       }
+       else{
+        //base64格式
+         ob_start();
+         imagejpeg($QR, null, 80);
+         $data = ob_get_clean();
+         //转换成base64
+         $qr = base64_encode($data);
+         return $qr;
+       }
+       
+     }
+
     public function makeQrCode($url='')
     {
         QRcode::png($url);

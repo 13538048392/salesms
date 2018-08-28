@@ -69,9 +69,9 @@ class Api
         if (!isset($input['logo_url'])) {
         	return json(['code' => 4,'msg'=>'data in wrong format']);
         }
-        $qr_string = $code->makeQueryingCode($input['url'],$input['logo_url'],'api');
+        $qr_string = $code->createQrCode($input['url'],$input['logo_url']);
         if ($qr_string) {
-        	return json(['code' => 0,'msg' => 'success','qr_code_url' => 'data:image/png;base64,'.$qr_string]);
+        	return json(['code' => 0,'msg' => 'success','qr_code_url' => $qr_string]);
         }
         else{
         	return json(['code' => 1,'msg' => 'fail']);

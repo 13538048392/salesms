@@ -22,7 +22,7 @@ class Index extends Base
     }
     public function test(){
         $mailer =new \Mailer();
-        $mailer->send('1642504508@qq.com','你好','是的，很好');
+        $mailer->send('804310470@qq.com','你好','是的，很好');
 
     }
 

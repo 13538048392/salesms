@@ -3,9 +3,10 @@ namespace app\index\controller;
 use app\index\model\User;
 use think\Config;
 use app\index\model\DocUserInfo as DocUserInfoModel;
+use think\Loader;
 // use app\common\Base;
 
-
+Loader::import('QueryingCode', ROOT_PATH . 'application/entend/QueryingCode.php');
 class Api 
 {
     public function userRegister(){
@@ -43,6 +44,35 @@ class Api
         	return json(['code' => 1,'msg'=>'fail']);
         }
 
+    }
+
+    public function createQrCode(){
+    	//生成二维码
+    	$code = new \QueryingCode();
+    	$input = input('get.');
+    	$token = Config::get('api_token');
+        //token
+        if (!isset($input['api_token'])) {
+        	return json(['code' => 2,'msg'=>'Token does not exist.']);
+        }
+        if ($input['api_token'] != $token) {
+        	return json(['code' => 3,'msg'=>'Token error']);
+        }
+        if (!isset($input['url'])) {
+        	return json(['code' => 4,'msg'=>'data in wrong format']);
+        }
+        if (!isset($input['logo_url'])) {
+        	return json(['code' => 4,'msg'=>'data in wrong format']);
+        }
+        $qr_string = $code->makeQueryingCode($input['url'],$input['logo_url'],'api');
+        if ($qr_string) {
+        	return json(['code' => 0,'msg' => 'success','qr_code_url' => 'data:image/png;base64,'.$qr_string]);
+        }
+        else{
+        	return json(['code' => 1,'msg' => 'fail']);
+
+        }
+        // echo $qr_string;
     }
 
 }

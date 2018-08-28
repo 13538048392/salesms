@@ -15,7 +15,7 @@ class Api
         //获取参数
         $token = Config::get('api_token');
         //token
-        $field = array('firstName','lastName','contactPhone','referralCode');
+        $field = array('firstName','lastName','contactPhone','referralCode','channelId');
         if (!isset($data['api_token'])) {
         	return json(['code' => 2,'msg'=>'Token does not exist.']);
         }
@@ -36,6 +36,11 @@ class Api
         $insert['lastName'] = $data['user']['profile']['lastName'];
         $insert['contactPhone'] = $data['user']['profile']['contactPhone'];
         $insert['referralCode'] = $data['user']['profile']['referralCode'];
+        $insert['channelId'] = $data['user']['profile']['channelId'];
+        $find = DocUserInfoModel::where($insert)->find();
+        if ($find) {
+        	return json(['code' => 5,'msg' => 'data is already there. Please do not repeat it.']);
+        }
         $res = DocUserInfoModel::insert($insert);
         if ($res) {
         	return json(['code' => 0,'msg'=>'success']);

@@ -11,7 +11,7 @@ class QueryingCode
    public  function makeQueryingCode($url='',$logoPath){
        $value = $url;					//二维码内容
        $errorCorrectionLevel = 'H';	//容错级别
-       $matrixPointSize = 8;			//生成图片大小
+       $matrixPointSize = 6.8;			//生成图片大小
        //生成二维码图片
        ob_start();
        QRcode::png($value,false , $errorCorrectionLevel, $matrixPointSize, 2);

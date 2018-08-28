@@ -32,6 +32,7 @@
     <script>
         url_addChannel="<?php echo url('/channel/addChannel')?>";
         url_deleteChannel="<?php echo url('/channel/deleteChannel')?>";
+        url_changeStatus="<?php echo url('/channel/changeStatus')?>";
         data_channel="<?php echo session('userid') ?>";
         lang_channel_name="{$Think.lang.channel_empty}";
     </script>
@@ -118,7 +119,7 @@
                     </div>
                     <div class="channel-row doctors-row w-row">
                         <div class="w-col w-col-2">
-                            <a href="#" class="link w-button">Stop</a>
+                            <a href="#" class="link w-button status"  data-id="{$value['id']}" data-value="{$value['status']==0 ? '1':'0'}">{$value['status']==0 ? 'Start':'Stop'}</a>
                         </div>
                         <?php foreach($value['url_code'] as $k=>$v): ?>
                         <?php if(isset($k)&&$k > 0 ){ ?>

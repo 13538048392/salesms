@@ -118,7 +118,7 @@ class Login extends Base
         Session::set('userid', null);
         Cookie::delete('username');
         Cookie::delete('userid');
-        $this->redirect('/index');
+        $this->redirect('ShowPages/loginOut');
     }
 
 

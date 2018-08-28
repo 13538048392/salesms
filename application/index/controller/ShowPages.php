@@ -46,4 +46,14 @@ class ShowPages extends Controller
         return view('/protected');
     }
 
+    /**
+     *退出登陆
+     */
+
+    public function loginOut()
+    {
+        return view('/login_out');
+    }
+
+
 }

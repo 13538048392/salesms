@@ -36,14 +36,19 @@ class Channel extends Model
 
     public function addChannel($userID, $channelName)
     {
-        $data = ['user_id' => $userID,'channel_name' => $channelName];
+        $data = ['user_id' => $userID, 'channel_name' => $channelName];
         return $channelId = Channel::insertGetId($data);
     }
 
     public function deleteChannel($channeId)
     {
 
-        Db::name('url')->where('channel_id',$channeId)->delete();
+        Db::name('url')->where('channel_id', $channeId)->delete();
         return $this->where(['id' => $channeId])->delete();
+    }
+
+    public function changeStatus($status, $id)
+    {
+        return $this->where(['id' => $id])->update(['status' => $status]);
     }
 }

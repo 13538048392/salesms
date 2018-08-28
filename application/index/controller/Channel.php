@@ -109,6 +109,18 @@ class Channel extends Base
         }
     }
 
+    public function changeStatus()
+    {
+        $status=input('status');
+        $id=input('id');
+        $channel = new \app\index\model\Channel();
+        $result=$channel->changeStatus($status,$id);
+        if($result)
+        {
+            return json(['resp_code' => 0, 'msg' => '更新成功']);
+        }
+    }
+
     public function QrCode()
     {
         $url= urldecode(input('url_code'));

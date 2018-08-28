@@ -83,6 +83,20 @@ $(function () {
         });
     });
 
+
+    $('.status').on('click', function(){
+           var status = $(this).data('value');
+           var id=$(this).data('id');
+        $.post(url_changeStatus,{'status':status,'id':id},function(result){
+            if(result.resp_code==0){
+                alert(result.msg);
+                location.reload();
+            }
+        })
+
+    });
+
+
     $('#search').click(function () {
         $.ajax({
             url: url_search,

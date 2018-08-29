@@ -80,7 +80,7 @@ $(function () {
                         message: user_both
                     },
                     regexp: {
-                        regexp: /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/,
+                        regexp: /\d{8,11}$/,
                         message: phone_rule
                     },
                     remote: {
@@ -207,7 +207,7 @@ $(function () {
             alert('请输入手机号码');
             return false;
         }
-        var ret = /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/;
+        var ret = /\d{8,11}$/;
         if (!ret.test($("#phone").val())) {
             alert('手机号码不正确');
             return false;

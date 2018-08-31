@@ -77,5 +77,34 @@
     pass_check = "{$Think.lang.pass_not_null}";
     no_active = "{$Think.lang.no_active}";
     send_email_again = "{$Think.lang.send_email_again}";
+
+    function send_email(){
+        //发送邮件
+        var username = $('#username').val();
+        var password = $('#password').val();
+        if (username == '') {
+            alert(user_check);
+        }
+        else if (password == '') {
+            alert(pass_check);
+        }
+
+        else{
+           $.ajax({
+            url: 'sendEmailAgain',//请求地址，html页面传过来的
+            type: "post",
+            data: {'username': username,'password':password},
+            success: function (result) {
+                if (result.resp_code == 0) {
+                    alert(result.msg);
+                } else {
+                    alert(result.msg);
+                }
+            }
+        }); 
+        }
+        
+
+    }
 </script>
 </html>

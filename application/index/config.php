@@ -15,7 +15,9 @@ return [
         'password' => 'i&mVKH6FT2pc',//邮箱授权码
         'charset' => 'utf-8',
         'ishtml' => TRUE,
-        'smtpdebug'=>0
+        'port'=>587,
+        'smtpsecure'=>'tls',
+        'smtpdebug'=>2,
     ],
     'mail2' => [
         'host' => 'smtp.163.com',

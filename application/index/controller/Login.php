@@ -68,7 +68,7 @@ class Login extends Base
             }
             if ($result['active'] == 0) {
                 //账号未激活
-                return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate').\think\lang::get('no_active')." <a href='#'>".\think\lang::get('send_email_again').'</a>']);
+                return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate').\think\lang::get('no_active')." <a href='#' onclick='send_email()'>".\think\lang::get('send_email_again').'</a>']);
             }
 
             if($result['status'] == 0){
@@ -235,6 +235,35 @@ class Login extends Base
         } else {
             return json(['status' => '0', 'msg' => \think\lang::get('send_email_fail')]);//邮件发送失败
         }
+    }
+
+    public function sendEmailAgain(){
+        //重新发送邮件
+        $username = input('post.username');
+        $password = input('post.password');
+
+        $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
+            $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/";
+            $user = new User();
+            if (preg_match($checkEmail, $username)) {
+                $result = $user->userEmailLogin($username);
+            } elseif (preg_match($checkPhone, $username)) {
+                $result = $user->userPhoneLogin($username);
+            } else {
+                $result = $user->userNameLogin($username);
+            }
+            
+            if ($result == null) {
+                //用户名不存在
+                return json(['resp_code' => 1, 'msg' => \think\lang::get('user_not_exist')]);
+            }
+           
+            if (!password_verify($password, $result['pass'])) {
+
+                return json(['resp_code' => 2, 'msg' => \think\lang::get('password_error')]);
+            }
+
+            return sendEmail($password,$result['user_name'],$result['email']);
     }
 
 }

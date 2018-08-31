@@ -65,7 +65,7 @@
 
                         <div class="w-row">
                             <div class="w-col w-col-3">
-                                <label for="dropdownMenu1">Country Code:</label>
+                                <label for="dropdownMenu1">{$Think.lang.country_code}:</label>
                                 <!--<select id="Country_code" name="Country_code" data-name="Country_code" required="" class="w-select">-->
                                     <!--<option value="">Select one...</option>-->
                                     <!--<option value="First">First Choice</option>-->
@@ -104,16 +104,16 @@
                         <!--</div>-->
 
 
-                        <label class="hid"  for="code">{$Think.lang.short_message}:</label>
-                        <div class="w-embed form-group hid">
+                        <!--<label class="hid"  for="code">{$Think.lang.short_message}:</label>-->
+                        <!--<div class="w-embed form-group hid">-->
 
-                            <input class="w-input c-login__input form-control" type="text" placeholder="{$Think.lang.short_message}" name="code" id="code">
-                        </div>
-                        <div class="w-embed form-group hid">
-                            <button type="button" name="sendMessage" class="btn  btn-success btn-block"
-                                    id="sendMessage"> {$Think.lang.send_message}
-                            </button>
-                        </div>
+                            <!--<input class="w-input c-login__input form-control" type="text" placeholder="{$Think.lang.short_message}" name="code" id="code">-->
+                        <!--</div>-->
+                        <!--<div class="w-embed form-group hid">-->
+                            <!--<button type="button" name="sendMessage" class="btn  btn-success btn-block"-->
+                                    <!--id="sendMessage"> {$Think.lang.send_message}-->
+                            <!--</button>-->
+                        <!--</div>-->
 
                         <label for="password">{$Think.lang.password}:</label>
                         <div class="w-embed form-group">
@@ -192,9 +192,9 @@
         $r.html(selectVal);
         $r.data('value', selectVal.replace('+', ''));
 
-        $('input[name="regcode"]').val(selectVal);
+        //$('input[name="regcode"]').val(selectVal);
 
-        selectVal == '+86'? $('.hid').show(): $('.hid').hide();
+       // selectVal == '+86'? $('.hid').show(): $('.hid').hide();
 
         // if(selectVal)
 

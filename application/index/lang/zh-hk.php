@@ -13,6 +13,7 @@ return [
     'name'=>'名稱',
 
 //login controller
+    'no_active' => '如果您沒有收到郵件，可以點擊重新發送',
     'user' => '用戶',
     'login' => '登錄',
     'register' => '註冊',
@@ -65,7 +66,7 @@ return [
 	'register_email_body2' => '請點擊該地址啟動您的用戶',
 	'register_success' => '注册成功,請到郵箱啟動您的帳號',
 	'register_fail' => '郵件發送失敗,請重新注册',
-
+    'country_code'=>'区号',
 	'user_length' => '用戶名長度必須在8到18比特之間',
 	'user_rule' => '用戶名只能包含大寫、小寫、數位',
 	'email_rule' => '郵箱地址格式有誤',

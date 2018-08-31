@@ -51,6 +51,43 @@ class Api
 
     }
 
+    public function getUsageHistory()
+    {
+        $referral='sales001';
+        $startDate='20180801';
+        $endDate='20180830';
+        date_default_timezone_set('UTC');
+        $timeStamp=date('Y-m-d\TH',time());
+       // echo date('Y-m-d\TH',$timeStamp);
+        $key='vGaPb2eu1b9dtfGMJ8';
+        //$signature=sha1('2018-08-30T02'.$key);
+        $signature=$this->getSignature($timeStamp,$key);
+        $url="http://demo-dev.modontics.org/user/referral/{$referral}/usages?startDate={$startDate}&endDate={$endDate}&secret={$signature}";
+       // $url="http://demo-dev.modontics.org/user/referral/{$referral}/usages?startDate={$startDate}&endDate={$endDate}&secret={$signature}";
+        //$url1='http://testcode.com';
+        $result=$this->httpGet($url);
+        return $result;
+	}
+
+	public function  httpGet($url)
+    {
+        $curl=curl_init();
+        //需要请求的是哪个地址
+        curl_setopt($curl,CURLOPT_URL,$url);
+        //表示把请求的数据已文件流的方式输出到变量中
+        curl_setopt($curl,CURLOPT_RETURNTRANSFER ,1);
+        //开启 TLS False Start （一种 TLS 握手优化方式）php 7.0.7 有效
+        curl_setopt($curl,CURLOPT_SSL_FALSESTART,1);
+        $result=curl_exec($curl);
+        curl_close($curl);
+        return $result;
+    }
+
+    public function getSignature($timeStamp,$key)
+    {
+        return $signature=sha1($timeStamp.$key);
+    }
+
     public function createQrCode(){
     	//生成二维码
     	$code = new \QueryingCode();

@@ -202,13 +202,16 @@ class Route
     protected static function registerRules($rules, $type = '*')
     {
         foreach ($rules as $key => $val) {
+
             if (empty($val)) {
                 continue;
             }
             if (is_numeric($key)) {
                 $key = array_shift($val);
             }
-            
+            // if (empty($val)) {
+            //     continue;
+            // }
             if (is_string($key) && 0 === strpos($key, '[')) {
                 $key = substr($key, 1, -1);
                 self::group($key, $val);

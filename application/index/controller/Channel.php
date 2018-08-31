@@ -38,6 +38,12 @@ class Channel extends Base
         return view('/channel', ['data' => $channel]);
     }
 
+
+    public function test()
+    {
+        return view('/channel1');
+    }
+
     public function addChannel(Request $request)
     {
         if (isset($_POST)) {
@@ -59,7 +65,7 @@ class Channel extends Base
                 switch ($value['role_id']) {
                     //如果是角色是医生
                     case 2:
-                        $url_doctor = getShortUrl("http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId);
+                        $url_doctor = getShortUrl("http://app.kooa.vip/signup?channelId=" . $channelId . "&referralCode=" . $userId);
                         $data = [
                             'channel_id' => $channelId,
                             'url_code' => $url_doctor,
@@ -70,7 +76,7 @@ class Channel extends Base
                     //如果角色是销售员
                     case 3:
                         $url_sale = getShortUrl("http://" . $_SERVER['SERVER_NAME'] . "/register/index/id/" . $channelId . "/role_id/" . $value['role_id']);
-                        $url_doctor = getShortUrl("http://47.90.203.241/signup?channelId=" . $channelId . "&referralCode=" . $userId);
+                        $url_doctor = getShortUrl("http://app.kooa.vip/signup?channelId=" . $channelId . "&referralCode=" . $userId);
                         $data = [
                             [
                                 'channel_id' => $channelId,
@@ -100,6 +106,18 @@ class Channel extends Base
             if ($result && $result !== false) {
                 return json(['resp_code' => 0, 'msg' => 'true']);
             }
+        }
+    }
+
+    public function changeStatus()
+    {
+        $status=input('status');
+        $id=input('id');
+        $channel = new \app\index\model\Channel();
+        $result=$channel->changeStatus($status,$id);
+        if($result)
+        {
+            return json(['resp_code' => 0, 'msg' => '更新成功']);
         }
     }
 

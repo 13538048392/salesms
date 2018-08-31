@@ -7,12 +7,12 @@
  */
 return [
     'mail' => [
-        'host' => 'smtp.qq.com',
+        'host' => 'md-hk-3.webhostbox.net',
         'smtpauth' => TRUE,
-        'username' => '804310470@qq.com',
-        'from' => '804310470@qq.com',
-        'fromname' => 'salesms.com',
-        'password' => 'zgmcoflylpoobfca',//邮箱授权码
+        'username' => 'smtp@kooa.ai',
+        'from' => 'smtp@kooa.ai',
+        'fromname' => 'sales.kooa.ai',
+        'password' => 'i&mVKH6FT2pc',//邮箱授权码
         'charset' => 'utf-8',
         'ishtml' => TRUE,
         'smtpdebug'=>0
@@ -36,11 +36,14 @@ return [
     ],
     'level' => 1,
     //推广会员层级
+    'api_token' => 'GbwS8JFxJfW3uj86S',
 
     'redis'=>[
         'host'=>'127.0.0.1',
         'port'=>'6379',
         'author'=>'',
         'db_index'=>0,
-    ]
+    ],
+    
+    
 ];

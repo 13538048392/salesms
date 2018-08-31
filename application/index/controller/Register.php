@@ -40,13 +40,13 @@ class Register extends Base
         $arr = $request->param();
         if (!isset($arr['id']) && !isset($arr['role_id'])) {
             //邀请链接不存在
-            return $this->error(\think\lang::get('inviting_link_not_exist'));
+            return redirect('ShowPages/failPage');
         }
         $channel = new Channel();
         $result = $channel->channelIsExist($arr['id']);
         if ($result == null) {
             //邀请链接无效
-            return $this->error(\think\lang::get('inviting_link_invalid'));
+            return redirect('ShowPages/cancel');
         }
         Session::set('user.parent_id',$result['user_id']);
         Session::set('user.channel_id',$arr['id']);
@@ -54,14 +54,25 @@ class Register extends Base
         return $this->view->fetch('/register');
     }
 
+
     public function register()
     {
         if (isset($_POST)) {
             if (!Validate::token('__token__','',['__token__' => input('param.__token__')])) {
                 //非法请求
-                return $this->error(\think\lang::get('unlawful_request'));
+                return redirect('ShowPages/failAuthorization');
             }
             $data = input('post.');
+
+            if($data['regcode']=='86'){
+                if($data['code']==''){
+                    return json(['resp_code' => '4','msg' =>'验证码不能为空']);
+                }
+                if ($this->redis->get('user:'.input('phone')) !== input('code')) {
+                    return json(['resp_code' => '4','msg' =>'验证码不对']);
+                }
+            }
+
             $validate = new \app\index\validate\User;
             if (!$validate->check($data)) {
                 //用户信息错误
@@ -88,6 +99,8 @@ class Register extends Base
             }
         }
     }
+
+
 
 
     /**

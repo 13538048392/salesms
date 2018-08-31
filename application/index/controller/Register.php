@@ -89,6 +89,11 @@ class Register extends Base
         }
     }
 
+
+    public function  testEmail()
+    {
+        return sendEmail('123456','hannan','langxianwuxue@163.com');
+    }
     /**
      * 检查用户名是否存在
      */

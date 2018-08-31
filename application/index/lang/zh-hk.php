@@ -13,6 +13,7 @@ return [
     'name'=>'名稱',
 
 //login controller
+    'no_active' => '如果您沒有收到郵件，可以點擊重新發送',
     'user' => '用戶',
     'login' => '登錄',
     'register' => '註冊',

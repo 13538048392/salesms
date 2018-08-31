@@ -12,6 +12,7 @@ return [
     'test'=>'TEST',
     'name'=>'NAME',
 //login controller
+    'no_active' => 'If you have not received the email, you can click to resend it.',
     'user' => 'User',
     'login' => 'Log In',
     'register' => 'Register',

@@ -69,6 +69,20 @@ class Api
         if (!isset($input['logo_url'])) {
         	return json(['code' => 4,'msg'=>'data in wrong format']);
         }
+
+        try{
+		    $logo_res = file_get_contents($input['logo_url']);
+		}catch(\Exception $e) {
+		    // echo "error";
+		    $logo_res = '';
+
+		}
+		//异常处理
+
+		if (!$logo_res) {
+			return json(['code' => 5,'msg'=>'logo does not exist']);
+		}
+
         $qr_string = $code->createQrCode($input['url'],$input['logo_url']);
         if ($qr_string) {
         	return json(['code' => 0,'msg' => 'success','qr_code_url' => $qr_string]);
@@ -80,4 +94,24 @@ class Api
         // echo $qr_string;
     }
 
+    public function test(){
+    	//测试
+
+  //   	try{
+		//     file_get_contents(input('get.url'));
+		// }catch($e){
+		//     echo $e->getMessage();
+		// }
+    	
+
+		try{
+		    $res = file_get_contents(input('get.url'));
+		}catch(\Exception $e) {
+		    echo "error";
+		    $res = '';
+
+		}
+		dump($res);
+
+	}
 }

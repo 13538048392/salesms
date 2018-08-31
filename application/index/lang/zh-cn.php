@@ -69,7 +69,7 @@ return [
 	'register_email_body2' => '请点击该地址激活您的用户',
 	'register_success' => '注册成功，请到邮箱激活您的账号',
 	'register_fail' => '邮件发送失败，请重新注册',
-	
+	'country_code:'=>'区号',
 	'user_length' => '用户名长度必须在8到18位之间',
 	'user_rule' => '用户名只能包含大写、小写、数字',
 	'email_rule' => '邮箱地址格式有误',

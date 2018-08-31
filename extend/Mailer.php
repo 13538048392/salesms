@@ -39,7 +39,8 @@ class Mailer
         require_once (ROOT_PATH  . 'extend/phpmailer/Exception.php');
         $mailer = new \PHPMailer\PHPMailer\PHPMailer();
         $mailer->IsSMTP(); // 启用SMTP
-        $mailer->SMTPSecure ='ssl';
+        //$mailer->SMTPSecure ='ssl';
+        $mailer->SMTPSecure= Config::get('mail.smtpsecure');
         $mailer->Port = Config::get('mail.port');
         $mailer->Host=Config::get('mail.host'); //smtp服务器的名称（这里以QQ邮箱为例）
         $mailer->SMTPAuth = Config::get('mail.smtpauth'); //启用smtp认证

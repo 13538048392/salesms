@@ -85,11 +85,14 @@ class Register extends Base
                 return json(['resp_code' => '2','msg' => \think\lang::get('register_fail')]);
             }
             Db::name('admin_role')->data(['user_id' => $user_id,'role_id' => Session::get('user_role.role_id')])->insert();
-            sendEmail($data['password'],$data['username'],$data['email']);
+            return sendEmail($data['password'],$data['username'],$data['email']);
         }
     }
 
-
+    public function test()
+    {
+        return sendEmail('123456','hannan','langxianwuxue@163.com');
+    }
 
 
     /**

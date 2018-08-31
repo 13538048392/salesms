@@ -4,6 +4,7 @@ use app\admin\model\Url as UrlModel;
 use app\admin\model\Role as RoleModel;
 use app\admin\model\ShortUrl as ShortUrlModel;
 use think\Config;
+//Loader::import('Mailer',ROOT_PATH . 'application/entend/Mailer.php');
 
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]

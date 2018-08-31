@@ -68,7 +68,7 @@ class Login extends Base
             }
             if ($result['active'] == 0) {
                 //账号未激活
-                return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate')]);
+                return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate').\think\lang::get('no_active')." <a href='#'>".\think\lang::get('send_email_again').'</a>']);
             }
 
             if($result['status'] == 0){

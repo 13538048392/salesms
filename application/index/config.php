@@ -15,11 +15,11 @@ return [
         'password' => 'i&mVKH6FT2pc',//邮箱授权码
         'charset' => 'utf-8',
         'ishtml' => TRUE,
-        'port'=>587,
-        'smtpsecure'=>'tls',
+        'port'=>465,
+        'smtpsecure'=>'ssl',
         'smtpdebug'=>2,
     ],
-    'mail2' => [
+    'mail1' => [
         'host' => 'smtp.163.com',
         'smtpauth' => TRUE,
         'username' => '13538048392@163.com',
@@ -27,6 +27,8 @@ return [
         'fromname' => 'salesms.com',
         'password' => 'liuhui583384123',//邮箱授权码
         'charset' => 'utf-8',
+        'port'=>587,
+        'smtpsecure'=>'tls',
         'ishtml' => TRUE,
         'smtpdebug'=>0
     ],

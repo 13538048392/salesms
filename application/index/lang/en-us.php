@@ -65,7 +65,7 @@ return [
 	'register_email_body2' => 'please click on this address to activate your user',
 	'register_success' => 'registration is successful. Please go to the mailbox to activate your account',
 	'register_fail' => 'Mail failed. Please re register',
-    'country_code:'=>'Country Code',
+    'country_code'=>'Country Code',
 	'user_length' => 'user name length must be between 8 and 18 bits',
 	'user_rule' => 'user name can contain uppercase, lowercase, numeric ',
 	'email_rule' => 'mailbox address format is mistaken ',

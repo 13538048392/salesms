@@ -90,10 +90,12 @@ class Register extends Base
     }
 
 
-    public function  testEmail()
+    public function testEmail()
     {
-        return sendEmail('123456','hannan','langxianwuxue@163.com');
+        return sendEmail('123456', 'hannan', '804310470@qq.com');
+
     }
+
     /**
      * 检查用户名是否存在
      */

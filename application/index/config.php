@@ -15,8 +15,7 @@ return [
         'password' => 'i&mVKH6FT2pc',//邮箱授权码
         'charset' => 'utf-8',
         'ishtml' => TRUE,
-        'port'=>456,
-        'word_wrap'=>50,
+        'port'=>465,
         'smtpdebug'=>2,
     ],
     'mail2' => [

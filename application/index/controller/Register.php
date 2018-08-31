@@ -64,14 +64,14 @@ class Register extends Base
             }
             $data = input('post.');
 
-            if($data['regcode']=='86'){
-                if($data['code']==''){
-                    return json(['resp_code' => '4','msg' =>'验证码不能为空']);
-                }
-                if ($this->redis->get('user:'.input('phone')) !== input('code')) {
-                    return json(['resp_code' => '4','msg' =>'验证码不对']);
-                }
-            }
+//            if($data['regcode']=='86'){
+//                if($data['code']==''){
+//                    return json(['resp_code' => '4','msg' =>'验证码不能为空']);
+//                }
+//                if ($this->redis->get('user:'.input('phone')) !== input('code')) {
+//                    return json(['resp_code' => '4','msg' =>'验证码不对']);
+//                }
+//            }
 
             $validate = new \app\index\validate\User;
             if (!$validate->check($data)) {
@@ -85,18 +85,7 @@ class Register extends Base
                 return json(['resp_code' => '2','msg' => \think\lang::get('register_fail')]);
             }
             Db::name('admin_role')->data(['user_id' => $user_id,'role_id' => Session::get('user_role.role_id')])->insert();
-            $password = urlsafe_b64encode($data['password']);
-            $url = url('index/register/activation','','',true);
-            $url .= '/username/' . $data['username'] . '/pwd/' . $password;
-            $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
-            $subject = \think\lang::get('register_title');
-            $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
-            $mail = new \Mailer();
-            if ($mail->send($data['email'],$subject,$body)) {
-                return json(['resp_code' => '0','msg' => \think\lang::get('register_success')]); //邮件发送成功
-            } else {
-                return json(['resp_code' => '3','msg' => \think\lang::get('register_fail')]); //邮件发送失败
-            }
+            sendEmail($data['password'],$data['username'],$data['email']);
         }
     }
 

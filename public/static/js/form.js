@@ -189,18 +189,18 @@ $(function () {
         }, 'json');
     });
 
-    $("#phone").focus(function () {
-        var section = $('.regoin').data('value');
-        if(section=='86'){
-            $('.hid').show();
-        }
-    });
-
-    $("#phone").blur(function () {
-        if (!$("#phone").val()) {
-            $('.hid').hide();
-        }
-    })
+    // $("#phone").focus(function () {
+    //     var section = $('.regoin').data('value');
+    //     if(section=='86'){
+    //         $('.hid').show();
+    //     }
+    // });
+    //
+    // $("#phone").blur(function () {
+    //     if (!$("#phone").val()) {
+    //         $('.hid').hide();
+    //     }
+    // })
 
     $("#sendMessage").click(function () {
         if ($.trim($("#phone").val()) == "") {

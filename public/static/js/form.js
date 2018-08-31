@@ -202,54 +202,54 @@ $(function () {
     //     }
     // })
 
-    $("#sendMessage").click(function () {
-        if ($.trim($("#phone").val()) == "") {
-            alert('请输入手机号码');
-            return false;
-        }
-        var ret = /\d{8,11}$/;
-        if (!ret.test($("#phone").val())) {
-            alert('手机号码不正确');
-            return false;
-        }
-        //00+国际区号+号码
-        var section = $('.regoin').data('value');
-        var phone = $("#phone").val();//获取手机号码
-        $.ajax({
-            url: url_send_message,//请求地址，html页面传过来的
-            type: "post",
-            data: {'phone': phone,'section':section},
-            success: function (result) {
-                if (result.resp_code == 0) {
-                    curCount = count;
-                    //设置button效果，开始计时
-                    $("#sendMessage").css("background-color", "LightSkyBlue");
-                    $("#sendMessage").attr("disabled", "true");
-                    // $('#sendMessage').html('<s></s>' + curCount + '秒');
-                    InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
-                    alert(result.msg);
-                } else {
-                    alert(result.msg);
-                }
-            }
-        });
-    });
+    // $("#sendMessage").click(function () {
+    //     if ($.trim($("#phone").val()) == "") {
+    //         alert('请输入手机号码');
+    //         return false;
+    //     }
+    //     var ret = /\d{8,11}$/;
+    //     if (!ret.test($("#phone").val())) {
+    //         alert('手机号码不正确');
+    //         return false;
+    //     }
+    //     //00+国际区号+号码
+    //     var section = $('.regoin').data('value');
+    //     var phone = $("#phone").val();//获取手机号码
+    //     $.ajax({
+    //         url: url_send_message,//请求地址，html页面传过来的
+    //         type: "post",
+    //         data: {'phone': phone,'section':section},
+    //         success: function (result) {
+    //             if (result.resp_code == 0) {
+    //                 curCount = count;
+    //                 //设置button效果，开始计时
+    //                 $("#sendMessage").css("background-color", "LightSkyBlue");
+    //                 $("#sendMessage").attr("disabled", "true");
+    //                 // $('#sendMessage').html('<s></s>' + curCount + '秒');
+    //                 InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+    //                 alert(result.msg);
+    //             } else {
+    //                 alert(result.msg);
+    //             }
+    //         }
+    //     });
+    // });
 });
 
-function SetRemainTime() {
-
-    if (curCount == 0) {
-        window.clearInterval(InterValObj);//停止计时器
-        $("#sendMessage").removeAttr("disabled");//启用按钮
-        $("#sendMessage").css("background-color", "");
-        $("#sendMessage").html("重发验证码");
-       // code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
-    }
-    else {
-        curCount--;
-        $('#sendMessage').html('<s></s>' + curCount + '秒');
-    }
-}
+// function SetRemainTime() {
+//
+//     if (curCount == 0) {
+//         window.clearInterval(InterValObj);//停止计时器
+//         $("#sendMessage").removeAttr("disabled");//启用按钮
+//         $("#sendMessage").css("background-color", "");
+//         $("#sendMessage").html("重发验证码");
+//        // code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效
+//     }
+//     else {
+//         curCount--;
+//         $('#sendMessage').html('<s></s>' + curCount + '秒');
+//     }
+// }
 
 
 

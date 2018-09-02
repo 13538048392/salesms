@@ -40,6 +40,13 @@ class Mailer
         $mailer = new \PHPMailer\PHPMailer\PHPMailer();
         $mailer->IsSMTP(); // 启用SMTP
         //$mailer->SMTPSecure ='ssl';
+        $mailer->SMTPOptions = array(
+            'ssl' => array(
+                'verify_peer' => false,
+                'verify_peer_name' => false,
+                'allow_self_signed' => true
+            )
+        );
         $mailer->SMTPSecure= Config::get('mail.smtpsecure');
         $mailer->Port = Config::get('mail.port');
         $mailer->Host=Config::get('mail.host'); //smtp服务器的名称（这里以QQ邮箱为例）

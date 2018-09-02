@@ -17,7 +17,7 @@ return [
         'ishtml' => TRUE,
         'port'=>465,
         'smtpsecure'=>'ssl',
-        'smtpdebug'=>2,
+        'smtpdebug'=>4,
     ],
     'mail1' => [
         'host' => 'smtp.163.com',

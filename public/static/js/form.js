@@ -18,7 +18,7 @@ $(function () {
                         message: user_not_null
                     },
                     stringLength: {
-                        min: 8,
+                        min: 6,
                         max: 18,
                         message: user_length
                     },

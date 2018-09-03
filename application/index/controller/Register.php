@@ -92,8 +92,14 @@ class Register extends Base
 
     public function testEmail()
     {
-        return sendEmail('123456', 'hannan', '804310470@qq.com');
+        $mail=new \Mailer();
+        $mail->send('804310470@qq.com', '1111111111', '804310470@qq.com');
 
+    }
+
+    public function  testPhp()
+    {
+        echo phpinfo();
     }
 
     /**

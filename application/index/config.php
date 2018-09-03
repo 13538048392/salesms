@@ -17,15 +17,15 @@ return [
         'ishtml' => TRUE,
         'port'=>465,
         'smtpsecure'=>'ssl',
-        'smtpdebug'=>2,
+        'smtpdebug'=>4,
     ],
     'mail1' => [
-        'host' => 'smtp.163.com',
+        'host' => 'smtp.qq.com',
         'smtpauth' => TRUE,
-        'username' => '13538048392@163.com',
+        'username' => '804310470',
         'from' => '13538048392@163.com',
         'fromname' => 'salesms.com',
-        'password' => 'liuhui583384123',//邮箱授权码
+        'password' => 'zgmcoflylpoobfca',//邮箱授权码
         'charset' => 'utf-8',
         'port'=>587,
         'smtpsecure'=>'tls',

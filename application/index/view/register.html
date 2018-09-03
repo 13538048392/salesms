@@ -44,7 +44,7 @@
     <div class="l-flex-center is--full w-container">
         <div class="c-login">
             <div class="c-login__title">
-                <div>{$Think.lang.user}{$Think.lang.register}</div>
+                <div>{$Think.lang.register}</div>
             </div>
             <div class="c-login__body">
                 <div class="w-form">
@@ -65,7 +65,7 @@
 
                         <div class="w-row">
                             <div class="w-col w-col-3">
-                                <label for="dropdownMenu1">Country Code:</label>
+                                <label for="dropdownMenu1">{$Think.lang.country_code}:</label>
                                 <!--<select id="Country_code" name="Country_code" data-name="Country_code" required="" class="w-select">-->
                                     <!--<option value="">Select one...</option>-->
                                     <!--<option value="First">First Choice</option>-->
@@ -192,9 +192,9 @@
         $r.html(selectVal);
         $r.data('value', selectVal.replace('+', ''));
 
-        $('input[name="regcode"]').val(selectVal);
+        //$('input[name="regcode"]').val(selectVal);
 
-        selectVal == '+86'? $('.hid').show(): $('.hid').hide();
+       // selectVal == '+86'? $('.hid').show(): $('.hid').hide();
 
         // if(selectVal)
 

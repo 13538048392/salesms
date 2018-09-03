@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap-validator/0.5.3/css/bootstrapValidator.min.css">
     <script src="https://cdn.bootcss.com/bootstrap-validator/0.5.3/js/bootstrapValidator.min.js"></script>
     <script src="/static/js/home.js"></script>
+    <script src="/static/js/draw.js"></script>
+    <script src="/static/js/html5shiv-printshiv.min.js"></script>
+    <script src="/static/js/html5shiv.min.js"></script>
+    
     <!--<script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>-->
     <!--<link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">-->
     <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
@@ -102,7 +106,8 @@
                             <div class="text-block-5" onclick="CopyUrl(this)">{$val['url_code']}</div>
                         </div>
                         <div class="w-col w-col-2">
-                            <a href="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" download="file" title="点击下载">
+                            <?php $qrcode= url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>
+                            <a href="javascript:void(0);" title="点击下载" onclick="drawQrcodeImag('sales','{$qrcode}')">
                                 <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">
                             </a>
                         </div>
@@ -125,7 +130,8 @@
                             <div class="text-block-5" onclick="CopyUrl(this)">{$v['url_code']}</div>
                         </div>
                         <div class="w-col w-col-2">
-                            <a href="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>" download="file" title="点击下载">
+                            <?php $doc_code= url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>
+                            <a href="javascript:void(0);" title="点击下载" onclick="drawQrcodeImag('doc','{$doc_code}')">
                                 <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($v['url_code'])])?>" width="72" class="qrcode">
                             </a>
                         </div>

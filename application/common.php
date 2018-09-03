@@ -4,6 +4,7 @@ use app\admin\model\Url as UrlModel;
 use app\admin\model\Role as RoleModel;
 use app\admin\model\ShortUrl as ShortUrlModel;
 use think\Config;
+//Loader::import('Mailer',ROOT_PATH . 'application/entend/Mailer.php');
 
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
@@ -215,8 +216,10 @@ function doAddChannel($data){
         $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
         $mail = new \Mailer();
         if ($mail->send($email,$subject,$body)) {
+            //return '0';
             return json(['resp_code' => '0','msg' => \think\lang::get('register_success')]); //邮件发送成功
         } else {
+            //return '3';
             return json(['resp_code' => '3','msg' => \think\lang::get('register_fail')]); //邮件发送失败
         }
     }

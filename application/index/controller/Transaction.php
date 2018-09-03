@@ -8,6 +8,9 @@ class Transaction extends Base
 {
     public function index()
     {
+//        $api = new Api();
+//        $result =$api->getUsageHistory();
+//        dump($result);
         return view('/tranhistory');
     }
 

@@ -53,9 +53,9 @@ class Api
 
     public function getUsageHistory()
     {
-        $referral='sales001';
-        $startDate='20180801';
-        $endDate='20180830';
+        $referral='SALES0001';
+        $startDate='20180701';
+        $endDate='20190701';
         date_default_timezone_set('UTC');
         $timeStamp=date('Y-m-d\TH',time());
        // echo date('Y-m-d\TH',$timeStamp);

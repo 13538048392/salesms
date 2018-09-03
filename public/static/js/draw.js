@@ -68,7 +68,8 @@ function exportImage(canvas) {
 
     // debugger
 
-    aEle.setAttribute('href', canvas.toDataURL("image/png"));
+    // aEle.setAttribute('href', canvas.toDataURL("image/png"));
+    aEle.setAttribute('href', canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream"));
     aEle.setAttribute('target', '_blank');
     aEle.setAttribute('download', 'qrcode.png');
 

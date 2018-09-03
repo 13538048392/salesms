@@ -13,13 +13,13 @@ class Base extends Controller {
     public function lang() {
         switch ($_GET['lang']) {
             case 'cn':
-                cookie('think_var', 'zh-cn',3600);
+                cookie('think_var', 'zh-cn',365*24*60*60);
                 break;
             case 'en':
-                cookie('think_var', 'en-us',3600);
+                cookie('think_var', 'en-us',365*24*60*60);
                 break;
             case 'hk':
-                cookie('think_var', 'zh-hk',3600);
+                cookie('think_var', 'zh-hk',365*24*60*60);
                 break;
             //其它语言
         }

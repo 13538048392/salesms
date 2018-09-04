@@ -80,7 +80,7 @@ function exportImage(canvas) {
     // alert('111');
     if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
         // window.open(canvas.toDataURL("image/png"));
-        
+
         window.open('http://www.baidu.com');
     } else {
         aEle = document.createElement('a');
@@ -99,3 +99,68 @@ function exportImage(canvas) {
         document.body.removeChild(aEle);
     }
 }
+
+$(function(){
+    var eles = $('.bg-qrocde'),
+        canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d'),
+        sales_image = new Image(),
+        doc_image = new Image(),
+        loadDone = 0,
+        loadFn = function (evt) {
+            loadDone ++;
+        };
+
+
+    sales_image.onload = loadFn;
+    doc_image.onload = loadFn;
+
+    sales_image.src = '/static/images/sales_qrcode_bg.jpg';
+    doc_image.src = '/static/images/doctor_qrcode_bg.jpg';
+
+    // image.setAttribute("crossOrigin", 'anonymous')
+    canvas.setAttribute('width', 420);
+    canvas.setAttribute('height', 680);
+
+    var bulidImage = function () {     
+
+        for(var i = 0; i < eles.length; i++){
+            ctx.clearRect(0, 0, 420, 680);
+
+            var $item = $(eles[i]),
+                $qrcode = $item.siblings('.qrcode'),
+                type = $item.data('type');
+
+            if(type == 'sales'){
+                ctx.drawImage(sales_image, 0, 0, 420, 680, 0, 0, 420, 680);
+            }else{
+                ctx.drawImage(doc_image, 0, 0, 420, 680, 0, 0, 420, 680);
+            }
+
+            ctx.drawImage($qrcode.get(0), 0, 0, 500, 500, 85, 265, 500, 500);
+
+
+            $item.prop('src', canvas.toDataURL('image/png'));
+        }
+
+        delete canvas;
+    }
+
+    function waitImageLoad(){
+        // debugger
+
+        if(loadDone == 2){
+            bulidImage();
+        }else{
+            setTimeout(function(){
+                waitImageLoad();
+            }, 2e2);
+        }
+    };
+
+    waitImageLoad();
+
+
+
+
+});

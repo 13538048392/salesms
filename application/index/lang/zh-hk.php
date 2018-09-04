@@ -64,7 +64,7 @@ return [
 	'register_title' => '獲取啟動碼',
 	'register_email_body' => '注册成功,您的啟動碼是',
 	'register_email_body2' => '請點擊該地址啟動您的用戶',
-	'register_success' => '注册成功,請到郵箱啟動您的帳號',
+	'register_success' => '注册成功',
 	'register_fail' => '郵件發送失敗,請重新注册',
     'country_code'=>'区号',
 	'user_length' => '用戶名必須是6到18個字元',

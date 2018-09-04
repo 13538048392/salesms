@@ -68,18 +68,18 @@ class Register extends Base
                 //用户信息错误
                 return json(['resp_code' => '1', 'msg' => \think\lang::get('user_error')]); //用户信息填写不完善
             }
-            $password = urlsafe_b64encode($data['password']);
-            $url = url('index/register/activation', '', '', true);
-            $url .= '/username/' . $data['username'] . '/pwd/' . $password;
-            $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
-            $subject = \think\lang::get('register_title');
-            $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
-            $mail = new \Mailer();
-            if (!$mail->send($data['email'], $subject, $body)) {
-                return json(['resp_code' => '3', 'msg' => \think\lang::get('register_fail')]); //邮件发送失败
-            }
+//            $password = urlsafe_b64encode($data['password']);
+//            $url = url('index/register/activation', '', '', true);
+//            $url .= '/username/' . $data['username'] . '/pwd/' . $password;
+//            $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
+//            $subject = \think\lang::get('register_title');
+//            $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
+//            $mail = new \Mailer();
+//            if (!$mail->send($data['email'], $subject, $body)) {
+//                return json(['resp_code' => '3', 'msg' => \think\lang::get('register_fail')]); //邮件发送失败
+//            }
             $user = new User();
-            $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), $data['email'], Session::get('user.channel_id'), Session::get('user.parent_id'), $data['phone']);
+            $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), Session::get('user.channel_id'), Session::get('user.parent_id'), $data['phone']);
             if (!$user_id) {
                 //注册失败，请重新注册
                 return json(['resp_code' => '2', 'msg' => \think\lang::get('register_fail')]);
@@ -87,6 +87,12 @@ class Register extends Base
             Db::name('admin_role')->data(['user_id' => $user_id, 'role_id' => Session::get('user_role.role_id')])->insert();
             return json(['resp_code' => '0', 'msg' => \think\lang::get('register_success')]); //邮件发送成功
         }
+    }
+
+
+    public  function testBoot()
+    {
+        return view('/test');
     }
 
 

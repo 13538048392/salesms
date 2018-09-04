@@ -51,12 +51,13 @@ class Login extends Base
             $username = input('username');
             $password = input('password');
             //return dump(input('remember'));
-            $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
+           // $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
             $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/";
             $user = new User();
-            if (preg_match($checkEmail, $username)) {
-                $result = $user->userEmailLogin($username);
-            } elseif (preg_match($checkPhone, $username)) {
+//            if (preg_match($checkEmail, $username)) {
+//                $result = $user->userEmailLogin($username);
+//            }
+            if (preg_match($checkPhone, $username)) {
                 $result = $user->userPhoneLogin($username);
             } else {
                 $result = $user->userNameLogin($username);

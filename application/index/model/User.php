@@ -14,12 +14,11 @@ use think\Db;
 
 class User extends Model
 {
-    public function userRegister($username, $password, $email, $channel_id, $parent_id, $phone)
+    public function userRegister($username, $password, $channel_id, $parent_id, $phone)
     {
         $data = [
             'user_name' => $username,
             'pass' => $password,
-            'email' => $email,
             'channel_id' => $channel_id,
             'parent_id' => $parent_id,
             'phone' => $phone

@@ -67,7 +67,7 @@ return [
 	'register_title' => '获取激活码',
 	'register_email_body' => '注册成功，您的激活码是：',
 	'register_email_body2' => '请点击该地址激活您的用户',
-	'register_success' => '注册成功，请到邮箱激活您的账号',
+	'register_success' => '注册成功',
 	'register_fail' => '邮件发送失败，请重新注册',
 	'country_code'=>'区号',
 	'user_length' => '用户名必须是6到18个字符',

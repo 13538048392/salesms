@@ -165,7 +165,7 @@ function doAddChannel($data){
       //生成短连接
       $url = str_replace('&', '%26', $url);
       //字符串替换&为%26
-      $short_url = "http://soc.kooa.ai/api/v2/action/shorten?key=6bfe932f34246e3395cdcb69e888c1&url=".$url.'&is_secret=true';
+      $short_url = "http://soc.kooa.vip/api/v2/action/shorten?key=d2ffa91d967c1424c992c2176df88c&url=".$url.'&is_secret=true';
       $short_url = file_get_contents($short_url);
       return $short_url;
 

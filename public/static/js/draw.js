@@ -21,10 +21,10 @@ function drawQrcodeImag(type, qucodeUrl) {
             ctx.scale(1, 1);
 
             ctx.drawImage(qrCodeImage, 0, 0, 500, 500, 85, 265, 500, 500);
-
+            $('.top01').attr('src',canvas.toDataURL("image/png"));
             // document.body.append(canvas);
 
-            exportImage(canvas);
+            // exportImage(canvas);
         }
 
         qrCodeImage.src = qucodeUrl;
@@ -77,7 +77,7 @@ function exportImage(canvas) {
 
     // console.log(canvas.toDataURL("image/png"));
 
-    alert('111');
+    // alert('111');
     if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
         // window.open(canvas.toDataURL("image/png"));
         

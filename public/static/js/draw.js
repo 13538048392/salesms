@@ -147,7 +147,7 @@ $(function(){
             ctx.clearRect(0, 0, 420, 680);
 
             var $item = $(eles[i]),
-                $qrcode = $item.siblings('.qrcode'),
+                $qrcode = $item.siblings('.code'),
                 type = $item.data('type');
 
             if(type == 'sales'){

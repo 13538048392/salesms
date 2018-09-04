@@ -62,18 +62,33 @@ function drawQrcodeImag(type, qucodeUrl) {
 
 function exportImage(canvas) {
     // var canvas = document.getElementById('canvas');
-     var aEle = document.createElement('a');
+    //  var aEle = document.createElement('a');
 
-    // openDataUriWindow(canvas.toDataURL("image/png"));
+    // // openDataUriWindow(canvas.toDataURL("image/png"));
 
-    // debugger
+    // // debugger
 
-    // aEle.setAttribute('href', canvas.toDataURL("image/png"));
-    aEle.setAttribute('href', canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream"));
-    aEle.setAttribute('target', '_blank');
-    aEle.setAttribute('download', 'qrcode.png');
+    // // aEle.setAttribute('href', canvas.toDataURL("image/png"));
+    // aEle.setAttribute('href', canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream"));
+    // aEle.setAttribute('target', '_blank');
+    // aEle.setAttribute('download', 'qrcode.png');
 
-    aEle.click();
+    // aEle.click();
 
     // console.log(canvas.toDataURL("image/png"));
+
+    aEle = document.createElement('a');
+
+    aEle.setAttribute('href', canvas.toDataURL("image/png"));
+    aEle.setAttribute('target', '_blank');
+
+    //支持download的浏览器
+    if ('download' in aEle) {
+        aEle.setAttribute('download', 'qrcode.png');
+    }
+
+    document.body.appendChild(aEle);
+    aEle.click();
+
+    document.body.removeChild(aEle);
 }

@@ -21,10 +21,10 @@ function drawQrcodeImag(type, qucodeUrl) {
             ctx.scale(1, 1);
 
             ctx.drawImage(qrCodeImage, 0, 0, 500, 500, 85, 265, 500, 500);
-            $('.top01').attr('src',canvas.toDataURL("image/png"));
+
             // document.body.append(canvas);
 
-            // exportImage(canvas);
+            exportImage(canvas);
         }
 
         qrCodeImage.src = qucodeUrl;
@@ -60,48 +60,48 @@ function drawQrcodeImag(type, qucodeUrl) {
 // }
 
 
-function exportImage(canvas) {
-    // var canvas = document.getElementById('canvas');
-    //  var aEle = document.createElement('a');
+// function exportImage(canvas) {
+//     // var canvas = document.getElementById('canvas');
+//     //  var aEle = document.createElement('a');
 
-    // // openDataUriWindow(canvas.toDataURL("image/png"));
+//     // // openDataUriWindow(canvas.toDataURL("image/png"));
 
-    // // debugger
+//     // // debugger
 
-    // // aEle.setAttribute('href', canvas.toDataURL("image/png"));
-    // aEle.setAttribute('href', canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream"));
-    // aEle.setAttribute('target', '_blank');
-    // aEle.setAttribute('download', 'qrcode.png');
+//     // // aEle.setAttribute('href', canvas.toDataURL("image/png"));
+//     // aEle.setAttribute('href', canvas.toDataURL("image/png", 1.0).replace("image/png", "image/octet-stream"));
+//     // aEle.setAttribute('target', '_blank');
+//     // aEle.setAttribute('download', 'qrcode.png');
 
-    // aEle.click();
+//     // aEle.click();
 
-    // console.log(canvas.toDataURL("image/png"));
+//     // console.log(canvas.toDataURL("image/png"));
 
-    // alert('111');
-    if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
-        // window.open(canvas.toDataURL("image/png"));
+//     // alert('111');
+//     if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
+//         // window.open(canvas.toDataURL("image/png"));
 
-        window.open('http://www.baidu.com');
-    } else {
-        aEle = document.createElement('a');
+//         window.open('http://www.baidu.com');
+//     } else {
+//         aEle = document.createElement('a');
 
-        aEle.setAttribute('href', canvas.toDataURL("image/png"));
-        aEle.setAttribute('target', '_blank');
+//         aEle.setAttribute('href', canvas.toDataURL("image/png"));
+//         aEle.setAttribute('target', '_blank');
 
-        //支持download的浏览器
-        if ('download' in aEle) {
-            aEle.setAttribute('download', 'qrcode.png');
-        }
+//         //支持download的浏览器
+//         if ('download' in aEle) {
+//             aEle.setAttribute('download', 'qrcode.png');
+//         }
 
-        document.body.appendChild(aEle);
-        aEle.click();
+//         document.body.appendChild(aEle);
+//         aEle.click();
 
-        document.body.removeChild(aEle);
-    }
-}
+//         document.body.removeChild(aEle);
+//     }
+// }
 
 $(function(){
-    var eles = $('.bg-qrocde'),
+    var eles = $('.bg-qrcode'),
         canvas = document.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         sales_image = new Image(),
@@ -109,7 +109,26 @@ $(function(){
         loadDone = 0,
         loadFn = function (evt) {
             loadDone ++;
-        };
+        },
+        downloadFile = function(dataURL){
+            aEle = document.createElement('a');
+
+            aEle.setAttribute('href', dataURL);
+            aEle.setAttribute('target', '_blank');
+            aEle.setAttribute('download', 'qrcode.png')
+
+            //为了兼容fox浏览器
+            document.body.appendChild(aEle);
+            aEle.click();
+
+            document.body.removeChild(aEle);
+        }
+
+        //绑定下载时间
+        eles.on('click', function(evt){
+            var dataURL = $(this).prop('src');
+            downloadFile(dataURL);
+        });
 
 
     sales_image.onload = loadFn;
@@ -154,13 +173,10 @@ $(function(){
         }else{
             setTimeout(function(){
                 waitImageLoad();
-            }, 2e2);
+            }, 100);  //1e2
         }
     };
 
     waitImageLoad();
-
-
-
 
 });

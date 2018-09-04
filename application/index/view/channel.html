@@ -107,13 +107,13 @@
                         </div>
                         <div class="w-col w-col-2" style="position: relative;">
                             <?php $qrcode= url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>
-
+<!-- 
                             <a href="javascript:void(0);" title="点击下载" onclick="drawQrcodeImag('sales','{$qrcode}')" style="position: relative;">
-                                <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">
-                                <img src="" alt="" class="top01" style="position: absolute;left: 0;right:0;opacity: 0">
+                                --> <!-- <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">
+                                <img src="" alt="" class="top01" style="position: absolute;left: 0;right:0;opacity: 0"> -->
 
 
-                            <!--<img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">                            -->
+                            <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">                            
 
                             <!--<a href="javascript:void(0);" title="点击下载" onclick="drawQrcodeImag('sales','{$qrcode}')" -->
                             <!--style="position: absolute;-->
@@ -124,10 +124,10 @@
                             <img class="bg-qrocde" style="position: absolute;
                             left: 0; top: 0; width: 100%; height: 100%; 
                             display: inline-block; opacity: 0;" />
-                             <a href="javascript:void(0);" title="点击下载" onclick="drawQrcodeImag('sales','{$qrcode}')" 
+      <!--                        <a href="javascript:void(0);" title="点击下载" onclick="drawQrcodeImag('sales','{$qrcode}')" 
                             style="position: absolute;
                             left: 0; top: 0; width: 100%; height: 100%; 
-                            display: inline-block;">
+                            display: inline-block;"> -->
                             </a>
                         </div>
                         <?php }?>
@@ -251,12 +251,10 @@
 
 
 </script>
-<<<<<<< HEAD
-=======
+
 <script src="/static/js/draw.js"></script>
 
 </body>
 <script src="/static/js/webflow.js" type="text/javascript"></script>
 </html>
 
->>>>>>> e8fb994da8103c7f17c80dcfd5597d1ba4b69637

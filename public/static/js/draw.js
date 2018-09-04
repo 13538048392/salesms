@@ -110,12 +110,12 @@ $(function(){
         loadFn = function (evt) {
             loadDone ++;
         },
-        downloadFile = function(dataURL){
+        downloadFile = function(dataURL, name){
             aEle = document.createElement('a');
 
             aEle.setAttribute('href', dataURL);
             aEle.setAttribute('target', '_blank');
-            aEle.setAttribute('download', 'qrcode.png')
+            aEle.setAttribute('download', name + '.png')
 
             //为了兼容fox浏览器
             document.body.appendChild(aEle);
@@ -126,8 +126,9 @@ $(function(){
 
         //绑定下载时间
         eles.on('click', function(evt){
-            var dataURL = $(this).prop('src');
-            downloadFile(dataURL);
+            var dataURL = $(this).prop('src'),
+                name = $(this).data('name');
+            downloadFile(dataURL, name);
         });
 
 

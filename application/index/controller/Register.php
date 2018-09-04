@@ -85,7 +85,9 @@ class Register extends Base
                 return json(['resp_code' => '2', 'msg' => \think\lang::get('register_fail')]);
             }
             Db::name('admin_role')->data(['user_id' => $user_id, 'role_id' => Session::get('user_role.role_id')])->insert();
-            return json(['resp_code' => '0', 'msg' => \think\lang::get('register_success')]); //邮件发送成功
+            $this->redis->del('user:' . input('phone'));
+            return json(['resp_code' => '0', 'msg' => \think\lang::get('register_success')]);
+
         }
     }
 

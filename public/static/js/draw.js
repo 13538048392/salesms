@@ -77,18 +77,23 @@ function exportImage(canvas) {
 
     // console.log(canvas.toDataURL("image/png"));
 
-    aEle = document.createElement('a');
+    
+    if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
+        window.open(canvas.toDataURL("image/png"));
+    } else {
+        aEle = document.createElement('a');
 
-    aEle.setAttribute('href', canvas.toDataURL("image/png"));
-    aEle.setAttribute('target', '_blank');
+        aEle.setAttribute('href', canvas.toDataURL("image/png"));
+        aEle.setAttribute('target', '_blank');
 
-    //支持download的浏览器
-    if ('download' in aEle) {
-        aEle.setAttribute('download', 'qrcode.png');
+        //支持download的浏览器
+        if ('download' in aEle) {
+            aEle.setAttribute('download', 'qrcode.png');
+        }
+
+        document.body.appendChild(aEle);
+        aEle.click();
+
+        document.body.removeChild(aEle);
     }
-
-    document.body.appendChild(aEle);
-    aEle.click();
-
-    document.body.removeChild(aEle);
 }

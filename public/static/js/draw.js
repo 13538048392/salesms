@@ -79,7 +79,9 @@ function exportImage(canvas) {
 
     
     if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
-        window.open(canvas.toDataURL("image/png"));
+        // window.open(canvas.toDataURL("image/png"));
+        alert('111');
+        window.open('http://www.baidu.com');
     } else {
         aEle = document.createElement('a');
 

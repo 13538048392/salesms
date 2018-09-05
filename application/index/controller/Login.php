@@ -132,32 +132,46 @@ class Login extends Base
     public function doSearchPass()
     {
         //找回密码执行
-        if (input('post.username') == '') {
-            //用户名不能为空
-            return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
-        }
-        if (input('post.email') == '') {
+        // if (input('post.username') == '') {
+        //     //用户名不能为空
+        //     return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
+        // }
+        // if (input('post.email') == '') {
+        //     //email不能为空
+        //     return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
+        // }
+
+        if (input('post.phone') == '') {
             //email不能为空
-            return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
+            return json(['msg' => \think\lang::get('phone_not_null'), 'status' => 2]);
         }
-        $data['user_name'] = input('post.username');
-        $data['email'] = input('post.email');
-        $user = new User();
-        $res = $user->checkEmail($data);
+        // $data['user_name'] = input('post.username');
+        // $data['email'] = input('post.email');
+        // $user = new User();
+        // $res = $user->checkEmail($data);
+        $res = User::where('phone',input('post.phone'))->find();
+        // if (!$res) {
+        //     //用户名和邮箱不匹配
+        //     return json(['msg' => \think\lang::get('check_email_user'), 'status' => 0]);
+        // }
         if (!$res) {
-            //用户名和邮箱不匹配
-            return json(['msg' => \think\lang::get('check_email_user'), 'status' => 0]);
+            return json(['msg' => '电话号码不存在', 'status' => 0]);
         }
         $code = input('post.code');
-        if ($code != Cookie::get('code')) {
-            //验证码错误
+        // if ($code != Cookie::get('code')) {
+        //     //验证码错误
+        //     return json(['msg' => \think\lang::get('verify_code_error'), 'status' => 3]);
+        // }
+        if ($this->redis->get('user:' . input('post.phone')) === input('post.code')) {
+            //验证成功
+            return json(['msg' => \think\lang::get('verify_success'),
+                         'status' => 200,
+                         'phone' => input('post.phone')]);
+        }
+        else{
             return json(['msg' => \think\lang::get('verify_code_error'), 'status' => 3]);
         }
-        //验证成功
-        return json(['msg' => \think\lang::get('verify_success'),
-            'status' => 200,
-            'user_name' => $data['user_name'],
-            'email' => $data['email']]);
+        
     }
 
     public function resetPass()
@@ -169,26 +183,32 @@ class Login extends Base
     public function doResetPass()
     {
         //密码重置执行
-        if (input('post.username') == '') {
-            return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
+        // if (input('post.username') == '') {
+        //     return json(['msg' => \think\lang::get('user_not_null'), 'status' => 1]);
+        // }
+        // if (input('post.email') == '') {
+        //     return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
+        // }
+        if (input('post.phone') == '') {
+            return json(['msg' => \think\lang::get('phone_not_null'), 'status' => 2]);
         }
-        if (input('post.email') == '') {
-            return json(['msg' => \think\lang::get('email_not_null'), 'status' => 2]);
-        }
+
         if (input('post.password') == '') {
             return json(['msg' => \think\lang::get('pass_not_null'), 'status' => 3]);
         }
         if (input('post.password') != input('post.password2')) {
             return json(['msg' => \think\lang::get('two_pass_differ'), 'status' => 4]);
         }
-        $data['user_name'] = input('post.username');
-        $data['email'] = input('post.email');
+        // $data['user_name'] = input('post.username');
+        // $data['email'] = input('post.email');
         $user = new User();
-        $res = $user->checkEmail($data);
+        // $res = $user->checkEmail($data);
+        $res = User::where('phone',input('post.phone'))->find();
         if (!$res) {
-            return json(['msg' => \think\lang::get('check_email_user'), 'status' => 0]);
+            return json(['msg' => '手机号码不存在', 'status' => 0]);
         }
-        $res = $user->resetPass($data, password_hash(input('post.password'), PASSWORD_DEFAULT));
+
+        $res = $user->resetPass($res['phone'], password_hash(input('post.password'), PASSWORD_DEFAULT));
 
         if ($res) {
             return json(['msg' => \think\lang::get('pass_reset_success'), 'status' => 200]);
@@ -266,5 +286,7 @@ class Login extends Base
 
             return sendEmail($password,$result['user_name'],$result['email']);
     }
+
+
 
 }

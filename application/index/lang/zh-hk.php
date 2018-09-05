@@ -51,6 +51,8 @@ return [
 	'user_frozen_seconds' => '10分钟後重試',
 	'password_error' => '密碼不正確,超過五次帳號將被凍結十分鐘',
 	'verify_success' => '驗證成功',
+	'send_phone_code' => '發送手機驗證碼',
+	'phone_error' => '手機格式錯誤',
 
 //end login controller 
 

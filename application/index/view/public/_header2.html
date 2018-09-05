@@ -18,7 +18,7 @@
           <a href="<?php echo url('home/index',['userid'=>session('userid')])?>" class="nav-link-2 w-nav-link">{$Think.lang.profile}</a>
           <a href="<?php echo url('channel/index',['userid'=>session('userid')])?>" class="nav-link-4 w-nav-link">{$Think.lang.channel}</a>
           <a href="<?php echo url('referrer/index',['userid'=>session('userid')])?>" class="nav-link-4 w-nav-link">{$Think.lang.referral}</a>
-          <a href="#" class="nav-link-4 w-nav-link">{$Think.lang.report}</a>
+          <a href="<?php echo url('transaction/index',['userid'=>session('userid')])?>" class="nav-link-4 w-nav-link">{$Think.lang.report}</a>
           
           <div data-delay="0" class="w-dropdown">
             <div class="w-dropdown-toggle">

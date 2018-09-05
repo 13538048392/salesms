@@ -193,6 +193,7 @@ class Register extends Base
             if (!$this->checkExpire($phone)) {
                 return json(['resp_code' => '2', 'msg' => \think\lang::get('short_message_reg')]);
             }
+
             $code = $this->random();
             $this->redis->set('user:' . $phone, $code);
             $this->redis->setex('user:' . $phone, 300, $code);

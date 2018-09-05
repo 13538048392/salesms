@@ -55,15 +55,15 @@ class QueryingCode
        
      }
 
-     public function createQrCode($url,$logo_url){
+     public function createQrCode($url,$logo_url,$option=''){
       //生成二维码
       $value = $url; //二维码内容 
       $errorCorrectionLevel = 'H';//容错级别 
       $matrixPointSize = 6.8;//生成图片大小 
-      $file = 'qr_code/'.microtime().'.png';
+      $file = 'qr_code/'.time().mt_rand(0,9999).'.png';
       //生成二维码图片 
-       QRcode::png($value,$file, $errorCorrectionLevel, $matrixPointSize, 2);
-       $QR = $file;
+      QRcode::png($value,$file, $errorCorrectionLevel, $matrixPointSize, 2);
+      $QR = $file;
       $logo = $logo_url;//准备好的logo图片  
       if ($logo !== FALSE) { 
       $QR = imagecreatefromstring(file_get_contents($QR)); 
@@ -83,7 +83,13 @@ class QueryingCode
       } 
       //输出图片 
       imagepng($QR, $file); 
-      return "http://$_SERVER[SERVER_NAME]/$file";
+      if ($option == '') {
+        return "http://$_SERVER[SERVER_NAME]/$file";
+      }
+      else{
+        return $file;
+      }
+      
       // echo "<img src='http://$_SERVER[SERVER_NAME]/$file'>"; 
      }
 

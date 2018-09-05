@@ -41,7 +41,61 @@ class Channel extends Base
 
     public function test()
     {
-        return view('/channel1');
+
+        $code = new \QueryingCode();
+        $input = input('get.url');
+        $pic_name =input('pic_name');
+        $type = input('type');
+        // dump($pic_name);exit;
+        $logoPath = ROOT_PATH.'public/static/images/logo.jpg';
+        $qr_code = $code->createQrCode($input,$logoPath,'location');
+        // dump($qr_code);exit;
+        if ($type == 'sales') {
+            $bg = ROOT_PATH.'public/static/images/sales_qrcode_bg.jpg';
+        }
+        else{
+            $bg = ROOT_PATH.'public/static/images/doctor_qrcode_bg.jpg';
+        }
+
+        $bigImg = imagecreatefromstring(file_get_contents($bg));
+        $qCodeImg = imagecreatefromstring(file_get_contents($qr_code));
+         
+        list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($qr_code);
+         
+        imagecopymerge($bigImg, $qCodeImg, 85, 265, 0, 0, $qCodeWidth, $qCodeHight, 100);
+         
+        list($bigWidth, $bigHight, $bigType) = getimagesize($bg);
+         
+        imagejpeg($bigImg,'qr_code/temp_code.png');
+
+        $filename = 'qr_code/temp_code.png';
+        // 使用basename函数可以获得文件的名称而不是路径信息，保护了服务器的目录安全性
+        // header("content-disposition:attachment;filename=".$filename);
+        // header("content-length:".filesize($filename));
+        // readfile($filename);
+
+        $file=fopen($filename,"r");
+        // header('Content-Description: File Transfer');
+        header("Content-Type: application/octet-stream");
+        header("Accept-Ranges: bytes");
+        header("Accept-Length: ".filesize($filename));
+        header("Content-Disposition: attachment; filename=$pic_name".'.png');
+        
+        echo fread($file,filesize($filename));
+        fclose($file);
+
+        //删除临时图片
+        unlink($filename);
+        unlink($qr_code);
+
+
+
+        // $filename = $_GET['filename'];
+        // $filename = 'static/images/logo.jpg';
+        // // 使用basename函数可以获得文件的名称而不是路径信息，保护了服务器的目录安全性
+        // header("content-disposition:attachment;filename=".$filename);
+        // header("content-length:".filesize($filename));
+        // readfile($filename);
     }
 
     public function addChannel(Request $request)

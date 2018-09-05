@@ -174,7 +174,7 @@
                         </div>
                         <div class="w-col w-col-2">
      <!--                        <?php $doc_code= url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?> -->
-                        <a href="/channel/test?url={$val['url_code']}&pic_name={$value['channel_name']}_{$val['role_name']}&type=sales" target="_blank">
+                        <a href="/channel/test?url={$val['url_code']}&pic_name={$value['channel_name']}_{$val['role_name']}" target="_blank">
                             <div class="qrcode">
                                 <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" class="code" />                                
                                 <img class="bg-qrcode" data-type="sales" data-name="{$value['channel_name']}_{$val['role_name']}"/>

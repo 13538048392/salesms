@@ -53,11 +53,12 @@ class Api
 
     public function getUsageHistory()
     {
-        $referral='SALES0001';
+        $referral='SALES00001';
         $startDate='20180701';
         $endDate='20190701';
         date_default_timezone_set('UTC');
         $timeStamp=date('Y-m-d\TH',time());
+
        // echo date('Y-m-d\TH',$timeStamp);
         $key='vGaPb2eu1b9dtfGMJ8';
         //$signature=sha1('2018-08-30T02'.$key);
@@ -67,7 +68,7 @@ class Api
         //$url1='http://testcode.com';
         $result=$this->httpGet($url);
         return $result;
-	}
+    }
 
 	public function  httpGet($url)
     {

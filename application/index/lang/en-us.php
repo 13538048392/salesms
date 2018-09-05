@@ -50,6 +50,8 @@ return [
 	'user_frozen_seconds' => 'ten minutes retry ',
 	'password_error' => 'Password is incorrect, more than five times the account will be frozen for ten minutes.',
 	'verify_success' => 'Verifies success',
+	'send_phone_code' => 'Send Verification Code',
+	'phone_error' => 'Phone Error',
 
 	//end login controller
 

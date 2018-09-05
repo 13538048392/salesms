@@ -75,6 +75,7 @@ class Channel extends Base
         // readfile($filename);
 
         $file=fopen($filename,"r");
+        // header('Content-Description: File Transfer');
         header("Content-Type: application/octet-stream");
         header("Accept-Ranges: bytes");
         header("Accept-Length: ".filesize($filename));
@@ -82,7 +83,7 @@ class Channel extends Base
         
         echo fread($file,filesize($filename));
         fclose($file);
-        
+
         //删除临时图片
         unlink($filename);
         unlink($qr_code);

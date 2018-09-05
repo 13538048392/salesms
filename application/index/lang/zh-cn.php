@@ -51,6 +51,8 @@ return [
     'user_frozen_seconds' => '10分钟后重试',
     'password_error' => '密码不正确，超过五次账号将被冻结十分钟',
     'verify_success' => '验证成功',
+    'send_phone_code' => '发送手机验证码',
+    'phone_error' => '手机格式错误',
 
 /*
 	login end

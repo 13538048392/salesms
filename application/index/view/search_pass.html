@@ -162,10 +162,10 @@ function time_read(){
     //倒数
     if (time >0) {
         time = time -1;
-        $('#send_phone').html(time+'s');
+        $('#send_phone').val(time+'s');
     }
     if (time == 0) {
-        $('#send_phone').html('重发');
+        $('#send_phone').val('重发');
         $('#send_phone').attr('disabled',false);
         clearInterval(timer); 
         time = 60;

@@ -62,8 +62,8 @@ class QueryingCode
       $matrixPointSize = 6.8;//生成图片大小 
       $file = 'qr_code/'.time().mt_rand(0,9999).'.png';
       //生成二维码图片 
-       QRcode::png($value,$file, $errorCorrectionLevel, $matrixPointSize, 2);
-       $QR = $file;
+      QRcode::png($value,$file, $errorCorrectionLevel, $matrixPointSize, 2);
+      $QR = $file;
       $logo = $logo_url;//准备好的logo图片  
       if ($logo !== FALSE) { 
       $QR = imagecreatefromstring(file_get_contents($QR)); 

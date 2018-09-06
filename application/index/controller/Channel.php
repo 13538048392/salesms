@@ -98,6 +98,33 @@ class Channel extends Base
         // readfile($filename);
     }
 
+    public function down()
+    {
+        $type      = 'ie,opera';
+        $down      = input('f'); //获取文件参数
+        $file_name = $down . '.png'; //获取文件名称
+        $dir       = "static/images/"; //相对于网站根目录的下载目录路径
+        $down_host = $_SERVER['HTTP_HOST'] . '/'; //当前域名
+        $file_path = 'http://' . $down_host . $dir . $file_name;
+        $mime      = 'application/force-download';
+        header('Pragma: public'); // required
+        header('Expires: 0'); // no cache
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Cache-Control: private', false);
+        header('Content-Type: ' . $mime);
+        if ($type == 'ie' || $type == 'opera') {
+
+            header('Content-Disposition: attachment; filename=' . urlencode($file_name));
+        } else {
+
+            header('Content-Disposition: attachment; filename=' . $file_name);
+        }
+        header('Content-Transfer-Encoding: binary');
+        header('Connection: close');
+        file_get_contents($file_path); // push it out
+        exit;
+    }
+
     public function addChannel(Request $request)
     {
         if (isset($_POST)) {

@@ -6983,7 +6983,7 @@ Webflow.define('forms', module.exports = function ($, _) {
   var chimpRegex = /list-manage[1-9]?.com/i;
 
   var disconnected = _.debounce(function () {
-   // alert('Oops! This page has improperly configured forms. Please contact your website administrator to fix this issue.');
+    alert('Oops! This page has improperly configured forms. Please contact your website administrator to fix this issue.');
   }, 100);
 
   api.ready = api.design = api.preview = function () {

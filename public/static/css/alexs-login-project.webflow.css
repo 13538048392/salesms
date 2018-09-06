@@ -3,7 +3,7 @@ body {
   background-image: url('../images/background.svg');
   background-position: 50% 0px;
   background-size: cover;
-  font-family: sans-serif;
+  font-family: Montserrat, sans-serif;
   color: #677897;
   font-size: 18px;
   line-height: 1.8;
@@ -633,8 +633,17 @@ p {
   .c-hero__text {
     text-align: center;
   }
+  .channel_label {
+    font-size: 12px;
+  }
   .text-block-3 {
     font-size: 12px;
+  }
+  .link {
+    font-size: 12px;
+  }
+  .text-block-5 {
+    font-size: 10px;
   }
   .text-block-6 {
     font-size: 12px;
@@ -642,20 +651,51 @@ p {
   .div-block-3 {
     height: 50px;
   }
+  .export_csv_submit {
+    font-size: 14px;
+  }
+  .column-5 {
+    font-size: 10px;
+  }
+  .roles {
+    font-size: 12px;
+  }
+  .text-block-15 {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 767px) {
   .c-login {
     min-width: 450px;
   }
+  .channel_label {
+    font-size: 12px;
+  }
   .text-block-3 {
     display: inline-block;
   }
+  .link {
+    font-size: 12px;
+  }
+  .text-block-5 {
+    font-size: 10px;
+  }
   .text-block-6 {
     display: inline-block;
+    font-size: 10px;
   }
   .row-2 {
     display: block;
+  }
+  .export_csv_submit {
+    font-size: 14px;
+  }
+  .roles {
+    font-size: 10px;
+  }
+  .text-block-15 {
+    font-size: 20px;
   }
 }
 
@@ -667,8 +707,119 @@ p {
     padding-right: 1rem;
     padding-left: 1rem;
   }
-  .text-block-6 {
+  .container {
+    margin-right: -50px;
+    margin-left: -50px;
+  }
+  .container-2 {
+    display: block;
+    margin-right: -50px;
+    margin-left: -50px;
+  }
+  .text-block-2.channel_label {
+    font-size: 10px;
+  }
+  .channel_label {
+    font-size: 10px;
+  }
+  .text-block-3 {
+    font-size: 10px;
+  }
+  .text-block-4 {
+    font-size: 10px;
+  }
+  .link {
     font-size: 12px;
+  }
+  .text-block-5 {
+    font-size: 10px;
+  }
+  .text-block-6 {
+    font-size: 10px;
+  }
+  .field-label {
+    font-size: 14px;
+  }
+  .bold-text-2 {
+    font-size: 16px;
+  }
+  .export_csv_submit {
+    font-size: 12px;
+  }
+  .text-field {
+    font-size: 16px;
+  }
+  .roles {
+    font-size: 10px;
+  }
+  .text-block-9 {
+    font-size: 16px;
+  }
+  .text-block-10 {
+    font-size: 16px;
+  }
+  .text-block-11 {
+    font-size: 14px;
+  }
+  .checkbox-label {
+    font-size: 14px;
+  }
+  .text-block-12 {
+    font-size: 20px;
+  }
+  .field-label-2 {
+    font-size: 16px;
+  }
+  .field-label-3 {
+    font-size: 16px;
+  }
+  .field-label-4 {
+    font-size: 16px;
+  }
+  .field-label-5 {
+    font-size: 16px;
+  }
+  .field-label-6 {
+    font-size: 16px;
+  }
+  .field-label-7 {
+    font-size: 16px;
+  }
+  .text-block-13 {
+    font-size: 20px;
+  }
+  .field-label-8 {
+    font-size: 16px;
+  }
+  .field-label-9 {
+    font-size: 16px;
+  }
+  .field-label-10 {
+    font-size: 16px;
+  }
+  .field-label-11 {
+    font-size: 16px;
+  }
+  .field-label-12 {
+    font-size: 16px;
+  }
+  .radio-button-field {
+    font-size: 16px;
+  }
+  .radio-button-field-2 {
+    font-size: 16px;
+  }
+  .text-block-14 {
+    font-size: 16px;
+  }
+  .field-label-13 {
+    font-size: 14px;
+  }
+  .text-block-15 {
+    font-size: 16px;
+  }
+  .text-block-16 {
+    font-size: 16px;
   }
 }
 

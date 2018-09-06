@@ -8,7 +8,7 @@
 require_once (ROOT_PATH  . 'extend/phpqrcode/phpqrcode.php');
 class QueryingCode
 {
-   public  function makeQueryingCode($url='',$logoPath,$option =''){
+   public  function makeQueryingCode($url='',$logoPath,$option ='',$filename=''){
        $value = $url;					//二维码内容
        $errorCorrectionLevel = 'H';	//容错级别
        $matrixPointSize = 6.8;			//生成图片大小
@@ -44,15 +44,27 @@ class QueryingCode
          exit;
        }
        else{
-        //base64格式
-         ob_start();
-         imagejpeg($QR, null, 80);
-         $data = ob_get_clean();
-         //转换成base64
-         $qr = base64_encode($data);
-         return $qr;
+           if ($option == 'sales') {
+               $bg = ROOT_PATH.'public/static/images/sales_qrcode_bg.jpg';
+           }
+           else{
+               $bg = ROOT_PATH.'public/static/images/doctor_qrcode_bg.jpg';
+           }
+           $img_bg=imagecreatefromstring(file_get_contents($bg));
+           //list($qCodeWidth, $qCodeHight, $qCodeType) = getimagesize($QR);
+           imagecopymerge($img_bg, $QR, 85, 265, 0, 0, $QR_width, $QR_height, 100);
+           $mime      = 'application/force-download';
+           header('Pragma: public'); // required
+           header('Expires: 0'); // no cache
+           header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+           header('Cache-Control: private', false);
+           header('Content-Type: ' . $mime);
+           header('Content-Disposition: attachment; filename='.$filename.'.jpg');
+           header('Content-Transfer-Encoding: binary');
+           header('Connection: close');
+           imagejpeg($img_bg); // push it out
+           exit;
        }
-       
      }
 
      public function createQrCode($url,$logo_url,$option=''){

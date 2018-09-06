@@ -98,6 +98,7 @@ class Channel extends Base
         // readfile($filename);
     }
 
+<<<<<<< Updated upstream
     public function down()
     {
         $type      = 'ie,opera';
@@ -125,6 +126,26 @@ class Channel extends Base
         exit;
     }
 
+=======
+
+    public  function  down()
+    {
+        $type=input('type');
+        $filename=input('filename');
+        $url=urldecode(input('url'));
+        $logoPath=ROOT_PATH.'public/static/images/logo.jpg';
+        $code = new \QueryingCode();
+        $code->makeQueryingCode($url,$logoPath,$type,$filename);
+    }
+
+
+    public function showPic()
+    {
+        return view('/test');
+    }
+
+
+>>>>>>> Stashed changes
     public function addChannel(Request $request)
     {
         if (isset($_POST)) {

@@ -93,10 +93,12 @@ class User extends Model
         return $res;
     }
 
-    public function resetPass($where, $password)
+    public function resetPass($phone, $password)
     {
         //修改密码
-        $res = User::where($where)->update(['pass' => $password]);
+
+        $res = User::where('phone',$phone)->update(['pass' => $password]);
+
         return $res;
     }
 }

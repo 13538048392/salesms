@@ -35,20 +35,17 @@
                 <div class="w-form">
                     <form role="form" onsubmit="return false;">
                         <input type="hidden" name="__token__" value="{$Request.token}"/>
-                        <label for="username">{$Think.lang.username}</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="" class="form-control" id="username" name="username" value="<?php echo isset($_GET['username'])?$_GET['username']:''?>" readonly="">
-                        </div>
-                        <label for="email">{$Think.lang.email}:</label>
-                        <div class="form-group">
-                            <input type="text" placeholder="" class="form-control" id="email" name="email" value="<?php echo isset($_GET['email'])?$_GET['email']:''?>" readonly="">
-                        </div>
+                        
+                        <!-- <label for="phone">{$Think.lang.phone}:</label> -->
+                        <!-- <div class="form-group"> -->
+                            <input type="hidden" placeholder="" class="form-control" id="phone" name="phone" value="<?php echo isset($_GET['phone'])?$_GET['phone']:''?>" readonly="">
+                        <!-- </div> -->
                         <label for="password">{$Think.lang.reset_pass}:</label>
-                        <div>
+                        <div class="form-group">
                             <input type="password" placeholder="{$Think.lang.reset_pass}：" class="form-control" id="password" name="password">
                         </div>
-                        <label for="password">{$Think.lang.reset_pass2}:</label>
-                        <div>
+                        <label for="password2">{$Think.lang.reset_pass2}:</label>
+                        <div class="form-group">
                             <input type="password" placeholder="{$Think.lang.reset_pass2}：" class="form-control" id="password2" name="password2">
                         </div>
                         <input type="submit" value="{$Think.lang.commit}" data-wait="Please wait..." class="c-login__submit w-button" id="commit">
@@ -59,6 +56,7 @@
                     </div>
                     <div class="w-form-fail">
                         <div>Oops! Something went wrong while submitting the form.</div>
+
                     </div>
                 </div>
             </div>
@@ -67,8 +65,23 @@
 </div>
 
 <script>
-pass_check = "{$Think.lang.pass_not_null}";
-pass2_check = "{$Think.lang.pass2_not_null}";
+var user_not_null = "{$Think.lang.user_not_null}";
+var email_not_null = "{$Think.lang.email_not_null}";
+var phone_not_null = "{$Think.lang.phone_not_null}";
+var pass_not_null = "{$Think.lang.pass_not_null}";
+var pass2_not_null = "{$Think.lang.pass2_not_null}";
+var user_length = "{$Think.lang.user_length}";
+var user_rule = "{$Think.lang.user_rule}";
+var email_rule = "{$Think.lang.email_rule}";
+var user_exist = "{$Think.lang.user_exist}";
+var email_exist = "{$Think.lang.email_exist}";
+var phone_rule = "{$Think.lang.phone_rule}";
+var pass_length = "{$Think.lang.pass_length}";
+var user_both = "{$Think.lang.user_length}";
+var pass_rule = "{$Think.lang.pass_rule}";
+var two_pass_differ = "{$Think.lang.two_pass_differ}";
+var phone_exist="{$Think.lang.phone_exist}";
+
 $(function () {
     $('form').bootstrapValidator({
         message: 'This value is not valid',
@@ -79,18 +92,36 @@ $(function () {
         },
         fields: {
             password: {
-                message: '',
                 validators: {
                     notEmpty: {
-                        message: pass_check
+                        message: pass_not_null
+                    },
+                    stringLength: {
+                        /*长度提示*/
+                        min: 6,
+                        max: 30,
+                        message: pass_length
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: pass_rule
                     }
                 }
             },
             password2: {
-                message: '',
                 validators: {
                     notEmpty: {
-                        message: pass2_check
+                        message: pass2_not_null
+                    },
+                    stringLength: {
+                        /*长度提示*/
+                        min: 6,
+                        max: 30,
+                        message: pass_length
+                    },
+                    regexp: {
+                        regexp: /^[a-zA-Z0-9_\.]+$/,
+                        message: pass_rule
                     }
                 }
             },
@@ -113,21 +144,23 @@ $(function () {
 
 $('#commit').click(function(){
     //提交验证码
-    var username = $('#username').val();
-    var email = $('#email').val();
+    // var username = $('#username').val();
+    var phone = $('#phone').val();
     var password = $('#password').val();
     var password2 = $('#password2').val();
     $('#commit').attr('disabled',true);
     $.ajax({
             url:'doResetPass',
             type:'post',
-            data:{'username':username,'email':email,'password':password,'password2':password2},
+            data:{'phone':phone,'password':password,'password2':password2},
             success:function(msg){
                 if (msg.status == 200) {
-                    $('#success_message').html('<h3>'+msg.msg+'</h3>');
+                    // $('#success_message').html('<h3>'+msg.msg+'</h3>');
+                    alert(msg.msg);
                     window.setTimeout("window.location='{:url('/login')}'",2000); 
                 }else{
-                    $('#success_message').html('<h3>'+msg.msg+'</h3>');
+                    // $('#success_message').html('<h3>'+msg.msg+'</h3>');
+                    alert(msg.msg);
                     $('#commit').attr('disabled',false);
                 }
             }

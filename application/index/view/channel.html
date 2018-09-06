@@ -135,7 +135,7 @@
                             <a href="javascript:void(0);" title="点击下载" onclick="drawQrcodeImag('sales','{$qrcode}')" style="position: relative;">
                                 --> <!-- <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" width="72" class="qrcode">
                                 <img src="" alt="" class="top01" style="position: absolute;left: 0;right:0;opacity: 0"> -->
-                            <a href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>" target="_blank">
+                            <a style="cursor: pointer" href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>" target="_blank">
                             <div class="qrcode">
                                 <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" class="code" />                             
                                 <img class="bg-qrcode" data-type="doctor" data-name="{$value['channel_name']}_{$val['role_name']}"/>
@@ -177,7 +177,7 @@
                         <div class="w-col w-col-2">
      <!--                        <?php $doc_code= url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?> -->
 
-                        <a href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>" target="_blank">
+                        <a style="cursor: pointer" href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>" target="_blank">
 
                             <div class="qrcode">
                                 <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" class="code" />                                

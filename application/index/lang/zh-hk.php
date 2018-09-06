@@ -134,6 +134,7 @@ return [
 	'copy' => '複製',
 	'success' => '成功',
 	'fail' => '失敗',
+	'new_channel' => '新渠道',
 
 	//end channel controller
 	//end home controller

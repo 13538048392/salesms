@@ -133,6 +133,7 @@ return [
 	'copy' => 'Copy',
 	'success' => 'Success',
 	'fail' => 'Fail',
+	'new_channel' => 'New Channel',
 
 	//end channel controller
 

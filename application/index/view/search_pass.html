@@ -104,8 +104,8 @@ $(function () {
                         type: 'POST',//请求方式
                         data: function(validator) {
                                return {
-                                   password: $('[name="passwordNameAttributeInYourForm"]').val(),
-                                   whatever: $('[name="whateverNameAttributeInYourForm"]').val()
+                                   phone: $('#phone').val(),
+                                   code: $('#code').val()
                                };
                             }
                          

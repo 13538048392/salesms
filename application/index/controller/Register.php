@@ -229,7 +229,7 @@ class Register extends Base
      */
     private function isMobile($mobile)
     {
-        if (preg_match('/^((13[0-9])|(14[0-9])|(15([0-3]|[5-9]))|(18[0-9])|(17[0-9])|(19[0-9]))\d{8}$/', $mobile))
+        if (preg_match('/^((13[0-9])|(14[0-9])|(15([0-3]|[5-9]))|(18[0-9])|(17[0-9])|(19[0-9])|16[6])\d{8}$/', $mobile))
             return true;
         return false;
     }

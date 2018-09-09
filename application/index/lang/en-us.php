@@ -150,6 +150,7 @@ return [
     'short_message_reg'=>'Up to once a minute, 10 times a day',
     'short_message_success'=>'The verification code was sent successfully, please check!',
     'forgot_pass'=>'Lost your username or password?',
+    'url_cancel'=>'This channel is deactivated',
 
 
 ];

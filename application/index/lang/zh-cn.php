@@ -153,6 +153,7 @@ return [
     'short_message_reg'=>'每分钟最多发一次，每天最多发十次',
     'short_message_success'=>'验证码发送成功，请查收!',
     'forgot_pass'=>'忘记用户名或密码',
+    'url_cancel'=>'注册链接已经失效',
 
 
 ];

@@ -241,7 +241,8 @@ class Register extends Base
      * 校对输入验证码
      */
     public function checkVerifyCode()
-    {
+    {   
+
         if ($this->redis->get('user:' . input('phone')) === input('code')) {
             return json(['valid' => true]);
         }

@@ -53,7 +53,7 @@ class Api
 
     public function getUsageHistory()
     {
-        $referral='001';
+        $referral='0';
         $startDate='2018-07-01';
         $endDate='2019-07-01';
         date_default_timezone_set('UTC');

@@ -54,8 +54,8 @@ class Api
     public function getUsageHistory()
     {
         $referral='SALES00001';
-        $startDate='20180701';
-        $endDate='20190701';
+        $startDate='2018-07-01';
+        $endDate='2019-07-01';
         date_default_timezone_set('UTC');
         $timeStamp=date('Y-m-d\TH',time());
 
@@ -63,11 +63,11 @@ class Api
         $key='vGaPb2eu1b9dtfGMJ8';
         //$signature=sha1('2018-08-30T02'.$key);
         $signature=$this->getSignature($timeStamp,$key);
-        $url="http://demo-dev.modontics.org/user/referral/{$referral}/usages?startDate={$startDate}&endDate={$endDate}&secret={$signature}";
+        $url="http://demo-dev.modontics.org/usage?referralCode={$referral}&startDate={$startDate}&endDate={$endDate}&secret={$signature}";
        // $url="http://demo-dev.modontics.org/user/referral/{$referral}/usages?startDate={$startDate}&endDate={$endDate}&secret={$signature}";
         //$url1='http://testcode.com';
-        $result=$this->httpGet($url);
-        return $result;
+//        $result=$this->httpGet($url);
+        return $url;
     }
 
 	public function  httpGet($url)

@@ -53,22 +53,35 @@ class Api
 
     public function getUsageHistory()
     {
+
         $referral='SALES00001';
+
+        $referral='0';
+
         $startDate='2018-07-01';
         $endDate='2019-07-01';
         date_default_timezone_set('UTC');
         $timeStamp=date('Y-m-d\TH',time());
-
-       // echo date('Y-m-d\TH',$timeStamp);
         $key='vGaPb2eu1b9dtfGMJ8';
-        //$signature=sha1('2018-08-30T02'.$key);
         $signature=$this->getSignature($timeStamp,$key);
         $url="http://demo-dev.modontics.org/usage?referralCode={$referral}&startDate={$startDate}&endDate={$endDate}&secret={$signature}";
-       // $url="http://demo-dev.modontics.org/user/referral/{$referral}/usages?startDate={$startDate}&endDate={$endDate}&secret={$signature}";
-        //$url1='http://testcode.com';
-//        $result=$this->httpGet($url);
-        return $url;
+
+        $result=$this->httpGet($url);
+        return $result;
     }
+
+    public function getECommerce($user_id,$startDate,$endDate)
+    {
+        date_default_timezone_set('UTC');
+        $timeStamp=date('Y-m-d\TH',time());
+        $key='GVz7V95yI0BalgPZFv';
+        $signature=$this->getSignature($timeStamp,$key);
+        $url="http://ec.kooa.ai/eCommerce/API/token/index.php/API/user/usages?userid={$user_id}&startdate={$startDate}&enddate={$endDate}&secret={$signature}";
+        $result=$this->httpGet($url);
+        return $result;
+
+    }
+
 
 	public function  httpGet($url)
     {

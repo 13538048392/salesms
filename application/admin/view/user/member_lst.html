@@ -9,12 +9,14 @@
 	<table class="table table-border table-bordered table-bg" id="member_list">
 		<thead>
 			<tr>
-				<th scope="col" colspan="9">会员列表</th>
+				<th scope="col" colspan="10">会员列表</th>
 			</tr>
 			<tr class="text-c">
 				<th width="25"><input type="checkbox" name="" value=""></th>
 				<th>用户名</th>
-				<th width="150">e-mail</th>
+				<th>名字</th>
+				<th>ID</th>
+				<!-- <th width="150">e-mail</th> -->
 				<th width="90">电话</th>
 				<!-- <th>性别</th> -->
 				<!--<th width="150">邮箱</th>-->
@@ -30,7 +32,9 @@
 				<tr class="text-c">
 				<td><input type="checkbox" value="1" name=""></td>
 				<td>{$vo['user_name']}</td>
-				<td>{$vo['email']}</td>
+				<td>{$vo['first_name']} {$vo['last_name']}</td>
+				<td>{$vo['id']}</td>
+				<!-- <td>{$vo['email']}</td> -->
 				<td>{$vo['phone']}</td>
 				<td>{$vo['referee_name']}</td>
 				<td>{$vo['channel_name']}</td>

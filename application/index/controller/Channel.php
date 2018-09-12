@@ -97,12 +97,16 @@ class Channel extends Base
         // header("content-length:".filesize($filename));
         // readfile($filename);
     }
-    
+
     public  function  down()
     {
+        $ua = $_SERVER["HTTP_USER_AGENT"];
         $type=input('type');
         $filename=input('filename');
         $url=urldecode(input('url'));
+        if(preg_match("/Trident/", $ua)){
+            $filename=urlencode($filename);
+        }
         $logoPath=ROOT_PATH.'public/static/images/logo.jpg';
         $code = new \QueryingCode();
         $code->makeQueryingCode($url,$logoPath,$type,$filename);

@@ -134,6 +134,7 @@ return [
 	'copy' => '複製',
 	'success' => '成功',
 	'fail' => '失敗',
+	'new_channel' => '添加',
 
 	//end channel controller
 	//end home controller
@@ -149,6 +150,7 @@ return [
     'short_message_reg'=>'每分鐘最多發壹次，每天最多發十次',
     'short_message_success'=>'驗證碼發送成功，請查收!',
     'forgot_pass'=>'忘記用戶名或密碼',
+    'url_cancel'=>'注册链接已经失效',
 
 
 

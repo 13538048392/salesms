@@ -62,7 +62,7 @@ class QueryingCode
            header('Content-Disposition: attachment; filename='.$filename.'.jpg');
            header('Content-Transfer-Encoding: binary');
            header('Connection: close');
-           imagejpeg($img_bg); // push it out
+           echo imagejpeg($img_bg); // push it out
            exit;
        }
      }

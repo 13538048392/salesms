@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\common\Base;
 use app\index\model\EcommerceApi;
+use app\index\model\DocUserInfo;
 use think\Exception;
 
 
@@ -10,9 +11,25 @@ class Transaction extends Base
 {
     public function index()
     {
-//        $api = new Api();
-//        $result =$api->getUsageHistory();
-//        dump($result);
+        $referralCode =session('userid');
+        $referralCode =1;
+        $DocUserInfo = new DocUserInfo();
+        $EcommerceApi = new EcommerceApi();
+        //根据推荐人id取得下级所有医生
+        $docinfo =$DocUserInfo->alias('D')->where('referralCode',$referralCode)->
+        field('user_id,firstName,lastName,contactPhone')
+            ->select()->toArray();
+        //根据医生，取得所有交易
+        foreach ($docinfo as $k =>$v){
+            $v['data'] =$EcommerceApi->where('userid',$v['user_id'])->field('userid,pid,unitprice,quantity,created_at')->select()->toArray();
+            if($v['data']){
+//                $v['data']['Amount'] = $v['data']['unitprice'] * $v['data']['quantity'];
+                $data[] =$v;
+            }
+        }
+
+
+        $this->assign('data',$data);
         return view('/tranhistory');
     }
 

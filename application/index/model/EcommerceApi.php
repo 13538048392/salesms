@@ -16,4 +16,5 @@ class EcommerceApi extends Model{
         $res =$this->saveAll($data,false);
         return $res;
     }
+
 }

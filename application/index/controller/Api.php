@@ -79,7 +79,7 @@ class Api
         $url="http://ec.kooa.ai/eCommerce/API/token/index.php/API/user/usages?userid={$user_id}&startdate={$startDate}&enddate={$endDate}&secret={$signature}";
         $result=$this->httpGet($url);
         return $result;
-
+//            return $url;
     }
 
 

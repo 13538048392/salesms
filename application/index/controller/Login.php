@@ -37,10 +37,10 @@ class Login extends Base
             }else{
                // return '1111';
                 Session::set('userid',Cookie::get('userid'));
-                $this->redirect('home/index', ['userid' => session('userid')]);
+                $this->redirect('channel/index', ['userid' => session('userid')]);
             }
         }else{
-            $this->redirect('home/index', ['userid' => session('userid')]);
+            $this->redirect('channel/index', ['userid' => session('userid')]);
         }
 
     }
@@ -52,7 +52,7 @@ class Login extends Base
             $password = input('password');
             //return dump(input('remember'));
            // $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-            $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/";
+            $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0-9])|(17[0-9])|(19[0-9])|16[6])\d{8}$/";
             $user = new User();
 //            if (preg_match($checkEmail, $username)) {
 //                $result = $user->userEmailLogin($username);

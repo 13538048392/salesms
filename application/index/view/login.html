@@ -1,5 +1,10 @@
 {extend name="../application/index/view/public/_header_layout.html" }
 
+{block name="meta"}
+<title>Login</title>
+<meta content="Login" property="og:title">
+{/block}
+
 {block name="css"}
 <link rel="stylesheet" href="/static/css/bootstrapValidator.min.css">
 <style>
@@ -25,10 +30,11 @@
 
 {block name="body"}
 <div class="container login from-container-custom" data-fade="true">
+    <div class="row module-title">
+        <div>KOOA - Sales Management System</div>
+    </div>
+
     <form role="form" action="{:url('login/login')}" method="post">
-        <div class="row module-title">
-            <div>KOOA - Sales Management System</div>
-        </div>
 
         <div class="row form-group">
             <label class="label-title" for="username">

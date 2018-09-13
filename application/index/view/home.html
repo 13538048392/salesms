@@ -96,6 +96,12 @@
 
 {extend name="../application/index/view/public/_header2_layout.html" }
 
+{block name="meta"}
+    <title>{$Think.lang.you_profile}</title>
+    <meta content="{$Think.lang.you_profile}" property="og:title">
+{/block}
+
+
 {block name="css"}
 <link rel="stylesheet" href="/static/css/bootstrapValidator.min.css">
 <style>
@@ -174,10 +180,6 @@
 			<button type="submit" class="btn custom-btn home-btn" data-wait="Please wait...">{$Think.lang.commit}</button>
 		</div>
 	</form>
-
-	<!-- <div class="row error">
-		<div></div>
-	</div> -->
 </div>
 {/block}
 

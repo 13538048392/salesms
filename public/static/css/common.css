@@ -156,6 +156,10 @@ body {
     height: 42px;
 }
 
+.table td{
+    vertical-align: middle !important;
+}
+
 .table thead tr{
     background-color: #afebff;
     font-weight: bold;
@@ -188,7 +192,7 @@ body {
         border-radius: 6px;
         margin-bottom: 10px;
         height: auto;
-        padding: 0 10px;
+        padding: 0 10px;        
     }        
 
     .table tbody td{

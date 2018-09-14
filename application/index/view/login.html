@@ -85,7 +85,6 @@
 <script src="/static/js/login.js"></script>
 
 <script>
-<<<<<<< HEAD
     var imgurl = "<?php echo captcha_src();?>",
         checkCodeUrl = "<?php echo url('login/checkValidateCode','','',true)?>",
         indexurl = "<?php echo url('/home/index/userid/')?>",
@@ -95,17 +94,6 @@
         send_email_again = "{$Think.lang.send_email_again}";
 
     function send_email() {
-=======
-    imgurl = "<?php echo captcha_src();?>";
-    checkCodeUrl = "<?php echo url('login/checkValidateCode','','',true)?>";
-    indexurl="<?php echo url('/channel/index/userid/')?>";
-    user_check = "{$Think.lang.user_not_null}";
-    pass_check = "{$Think.lang.pass_not_null}";
-    no_active = "{$Think.lang.no_active}";
-    send_email_again = "{$Think.lang.send_email_again}";
-
-    function send_email(){
->>>>>>> 0a8b747afa879b68e7922bc309f2783e169429b0
         //发送邮件
         var username = $('#username').val();
         var password = $('#password').val();

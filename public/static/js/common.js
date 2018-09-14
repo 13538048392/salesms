@@ -13,6 +13,23 @@ $(function () {
         amin();
     }, 100);
 
+    //设置选中头部的
+    var href = window.location.href,
+        allNav = $('.header-navbar > li > a');
+
+    allNav.each( (index, item) => {
+        var $item = $(item),
+            itemHref = $(item).prop('href');
+
+        if(href.indexOf(itemHref) != -1){
+            var $itemParents = $item.parent('li');
+
+            $itemParents.siblings('li').removeClass('active');
+            $itemParents.addClass('active');
+        }
+    });
+    
+
     // function scrollAmin() {
     //     var $this = $(document),
     //         wHeight = $(window).height(),

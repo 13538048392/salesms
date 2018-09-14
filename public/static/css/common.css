@@ -20,13 +20,13 @@ body {
     margin-bottom: 10px;
 }
 
-@media screen and (max-width: 767px){
-    .header .container{
+@media screen and (max-width: 767px) {
+    .header .container {
         padding-left: 0;
-        padding-right: 0; 
+        padding-right: 0;
     }
 
-    .header .navbar .header-image{
+    .header .navbar .header-image {
         margin-left: 10px;
     }
 }
@@ -36,35 +36,35 @@ body {
     margin: 0;
 }
 
-.module-title{
+.module-title {
     font-size: 24px;
     font-weight: 600;
     color: #677897;
     margin-bottom: 20px;
 }
 
-.label-title{
+.label-title {
     color: #4b4b4b;
     font-size: 18px;
     font-weight: 600;
 }
 
-.from-container-custom{
-    max-width: 900px;
+.from-container-custom {
+    max-width: 1024px;
     background-color: white;
     padding: 20px 40px;
     border-radius: 6px;
 }
 
-.from-container-custom .row{
+.from-container-custom .row {
     margin-bottom: 20px;
 }
 
-.from-container-custom input{
+.from-container-custom input {
     border-radius: 10px;
 }
 
-.custom-btn{
+.custom-btn {
     border-radius: 100px;
     background-image: -webkit-linear-gradient(45deg, #102397, #187adf 50%, #00eaf8);
     background-image: linear-gradient(45deg, #102397, #187adf 50%, #00eaf8);
@@ -73,23 +73,24 @@ body {
     text-align: center;
     color: white;
 }
-.custom-btn:hover{
+
+.custom-btn:hover {
     color: white;
     opacity: 0.9;
 }
 
-.navbar-default{
-    background-color: inherit;        
+.navbar-default {
+    background-color: inherit;
 }
 
 @media screen and (min-width: 768px) {
 
     /* .header .container{
-        max-width: 900px;
+        max-width: 1024px;
         margin: 0 auto;
     } */
 
-    .a-decort{
+    .a-decort {
         min-width: 70px;
     }
 
@@ -121,7 +122,7 @@ body {
         font-size: 16px;
     }
 
-    .navbar-default .dropdown-menu>li>a[data-language]:hover{
+    .navbar-default .dropdown-menu>li>a[data-language]:hover {
         background-color: #dcdcdc;
     }
 }
@@ -144,12 +145,25 @@ body {
     max-height: 50px;
 }
 
-.container .tables-row{
+table{
+    text-align: center;
+    vertical-align: middle;
+}
+
+table thead tr{
+    background-color: #afebff;
+    color: black;
+    height: 42px;
+}
+
+
+/* .container .tables-row{
     padding: 10px 5px;
     margin-bottom: 0;
+    text-align: center;
 }
 
 .container .tables-title{
     background-color: #afebff;
     color: black;
-}
+} */

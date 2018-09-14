@@ -190,13 +190,21 @@ $(function () {
         }, 'json');
     });
 
+    var messageContainer = $('.message-container');
     $("#phone").focus(function () {
-            $('.hid').show();
+        // $('.message-container').removeClass('hide');
+
+        messageContainer.fadeTo(500, 1, function(){
+            messageContainer.show();
+        });
     });
 
     $("#phone").blur(function () {
         if (!$("#phone").val()) {
-            $('.hid').hide();
+            // $('.message-container').addClass('hide');
+            messageContainer.fadeTo(500, 0, function(){
+                messageContainer.hide();
+            });
         }
     })
 

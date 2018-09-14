@@ -19,17 +19,19 @@ class Transaction extends Base
         $docinfo =$DocUserInfo->alias('D')->where('referralCode',$referralCode)->
         field('user_id,firstName,lastName,contactPhone')
             ->select()->toArray();
+
+
+        $user_id =array_column($docinfo, 'user_id');
         //根据医生，取得所有交易
+        $where['userid']=array('in',$user_id);
+        $list =$EcommerceApi->where($where)->field('userid,pid,unitprice,quantity,created_at')->paginate(10);
+        $this->assign('list',$list);
         foreach ($docinfo as $k =>$v){
-            $v['data'] =$EcommerceApi->where('userid',$v['user_id'])->field('userid,pid,unitprice,quantity,created_at')->select()->toArray();
-            if($v['data']){
-//                $v['data']['Amount'] = $v['data']['unitprice'] * $v['data']['quantity'];
-                $data[] =$v;
-            }
+           $docinfo[$user_id[$k]] =$v;
+           unset($docinfo[$k]);
         }
 
-
-        $this->assign('data',$data);
+        $this->assign('docinfo',$docinfo);
         return view('/tranhistory');
     }
 

@@ -131,11 +131,10 @@
 
 {block name="body"}
 <div class="container home from-container-custom" data-fade="true">
+  <div class="row module-title">
+    <div>{$Think.lang.you_profile}</div>
+  </div>
 	<form role="form" method="post" id="reused_form" action="{:url('home/updateProfile',['userid'=>session('userid')])}">
-		<div class="row module-title">
-			<div>{$Think.lang.you_profile}</div>
-		</div>
-
 		<div class="row form-group">
 			<label class="label-title" for="firstname">
 				{$Think.lang.first_name}

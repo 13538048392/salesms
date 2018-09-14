@@ -9,7 +9,7 @@ body {
     background-position: 50% 0px;
     background-size: cover;
     font-family: sans-serif;
-    color: #677897;
+    color: black;
     font-size: 16px;
     line-height: 1.8;
 }
@@ -145,25 +145,69 @@ body {
     max-height: 50px;
 }
 
-table{
+/* table */
+
+.table{
     text-align: center;
     vertical-align: middle;
 }
 
-table thead tr{
-    background-color: #afebff;
-    color: black;
+.table tr{
     height: 42px;
 }
 
-
-/* .container .tables-row{
-    padding: 10px 5px;
-    margin-bottom: 0;
-    text-align: center;
+.table thead tr{
+    background-color: #afebff;
+    font-weight: bold;
 }
 
-.container .tables-title{
-    background-color: #afebff;
-    color: black;
-} */
+.table tbody tr{
+    color: #616161;
+}
+
+.table tbody tr:nth-child(even){
+    background-color: #dcdcdc;
+}
+
+
+@media screen and (max-width: 992px){
+    .sales-network .search-container div{
+        padding: 0;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .table thead{
+        display: none;
+    }
+
+    .table tbody tr{
+        border: 1px solid #bcbcbd;
+        display: block;
+        border-radius: 6px;
+        margin-bottom: 10px;
+        height: auto;
+        padding: 0 10px;
+    }        
+
+    .table tbody td{
+        display: block;
+        text-align: right;
+        border: none;
+        border-bottom: 1px solid #bcbcbd;
+        padding: 6px 10px;
+    }
+
+    .table tbody td:last-child {
+        border-bottom: 0;
+    }
+
+    .table tbody td::before{
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+}
+
+/* table */

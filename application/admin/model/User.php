@@ -47,6 +47,7 @@ class User extends Model
                               ->where($where)
                               ->select()
                               ->toArray();
+
         return $data;
     }
 

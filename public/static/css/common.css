@@ -173,12 +173,8 @@ body {
     background-color: #dcdcdc;
 }
 
-
-@media screen and (max-width: 992px){
-    .sales-network .search-container div{
-        padding: 0;
-        margin-bottom: 10px;
-    }
+.custom-pager{
+    text-align: right;
 }
 
 @media screen and (max-width: 768px){

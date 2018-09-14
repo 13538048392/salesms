@@ -13,23 +13,23 @@ $(function () {
         amin();
     }, 100);
 
-    setTimeout(() => {
-        //设置选中头部的
-        var href = window.location.href,
-            allNav = $('.header-navbar > li > a');
+    //设置选中头部的
+    var href = window.location.pathname,
+        allNav = $('.header-navbar > li > a').not('.dropdown-toggle');
 
-        allNav.each((index, item) => {
-            var $item = $(item),
-                itemHref = $(item).prop('href');
+    allNav.each((index, item) => {
+        var $item = $(item),
+            itemHref = $(item).prop('href');
 
-            if (href.indexOf(itemHref) != -1) {
-                var $itemParents = $item.parent('li');
+        if (itemHref.indexOf('#') == -1 && itemHref.search(href) != -1) {
+            var $itemParents = $item.parent('li');
 
-                $itemParents.siblings('li').removeClass('active');
-                $itemParents.addClass('active');
-            }
-        });
-    }, 500);
+            $itemParents.siblings('li').removeClass('active');
+            $itemParents.addClass('active');
+
+            return false;
+        }
+    });
 
 
     // function scrollAmin() {

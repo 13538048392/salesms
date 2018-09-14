@@ -11,7 +11,7 @@ class User extends Model
     // 主键
     protected $pk = 'user_id';
 
-    public function getMemberList(){
+    public function getMemberList($where='1=1'){
         //获取会员信息
         //管理员推荐人的会员信息
         // $admin_referee = User::alias('a')
@@ -44,6 +44,7 @@ class User extends Model
                               ->field('a.id,a.user_name,a.email,a.status,a.create_time,c.channel_name,a.phone,d.first_name,d.last_name')
                               ->field(['b.user_name'=>'referee_name'])
                               ->where('a.type','>',0)
+                              ->where($where)
                               ->select()
                               ->toArray();
         return $data;

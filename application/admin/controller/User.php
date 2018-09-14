@@ -35,4 +35,25 @@ class User extends Common
         }
     }
 
+    public function searchSales(){
+        //搜索销售网络
+        $sales_name = input('post.sales_name');
+        // $find = UserModel::where('user_name',$sales_name)->find();
+        // if (!$find) {
+        //     return json(['status'=>0,'msg'=>'销售代表不存在']);
+        // }
+        $user_model = new UserModel();
+        if ($sales_name == '') {
+            $data = $user_model->getMemberList();
+        }
+        else{
+            $find = UserModel::where('user_name',$sales_name)->find();
+            $p_id = isset($find['id'])?$find['id']:'-1';
+            $data = $user_model->getMemberList('a.parent_id='.$p_id);
+        }
+        
+        return json(['status'=>200,'msg'=>'查询成功','data'=>$data]);
+        // dump($data);
+    }
+
 }

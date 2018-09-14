@@ -50,7 +50,7 @@ body {
 }
 
 .from-container-custom {
-    max-width: 1024px;
+    max-width: 900px;
     background-color: white;
     padding: 20px 40px;
     border-radius: 6px;
@@ -86,7 +86,7 @@ body {
 @media screen and (min-width: 768px) {
 
     /* .header .container{
-        max-width: 1024px;
+        max-width: 900px;
         margin: 0 auto;
     } */
 

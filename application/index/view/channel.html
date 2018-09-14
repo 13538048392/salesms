@@ -314,7 +314,7 @@
         display: flex;
     }
 
-    .channel .qrcode-container .text-content:not(:last-of-type){
+    .channel .qrcode-container .text-content{
         border-right: 1px solid #d3d3dd;
     }
 
@@ -325,12 +325,39 @@
     .channel .qrcode-container .v-center{
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        
+        justify-content: center;        
     }
 
-    @media screen and (max-height: 768px){
+    @media screen and (max-width: 768px){
+        .channel .qrcode-container, 
+        .channel .qrcode-container .text-content{
+            display: block;
+        }
 
+        .channel .qrcode-container .text-content:first-of-type{
+            border: 1px solid #d3d3dd;
+            border-radius: 6px;
+            padding: 8px 0;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        .channel .qrcode-container .text-content:first-of-type .btn{
+            min-width: 80px;
+        }
+
+        .channel .qrcode-container .channel-title{
+            text-align: left;
+            padding-top: 5px;
+        }
+
+        .channel .qrcode-container .timer{
+            display: none;
+        }
+
+        .channel .qrcode-container .last-sales{
+            border: 0;
+        }
     }
 
     /* .channel .qrcode-container .text-content:first-of-type 
@@ -574,7 +601,7 @@
         <div class="qrcode-container row">
 
             <div class="col-md-2 col-xs-12 text-content v-center">
-                <div class="col-md-12 col-xs-6">
+                <div class="col-md-12 col-xs-6 channel-title">
                     {$value['channel_name']}
                 </div>
                 <div class="col-md-12 col-xs-6">
@@ -584,13 +611,13 @@
                 </div>
             </div>
 
-            <div class="col-md-4 text-content">
+            <div class="col-md-4 col-xs-6 text-content">
                 <?php foreach($value['url_code'] as $ke=>$val): ?>
                 <?php if($ke==0){ ?>
                 
                 <div class="qrcode-body-title">
                     <?php if($lang=='en-us' ){echo
-                            "take";}?>
+                            "Invite";}?>
                     <?php if($lang=='zh-cn' ){echo
                         "邀请";}?> 
                     <?php if($lang=='zh-hk' ){echo 
@@ -614,13 +641,13 @@
                 <?php endforeach; ?>
             </div>
 
-            <div class="col-md-4 text-content">
+            <div class="col-md-4 col-xs-6 text-content last-sales">
                 <?php foreach($value['url_code'] as $k=>$v): ?>
 
                 <?php if(isset($k)&&$k > 0 ){ ?>
                 <div class="qrcode-body-title">
                     <?php if($lang=='en-us' ){echo
-                            "take";}?>
+                            "Invite ";}?>
                     <?php if($lang=='zh-cn' ){echo
                         "邀请";}?> 
                     <?php if($lang=='zh-hk' ){echo
@@ -647,7 +674,7 @@
                 <?php endforeach; ?>
             </div>
 
-            <div class="col-md-2 v-center">
+            <div class="col-md-2 v-center timer">
                 <div>
                     {$value['create_time']}
                 </div>

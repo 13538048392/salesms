@@ -53,7 +53,7 @@ class User extends Common
 
         }
         
-        // return json(['status'=>200,'msg'=>'查询成功','data'=>$data]);
+        return json(['status'=>200,'msg'=>'查询成功','data'=>$data]);
         // dump($data);
     }
 

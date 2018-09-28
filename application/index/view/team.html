@@ -112,9 +112,9 @@
 {block name="body"}
 <div class="container channel from-container-custom" data-fade="true">
     <div>
-        <div class="col-md-6">主账号：正崎代理(上海)有限公司 <button>修改资料</button></div>
-        <div class="col-md-6">KOOA客服:武勇 134567890</div>
-        <div class="col-md-12">负责人：陈大文</div>
+        <div class="col-md-6">主账号：{$data.company_name} <a href="/team/editAgent">修改资料</a></div>
+        <div class="col-md-6">KOOA客服:{$cus_data.first_name}{$cus_data.last_name} {$cus_data.phone}</div>
+        <div class="col-md-12">负责人：{$data.first_name}{$data.last_name}</div>
     </div>
 
 

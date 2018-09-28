@@ -1,0 +1,104 @@
+{extend name="../application/index/view/public/_header2_layout.html" }
+
+{block name="meta"}
+    <title>修改用户</title>
+    <meta content="修改用户" property="og:title">
+{/block}
+
+
+{block name="css"}
+<link rel="stylesheet" href="/static/css/bootstrapValidator.min.css">
+<style>
+	.home .home-btn{
+		font-weight: 900;
+		width: 100%;
+		font-size: 18px;
+  	}
+
+	.home input[type="radio"]{
+		display: inline-block;
+	}
+
+	.has-feedback label ~ .form-control-feedback{
+		margin-top: 12px;
+	}
+
+	.error{
+		margin-bottom: 0;
+		background-color: #ffdede;
+		padding: 5px 20px;
+		display: none;
+	}
+</style>
+
+{/block}
+
+{block name="body"}
+<div class="container home from-container-custom" data-fade="true">
+  <div class="row module-title">
+    <div>修改账号信息</div>
+  </div>
+	<form role="form" method="post" id="reused_form" action="{:url('home/updateProfile',['userid'=>session('userid')])}">
+		<div class="row form-group">
+			<label class="label-title" for="firstname">
+				{$Think.lang.first_name}
+			</label>
+			<input type="text" class="form-control" placeholder="{$Think.lang.first_name}" id="firstname" name="first_name"
+			 value="{$data['first_name']}" />
+		</div>
+
+		<div class="row form-group">
+			<label class="label-title" for="lastname">
+				{$Think.lang.last_name}
+			</label>
+			<input type="text" class="form-control" placeholder="{$Think.lang.last_name}" id="lastname" name="last_name" value="{$data['last_name']}">
+		</div>
+
+		<div class="row form-group">
+			<label class="label-title" for="address">{$Think.lang.home_address}</label>
+			<input type="text" class="form-control" placeholder="{$Think.lang.home_address}" id="address" name="address" value="{$data['address']}">
+		</div>
+
+		<div class="row form-group">
+			<label class="label-title" for="wechat">{$Think.lang.wechat}</label>
+			<input type="text" class="form-control" placeholder="{$Think.lang.wechat}" id="wechat" name="wechat" value="{$data['wechat']}">
+		</div>
+
+		<div class="row form-group">
+			<div class="label-title">{$Think.lang.gender}</div>
+			<span class="col-md-6 col-xs-6">
+				<input type="radio" class="radio" name="gender" id="gender" value="1" {$data['gender']==1?'checked':''} />
+				<label for="gender1" class="label-title">{$Think.lang.male}</label>
+			</span>
+			<span class="col-md-6 col-xs-6">
+					<input type="radio" class="radio" name="gender" id="gender1" value="0" {$data['gender']==0?'checked':''} />
+				<label for="gender1" class="label-title">{$Think.lang.female}</label>
+			</span>
+		</div>
+
+		<input type="hidden" name="action" value="reg2">
+		<input type="hidden" name="regcode" value="">
+
+		<div class="row">
+      <div class="col-md-5 col-xs-5">
+        <button type="submit" class="btn custom-btn home-btn" data-wait="Please wait...">{$Think.lang.commit}</button>
+      </div>
+			
+      <div class="col-md-5 col-xs-5">
+        <a href="/team/index" class="btn custom-btn home-btn" data-wait="Please wait...">返回</a>
+      </div>
+      
+		</div>
+	</form>
+</div>
+{/block}
+
+{block name="script"}
+<script src="/static/js/bootstrapValidator.min.js"></script>
+
+<script>
+	var lang_update_success="{$Think.lang.update_success}";
+</script>
+
+<script src="/static/js/home.js"></script>
+{/block}

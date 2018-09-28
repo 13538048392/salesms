@@ -1,0 +1,243 @@
+
+
+{extend name="../application/index/view/public/_header2_layout.html" }
+
+{block name="meta"}
+<title>Channel</title>
+<meta content="Channel" property="og:title">
+{/block}
+
+
+{block name="css"}
+<style>
+    /* .channel .channel-btn {
+        font-weight: 900;
+        font-size: 18px;
+    } */
+
+    .channel .serach-container > div:first-of-type{
+        padding-left: 0;
+    } 
+
+    .channel .serach-container > div{
+        padding-right: 0;
+    }
+
+    .channel .qrcode{
+        position: relative;
+    }
+
+    .channel .qrcode img{
+        display: inline-block;
+        width: 80px;
+        padding: 2px;
+        border: 1px solid #e3e3e3;
+        border-radius: 8px;
+    }
+
+    .channel .qrcode .bg-qrcode{
+        position: absolute;
+        top: 0; 
+        left: 18px; 
+        padding: 2px;
+        height: 100%;
+        opacity: 0;
+    }
+    
+    .channel .a-ele-tip{
+        cursor: pointer;
+    }
+
+    .channel .qrcode-container{
+        border: 1px solid #d3d3dd;
+        border-radius: 6px;
+        text-align: center;
+        padding: 16px;
+        display: flex;
+    }
+
+    .channel .qrcode-container .text-content{
+        border-right: 1px solid #d3d3dd;
+    }
+
+    .channel .qrcode-container .text-content:first-of-type{
+        padding-left: 0;
+    }
+
+    .channel .qrcode-container .v-center{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;        
+    }
+
+    @media screen and (max-width: 768px){
+        .channel .qrcode-container, 
+        .channel .qrcode-container .text-content{
+            display: block;
+        }
+
+        .channel .qrcode-container .text-content:first-of-type{
+            border: 1px solid #d3d3dd;
+            border-radius: 6px;
+            padding: 8px 0;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        .channel .qrcode-container .text-content:first-of-type .btn{
+            min-width: 80px;
+        }
+
+        .channel .qrcode-container .channel-title{
+            text-align: left;
+            padding-top: 5px;
+        }
+
+        .channel .qrcode-container .timer{
+            display: none;
+        }
+
+        .channel .qrcode-container .last-sales{
+            border: 0;
+        }
+    }
+
+
+
+    
+</style>
+
+{/block}
+
+{block name="body"}
+<div class="container channel from-container-custom" data-fade="true">
+    <div>
+        <div class="col-md-6">主账号：正崎代理(上海)有限公司 <button>修改资料</button></div>
+        <div class="col-md-6">KOOA客服:武勇 134567890</div>
+        <div class="col-md-12">负责人：陈大文</div>
+    </div>
+
+
+        <?php $lang = isset($_COOKIE['think_var'])?$_COOKIE['think_var']:'zh-cn';?>
+        <div class="qrcode-container row">
+
+            <table>
+                <tr>
+                    <th width="10%">姓名</th>
+                    <th width="10%">电话</th>
+                    <th width="10%">负责/关联渠道</th>
+                    <th width="10%">业绩目标</th>
+                    <th width="10%">医生目标</th>
+                    <th width="10%">设置</th>
+                </tr>
+                <tr>
+                    <td width="10%">1</td>
+                    <td width="10%">2</td>
+                    <td width="10%">3</td>
+                    <td width="10%">4</td>
+                    <td width="10%">5</td>
+                    <td width="10%">6</td>
+                </tr>
+            </table>
+        </div>
+
+
+       
+</div>
+
+{/block}
+
+{block name="script"}
+
+<script src="/static/js/bootstrapValidator.min.js"></script>
+
+<script>
+    // $('#channel_list').dataTable({
+    //     searching: false, //去掉搜索框方法
+    //     bLengthChange: false,   //去掉每页显示多少条数据方法
+    //     bAutoWidth: false,                   //是否启用自动适应列宽
+    //     pageNumber: 1,            // 显示第几页数据，默认1
+    //     iDisplayLength: 2,
+    //     bSort:false,
+    // });
+
+    var ok = "{$Think.lang.success}";
+    var copy = "{$Think.lang.copy}";
+    var fail = "{$Think.lang.fail}";
+
+    function CopyUrl(obj) {
+        //复制链接
+        var textToClipboard = $(obj).html();
+
+        var success = true;
+        if (window.clipboardData) { // Internet Explorer
+            window.clipboardData.setData("Text", textToClipboard);
+        } else {
+            // create a temporary element for the execCommand method
+            var forExecElement = CreateElementForExecCommand(textToClipboard);
+
+            /* Select the contents of the element
+                (the execCommand for 'copy' method works on the selection) */
+            SelectContent(forExecElement);
+
+            var supported = true;
+
+            // UniversalXPConnect privilege is required for clipboard access in Firefox
+            try {
+                if (window.netscape && netscape.security) {
+                    netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+                }
+
+                // Copy the selected content to the clipboard
+                // Works in Firefox and in Safari be:fore version 5
+                success = document.execCommand("copy", false, null);
+            } catch (e) {
+                success = false;
+            }
+
+            // remove the temporary element
+            document.body.removeChild(forExecElement);
+        }
+
+        if (success) {
+            alert(copy + ' ' + ok);
+        } else {
+            alert(copy + '$nbsp;' + fail);
+        }
+    }
+
+    function CreateElementForExecCommand(textToClipboard) {
+        var forExecElement = document.createElement("div");
+        // place outside the visible area
+        forExecElement.style.position = "absolute";
+        forExecElement.style.left = "-10000px";
+        forExecElement.style.top = "-10000px";
+        // write the necessary text into the element and append to the document
+        forExecElement.textContent = textToClipboard;
+        document.body.appendChild(forExecElement);
+        // the contentEditable mode is necessary for the  execCommand method in Firefox
+        forExecElement.contentEditable = true;
+
+        return forExecElement;
+    }
+
+    function SelectContent(element) {
+        // first create a range
+        var rangeToSelect = document.createRange();
+        rangeToSelect.selectNodeContents(element);
+
+        // select the contents
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(rangeToSelect);
+    }
+
+    var url_addChannel = "<?php echo url('/channel/addChannel')?>",
+        url_deleteChannel = "<?php echo url('/channel/deleteChannel')?>",
+        url_changeStatus = "<?php echo url('/channel/changeStatus')?>",
+        data_channel = "<?php echo session('userid') ?>",
+        lang_channel_name = "{$Think.lang.channel_empty}";
+</script>
+
+<script src="/static/js/home.js"></script>
+{/block}

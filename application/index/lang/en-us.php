@@ -152,5 +152,13 @@ return [
     'forgot_pass'=>'Lost your username or password?',
     'url_cancel'=>'This channel is deactivated',
 
+    //team
+
+    'team' => 'Team',
+    'performance' => 'Performance',
+    'system' => 'system',
+
+
+
 
 ];

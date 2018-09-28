@@ -155,5 +155,11 @@ return [
     'forgot_pass'=>'忘记用户名或密码',
     'url_cancel'=>'注册链接已经失效',
 
+    //team
+
+    'team' => '团队',
+    'performance' => '业绩',
+    'system' => '系统',
+
 
 ];

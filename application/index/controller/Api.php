@@ -70,6 +70,7 @@ class Api
         $key = 'vGaPb2eu1b9dtfGMJ8';
         $signature = $this->getSignature($timeStamp, $key);
         $url = "https://app.kooa.vip/usage?referralCode={$referral}&startDate={$startDate}&endDate={$endDate}&secret={$signature}";
+        return $url;
         $result = $this->httpGet($url);
         return $result;
     }

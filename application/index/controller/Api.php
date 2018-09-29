@@ -59,9 +59,8 @@ class Api
 
     }
     //获得推荐人和医生的关联数据
-    public function getUsageHistory($startDate,$endDate)
+    public function getUsageHistory($startDate, $endDate)
     {
-
 
         date_default_timezone_set('UTC');
         $timeStamp = date('Y-m-d\TH', time());
@@ -74,15 +73,15 @@ class Api
     }
 
     //去购买交易数据
-    public function getECommerce($user_id,$startDate,$endDate)
+    public function getECommerce($user_id, $startDate, $endDate)
     {
         date_default_timezone_set('UTC');
-        $timeStamp=date('Y-m-d\TH',time());
-        $key='GVz7V95yI0BalgPZFv';
-        $signature=$this->getSignature($timeStamp,$key);
-        $url="http://ec.kooa.ai/eCommerce/API/token/index.php/API/user/usages?userid={$user_id}&startdate={$startDate}&enddate={$endDate}&secret={$signature}";
+        $timeStamp = date('Y-m-d\TH', time());
+        $key = 'GVz7V95yI0BalgPZFv';
+        $signature = $this->getSignature($timeStamp, $key);
+        $url = "http://ec.kooa.ai/eCommerce/API/token/index.php/API/user/usages?userid={$user_id}&startdate={$startDate}&enddate={$endDate}&secret={$signature}";
 //        $result=$this->httpGet($url);
-        $result = file_get_contents($url);
+        $result = $this->httpGet($url);
 
         return $result;
 //            return $url;

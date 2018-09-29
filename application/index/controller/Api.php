@@ -17,12 +17,19 @@ class Api
         //获取参数
         $token = Config::get('api_token');
         //token
+
+        date_default_timezone_set('UTC');
+        $timeStamp = date('Y-m-d\TH', time());
+        $key = $token;
+        $signature = $this->getSignature($timeStamp, $key);
+        // echo $signature;exit;
         $field = array('firstName', 'lastName', 'contactPhone', 'referralCode', 'channelId');
-        if (!isset($data['api_token'])) {
-            return json(['code' => 2, 'msg' => 'Token does not exist.']);
+        if (!isset($data['secret'])) {
+            return json(['code' => 2, 'msg' => 'secret does not exist.']);
         }
-        if ($data['api_token'] != $token) {
-            return json(['code' => 3, 'msg' => 'Token error']);
+        if ($data['secret'] != $signature) {
+            return json(['code' => 3, 'msg' => 'secret error']);
+
         }
         if (!isset($data['user']['id'])) {
             return json(['code' => 4, 'msg' => 'data in wrong format']);

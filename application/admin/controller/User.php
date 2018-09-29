@@ -50,6 +50,7 @@ class User extends Common
             $find = UserModel::where('user_name',$sales_name)->find();
             $p_id = isset($find['id'])?$find['id']:'-1';
             $data = $user_model->getMemberList('a.parent_id='.$p_id);
+
         }
         
         return json(['status'=>200,'msg'=>'查询成功','data'=>$data]);

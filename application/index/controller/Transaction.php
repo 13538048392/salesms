@@ -14,21 +14,27 @@ class Transaction extends Base
     public function index()
     {
         $referralCode =session('userid');
-        $referralCode =1;
-        $DocUserInfo = new DocUserInfo();
+        $referralCode =38;
+        $RegisterApi = new RegisterApi();
         $EcommerceApi = new EcommerceApi();
         //根据推荐人id取得下级所有医生
-        $docinfo =$DocUserInfo->alias('D')->where('referralCode',$referralCode)->
-        field('user_id,firstName,lastName,contactPhone')
+        $docinfo =$RegisterApi->alias('R')->where('referralCode',$referralCode)->
+        field('userId')
             ->select()->toArray();
-        //根据医生，取得所有交易
-        foreach ($docinfo as $k =>$v){
-            $v['data'] =$EcommerceApi->where('userid',$v['user_id'])->field('userid,pid,unitprice,quantity,created_at')->select()->toArray();
-            if($v['data']){
+        if (!empty($docinfo)){
+            //根据医生，取得所有交易
+            foreach ($docinfo as $k =>$v){
+                $tranData =$EcommerceApi->where('userid',$v['userId'])->field('userid,pid,unitprice,quantity,created_at')->select()->toArray();
+                if($tranData){
 //                $v['data']['Amount'] = $v['data']['unitprice'] * $v['data']['quantity'];
-                $data[] =$v;
+                    $data[] =$tranData[0];
+                }
+
             }
+        }else{
+            $data = [];
         }
+
 
 
         $this->assign('data',$data);

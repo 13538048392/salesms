@@ -64,9 +64,7 @@
           </div>
           <div>
             <div class="row w-hidden-small w-row">
-              <!--<div class="w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">-->
-                <!--<div class="text-block-2 channel_label">Last Name</div>-->
-              <!--</div>-->
+
               <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">
                 <div class="channel_label">First Name</div>
               </div>
@@ -76,7 +74,7 @@
               <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">
                 <div class="channel_label">Usage</div>
               </div>
-              <div class="w-clearfix w-col w-col-1 w-col-small-4 w-col-tiny-1 w-col-medium-2">
+              <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">
                 <div class="channel_label">Amount</div>
               </div>
               <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">
@@ -84,30 +82,28 @@
               </div>
             </div>
             <div class="div-block-3"></div>
+
             <?php foreach($data as $k =>$v):?>
-                <?php foreach($v['data'] as $kk =>$vv):?>
+
                 <div class="row-2 w-row">
                 <div class="w-col w-col-2 w-col-small-4">
-                  <div class="text-block-3">{$v['firstName']}<br></div>
+                  <div class="text-block-3" >{$v['userid']}<br></div>
                 </div>
-                <!--<div class="w-col w-col-2 w-col-small-4">-->
-                  <!--<div class="text-block-3">{$v['lastName']}<br></div>-->
-                <!--</div>-->
-                <div class="w-col w-col-3 w-col-small-4">
+                  <div class="w-col w-col-2 w-col-small-4">
+                    <div class="text-block-3">暂无数据<br></div>
+                  </div>
 
-                  <div class="text-block-4">{:substr($v['contactPhone'],0,-6).'XXX'.substr($v['contactPhone'],-3)}</div>
-                </div>
                 <div class="w-col w-col-2 w-col-small-4">
-                  <div class="text-block-4">{$vv['pid']}</div>
+                  <div class="text-block-4" style="padding-left: 70px">{$v['pid']}</div>
                 </div>
                 <div class="column-3 w-col w-col-1 w-col-small-4">
-                  <div class="text-block-4">{$vv['quantity']*$vv['unitprice']}</div>
+                  <div class="text-block-4" style="padding-left: 70px">{$v['quantity']*$v['unitprice']}</div>
                 </div>
                 <div class="w-col w-col-2 w-col-small-4">
-                  <div class="text-block-4">{:substr($vv['created_at'],0,-8)}</div>
+                  <div class="text-block-4" style="padding-left: 100px;width: 300px;" >{:substr($v['created_at'],0,-8)}</div>
                 </div>
               </div>
-                <?php endforeach;?>
+
             <?php endforeach;?>
           </div>
         </div>

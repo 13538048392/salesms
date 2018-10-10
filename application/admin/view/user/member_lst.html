@@ -8,6 +8,12 @@
 <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
 		&nbsp;&nbsp;&nbsp;
 		销售代表&nbsp;&nbsp;&nbsp;<input type="text" id="sales_name" placeholder="检索该销售代理的销售网络报告" style="width: 200px;"> <button style="width: 50px;" id="search_sales">检索</button>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		展示角色
+		<select id="select_role">
+			<option value="1">销售</option>
+			<option value="2">医生</option>
+		</select>
 	</span>
 </div>
 
@@ -117,10 +123,11 @@ $(document).ready( function () {
 $('#search_sales').click(function(){
 	//搜索 销售网络
 	var sales_name = $('#sales_name').val();
+	var role = $('#select_role').val();
 	$.ajax({
 			url:'searchSales',
 			type:'post',
-			data:{'sales_name':sales_name},
+			data:{'sales_name':sales_name,'role':role},
 			success:function(msg){
 				if (msg.status != 200) {
 					layer.msg(msg.msg,{icon: 5,time:1000});
@@ -139,6 +146,10 @@ $('#search_sales').click(function(){
 							var first_name = '';
 							var last_name = '';
 							var channel_name = '';
+							var user_name = '';
+							if (msg['data'][i]['user_name'] != undefined) {
+								user_name = msg['data'][i]['user_name'];
+							}
 							if (msg['data'][i]['first_name'] != null) {
 								first_name = msg['data'][i]['first_name'];
 							}
@@ -151,7 +162,7 @@ $('#search_sales').click(function(){
 						
 							html+="<tr class='text-c'>";
 							html+="<td><input type='checkbox' value='1' name=''></td>";
-							html+="<td>"+msg['data'][i]['user_name']+"</td>";
+							html+="<td>"+user_name+"</td>";
 							html+="<td>"+first_name+' '+last_name+"</td>";
 							html+="<td>"+msg['data'][i]['id']+"</td>";
 							html+="<td>"+msg['data'][i]['phone']+"</td>";
@@ -279,6 +290,110 @@ function admin_start(obj,id){
 		});
 	});
 }
+
+/*下拉框切换角色*/
+$('#select_role').change(function(){
+	var role = $(this).val();
+	$.ajax({
+			url:'changeRole',
+			type:'post',
+			data:{'role':role},
+			success:function(msg){
+				if (msg.status == 200) {
+
+					if (msg['data'].length == 0) {
+						layer.msg('没有数据',{icon: 6,time:1000});
+					}
+					else{
+						layer.msg(msg.msg,{icon: 6,time:1000});
+					}
+					
+					var html = '';
+
+					for (var i = 0; i < msg['data'].length; i++) {
+							var first_name = '';
+							var last_name = '';
+							var channel_name = '';
+							var user_name = '';
+							if (msg['data'][i]['user_name'] != undefined) {
+								user_name = msg['data'][i]['user_name'];
+							}
+
+							if (msg['data'][i]['first_name'] != null) {
+								first_name = msg['data'][i]['first_name'];
+							}
+							if (msg['data'][i]['last_name'] != null) {
+								last_name = msg['data'][i]['last_name'];
+							}
+							if (msg['data'][i]['channel_name'] != null) {
+								channel_name = msg['data'][i]['channel_name'];
+							}
+						
+							html+="<tr class='text-c'>";
+							html+="<td><input type='checkbox' value='1' name=''></td>";
+							html+="<td>"+user_name+"</td>";
+							html+="<td>"+first_name+' '+last_name+"</td>";
+							html+="<td>"+msg['data'][i]['id']+"</td>";
+							html+="<td>"+msg['data'][i]['phone']+"</td>";
+							html+="<td>"+msg['data'][i]['referee_name']+"</td>";
+							html+="<td>"+channel_name+"</td>";
+							html+="<td>"+msg['data'][i]['create_time']+"</td>";
+
+							html+="<td class='td-status'>";
+
+								
+
+									if(msg['data'][i]['status'] == 1){
+									html+="<span class='label label-success radius'>已启用</span>";
+								    }
+									if(msg['data'][i]['status'] == 0){
+										html+="<span class='label label-default radius'>已禁用</span>";
+								    }
+								
+
+								
+
+							html+="</td>";
+								
+							html+="<td class='td-manage'>";
+								
+								
+
+									if (msg['data'][i]['status'] == 1) {
+									html+="<a style='text-decoration:none' onClick='admin_stop(this,"+msg['data'][i]['id']+")' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a>";
+									}
+									if (msg['data'][i]['status'] == 0) {
+										html+="<a onClick='admin_start(this,"+msg['data'][i]['id']+")' href='javascript:;' title='启用' style='text-decoration:none'><i class='Hui-iconfont'>&#xe615;</i></a>";
+									}
+
+								
+
+								
+
+							html+="</td>";
+						    html+="</tr>";
+
+					}
+
+					$('#member_list').dataTable().fnClearTable();
+	                $('#member_list').dataTable().fnDestroy();
+	                // $('#referrer_list').dataTable().fnAddData(html);  //重新绑定table数据
+	                $('#sales_list').html(html);
+	                $('#member_list').dataTable(
+	                    {
+	                        bAutoWidth: false,                   //是否启用自动适应列宽
+	                    }
+	                );
+
+				}
+				if (msg.status == 0) {
+					layer.msg(msg.msg,{icon: 6,time:1000});
+				}
+			}
+
+
+		});
+});
 </script>
 </body>
 </html>

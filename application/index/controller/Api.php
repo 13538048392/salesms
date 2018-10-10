@@ -165,4 +165,14 @@ class Api
 		dump($res);
 
 	}
+
+    public function getUserInfoApi(){
+        $key='vGaPb2eu1b9dtfGMJ8';
+        date_default_timezone_set('UTC');
+        $timeStamp=date('Y-m-d\TH',time());
+        $signature=$this->getSignature($timeStamp,$key);
+        $url="http://app.kooa.vip/user/ABC987654321?secret={$signature}";
+        dump($url);
+        // $result= file_get_contents($url);
+    }
 }

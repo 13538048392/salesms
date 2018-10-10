@@ -147,9 +147,11 @@ $('#search_sales').click(function(){
 							var last_name = '';
 							var channel_name = '';
 							var user_name = '';
+							var referee_name = '';
 							if (msg['data'][i]['user_name'] != undefined) {
 								user_name = msg['data'][i]['user_name'];
 							}
+
 							if (msg['data'][i]['first_name'] != null) {
 								first_name = msg['data'][i]['first_name'];
 							}
@@ -159,6 +161,9 @@ $('#search_sales').click(function(){
 							if (msg['data'][i]['channel_name'] != null) {
 								channel_name = msg['data'][i]['channel_name'];
 							}
+							if (msg['data'][i]['referee_name'] != null ) {
+								referee_name = msg['data'][i]['referee_name'];
+							}
 						
 							html+="<tr class='text-c'>";
 							html+="<td><input type='checkbox' value='1' name=''></td>";
@@ -166,7 +171,7 @@ $('#search_sales').click(function(){
 							html+="<td>"+first_name+' '+last_name+"</td>";
 							html+="<td>"+msg['data'][i]['id']+"</td>";
 							html+="<td>"+msg['data'][i]['phone']+"</td>";
-							html+="<td>"+msg['data'][i]['referee_name']+"</td>";
+							html+="<td>"+referee_name+"</td>";
 							html+="<td>"+channel_name+"</td>";
 							html+="<td>"+msg['data'][i]['create_time']+"</td>";
 
@@ -315,6 +320,7 @@ $('#select_role').change(function(){
 							var last_name = '';
 							var channel_name = '';
 							var user_name = '';
+							var referee_name = '';
 							if (msg['data'][i]['user_name'] != undefined) {
 								user_name = msg['data'][i]['user_name'];
 							}
@@ -328,6 +334,9 @@ $('#select_role').change(function(){
 							if (msg['data'][i]['channel_name'] != null) {
 								channel_name = msg['data'][i]['channel_name'];
 							}
+							if (msg['data'][i]['referee_name'] != null ) {
+								referee_name = msg['data'][i]['referee_name'];
+							}
 						
 							html+="<tr class='text-c'>";
 							html+="<td><input type='checkbox' value='1' name=''></td>";
@@ -335,7 +344,7 @@ $('#select_role').change(function(){
 							html+="<td>"+first_name+' '+last_name+"</td>";
 							html+="<td>"+msg['data'][i]['id']+"</td>";
 							html+="<td>"+msg['data'][i]['phone']+"</td>";
-							html+="<td>"+msg['data'][i]['referee_name']+"</td>";
+							html+="<td>"+referee_name+"</td>";
 							html+="<td>"+channel_name+"</td>";
 							html+="<td>"+msg['data'][i]['create_time']+"</td>";
 

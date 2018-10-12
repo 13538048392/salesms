@@ -8,6 +8,7 @@
 
 namespace app\index\controller;
 
+use app\common\Base;
 use app\index\model\Channel;
 use app\index\model\User;
 use think\Config;
@@ -17,7 +18,6 @@ use think\Loader;
 use think\Request;
 use think\Session;
 use think\Validate;
-use app\common\Base;
 
 Loader::import('ShortMessage', ROOT_PATH . 'application/entend/ShortMessage.php');
 Loader::import('Mailer', ROOT_PATH . 'application/entend/Mailer.php');
@@ -33,7 +33,6 @@ class Register extends Base
         $this->redis->connect(Config::get('redis.host'), Config::get('redis.port'));
         $this->redis->select(Config::get('redis.db_index'));
     }
-
 
     public function index(Request $request = null)
     {
@@ -54,7 +53,6 @@ class Register extends Base
         return $this->view->fetch('/register');
     }
 
-
     public function register()
     {
         if (isset($_POST)) {
@@ -69,15 +67,15 @@ class Register extends Base
                 return json(['resp_code' => '1', 'msg' => \think\lang::get('user_error')]); //用户信息填写不完善
             }
 //            $password = urlsafe_b64encode($data['password']);
-//            $url = url('index/register/activation', '', '', true);
-//            $url .= '/username/' . $data['username'] . '/pwd/' . $password;
-//            $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
-//            $subject = \think\lang::get('register_title');
-//            $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
-//            $mail = new \Mailer();
-//            if (!$mail->send($data['email'], $subject, $body)) {
-//                return json(['resp_code' => '3', 'msg' => \think\lang::get('register_fail')]); //邮件发送失败
-//            }
+            //            $url = url('index/register/activation', '', '', true);
+            //            $url .= '/username/' . $data['username'] . '/pwd/' . $password;
+            //            $strHtml = '<a href=' . $url . ' target="_blank">' . $url . '</a><br>';
+            //            $subject = \think\lang::get('register_title');
+            //            $body = \think\lang::get('register_email_body') . $strHtml . \think\lang::get('register_email_body2');
+            //            $mail = new \Mailer();
+            //            if (!$mail->send($data['email'], $subject, $body)) {
+            //                return json(['resp_code' => '3', 'msg' => \think\lang::get('register_fail')]); //邮件发送失败
+            //            }
             $user = new User();
             $user_id = $user->userRegister($data['username'], password_hash($data['password'], PASSWORD_DEFAULT), Session::get('user.channel_id'), Session::get('user.parent_id'), $data['phone']);
             if (!$user_id) {
@@ -89,25 +87,6 @@ class Register extends Base
             return json(['resp_code' => '0', 'msg' => \think\lang::get('register_success')]);
 
         }
-    }
-
-
-    public  function testBoot()
-    {
-        return view('/test');
-    }
-
-
-    public function testEmail()
-    {
-        $mail=new \Mailer();
-        $mail->send('804310470@qq.com', '1111111111', '804310470@qq.com');
-
-    }
-
-    public function  testPhp()
-    {
-        echo phpinfo();
     }
 
     /**
@@ -160,7 +139,6 @@ class Register extends Base
         }
     }
 
-
     /**
      * @param Request $request
      * 邮箱激活
@@ -205,6 +183,13 @@ class Register extends Base
         }
     }
 
+    public function testSendMessage()
+    {
+        $message = new \ShortMessage();
+        $result = $message->sendSms('00' . '86' . '13451728874', 123456);
+        dump($result);
+    }
+
     /**
      * @return string
      * 返回随机验证码
@@ -221,7 +206,6 @@ class Register extends Base
         return $code;
     }
 
-
     /**
      * @param $mobile
      * @return bool
@@ -229,8 +213,10 @@ class Register extends Base
      */
     private function isMobile($mobile)
     {
-        if (preg_match('/^((13[0-9])|(14[0-9])|(15([0-3]|[5-9]))|(18[0-9])|(17[0-9])|(19[0-9])|16[6])\d{8}$/', $mobile))
+        if (preg_match('/^((13[0-9])|(14[0-9])|(15([0-3]|[5-9]))|(18[0-9])|(17[0-9])|(19[0-9])|16[6])\d{8}$/', $mobile)) {
             return true;
+        }
+
         return false;
     }
 
@@ -241,7 +227,7 @@ class Register extends Base
      * 校对输入验证码
      */
     public function checkVerifyCode()
-    {   
+    {
 
         if ($this->redis->get('user:' . input('phone')) === input('code')) {
             return json(['valid' => true]);
@@ -256,7 +242,7 @@ class Register extends Base
      * 一天内最多10条，用日期和手机号号为key:day:20170104:13888888888
      * 这样按分钟生成的key比较多，可以把手机号对应的分钟放`set`内
      */
-    function checkExpire($phone)
+    public function checkExpire($phone)
     {
         if ($this->redis->exists('min:' . date('YmdHi') . ':' . $phone) || $this->redis->get('day:' . date('YmdHi') . ':' . $phone) > 10) {
             return false;

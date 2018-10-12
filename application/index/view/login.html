@@ -69,7 +69,15 @@
 </div>
 <script src="/static/js/webflow.js" type="text/javascript"></script>
 </body>
+<noscript>
+    <p>
+        您好，您的浏览器禁用了脚本，为了保障浏览效果，
+        本页面采用了大量的脚本，建议你采取下面的步骤开启脚本功能：
+    </p>
+    <p>（IE/Chrome/FireFox/Opera等主流浏览器开启脚本的方法，此处略）</p>
+</noscript>
 <script>
+
     imgurl = "<?php echo captcha_src();?>";
     checkCodeUrl = "<?php echo url('login/checkValidateCode','','',true)?>";
     indexurl="<?php echo url('/channel/index/userid/')?>";

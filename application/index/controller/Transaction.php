@@ -14,7 +14,7 @@ class Transaction extends Base
     public function index()
     {
         $referralCode =session('userid');
-        $referralCode =38;
+//        $referralCode =38;
         $RegisterApi = new RegisterApi();
         $EcommerceApi = new EcommerceApi();
         //根据推荐人id取得下级所有医生

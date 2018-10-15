@@ -21,7 +21,7 @@ return [
 //    '[login]'=>[
 //
 //    ]
-  
+
 //     Route::get('/:name/:action','index/:name/:action',[],['name'=>'/^\w{6}$/']),
 //    Route::get('/:name','index/index/locationUrl',[],['name'=>'/^\w{6}$/']),
 

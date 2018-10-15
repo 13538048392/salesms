@@ -152,6 +152,7 @@ return [
     'forgot_pass'=>'忘記用戶名或密碼',
     'url_cancel'=>'注册链接已经失效',
 
-
+    'first_name_not_null'=>'名字不能为空',
+    'last_name_not_null'=>'姓不能为空',
 
 ];

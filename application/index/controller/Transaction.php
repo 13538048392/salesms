@@ -25,8 +25,11 @@ class Transaction extends Base
             //根据医生，取得所有交易
             foreach ($docinfo as $k =>$v){
                 $tranData =$EcommerceApi->where('userid',$v['userId'])->field('userid,pid,unitprice,quantity,created_at')->select()->toArray();
+                $docinfo=DocUserInfo::get(['user_id'=>$v['userId']]);
+
                 if($tranData){
-//                $v['data']['Amount'] = $v['data']['unitprice'] * $v['data']['quantity'];
+
+                    $tranData[0]['phone']=$docinfo['contactPhone'];
                     $data[] =$tranData[0];
                 }
 

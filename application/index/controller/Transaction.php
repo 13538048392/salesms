@@ -14,34 +14,21 @@ class Transaction extends Base
     public function index()
     {
         $referralCode =session('userid');
-//        $referralCode =38;
-        $RegisterApi = new RegisterApi();
-        $EcommerceApi = new EcommerceApi();
-        //根据推荐人id取得下级所有医生
-        $docinfo =$RegisterApi->alias('R')->where('referralCode',$referralCode)->
-        field('userId')
-            ->select()->toArray();
-        if (!empty($docinfo)){
-            //根据医生，取得所有交易
-            foreach ($docinfo as $k =>$v){
-                $tranData =$EcommerceApi->where('userid',$v['userId'])->field('userid,pid,unitprice,quantity,created_at')->select()->toArray();
-                $docinfo=DocUserInfo::get(['user_id'=>$v['userId']]);
 
-                if($tranData){
-
-                    $tranData[0]['phone']=$docinfo['contactPhone'];
-                    $data[] =$tranData[0];
-                }
-
-            }
-        }else{
-            $data = [];
-        }
-
+       $data = model('RegisterApi')->getTranReport($referralCode);
 
 
         $this->assign('data',$data);
         return view('/tranhistory');
+    }
+    public function getMonthData(){
+        $month = input('post.data');
+        list($month,$year) =preg_split('/\s/',$month) ;
+        $startDate = $year.'-'.$month.'-00';
+        $endDate = $year.'-'.$month.'-32';
+        $referralCode =session('userid');
+        $data = model('RegisterApi')->getTranReport($referralCode,$startDate,$endDate);
+        return json($data);
     }
     public function  getUsageApi(){
         $api = new Api();

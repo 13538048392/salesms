@@ -12,5 +12,4 @@ use think\Model;
 
 class TranApi extends Model{
     protected $table = 'sales_tran_api';
-
 }

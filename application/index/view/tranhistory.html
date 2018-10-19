@@ -46,14 +46,18 @@
                     <div class="dropdown-toggle w-dropdown-toggle">
                       <div class="w-icon-dropdown-toggle"></div>
 
-                      <div class="text-block-8"><strong class="bold-text-2">Aug 2018</strong></div>
+                      <div class="text-block-8"><strong class="bold-text-2" id="navText">Aug 2018</strong></div>
                     </div>
-                    <nav class="w-dropdown-list">
+                    <nav class="w-dropdown-list" id="monthNav">
                       <a href="#" class="dropdown-link w-dropdown-link">Link 1</a>
                       <a href="#" class="w-dropdown-link">Link 2</a>
                       <a href="#" class="w-dropdown-link">Link 3</a>
                     </nav>
                     <script>
+                          $('#monthNav').on('click', 'a', function (evt) {
+                                $('#navText').text($(this).html());
+                          })
+
                         var date = new Date(),
                             Year = date.getFullYear(),
                             Month = date.getMonth()+1,
@@ -71,8 +75,11 @@
                                var str = '';
                                data.forEach(function (value) {
                                     str += "<div class=\"row-2 w-row\">\n" +
+                                        "                <div class=\"w-col w-col-2 w-col-small-4\">\n" +
+                                        "                  <div class=\"text-block-3\" >"+value.referralCode+"<br></div>\n" +
+                                        "                </div>\n" +
                                        "                <div class=\"w-col w-col-2 w-col-small-4\">\n" +
-                                       "                  <div class=\"text-block-3\" >"+value.userid+"<br></div>\n" +
+                                       "                  <div class=\"text-block-3\" >"+value.firstName+"<br></div>\n" +
                                        "                </div>\n" +
                                        "                  <div class=\"w-col w-col-2 w-col-small-4\">\n" +
                                        "                    <div class=\"text-block-3\">"+value.phone+"<br></div>\n" +
@@ -112,11 +119,13 @@
           </div>
           <div>
             <div class="row w-hidden-small w-row">
-
+              <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">
+                <div class="channel_label">ReferralCode</div>
+              </div>
               <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">
                 <div class="channel_label">First Name</div>
               </div>
-              <div class="w-clearfix w-col w-col-3 w-col-small-4 w-col-tiny-3 w-col-medium-2">
+              <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-3 w-col-medium-2">
                 <div class="channel_label">Phone</div>
               </div>
               <div class="w-clearfix w-col w-col-2 w-col-small-4 w-col-tiny-2 w-col-medium-2">
@@ -135,8 +144,11 @@
 
                 <div class="row-2 w-row">
                 <div class="w-col w-col-2 w-col-small-4">
-                  <div class="text-block-3" >{$v['userid']}<br></div>
+                  <div class="text-block-3" >{$v['referralCode']}<br></div>
                 </div>
+                  <div class="w-col w-col-2 w-col-small-4">
+                    <div class="text-block-3" >{$v['firstName']}<br></div>
+                  </div>
                   <div class="w-col w-col-2 w-col-small-4">
                     <div class="text-block-3">{$v['phone']}<br></div>
                   </div>

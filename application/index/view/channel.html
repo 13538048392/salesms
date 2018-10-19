@@ -359,6 +359,31 @@
         .channel .qrcode-container .last-sales{
             border: 0;
         }
+
+        .copy-btn{
+            display: block !important;
+            margin: 10px 0;
+        }
+
+        .copy-link{
+            display: none !important;
+        }
+    }
+
+    .copy-btn{
+        display: none;
+    }
+
+    .copy-link{
+        display: block;
+    }
+
+    .ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
     }
 
     /* .channel .qrcode-container .text-content:first-of-type 
@@ -499,7 +524,7 @@
     </div>
     <!-- <div class="row"> -->
 
-        <!-- <table width="100%" cellspacing="0" cellpadding="0">
+    <!-- <table width="100%" cellspacing="0" cellpadding="0">
             <thead>
                 <tr>
                     <td>
@@ -597,93 +622,100 @@
             </tbody>
         </table> -->
 
-        <?php $lang = isset($_COOKIE['think_var'])?$_COOKIE['think_var']:'zh-cn';?>
-        <?php foreach($data as $key=>$value): ?>
-        <div class="qrcode-container row">
+    <?php $lang = isset($_COOKIE['think_var'])?$_COOKIE['think_var']:'zh-cn';?>
+    <?php foreach($data as $key=>$value): ?>
+    <div class="qrcode-container row">
 
-            <div class="col-md-2 col-xs-12 text-content v-center">
-                <div class="col-md-12 col-xs-6 channel-title">
-                    {$value['channel_name']}
-                </div>
-                <div class="col-md-12 col-xs-6">
-                    <a class="btn status {$value['status']==0 ? 'btn-danger':'btn-success'}" href="#" data-id="{$value['id']}"
-                        data-value="{$value['status']==0 ? '1':'0'}">{$value['status']==0
-                        ? 'Start':'Stop'}</a>
-                </div>
+        <div class="col-md-2 col-xs-12 text-content v-center">
+            <div class="col-md-12 col-xs-6 channel-title">
+                {$value['channel_name']}
             </div>
-
-            <div class="col-md-4 col-xs-6 text-content">
-                <?php foreach($value['url_code'] as $ke=>$val): ?>
-                <?php if($ke==0){ ?>
-                
-                <div class="qrcode-body-title">
-                    <?php if($lang=='en-us' ){echo
-                            "Invite";}?>
-                    <?php if($lang=='zh-cn' ){echo
-                        "邀请";}?> 
-                    <?php if($lang=='zh-hk' ){echo 
-                        "邀請";}?>{$val['role_name']}
-                </div>
-                <?php $type=$val['role_name']=='销售'? "sales":'doctor';?>
-                <div class="qrcode-body-code">
-                    <a class="a-ele-tip" href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>"
-                        target="_blank">
-                        <div class="qrcode">
-                            <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>"
-                                class="code" />
-                            <img class="bg-qrcode" data-type="doctor" data-name="{$value['channel_name']}_{$val['role_name']}" />
-                        </div>
-                    </a>
-                </div>
-                <div class="qrcode-body-url"><a class="a-ele-tip" onclick="CopyUrl(this)">{$val['url_code']}</a></div>
-                <div>click: 0</div>
-
-                <?php }?>
-                <?php endforeach; ?>
-            </div>
-
-            <div class="col-md-4 col-xs-6 text-content last-sales">
-                <?php foreach($value['url_code'] as $k=>$v): ?>
-
-                <?php if(isset($k)&&$k > 0 ){ ?>
-                <div class="qrcode-body-title">
-                    <?php if($lang=='en-us' ){echo
-                            "Invite ";}?>
-                    <?php if($lang=='zh-cn' ){echo
-                        "邀请";}?> 
-                    <?php if($lang=='zh-hk' ){echo
-                        "邀請";}?>{$v['role_name']} 
-                </div>
-
-                <?php $type=$val['role_name']=='销售'? "sales":'doctor';?>
-
-                <div class="qrcode-body-code">
-                    <a class="a-ele-tip" href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>"
-                        target="_blank">
-
-                        <div class="qrcode">
-                            <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>"
-                                class="code" />
-                            <img class="bg-qrcode" data-type="sales" data-name="{$value['channel_name']}_{$val['role_name']}" />
-                        </div>
-                    </a></div>
-                <div class="qrcode-body-url"><a class="a-ele-tip" onclick="CopyUrl(this)">{$val['url_code']}</a></div>
-
-                <div>click: 0</div>
-
-                <?php } ?>
-                <?php endforeach; ?>
-            </div>
-
-            <div class="col-md-2 v-center timer">
-                <div>
-                    {$value['create_time']}
-                </div>
+            <div class="col-md-12 col-xs-6">
+                <a class="btn status {$value['status']==0 ? 'btn-danger':'btn-success'}" href="#" data-id="{$value['id']}"
+                    data-value="{$value['status']==0 ? '1':'0'}">{$value['status']==0
+                    ? 'Start':'Stop'}</a>
             </div>
         </div>
-        <?php endforeach; ?>
 
-        <!-- <div class="qrcode-body row">
+        <div class="col-md-4 col-xs-6 text-content">
+            <?php foreach($value['url_code'] as $ke=>$val): ?>
+            <?php if($ke==0){ ?>
+
+            <div class="qrcode-body-title">
+                <?php if($lang=='en-us' ){echo
+                            "Invite";}?>
+                <?php if($lang=='zh-cn' ){echo
+                        "邀请";}?>
+                <?php if($lang=='zh-hk' ){echo 
+                        "邀請";}?>{$val['role_name']}
+            </div>
+            <?php $type=$val['role_name']=='销售'? "sales":'doctor';?>
+            <div class="qrcode-body-code">
+                <a class="a-ele-tip" href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>"
+                    target="_blank">
+                    <div class="qrcode">
+                        <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" class="code" />
+                        <img class="bg-qrcode" data-type="doctor" data-name="{$value['channel_name']}_{$val['role_name']}" />
+                    </div>
+                </a>
+            </div>
+
+            <a class="copy-btn btn status btn-success" href="#" onclick="CopyUrl(this, '{$val['url_code']})'">Copy Link</a>
+
+            <div class="qrcode-body-url copy-link"><a class="a-ele-tip" onclick="CopyUrl(this)">{$val['url_code']}</a></div>
+
+
+
+            <div>click: 0</div>
+
+            <?php }?>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="col-md-4 col-xs-6 text-content last-sales">
+            <?php foreach($value['url_code'] as $k=>$v): ?>
+
+            <?php if(isset($k)&&$k > 0 ){ ?>
+            <div class="qrcode-body-title">
+                <?php if($lang=='en-us' ){echo
+                            "Invite ";}?>
+                <?php if($lang=='zh-cn' ){echo
+                        "邀请";}?>
+                <?php if($lang=='zh-hk' ){echo
+                        "邀請";}?>{$v['role_name']}
+            </div>
+
+            <?php $type=$val['role_name']=='销售'? "sales":'doctor';?>
+
+            <div class="qrcode-body-code">
+                <a class="a-ele-tip" href="<?php echo url('/channel/down',['url'=>urlencode($val['url_code']),'filename'=>$value['channel_name'].'_'.$val['role_name'],'type'=>$type])?>"
+                    target="_blank">
+
+                    <div class="qrcode">
+                        <img src="<?php echo url('/channel/QrCode',['url_code'=>urlencode($val['url_code'])])?>" class="code" />
+                        <img class="bg-qrcode" data-type="sales" data-name="{$value['channel_name']}_{$val['role_name']}" />
+                    </div>
+                </a></div>
+
+                <a class="copy-btn btn status btn-success" href="#" onclick="CopyUrl(this, '{$val['url_code']}')">Copy Link</a>
+
+            <div class="qrcode-body-url copy-link"><a class="a-ele-tip" onclick="CopyUrl(this)">{$val['url_code']}</a></div>
+
+            <div>click: 0</div>
+
+            <?php } ?>
+            <?php endforeach; ?>
+        </div>
+
+        <div class="col-md-2 v-center timer">
+            <div>
+                {$value['create_time']}
+            </div>
+        </div>
+    </div>
+    <?php endforeach; ?>
+
+    <!-- <div class="qrcode-body row">
                 <div class="col-xs-6">
                     <?php foreach($value['url_code'] as $ke=>$val): ?>
                     <?php if($ke==0){ ?>
@@ -730,7 +762,7 @@
                 </div>
 
  -->
-        <!-- </div> -->
+    <!-- </div> -->
 
 
     <!-- </div> -->
@@ -756,9 +788,9 @@
     var copy = "{$Think.lang.copy}";
     var fail = "{$Think.lang.fail}";
 
-    function CopyUrl(obj) {
+    function CopyUrl(obj, url) {
         //复制链接
-        var textToClipboard = $(obj).html();
+        var textToClipboard = url || $(obj).html();
 
         var success = true;
         if (window.clipboardData) { // Internet Explorer

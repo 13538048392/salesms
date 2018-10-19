@@ -15,12 +15,19 @@ class RegisterApi extends Model{
     //获取交易报告数据
     public function getTranReport($referalCode,$startDate=0,$endDate=0){
         if(!$startDate){
-            $where =['R.referralCode'=>$referalCode];
+            if($referalCode ==1){
+                $where=[];
+            }else{
+                $where =['R.referralCode'=>$referalCode];
+            }
+
         }else{
-            $where = ['R.referralCode'=>$referalCode];
+            if($referalCode ==1){
+                $where=[];
+            }else{
+                $where =['R.referralCode'=>$referalCode];
+            }
             $where['created_at']=array('between',$startDate.','.$endDate);
-//            $where['created_at']=array('lt',$endDate);
-//            halt($where);
         }
 
         $data =$this->alias('R')->field('EA.userid,pid,unitprice,quantity,created_at,contactPhone as phone')

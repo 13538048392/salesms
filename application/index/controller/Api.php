@@ -102,35 +102,7 @@ class Api
         $result = $this->httpGet($url);
 
     }
-    public function getUsageHistory($startDate,$endDate)
-    {
 
-        date_default_timezone_set('UTC');
-        $timeStamp=date('Y-m-d\TH',time());
-        $key='vGaPb2eu1b9dtfGMJ8';
-
-        $signature=$this->getSignature($timeStamp,$key);
-//        $url="http://demo-dev.modontics.org/usage?referralCode={$referral}&startDate={$startDate}&endDate={$endDate}&secret={$signature}";
-        $url="http://app.kooa.vip/usage?startDate={$startDate}&endDate={$endDate}&secret={$signature}";
-//        halt($url);
-       $result= file_get_contents($url);
-//        $result=$this->httpGet($url);
-        return $result;
-    }
-    //去购买交易数据
-    public function getECommerce($user_id,$startDate,$endDate)
-    {
-        date_default_timezone_set('UTC');
-        $timeStamp=date('Y-m-d\TH',time());
-        $key='GVz7V95yI0BalgPZFv';
-        $signature=$this->getSignature($timeStamp,$key);
-        $url="http://ec.kooa.ai/eCommerce/API/token/index.php/API/user/usages?userid={$user_id}&startdate={$startDate}&enddate={$endDate}&secret={$signature}";
-//        $result=$this->httpGet($url);
-        $result = file_get_contents($url);
->>>>>>> Stashed changes
-        return $result;
-//            return $url;
-    }
 
     public function httpGet($url)
     {

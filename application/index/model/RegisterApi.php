@@ -30,7 +30,7 @@ class RegisterApi extends Model{
             $where['created_at']=array('between',$startDate.','.$endDate);
         }
 
-        $data =$this->alias('R')->field('R.referralCode,firstName,pid,unitprice,quantity,created_at,contactPhone as phone')
+        $data =$this->alias('R')->field('R.referralCode,firstName,description,unitprice,quantity,created_at,contactPhone as phone')
             ->join('ecommerce_api EA','R.userId=EA.userid','RIGHT')->order('created_at','desc')
             ->join('doc_user_info DUI','DUI.user_id =EA.userid','LEFT')->where($where)->select()->toArray();
         return $data;

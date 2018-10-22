@@ -49,21 +49,21 @@ class Api
         if ($insert['user_id'] == '') {
             return json(['code' => 6, 'msg' => 'user_id can not be empty']);
         }
-        if ($insert['firstName'] == '') {
-            return json(['code' => 7, 'msg' => 'firstName can not be empty']);
-        }
-        if ($insert['lastName'] == '') {
-            return json(['code' => 8, 'msg' => 'lastName can not be empty']);
-        }
-        if ($insert['contactPhone'] == '') {
-            return json(['code' => 9, 'msg' => 'contactPhone can not be empty']);
-        }
-        if ($insert['referralCode'] == '') {
-            return json(['code' => 10, 'msg' => 'referralCode can not be empty']);
-        }
-        if ($insert['channelId'] == '') {
-            return json(['code' => 11, 'msg' => 'channelId can not be empty']);
-        }
+        // if ($insert['firstName'] == '') {
+        //     return json(['code' => 7, 'msg' => 'firstName can not be empty']);
+        // }
+        // if ($insert['lastName'] == '') {
+        //     return json(['code' => 8, 'msg' => 'lastName can not be empty']);
+        // }
+        // if ($insert['contactPhone'] == '') {
+        //     return json(['code' => 9, 'msg' => 'contactPhone can not be empty']);
+        // }
+        // if ($insert['referralCode'] == '') {
+        //     return json(['code' => 10, 'msg' => 'referralCode can not be empty']);
+        // }
+        // if ($insert['channelId'] == '') {
+        //     return json(['code' => 11, 'msg' => 'channelId can not be empty']);
+        // }
         $find = DocUserInfoModel::where($insert)->find();
         if ($find) {
             return json(['code' => 5, 'msg' => 'data is already there. Please do not repeat it.']);

@@ -1,4 +1,0 @@
-
-:2018-10-23 06:10:46 
-293---SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)
-

@@ -124,7 +124,7 @@ class Transaction extends Base
         $EcommerceApi = new EcommerceApi();
         $startDate =date('Y-m-d',strtotime('-1 day'));
         $endDate = date('Y-m-d');
-        $json = $api->getECommerce('','2018-10-18',$endDate);
+        $json = $api->getECommerce('',$startDate,$endDate);
 
         $result =json_decode($json,true);
         if ($result['status'] === 0){

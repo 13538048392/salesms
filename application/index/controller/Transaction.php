@@ -146,11 +146,12 @@ class Transaction extends Base
     {
         $filename = $_SERVER['DOCUMENT_ROOT'] . '/../application/errorlog';
         if (!is_dir($filename)) {
-            mkdir($filename, 0777);
+            mkdir($filename, 0777, true);
         }
         $filename = $filename . '/' . $type . '.txt';
         if (!file_exists($filename)) {
-            fopen($filename, "a+");
+            $Ts = fopen($filename, "r");
+            fclose($Ts);
         }
         if (!is_writable($filename)) {
             chmod($filename, 0777);

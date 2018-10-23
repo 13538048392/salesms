@@ -151,7 +151,7 @@ class Transaction extends Base
         $filename = $filename . '/' . $type . '.txt';
         if (!file_exists($filename)) {
             if (!is_writable($filename)) {
-                chmod($fileName, 0777);
+                chmod($filename, 0777);
             }
             $Ts = fopen($filename, "a+");
         }

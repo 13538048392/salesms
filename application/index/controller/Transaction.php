@@ -33,12 +33,11 @@ class Transaction extends Base
         $endDate = date('Y-m-d');
         $json =$api->getUsageHistory($startDate,$endDate);
         $result =json_decode($json,true);
-        if($result['error'] !=0){
+        if(!isset($result['error']) || $result['error'] !=0){
             $content = $result;
             $this->log('getUsageApi',$content);
             return false;
         };
-
 
         foreach ($result['data'] as $k=>$v){
             if($a =preg_match('/^\d+$/',$v['referralCode'])){
@@ -125,7 +124,8 @@ class Transaction extends Base
         $EcommerceApi = new EcommerceApi();
         $startDate =date('Y-m-d',strtotime('-1 day'));
         $endDate = date('Y-m-d');
-        $json = $api->getECommerce('',$startDate,$endDate);
+        $json = $api->getECommerce('','2018-10-18',$endDate);
+
         $result =json_decode($json,true);
         if ($result['status'] === 0){
             try{

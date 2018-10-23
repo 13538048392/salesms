@@ -128,7 +128,7 @@ class Transaction extends Base
         $json = $api->getECommerce('', $startDate, $endDate);
 
         $result = json_decode($json, true);
-        // halt($result);
+
         if ($result['status'] === 0) {
             try {
                 $EcommerceApi->add($result['message']);
@@ -144,20 +144,21 @@ class Transaction extends Base
     }
     public function log($type, $content)
     {
-        $filename = $_SERVER['DOCUMENT_ROOT'] . '/../application/errorlog';
+
+        $filename = APP_PATH . 'errorlog';
         if (!is_dir($filename)) {
             mkdir($filename, 0777, true);
         }
-        $filename = $filename . '/' . $type . '.txt';
+        $filename = $filename . DS . $type . '.txt';
         if (!file_exists($filename)) {
-            $Ts = fopen($filename, "r");
-            fclose($Ts);
+            @fopen($filename, 'w');
         }
         if (!is_writable($filename)) {
             chmod($filename, 0777);
         }
-        $Ts = fopen($filename, "a+");
-        fputs($Ts, "执行日期：" . "\r\n" . date('Y-m-d H:i:s', time()) . ' ' . "\n" . $content . "\n");
+        $Ts = @fopen($filename, "a+");
+        @fputs($Ts, "执行日期：" . "\r\n" . date('Y-m-d H:i:s', time()) . ' ' . "\n" . $content . "\n");
         fclose($Ts);
     }
+
 }

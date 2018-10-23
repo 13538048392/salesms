@@ -1,7 +1,8 @@
-！.gitignore
+﻿！.gitignore
 salesms.git/
 .idea/
 runtime/
+errorlog/
 /application/database.php
 /thinkphp_
 thinkphp_/.*

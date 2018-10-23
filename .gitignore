@@ -2,7 +2,7 @@
 salesms.git/
 .idea/
 runtime/
-errorlog/
+/application/errorlog/
 /application/database.php
 /thinkphp_
 thinkphp_/.*

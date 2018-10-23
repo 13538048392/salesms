@@ -144,11 +144,12 @@ class Transaction extends Base
     }
     public function log($type, $content)
     {
-        $filename = $_SERVER['DOCUMENT_ROOT'] . '/../application/errorlog/' . $type . '.txt';
+        $filename = $_SERVER['DOCUMENT_ROOT'] . '/../application/errorlog';
         if (!file_exists($filename)) {
             mkdir($filename);
             chmod($filename, 777);
         }
+        $filename = $filename . '/' . $type . '.txt';
         $Ts = fopen($filename, "a+");
         fputs($Ts, "执行日期：" . "\r\n" . date('Y-m-d H:i:s', time()) . ' ' . "\n" . $content . "\n");
         fclose($Ts);

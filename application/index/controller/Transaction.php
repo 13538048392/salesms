@@ -150,11 +150,12 @@ class Transaction extends Base
         }
         $filename = $filename . '/' . $type . '.txt';
         if (!file_exists($filename)) {
-            if (!is_writable($filename)) {
-                chmod($filename, 0777);
-            }
-            $Ts = fopen($filename, "a+");
+            fopen($filename, "a+");
         }
+        if (!is_writable($filename)) {
+            chmod($filename, 0777);
+        }
+        $Ts = fopen($filename, "a+");
         fputs($Ts, "执行日期：" . "\r\n" . date('Y-m-d H:i:s', time()) . ' ' . "\n" . $content . "\n");
         fclose($Ts);
     }

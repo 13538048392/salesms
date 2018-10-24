@@ -3,6 +3,7 @@ namespace app\admin\controller;
 
 use think\Controller;
 use app\admin\model\User as UserModel;
+use app\admin\model\DocUser as DocModel;
 use think\Session;
 
 class User extends Common
@@ -38,23 +39,52 @@ class User extends Common
     public function searchSales(){
         //搜索销售网络
         $sales_name = input('post.sales_name');
+        $role = input('role');
         // $find = UserModel::where('user_name',$sales_name)->find();
         // if (!$find) {
         //     return json(['status'=>0,'msg'=>'销售代表不存在']);
         // }
-        $user_model = new UserModel();
-        if ($sales_name == '') {
-            $data = $user_model->getMemberList();
-        }
-        else{
-            $find = UserModel::where('user_name',$sales_name)->find();
-            $p_id = isset($find['id'])?$find['id']:'-1';
-            $data = $user_model->getMemberList('a.parent_id='.$p_id);
+        $find = UserModel::where('user_name',$sales_name)->find();
+        $p_id = isset($find['id'])?$find['id']:'-1';
+        if ($role == 1) {
+            $user_model = new UserModel();
+            if ($sales_name == '') {
+                $data = $user_model->getMemberList();
+            }
+            else{
+                $data = $user_model->getMemberList('a.parent_id='.$p_id);
 
+            }
+        }
+        if ($role == 2) {
+            $doc_model = new DocModel();
+            if ($sales_name == '') {
+                $data = $doc_model->getDoc();
+            }
+            else{
+                $data = $doc_model->getDoc('a.referralCode='.$p_id);
+            }
+            
         }
         
-        // return json(['status'=>200,'msg'=>'查询成功','data'=>$data]);
+        
+        return json(['status'=>200,'msg'=>'查询成功','data'=>$data]);
         // dump($data);
+    }
+
+    public function changeRole(){
+        //改变角色
+        if (input('role') == 1) {
+            $user_model = new UserModel();
+            $data = $user_model->getMemberList();
+        }
+        if (input('role') == 2) {
+            $doc_model = new DocModel();
+            $data = $doc_model->getDoc();
+        }
+        
+        return json(['status'=>200,'msg'=>'查询成功','data'=>$data]);
+
     }
 
 }

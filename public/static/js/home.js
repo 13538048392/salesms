@@ -1,5 +1,6 @@
 $(function () {
     $('form').bootstrapValidator({
+        useBlur:true,
         message: 'This value is not valid',
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
@@ -7,30 +8,17 @@ $(function () {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            firstname: {
-                message: '用户名验证失败',
+            first_name: {
                 validators: {
                     notEmpty: {
-                        message: 'FirstName can not be empty'
+                        message: first_name_not_null
                     }
                 }
             },
-            lastname: {
-                message: '用户名验证失败',
+            last_name: {
                 validators: {
                     notEmpty: {
-                        message: 'LastName can not be empty'
-                    }
-                }
-            },
-            phone: {
-                validators: {
-                    notEmpty: {
-                        message: 'Phone can not be empty'
-                    },
-                    regexp: {
-                        regexp: /^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(18[0,5-9]))\d{8}$/,
-                        message: 'Phone is not available'
+                        message: last_name_not_null
                     }
                 }
             }
@@ -133,25 +121,6 @@ $(function () {
         })
     });
 var html='';
-    // function getDataList(data) {
-    //     if (!data) return;
-    //         $.each(data, function (key, value) {
-    //             if ($.isArray(this)) {
-    //                 getDataList(this);//当前节点是数组，继续递归
-    //             } else {
-    //                 html += '<tr>' +
-    //                     '<td>' + value.user_name + '</td>' +
-    //                     '<td>' + value.channel_name + '</td>' +
-    //                     '<td>' + value.first_name + '</td>' +
-    //                     '<td>' + value.last_name + '</td>' +
-    //                     '<td>' + value.create_time + '</td>' +
-    //                     '</tr>';
-    //             }
-    //         });
-    //     return html;
-    // }
-
-
 function getDataList(data){
     for (var i = 0; i < data.length; i++) {
         var list = [data[i]];

@@ -29,6 +29,15 @@
 {/block}
 
 {block name="body"}
+
+<noscript>
+    <p>
+        您好，您的浏览器禁用了脚本，为了保障浏览效果，
+        本页面采用了大量的脚本，建议你采取下面的步骤开启脚本功能：
+    </p>
+    <p>（IE/Chrome/FireFox/Opera等主流浏览器开启脚本的方法，此处略）</p>
+</noscript>
+
 <div class="container login from-container-custom" data-fade="true">
     <div class="row module-title">
         <div>KOOA - Sales Management System</div>
@@ -87,7 +96,7 @@
 <script>
     var imgurl = "<?php echo captcha_src();?>",
         checkCodeUrl = "<?php echo url('login/checkValidateCode','','',true)?>",
-        indexurl = "<?php echo url('/channel/index/userid/')?>",
+        indexurl="<?php echo url('/home/index/userid/')?>",
         user_check = "{$Think.lang.user_not_null}",
         pass_check = "{$Think.lang.pass_not_null}",
         no_active = "{$Think.lang.no_active}",

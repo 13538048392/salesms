@@ -155,5 +155,7 @@ return [
     'forgot_pass'=>'忘记用户名或密码',
     'url_cancel'=>'注册链接已经失效',
 
+    'first_name_not_null'=>'名字不能为空',
+    'last_name_not_null'=>'姓不能为空',
 
 ];

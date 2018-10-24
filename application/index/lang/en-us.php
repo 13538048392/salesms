@@ -152,5 +152,7 @@ return [
     'forgot_pass'=>'Lost your username or password?',
     'url_cancel'=>'This channel is deactivated',
 
+    'first_name_not_null'=>'FirstName can not be empty',
+    'last_name_not_null'=>'LastName can not be empty',
 
 ];

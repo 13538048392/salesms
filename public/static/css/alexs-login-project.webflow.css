@@ -33,7 +33,7 @@ p {
 
 .c-login {
   max-width: auto;
-  min-width: auto;
+  min-width: 1024px ;
   margin-top: 1rem;
   margin-bottom: 1rem;
   box-shadow: 1px 1px 24px 0 hsla(1, 87%, 76%, .06);

@@ -40,36 +40,36 @@
           <div class="w-form">
             <form role="form" method="post" id="reused_form" action="{:url('home/updateProfile',['userid'=>session('userid')])}">
             <label for="firstname">{$Think.lang.first_name}:</label>
-              <div class="w-embed">
-                <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.first_name}" id="firstname" name="first_name" value="{$data['first_name']}">
+              <div class="w-embed form-group">
+                <input type="text" class="w-input c-login__input form-control" placeholder="{$Think.lang.first_name}" id="firstname" name="first_name" value="{$data['first_name']}">
               </div>
 
             <label for="lastname">{$Think.lang.last_name}:</label>
-              <div class="w-embed">
-                <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.last_name}" id="lastname" name="last_name" value="{$data['last_name']}">
+              <div class="w-embed form-group">
+                <input type="text" class="w-input c-login__input form-control" placeholder="{$Think.lang.last_name}" id="lastname" name="last_name" value="{$data['last_name']}">
             </div>
 
             <label for="address">{$Think.lang.home_address}:</label>
-              <div class="w-embed">
-                <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.home_address}" id="address" name="address" value="{$data['address']}">
+              <div class="w-embed form-group">
+                <input type="text" class="w-input c-login__input form-control" placeholder="{$Think.lang.home_address}" id="address" name="address" value="{$data['address']}">
             </div>
 
             <label for="wechat">{$Think.lang.wechat}:</label>
-              <div class="w-embed">
-                <input type="text" class="w-input c-login__input" placeholder="{$Think.lang.wechat}" id="wechat" name="wechat" value="{$data['wechat']}">
+              <div class="w-embed form-group">
+                <input type="text" class="w-input c-login__input form-control" placeholder="{$Think.lang.wechat}" id="wechat" name="wechat" value="{$data['wechat']}">
             </div>
 
             <label >{$Think.lang.gender}:</label>
               <div class="w-row">
                 <div class="w-col w-col-6">
-                  <div class="w-radio">
-                    <input type="radio" class="w-radio-input" name="gender" id="gender" value="1" {$data['gender']==1?'checked':''}>
+                  <div class="w-radio ">
+                    <input type="radio" class="w-radio-input " name="gender" id="gender" value="1" {$data['gender']==1?'checked':''}>
 
             <label for="gender1" class="w-form-label">{$Think.lang.male}</label></div>
                 </div>
                 <div class="w-col w-col-6">
-                  <div class="w-radio">
-                    <input type="radio" class="w-radio-input" name="gender" id="gender1" value="0"
+                  <div class="w-radio ">
+                    <input type="radio" class="w-radio-input " name="gender" id="gender1" value="0"
                                {$data['gender']==0?'checked':''}>
 
             <label  class="w-form-label">{$Think.lang.female}</label></div>
@@ -190,4 +190,10 @@
 </script>
 
 <script src="/static/js/home.js"></script>
+
+<script>
+  var first_name_not_null = "{$Think.lang.first_name_not_null}";
+  var last_name_not_null = "{$Think.lang.last_name_not_null}";
+</script>
 {/block}
+

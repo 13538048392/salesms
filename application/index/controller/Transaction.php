@@ -12,8 +12,8 @@ class Transaction extends Base
     public function index()
     {
         $referralCode = session('userid');
-        $data = model('RegisterApi')->getTranReport($referralCode);
-        $this->assign('data', $data);
+        $list = model('RegisterApi')->getTranReport($referralCode);
+        $this->assign('list', $list);
         return view('/tranhistory');
     }
     public function getMonthData()

@@ -172,21 +172,7 @@ class Api
     public function test()
     {
         //测试
-
-        //       try{
-        //     file_get_contents(input('get.url'));
-        // }catch($e){
-        //     echo $e->getMessage();
-        // }
-
-        try {
-            $res = file_get_contents(input('get.url'));
-        } catch (\Exception $e) {
-            echo "error";
-            $res = '';
-
-        }
-        dump($res);
+        $image = new \think\Image();exit;
 
     }
 }

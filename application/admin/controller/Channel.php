@@ -28,7 +28,6 @@ class Channel extends Common
             $data['role'] = $role;
             $data['channel_name'] = input('post.channel');
             $data['user_id'] = Session::get('uid');
-
             return doAddChannel($data);
         }
         else{

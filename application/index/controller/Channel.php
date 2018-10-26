@@ -33,8 +33,27 @@ class Channel extends Base
                 ->field('b.url_code,c.role_name')
                 ->where('b.channel_id', $value['id'])
                 ->select();
+
+            foreach ($data as $k => $v) {
+               try {
+                    $temp = explode('/', $v['url_code']);
+                    $url = "http://soc.kooa.vip/api/v2/action/lookup?key=d2ffa91d967c1424c992c2176df88c&url_key=".$temp[4].'&url_ending='.$temp[3].'&response_type=json';
+                    // dump($url);exit;
+                    $res = json_decode(file_get_contents($url));
+                    $data[$k]['clicks'] = $res->result->clicks;
+                } catch (\Exception $e) {
+                    // echo "error";
+                    $data[$k]['clicks'] = 0;
+
+                }
+                //异常处理
+               
+            }
+
             $channel[$key]['url_code'] = $data;
+            
         }
+        
 
         return view('/channel', ['data' => $channel]);
     }

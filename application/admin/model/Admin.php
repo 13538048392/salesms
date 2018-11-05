@@ -19,7 +19,7 @@ class Admin extends Model
     					 ->join('sales_role r','s.role_id=r.id','left')
     					 ->field('a.id,a.user_name,a.status,s.*,r.role_name')
     					 ->where($where)
-                         ->where('a.type',0)
+//                         ->where('a.type',0)
     					 ->select()
     					 ->toArray();
     	// echo Admin::getlastsql();exit;

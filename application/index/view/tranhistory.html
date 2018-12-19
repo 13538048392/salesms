@@ -37,8 +37,8 @@
 
 				<td>First Name</td>
 				<td>Phone</td>
-				<td>Amount</td>
 				<td>Usage</td>
+				<td>Amount</td>
 				<td>Date</td>
 			</tr>
 			</thead>
@@ -52,7 +52,8 @@
 
 					<td data-label="Usage">{$trans.description}</td>
 					<td data-label="Amount">{$trans.quantity * $trans.unitprice}</td>
-					<td data-label="Date">{:substr($trans.created_at,0,-8)}</td>
+					<td data-label="Date">{$trans.created_at}</td>
+					<!--<td data-label="Date">{:substr($trans.created_at,0,-8)}</td>-->
 				</tr>
 
 				{/volist}

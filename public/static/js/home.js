@@ -84,6 +84,25 @@ $(function () {
 
     });
 
+    $('#select_role').change(){
+        var val = $(this).val();
+        alert(val);
+        // $.ajax({
+        //     url: url_addChannel,
+        //     type: 'POST',
+        //     data: {"userid": data_channel, "channel_name": $('#channel_name').val()},
+        //     dataType: 'json',
+        //     success: function (result) {
+        //         if (result.resp_code == 0) {
+        //             alert(result.msg);
+        //             location.reload();
+        //         } else {
+        //             alert(result.msg);
+        //         }
+        //     }
+        // });
+    }
+
 
     $('#search').click(function () {
         $.ajax({

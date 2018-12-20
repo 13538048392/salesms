@@ -309,7 +309,7 @@ function getDataList(data){
                     "<td>" +one.last_name+ "</td>" +
                     "<td>" +one.first_name+ "</td>" +
                     "<td>" +c_fix+one.user_name+ "</td>" +
-                    "<td>" +if(one.phone == 'undefined'){}else{phone}+ "</td>" +
+                    "<td>" if(one.phone == 'undefined'){}else{phone}"</td>" +
                     "<td>" +one.create_time+ "</td>" +
                     "</tr>";
             // console.log(one);

@@ -280,23 +280,8 @@
             success: function (result) {
                 // console.log(result.data);
                 var res = getDataList(result.data);
-                // console.log(res);
-                $('#referrer_list').dataTable().fnClearTable();
-                $('#referrer_list').dataTable().fnDestroy();
-                // $('#referrer_list').dataTable().fnAddData(html);  //重新绑定table数据
                $('tbody').html(res);
-                $('#referrer_list').dataTable(
-                    {
-                        searching: false, //去掉搜索框方法
-                        bLengthChange: false,   //去掉每页显示多少条数据方法
-                        bAutoWidth: false,                   //是否启用自动适应列宽
-                        pageNumber: 1,            // 显示第几页数据，默认1
-                        iDisplayLength: 5,
-                        bSort: false,
-                        bDe: true,
-                        bPaginate: true,
-                    }
-                );
+                
                 html = '';
             }
         });
@@ -333,5 +318,3 @@ function getDataList(data){
 {block name="script"}
 
 {/block}
-<script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="__PUBLIC__/H-ui.admin/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>

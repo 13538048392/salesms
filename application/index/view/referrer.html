@@ -203,7 +203,7 @@
                 placeholder="{$Think.lang.channel_name}" id="channel_name">
         </div>
         <div class="col-md-2">
-            <select id="change_role">
+            <select id="change_role" onchange="test()">
                 <option value="0">销售</option>
                 <option value="1">医生</option>
             </select>
@@ -269,7 +269,11 @@
         </table>
     </div>
 </div>
-
+<script type="text/javascript">
+    function test(){
+        alert('aa');
+    }
+</script>
 {/block}
 
 {block name="script"}

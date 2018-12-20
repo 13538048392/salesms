@@ -273,7 +273,7 @@
     function change(obj){
         var val = $(obj).val();
         $.ajax({
-            url: changeRole,
+            url: 'changeRole',
             type: 'POST',
             data: {"role": val},
             dataType: 'json',

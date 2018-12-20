@@ -298,7 +298,7 @@ function getDataList(data){
             var one = list.shift();
             //console.log(one);
             var phone = '';
-            if (one.phone != 'undefined') {
+            if (typeof one.phone != "undefined" ) {
 
                 phone = one.phone;
             }

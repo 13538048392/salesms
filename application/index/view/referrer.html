@@ -298,10 +298,8 @@ function getDataList(data){
             var one = list.shift();
             //console.log(one);
             var phone = '';
-            if (one.phone == 'undefined') {
-                phone = '';
-            }
-            else{
+            if (one.phone != 'undefined') {
+
                 phone = one.phone;
             }
             html += "<tr>" +
@@ -309,7 +307,7 @@ function getDataList(data){
                     "<td>" +one.last_name+ "</td>" +
                     "<td>" +one.first_name+ "</td>" +
                     "<td>" +c_fix+one.user_name+ "</td>" +
-                    "<td>" if(one.phone == 'undefined'){}else{phone}"</td>" +
+                    "<td>" +phone+ "</td>" +
                     "<td>" +one.create_time+ "</td>" +
                     "</tr>";
             // console.log(one);

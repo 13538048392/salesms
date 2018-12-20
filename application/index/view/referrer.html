@@ -278,15 +278,55 @@
             data: {"role": val},
             dataType: 'json',
             success: function (result) {
-                if (result.resp_code == 0) {
-                    alert(result.msg);
-                    location.reload();
-                } else {
-                    alert(result.msg);
-                }
+                // console.log(result.data);
+                var res = getDataList(result.data);
+                // console.log(res);
+                $('#referrer_list').dataTable().fnClearTable();
+                $('#referrer_list').dataTable().fnDestroy();
+                // $('#referrer_list').dataTable().fnAddData(html);  //重新绑定table数据
+               $('tbody').html(res);
+                $('#referrer_list').dataTable(
+                    {
+                        searching: false, //去掉搜索框方法
+                        bLengthChange: false,   //去掉每页显示多少条数据方法
+                        bAutoWidth: false,                   //是否启用自动适应列宽
+                        pageNumber: 1,            // 显示第几页数据，默认1
+                        iDisplayLength: 5,
+                        bSort: false,
+                        bDe: true,
+                        bPaginate: true,
+                    }
+                );
+                html = '';
             }
         });
     }
+var html='';
+function getDataList(data){
+    for (var i = 0; i < data.length; i++) {
+        var list = [data[i]];
+        //console.log(list);
+        var c_fix = '';
+        while(list != ''){
+            var one = list.shift();
+            //console.log(one);
+            html += "<tr>" +
+                    "<td>" +c_fix+one.user_name+ "</td>" +
+                    "<td>" +one.channel_name+ "</td>" +
+                    "<td>" +one.first_name+ "</td>" +
+                    "<td>" +one.last_name+ "</td>" +
+                    "<td>" +one.create_time+ "</td>" +
+                    "</tr>";
+            // console.log(one);
+            if( typeof one._child != "undefined" ) {
+                list = list.concat(one._child);
+                // console.log(list);
+            }
+            c_fix+='--';
+        }
+    }
+    return html;
+}
 </script>
 {/block}
 

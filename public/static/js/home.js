@@ -84,12 +84,6 @@ $(function () {
 
     });
 
-   /*下拉框切换角色*/
-$('select').on('change',function(){
-    // var role = $(this).val();
-    console.log('aaaa');
-});
-
 
     $('#search').click(function () {
         $.ajax({

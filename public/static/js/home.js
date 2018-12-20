@@ -84,24 +84,11 @@ $(function () {
 
     });
 
-    $('#select_role').change(function(){
-        var val = $(this).val();
-        alert(val);
-        // $.ajax({
-        //     url: url_addChannel,
-        //     type: 'POST',
-        //     data: {"userid": data_channel, "channel_name": $('#channel_name').val()},
-        //     dataType: 'json',
-        //     success: function (result) {
-        //         if (result.resp_code == 0) {
-        //             alert(result.msg);
-        //             location.reload();
-        //         } else {
-        //             alert(result.msg);
-        //         }
-        //     }
-        // });
-    });
+   /*下拉框切换角色*/
+$('#select_role').change(function(){
+    var role = $(this).val();
+    
+});
 
 
     $('#search').click(function () {

@@ -220,6 +220,7 @@
                     <td>{$Think.lang.first_name}</td>
                     <td>{$Think.lang.last_name}</td>
                     <td>{$Think.lang.username}</td>
+                    <td>{$Think.lang.phone}</td>
                     <td>{$Think.lang.signup_date}</td>
                 </tr>
             </thead>
@@ -239,6 +240,7 @@
                             echo "<td>$one[first_name]</td>";
                             echo "<td>$one[last_name]</td>";
                             echo "<td>$c_fix$one[user_name]</td>";
+                            echo "<td>$one['phone']</td>";
                             echo "<td>$one[create_time]</td>";
                             echo "</tr>";
 
@@ -296,10 +298,11 @@ function getDataList(data){
             var one = list.shift();
             //console.log(one);
             html += "<tr>" +
-                    "<td>" +c_fix+one.user_name+ "</td>" +
                     "<td>" +one.channel_name+ "</td>" +
-                    "<td>" +one.first_name+ "</td>" +
                     "<td>" +one.last_name+ "</td>" +
+                    "<td>" +one.first_name+ "</td>" +
+                    "<td>" +c_fix+one.user_name+ "</td>" +
+                    "<td>" +phone+ "</td>" +
                     "<td>" +one.create_time+ "</td>" +
                     "</tr>";
             // console.log(one);

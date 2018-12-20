@@ -301,6 +301,9 @@ function getDataList(data){
             if (one.phone == 'undefined') {
                 phone = '';
             }
+            else{
+                phone = one.phone;
+            }
             html += "<tr>" +
                     "<td>" +one.channel_name+ "</td>" +
                     "<td>" +one.last_name+ "</td>" +

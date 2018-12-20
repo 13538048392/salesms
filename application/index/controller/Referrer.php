@@ -12,6 +12,7 @@ namespace app\index\controller;
 use app\common\Base;
 use think\Controller;
 use app\index\model\User as UserModel;
+use app\index\model\DocUserInfo;
 use think\Config;
 use think\Db;
 use think\Request;
@@ -28,7 +29,7 @@ class Referrer extends Base
         $this->redis->select(Config::get('redis.db_index'));
     }
 
-    public function index()
+    public function index($parm = '')
     {
 
         //php获取上周起始时间戳和结束时间戳
@@ -38,9 +39,17 @@ class Referrer extends Base
       //  $endLastweek=mktime(23,59,59,date('m'),date('d')-date('w')+7-7,date('Y'));
         // return view('/referrer', ['data' => $this->getDataList()]);
        // dump($this->getDataList());
-        $user = $this->getReferrer();
-        //获取下级
-        $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
+        if ($parm == '') {
+            $user = $this->getReferrer();
+            //获取下级
+            $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
+        }
+        else{
+            $data = $parm;
+        }
+        // $user = $this->getReferrer();
+        // //获取下级
+        // $data = $this->make_tree($user, $pk = 'id', $pid = 'parent_id', $child = '_child', $root = session('userid'));
         // dump($data);exit;
         $this->redis->set('referrer_data',serialize($data));
         return view('/referrer', ['data' => $data]);
@@ -260,6 +269,19 @@ class Referrer extends Base
 
     public function changeRole(){
         //改变角色
-        dump(input('post.role'));
+        $role = input('post.role');
+        if ($role == 0) {
+            //销售
+            $this->index();
+        }
+        if ($role == 1) {
+            //医生
+            $userid = session('userid');
+            $doc = DocUserInfo::alias('a')
+                               ->join('sales_channel b','a.channelId=b.id','left')
+                               ->field(['firstName' => 'first_name','lastName' => 'last_name','contactPhone' => 'phone','user_id' => 'user_name','create_time' => 'create_time'])
+                               ->select();
+            $this->index($doc);
+        }
     }
 }

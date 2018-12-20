@@ -297,6 +297,10 @@ function getDataList(data){
         while(list != ''){
             var one = list.shift();
             //console.log(one);
+            var phone = '';
+            if (one.phone == 'undefined') {
+                phone = '';
+            }
             html += "<tr>" +
                     "<td>" +one.channel_name+ "</td>" +
                     "<td>" +one.last_name+ "</td>" +

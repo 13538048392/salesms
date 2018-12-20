@@ -84,7 +84,7 @@ $(function () {
 
     });
 
-    $('#select_role').change({
+    $('#select_role').change(function(){
         var val = $(this).val();
         alert(val);
         // $.ajax({

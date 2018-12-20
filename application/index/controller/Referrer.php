@@ -257,4 +257,9 @@ class Referrer extends Base
         $csv->put_csv($new_data,$title,$field,$file_name);
 
     }
+
+    public function changeRole(){
+        //改变角色
+        dump(input('post.role'));
+    }
 }

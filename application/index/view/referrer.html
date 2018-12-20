@@ -272,7 +272,20 @@
 <script type="text/javascript">
     function change(obj){
         var val = $(obj).val();
-        alert(val);
+        $.ajax({
+            url: changeRole,
+            type: 'POST',
+            data: {"role": val},
+            dataType: 'json',
+            success: function (result) {
+                if (result.resp_code == 0) {
+                    alert(result.msg);
+                    location.reload();
+                } else {
+                    alert(result.msg);
+                }
+            }
+        });
     }
 </script>
 {/block}

@@ -84,11 +84,6 @@ $(function () {
 
     });
 
-   /*下拉框切换角色*/
-$('#select_role').on('change',function(){
-    // var role = $(this).val();
-    alert('aaa');
-});
 
 
     $('#search').click(function () {
@@ -154,3 +149,10 @@ function getDataList(data){
 }
 
 });
+
+   /*下拉框切换角色*/
+$('#select_role').on('change',function(){
+    // var role = $(this).val();
+    alert('aaa');
+});
+

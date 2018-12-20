@@ -282,6 +282,6 @@ class Referrer extends Base
             $this->redis->set('referrer_data',serialize($doc));
             return json(['data' => $doc]);
         }
-        }
+        
     }
 }

@@ -279,7 +279,7 @@ class Referrer extends Base
             $userid = session('userid');
             $doc = DocUserInfo::alias('a')
                                ->join('sales_channel b','a.channelId=b.id','left')
-                               ->field(['firstName' => 'first_name','lastName' => 'last_name','contactPhone' => 'phone','user_id' => 'user_name','create_time' => 'create_time'])
+                               ->field(['firstName' => 'first_name','lastName' => 'last_name','contactPhone' => 'phone','a.user_id' => 'user_name','a.create_time' => 'create_time'])
                                ->select();
             $this->index($doc);
         }
